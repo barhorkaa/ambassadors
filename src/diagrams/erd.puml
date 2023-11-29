@@ -9,7 +9,7 @@ entity RegisterForm {
 }
 
 entity Ambassador {
-  UČO: int <<pk>>
+  UCO: int <<pk>>
   --
   name: String
   e_mail: String
@@ -21,7 +21,7 @@ entity Event {
   --
   name: String
   date: Date
-  eventTypeId: int
+  event_type_id: int
 }
 
 entity EventType {
