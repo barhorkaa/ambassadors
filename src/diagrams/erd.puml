@@ -5,7 +5,7 @@ entity RegisterForm {
   id: int <<pk>>
   --
   ambassador_id: int
-  answers
+  'answers
 }
 
 entity Ambassador {
