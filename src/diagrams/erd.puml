@@ -73,8 +73,8 @@ entity Material {
   description: String
 }
 
-Report ||-|| Material_Report
-Material_Report ||-|| Material
+Report ||-o{ Material_Report
+Material_Report }o-|| Material
 Event ||---|| Report
 
 Ambassador ||-|| RegisterForm
