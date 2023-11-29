@@ -1,0 +1,85 @@
+@startuml
+'https://plantuml.com/entity-diagram
+
+entity RegisterForm {
+  id: int <<pk>>
+  --
+  ambassador_id: int
+  answers
+}
+
+entity Ambassador {
+  UČO: int <<pk>>
+  --
+  name: String
+  e_mail: String
+  phone_number: String
+}
+
+entity Event {
+  id: int <<pk>>
+  --
+  name: String
+  date: Date
+  eventTypeId: int
+}
+
+entity EventType {
+  id: int <<pk>>
+  --
+  name: String
+  description: String
+  instructions: String
+}
+
+entity Event_Ambassador {
+  id: int <<pk>>
+  --
+  ambassador_id: int <<FK>>
+  event_id: int <<FK>>
+}
+
+entity Report {
+  id: int <<pk>>
+  --
+  event_id: int
+  ambassador_id: int
+  number_of_attendees: int
+'photos
+  notes: String
+  ideas: String
+}
+
+'enum EventTypes {
+'  SCHOOL
+'  EXPO
+'  OPENDAY
+'  GAUDEAMUS
+'  ...
+'}
+
+entity Material_Report {
+  id: int <<pk>>
+  --
+  material_id: int <<FK>>
+  report_id: int <<FK>>
+  amount: int
+}
+
+entity Material {
+  id: int <<pk>>
+  --
+  name: String
+  description: String
+}
+
+Report ||-|| Material_Report
+Material_Report ||-|| Material
+Event ||---|| Report
+
+Ambassador ||-|| RegisterForm
+Ambassador ||--o{ Event_Ambassador
+Event ||--o{ Event_Ambassador
+Event }o--|| EventType
+
+@enduml
