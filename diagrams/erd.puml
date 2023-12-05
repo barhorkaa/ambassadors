@@ -6,14 +6,23 @@ entity RegisterForm {
   --
   ambassador_id: int
   'answers
+  --
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
 }
 
 entity Ambassador {
-  UCO: int <<pk>>
+  id: int <<pk>>
   --
+  UCO: int
   name: String
   e_mail: String
   phone_number: String
+  --
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
 }
 
 entity Event {
@@ -22,6 +31,10 @@ entity Event {
   name: String
   date: Date
   event_type_id: int
+  --
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
 }
 
 entity EventType {
@@ -30,6 +43,10 @@ entity EventType {
   name: String
   description: String
   instructions: String
+  --
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
 }
 
 entity Event_Ambassador {
@@ -37,6 +54,10 @@ entity Event_Ambassador {
   --
   ambassador_id: int <<FK>>
   event_id: int <<FK>>
+  --
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
 }
 
 entity Report {
@@ -48,6 +69,10 @@ entity Report {
 'photos
   notes: String
   ideas: String
+  --
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
 }
 
 'enum EventTypes {
@@ -64,6 +89,10 @@ entity Material_Report {
   material_id: int <<FK>>
   report_id: int <<FK>>
   amount: int
+  --
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
 }
 
 entity Material {
@@ -71,6 +100,10 @@ entity Material {
   --
   name: String
   description: String
+  --
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
 }
 
 Report ||-o{ Material_Report
