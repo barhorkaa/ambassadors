@@ -17,7 +17,7 @@ entity Ambassador {
   --
   UCO: int
   name: String
-  e_mail: String
+  email: String
   phone_number: String
   --
   created_at: DateTime
