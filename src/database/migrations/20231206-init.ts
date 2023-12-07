@@ -125,7 +125,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('id', 'serial', (col) => col.primaryKey())
     .addColumn('material_id', 'integer', (col) => col.references('material.id').notNull())
     .addColumn('report_id', 'integer', (col) => col.references('report.id').notNull())
-    .addColumn('amnout', 'integer')
+    .addColumn('amount', 'integer')
     .addColumn('created_at', 'timestamp', (col) =>
       col.defaultTo(sql`now()`).notNull()
     )
