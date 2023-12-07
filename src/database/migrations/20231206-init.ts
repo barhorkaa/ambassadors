@@ -148,4 +148,10 @@ export async function up(db: Kysely<any>): Promise<void> {
 export async function down(db: Kysely<any>): Promise<void> {
   await db.schema.dropTable('ambassador').execute()
   await db.schema.dropTable('event').execute()
+  await db.schema.dropTable('eventType').execute()
+  await db.schema.dropTable('report').execute()
+  await db.schema.dropTable('material').execute()
+  await db.schema.dropTable('eventAmbassador').execute()
+  await db.schema.dropTable('materialReport').execute()
+  await db.schema.dropTable('registerForm').execute()
 }
