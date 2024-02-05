@@ -143,6 +143,12 @@ export async function up(db: Kysely<any>): Promise<void> {
   //   .on('pet')
   //   .column('owner_id')
   //   .execute()
+
+  //   na zrychlenie hladania
+  // b tree dobre na od do
+  // hashovanie na primarnych klucoch -> cez to sa joinuje
+  // pozriet ci ma mysql index na pk
+  // dobre vedie na statnice
 }
 
 export async function down(db: Kysely<any>): Promise<void> {
