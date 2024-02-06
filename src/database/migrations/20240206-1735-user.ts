@@ -9,7 +9,7 @@ export async function up(db: Kysely<any>): Promise<void> {
 }
 
 export async function down(db: Kysely<any>): Promise<void> {
-  await db.schema.alterTable('ambassador')
+  await db.schema.alterTable('user')
     .dropColumn('password')
     .dropColumn('type')
     .execute()
