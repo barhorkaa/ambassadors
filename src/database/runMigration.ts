@@ -7,13 +7,13 @@ import {
   FileMigrationProvider,
   MysqlDialect,
 } from 'kysely'
-import {Database} from "@/database/types";
 
 import * as dotenv from 'dotenv'
+import {DB} from "kysely-codegen";
 dotenv.config({ path: '.env.local' })
 
 async function migrateToLatest() {
-  const db = new Kysely<Database>({
+  const db = new Kysely<DB>({
     dialect: new MysqlDialect({
       pool: createPool({
         host: process.env['MYSQL_HOST'],
