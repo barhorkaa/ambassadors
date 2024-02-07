@@ -1,8 +1,8 @@
-import LoginForm from "@/app/ui/login-form";
+import LoginForm from "../ui/login-form";
 import React from "react";
-import NavBar from "@/app/ui/nav-bar";
+import NavBar from "../ui/nav-bar";
 import {useFormState} from "react-dom";
-import {authenticate} from "@/app/lib/actions";
+import {authenticate} from "../lib/actions";
 
 export default function Login() {
   return (

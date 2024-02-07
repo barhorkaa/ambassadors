@@ -4,7 +4,7 @@ import {authConfig} from './auth.config';
 import {z} from 'zod';
 import bcrypt from 'bcryptjs';
 import {User} from "kysely-codegen";
-import {db} from "@/database/database";
+import {db} from "./database/database";
 import {Selectable} from "kysely";
 
 async function getUser(email: string): Promise<Selectable<User> | undefined> {
