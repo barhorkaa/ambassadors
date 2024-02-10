@@ -1,9 +1,10 @@
 'use client';
 
 import { useFormState, useFormStatus } from 'react-dom';
-import {authenticate} from "@/app/lib/actions";
+// import {authenticate} from "@/app/lib/actions";
 import React from "react";
 import {ArrowRightIcon, ExclamationCircleIcon} from "@heroicons/react/24/outline";
+import {authenticate} from "../lib/actions";
 
 export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
