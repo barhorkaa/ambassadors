@@ -19,8 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar></NavBar>
-        {/*<NavBarUser></NavBarUser>*/}
+        {/*<NavBar></NavBar>*/}
+        <NavBarUser></NavBarUser>
 
         {children}
       </body>
