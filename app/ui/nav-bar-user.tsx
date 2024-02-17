@@ -1,4 +1,5 @@
 import Link from "next/link";
+import {signOut} from "@/auth";
 
 export default function NavBarUser() {
   return(
@@ -19,7 +20,12 @@ export default function NavBarUser() {
             <li><Link href={""}>Kontakty</Link></li>
             <li><Link href={""}>Pomocník</Link></li>
             <hr/>
-            <li><Link href={""}>Odhlásit se</Link></li>
+            <form action={async () => {
+              'use server';
+              await signOut();
+            }}>
+              <button>Odhlásit se</button>
+            </form>
           </ul>
         </div>
       </div>
