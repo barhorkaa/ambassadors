@@ -1,6 +1,6 @@
 // import {getUser} from "@/database/repository/user";
 import { type NextRequest } from 'next/server'
-import {getUser} from "../../../database/repository/user";
+import {getUserByEmail} from "../../../database/repository/user";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
@@ -9,6 +9,6 @@ export async function GET(request: NextRequest) {
   if (!email) {
     return Response.json(undefined)
   }
-  const user = await getUser(email);
+  const user = await getUserByEmail(email);
   return Response.json(user);
 }
