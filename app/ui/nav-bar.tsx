@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import NavBarUser from "@/app/ui/nav-bar-user";
+
+
 export default function NavBar() {
   return(
     <nav className="navbar bg-amber-200">
