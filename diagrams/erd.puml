@@ -2,9 +2,9 @@
 'https://plantuml.com/entity-diagram
 
 entity RegisterForm {
-  id: int <<pk>>
+  id: String <<pk>>
   --
-  ambassador_id: int
+  ambassador_id: String
   'answers
   --
   created_at: DateTime
@@ -12,25 +12,32 @@ entity RegisterForm {
   deleted_at: DateTime
 }
 
-entity Ambassador {
-  id: int <<pk>>
+entity User {
+  id: String <<pk>>
   --
   UCO: int
   name: String
   email: String
   phone_number: String
+  password: String
+  type: UserType
   --
   created_at: DateTime
   updated_at: DateTime
   deleted_at: DateTime
 }
 
+enum UserType {
+  ambassador
+  manager
+}
+
 entity Event {
-  id: int <<pk>>
+  id: String <<pk>>
   --
   name: String
   date: Date
-  event_type_id: int
+  event_type_id: String
   --
   created_at: DateTime
   updated_at: DateTime
@@ -38,7 +45,7 @@ entity Event {
 }
 
 entity EventType {
-  id: int <<pk>>
+  id: String <<pk>>
   --
   name: String
   description: String
@@ -50,10 +57,10 @@ entity EventType {
 }
 
 entity Event_Ambassador {
-  id: int <<pk>>
+  id: String <<pk>>
   --
-  ambassador_id: int <<FK>>
-  event_id: int <<FK>>
+  ambassador_id: String <<FK>>
+  event_id: String <<FK>>
   --
   created_at: DateTime
   updated_at: DateTime
@@ -61,10 +68,10 @@ entity Event_Ambassador {
 }
 
 entity Report {
-  id: int <<pk>>
+  id: String <<pk>>
   --
-  event_id: int
-  ambassador_id: int
+  event_id: String <<FK>>
+  ambassador_id: String
   number_of_attendees: int
 'photos
   notes: String
@@ -75,19 +82,11 @@ entity Report {
   deleted_at: DateTime
 }
 
-'enum EventTypes {
-'  SCHOOL
-'  EXPO
-'  OPENDAY
-'  GAUDEAMUS
-'  ...
-'}
-
 entity Material_Report {
-  id: int <<pk>>
+  id: String <<pk>>
   --
-  material_id: int <<FK>>
-  report_id: int <<FK>>
+  material_id: String <<FK>>
+  report_id: String <<FK>>
   amount: int
   --
   created_at: DateTime
@@ -96,7 +95,7 @@ entity Material_Report {
 }
 
 entity Material {
-  id: int <<pk>>
+  id: String <<pk>>
   --
   name: String
   description: String
@@ -110,8 +109,8 @@ Report ||-o{ Material_Report
 Material_Report }o-|| Material
 Event ||---|| Report
 
-Ambassador ||-|| RegisterForm
-Ambassador ||--o{ Event_Ambassador
+User ||-|| RegisterForm
+User ||--o{ Event_Ambassador
 Event ||--o{ Event_Ambassador
 Event }o--|| EventType
 
