@@ -1,13 +1,9 @@
-// import LoginForm from "@/app/ui/login-form";
 import React from "react";
-import NavBar from "../ui/nav-bar";
 import LoginForm from "../ui/login-form";
-// import NavBar from "@/app/ui/nav-bar";
 
 export default function Login() {
   return (
     <main className="flex min-h-screen flex-col items-center">
-      {/*<NavBar></NavBar>*/}
       <LoginForm></LoginForm>
     </main>
   )
