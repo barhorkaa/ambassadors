@@ -29,8 +29,9 @@ body {
 }
 
 .body {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 3%;
   background-color: var(--base-background-color);
 }
 
