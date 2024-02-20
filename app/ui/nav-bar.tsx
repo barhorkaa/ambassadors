@@ -12,7 +12,7 @@ export default function NavBar() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li><Link href={"/login"}>Login</Link></li>
-          <li><Link href={"/"}>Register</Link></li>
+          <li><Link href={"/register"}>Register</Link></li>
         </ul>
       </div>
     </nav>
