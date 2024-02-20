@@ -3,7 +3,7 @@ import RegisterForm from "@/app/ui/register-form";
 
 export default function Register() {
   return(
-    <div className="hero min-h-screen">
+    <div className="hero min-h-max">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left p-4">
           <h1 className="text-5xl font-bold">Přidejte se k nám a dělejte FI dobré jméno!</h1>
