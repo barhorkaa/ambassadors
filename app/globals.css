@@ -19,12 +19,25 @@
 
 body {
   color: var(--text-color);
-  background: var(--base-background-color);
+  /*background: var(--base-background-color);*/
   /*background: linear-gradient(*/
   /*    to bottom,*/
   /*    transparent,*/
   /*    rgb(var(--background-end-rgb))*/
   /*  )*/
   /*  rgb(var(--background-start-rgb));*/
+}
+
+.body {
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: var(--base-background-color);
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
