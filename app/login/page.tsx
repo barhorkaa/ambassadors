@@ -3,7 +3,7 @@ import LoginForm from "../ui/login-form";
 
 export default function Login() {
   return (
-    <div className="hero min-h-screen">
+    <div className="hero min-h-full">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left p-4">
           <h1 className="text-5xl font-bold">Přihlašte se a naplánujte svou akci!</h1>
