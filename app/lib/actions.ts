@@ -42,7 +42,6 @@ export async function createUser(prevState: string | undefined, formData: FormDa
     console.log("Fetch complete");
   } catch (error) {
     return "Something went wrong"
-    throw error;
   }
 
 }
