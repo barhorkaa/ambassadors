@@ -18,3 +18,18 @@ export async function getUserRole(email: string) : Promise<String> {
 export async function getUser() {
 
 }
+
+export async function createNewUser(name: string, email: string, password: string, uco: number, phone_number: string) {
+  console.log("inside createNewUser in repo");
+  const newUser = {
+    name: name,
+    uco: uco,
+    email: email,
+    phone_number: phone_number,
+    password: password,
+  }
+
+  await db
+    .insertInto('user').values(newUser).execute()
+  console.log("inserted into database");
+}
