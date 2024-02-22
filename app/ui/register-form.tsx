@@ -1,9 +1,16 @@
+'use client';
+
 import React from "react";
+import {useFormState, useFormStatus} from "react-dom";
+import {createUser} from "@/app/lib/actions";
+import {ExclamationCircleIcon} from "@heroicons/react/24/outline";
 
 export default function RegisterForm() {
+  const [errorMessage, dispatch] = useFormState(createUser, undefined)
+
   return(
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form className="card-body">
+      <form action={dispatch} className="card-body">
         <div className="form-control">
         <label className="label"
                htmlFor="name">
