@@ -6,7 +6,7 @@ export default function RegisterForm() {
       <form className="card-body">
         <div className="form-control">
         <label className="label"
-               htmlFor="password">
+               htmlFor="name">
           <span className="label-text">Celé jméno</span>
         </label>
         <input id="name" type="text" name="name" placeholder="Jméno" className="input input-bordered" required />
@@ -26,15 +26,15 @@ export default function RegisterForm() {
         </div>
         <div className="form-control">
           <label className="label"
-                 htmlFor="password">
+                 htmlFor="uco">
             <span className="label-text">UČO</span>
           </label>
           <input id="uco" type="number" name="uco" placeholder="UČO" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label"
-                 htmlFor="password">
-            <span className="label-text">Telenónní číslo</span>
+                 htmlFor="phone_number">
+            <span className="label-text">Telefonní číslo</span>
           </label>
           <input id="phone" type="number" name="phone" placeholder="Telefónní číslo" className="input input-bordered" required />
         </div>
