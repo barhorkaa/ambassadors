@@ -36,7 +36,7 @@ export default function RegisterForm() {
                  htmlFor="phone_number">
             <span className="label-text">Telefonní číslo</span>
           </label>
-          <input id="phone" type="number" name="phone" placeholder="Telefónní číslo" className="input input-bordered" required />
+          <input id="phone_number" type="number" name="phone_number" placeholder="Telefónní číslo" className="input input-bordered" required />
         </div>
         <RegisterButton/>
       </form>
