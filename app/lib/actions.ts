@@ -39,8 +39,7 @@ export async function createUser(prevState: string | undefined, formData: FormDa
       {
         method: 'POST',
       });
-    console.log("Called fetch");
-    // await createNewUser(name, email, password, uco, phone_number)
+    console.log("Fetch complete");
   } catch (error) {
     return "Something went wrong"
     throw error;
