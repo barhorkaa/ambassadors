@@ -21,6 +21,7 @@ entity User {
   phone_number: String
   password: String
   type: UserType
+  approved: Boolean
   --
   created_at: DateTime
   updated_at: DateTime
@@ -38,6 +39,7 @@ entity Event {
   name: String
   date: Date
   event_type_id: String
+  approved: Boolean
   --
   created_at: DateTime
   updated_at: DateTime
@@ -61,6 +63,7 @@ entity Event_Ambassador {
   --
   ambassador_id: String <<FK>>
   event_id: String <<FK>>
+  approved: Boolean
   --
   created_at: DateTime
   updated_at: DateTime
@@ -73,6 +76,7 @@ entity Report {
   event_id: String <<FK>>
   ambassador_id: String
   number_of_attendees: int
+  approved: Boolean
 'photos
   notes: String
   ideas: String
