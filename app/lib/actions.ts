@@ -30,7 +30,7 @@ export async function createUser(prevState: string | undefined, formData: FormDa
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
-    const password_hashed = await bcrypt.hash(password, 11);
+    const password_hashed = await bcrypt.hash(password, 10);
     const uco = Number(formData.get("uco") as string);
     const phone_number = formData.get("phone_number") as string;
 
