@@ -25,11 +25,21 @@ async function main() {
             email: "js@js.com",
             phone_number: "+444444444444",
             password: await bcrypt.hash("123456", 10),
+            role: "manager",
+            approved: true
+        },{
+            name: "Agatha Christie",
+            uco: 111111,
+            email: "ac@ac.com",
+            phone_number: "+123456789",
+            password: await bcrypt.hash("123456", 10),
+            role: "ambassador",
+            approved: true
         }
     ]
 
     await db
-        .insertInto('user').values(users[0]).execute()
+        .insertInto('user').values(users).execute()
 }
 
 
