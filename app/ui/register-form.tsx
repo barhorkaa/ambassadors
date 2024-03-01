@@ -9,9 +9,9 @@ import {redirect} from "next/navigation";
 export default function RegisterForm() {
   const [errorMessage, dispatch] = useFormState(createUser, undefined)
 
-  if (!errorMessage) {
-    redirect('/register/success')
-  }
+  // if (errorMessage != "Something went wrong") {
+  //   redirect(`/register/motivation?email=${errorMessage}`)
+  // }
 
   return(
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
