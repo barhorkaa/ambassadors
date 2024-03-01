@@ -32,15 +32,20 @@ export async function POST(request: NextRequest) {
 
   if (!email || !name || !password || !uco || !phone_number) {
     console.log("something is off")
-    return Response.json(false);
+    return Response.json({id: null});
   }
 
   try {
+    // const maybeId = await createNewUser(name, email, password, Number(uco), phone_number);
+    //
+    // if (maybeId) {
+    //   return Response.json(maybeId);
+    // }
     await createNewUser(name, email, password, Number(uco), phone_number);
   }
   catch (error) {
     console.log(error);
   }
 
-  return Response.json(true);
+  return Response.json({id: null});
 }
