@@ -1,26 +1,26 @@
-# Use root/example as user/password credentials
-version: '3.1'
+# Use postgres/example user/password credentials
+version: '3.9'
 
 services:
+
   db:
-    image: mysql
-    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
-    # (this is just an example, not intended to be a production configuration)
-    command: --default-authentication-plugin=mysql_native_password
+    image: postgres
     restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
     env_file:
       - .env.local
     ports:
-      - "3306:3306"
-#    environment:
-#      MYSQL_ROOT_PASSWORD: example
-#      MYSQL_HOST: mysql
-#      MYSQL_USER: root
-#      MYSQL_PASSWORD: secret
-#      MYSQL_DB: ambasador-db-1
+          - "3306:3306"
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - "8080:8080"
+      - 8080:8080
