@@ -1,8 +1,10 @@
 'use server';
 
-import { AuthError } from 'next-auth';
+import {AuthError} from 'next-auth';
 import {signIn} from "@/auth";
 import bcrypt from 'bcryptjs';
+import {Selectable} from "kysely";
+import {User} from "kysely-codegen";
 
 export async function authenticate(
   prevState: string | undefined,
@@ -35,12 +37,36 @@ export async function createUser(prevState: string | undefined, formData: FormDa
     const phone_number = formData.get("phone_number") as string;
 
     console.log("Calling fetch");
-    await fetch(`http://localhost:3000/api/user?name=${name}&email=${email}&password=${password_hashed}&uco=${uco}&phone_number=${phone_number}`,
+    // TODO change so that POST uses `body: {}` instead of URL params
+    const v: Response = await fetch(`http://localhost:3000/api/user?name=${name}&email=${email}&password=${password_hashed}&uco=${uco}&phone_number=${phone_number}`,
       {
         method: 'POST',
       });
     console.log("Fetch complete");
+
+    const id = await v.json() as {id: string | null}
+    console.log("id post registration", id)
+
+    return await GetUserId(email)
   } catch (error) {
+    return "Something went wrong"
+  }
+}
+
+async function GetUserId(email: string) {
+  const response = await fetch(`http://localhost:3000/api/user?email=${email}`)
+  const user = await response.json() as (Selectable<User> | undefined);
+
+  return user?.id
+}
+
+export async function createMotivationForm(prevState: string | null, formData: FormData) {
+  try {
+
+    return "Nothing went wrong"
+
+  }
+  catch (error) {
     return "Something went wrong"
   }
 
