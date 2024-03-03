@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     return Response.json(undefined)
   }
   const user = await getUserByEmail(email);
-  if (user?.approved == 0) {
+  if (user?.approved == false) {
     return Response.json(false);
   }
   return Response.json(user);
