@@ -29,17 +29,15 @@ export async function createNewUser(name: string, email: string, password: strin
     password: password,
   }
 
-
-  // return await db.transaction().execute(async (trx) => {
-  //   return await trx.insertInto('user')
-  //     .values(newUser)
-  //     .returning('id')
-  //     .executeTakeFirstOrThrow()
-  // });
-
-
   // TODO handle undefined when insert fails
-  await db
-    .insertInto('user').values(newUser).execute()
+  let res = null;
+  try {
+    res = await db
+      .insertInto('user').values(newUser).returning('id').executeTakeFirst()
+  } catch (e) {
+    console.log(e);
+  }
+
   console.log("inserted into database");
+  return(res);
 }
