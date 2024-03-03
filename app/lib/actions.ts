@@ -5,6 +5,7 @@ import {signIn} from "@/auth";
 import bcrypt from 'bcryptjs';
 import {Selectable} from "kysely";
 import {User} from "kysely-codegen";
+import {redirect} from "next/navigation";
 
 export async function authenticate(
   prevState: string | undefined,
@@ -26,9 +27,12 @@ export async function authenticate(
 }
 
 export async function createUser(prevState: string | undefined, formData: FormData) {
+  let id = null;
+
   try {
     console.log("Successfully called createUser");
     console.log(formData.values());
+
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
@@ -37,20 +41,28 @@ export async function createUser(prevState: string | undefined, formData: FormDa
     const phone_number = formData.get("phone_number") as string;
 
     console.log("Calling fetch");
+
     // TODO change so that POST uses `body: {}` instead of URL params
-    const v: Response = await fetch(`http://localhost:3000/api/user?name=${name}&email=${email}&password=${password_hashed}&uco=${uco}&phone_number=${phone_number}`,
+    const response: Response = await fetch(`http://localhost:3000/api/user?name=${name}&email=${email}&password=${password_hashed}&uco=${uco}&phone_number=${phone_number}`,
       {
         method: 'POST',
       });
     console.log("Fetch complete");
 
-    const id = await v.json() as {id: string | null}
+    const id_object = await response.json() as {id: string | null}
+    id = id_object.id;
     console.log("id post registration", id)
 
-    return await GetUserId(email)
+    if (!id) {
+      return "Something went wrong"
+    }
+    // TODO maybe change to better parsing, rn like this for form call
   } catch (error) {
-    return "Something went wrong"
+    console.log(error)
+    return "Something went wrong, error"
   }
+
+  redirect(`/register/motivation/${id}`)
 }
 
 async function GetUserId(email: string) {
