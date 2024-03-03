@@ -4,14 +4,9 @@ import React from "react";
 import {useFormState, useFormStatus} from "react-dom";
 import {createUser} from "@/app/lib/actions";
 import {ExclamationCircleIcon} from "@heroicons/react/24/outline";
-import {redirect} from "next/navigation";
 
 export default function RegisterForm() {
   const [errorMessage, dispatch] = useFormState(createUser, undefined)
-
-  // if (errorMessage != "Something went wrong") {
-  //   redirect(`/register/motivation?email=${errorMessage}`)
-  // }
 
   return(
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
