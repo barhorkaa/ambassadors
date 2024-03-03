@@ -5,23 +5,24 @@ import {
   Kysely,
   Migrator,
   FileMigrationProvider,
-  MysqlDialect,
+  PostgresDialect,
 } from 'kysely'
 
 import * as dotenv from 'dotenv'
 import {DB} from "kysely-codegen";
+import {Pool} from "pg";
 dotenv.config({ path: '.env.local' })
 
 async function migrateToPrevious() {
   const db = new Kysely<DB>({
-    dialect: new MysqlDialect({
-      pool: createPool({
-        host: process.env['MYSQL_HOST'],
-        port: +process.env['MYSQL_PORT']!,
-        user: process.env['MYSQL_USER'],
-        password: process.env['MYSQL_PASSWORD'],
-        database: process.env['MYSQL_DATABASE'],
-      })
+    dialect: new PostgresDialect({
+      pool: new Pool({
+        host: process.env['POSTGRES_HOST'],
+        port: +process.env['POSTGRES_PORT']!,
+        user: process.env['POSTGRES_USER'],
+        password: process.env['POSTGRES_PASSWORD'],
+        database: process.env['POSTGRES_DB'],
+      }),
     }),
   })
 
