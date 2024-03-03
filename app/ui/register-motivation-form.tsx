@@ -5,11 +5,8 @@ import {useFormState} from "react-dom";
 import {createMotivationForm} from "@/app/lib/actions";
 import {useSearchParams} from "next/navigation";
 
-export default function RegisterMotivationForm() {
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email");
-
-  const [errorMessage, dispatch] = useFormState(createMotivationForm, email);
+export default function RegisterMotivationForm(props: {id: string}) {
+  const [errorMessage, dispatch] = useFormState(createMotivationForm, props.id);
 
   return (
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
