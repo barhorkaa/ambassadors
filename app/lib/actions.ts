@@ -72,14 +72,35 @@ async function GetUserId(email: string) {
   return user?.id
 }
 
-export async function createMotivationForm(prevState: string | null, formData: FormData) {
+export async function createMotivationForm(prevState: string | undefined, formData: FormData) {
   try {
+    const why = formData.get("why");
+    const who = formData.get("who");
+    const goals = formData.get("goals");
+    const preferred_events = formData.get("preferred_events");
+    const time = formData.get("time");
+    const ambassador_id = formData.get("id");
 
-    return "Nothing went wrong"
+    if (!why || !who || !goals || !preferred_events || !time || !ambassador_id){
+      return "All fields must be filled out"
+    }
 
+    console.log(formData)
+
+    const resp = await fetch("http://localhost:3000/api/user/motivation", {
+      method: 'POST',
+      body: JSON.stringify({
+        why: why,
+        who: who,
+        goals: goals,
+        preferred_events: preferred_events,
+        time: time,
+        ambassador_id: ambassador_id,
+      })
+    })
   }
   catch (error) {
     return "Something went wrong"
   }
-
+  redirect("/register/success")
 }
