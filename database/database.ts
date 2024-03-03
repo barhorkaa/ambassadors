@@ -1,17 +1,27 @@
-import { createPool } from 'mysql2' // do not use 'mysql2/promises'!
-import { Kysely, MysqlDialect } from 'kysely'
+import { Pool } from 'pg'
+import { Kysely, PostgresDialect } from 'kysely'
 
 import * as dotenv from 'dotenv'
 import {DB} from "kysely-codegen";
 dotenv.config({ path: '.env.local' })
 
-const dialect = new MysqlDialect({
-  pool: createPool({
-    host: process.env['MYSQL_HOST'],
-    port: +process.env['MYSQL_PORT']!,
-    user: process.env['MYSQL_USER'],
-    password: process.env['MYSQL_PASSWORD'],
-    database: process.env['MYSQL_DATABASE'],
+// const dialect = new MysqlDialect({
+//   pool: createPool({
+//     host: process.env['MYSQL_HOST'],
+//     port: +process.env['MYSQL_PORT']!,
+//     user: process.env['MYSQL_USER'],
+//     password: process.env['MYSQL_PASSWORD'],
+//     database: process.env['MYSQL_DATABASE'],
+//   })
+// })
+
+const dialect = new PostgresDialect({
+  pool: new Pool({
+    database: process.env['POSTGRES_DB'],
+    host: process.env['POSTGRES_HOST'],
+    user: process.env['POSTGRES_USER'],
+    port: +process.env['POSTGRES_PORT']!,
+    max: 10,
   })
 })
 
