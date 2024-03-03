@@ -1,17 +1,17 @@
-const {MysqlDialect, Kysely} = require("kysely");
-const {createPool} = require("mysql2");
+const {Kysely, PostgresDialect} = require("kysely");
 const bcrypt = require("bcryptjs");
+const {Pool} = require("pg");
 
 require('dotenv').config({ path: '.env.local' })
 
 async function main() {
-    const dialect = new MysqlDialect({
-        pool: createPool({
-            host: process.env['MYSQL_HOST'],
-            port: +process.env['MYSQL_PORT'],
-            user: process.env['MYSQL_USER'],
-            password: process.env['MYSQL_PASSWORD'],
-            database: process.env['MYSQL_DATABASE'],
+    const dialect = new PostgresDialect({
+        pool: new Pool({
+            host: process.env['POSTGRES_HOST'],
+            port: +process.env['POSTGRES_PORT'],
+            user: process.env['POSTGRES_USER'],
+            password: process.env['POSTGRES_PASSWORD'],
+            database: process.env['POSTGRES_DB'],
         })
     });
     const db = new Kysely({
