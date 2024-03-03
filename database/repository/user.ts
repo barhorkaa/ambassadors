@@ -8,8 +8,8 @@ export async function getUserByEmail(email: string): Promise<Selectable<User> | 
 
 export async function getUserRole(email: string) : Promise<String> {
   try {
-    const role = await db.selectFrom('user').where('email', '=', email).select('type').executeTakeFirstOrThrow();
-    return role.type;
+    const role = await db.selectFrom('user').where('email', '=', email).select('role').executeTakeFirstOrThrow();
+    return role.role;
   } catch (e) {
     throw new Error('Failed to fetch user role:');
   }
