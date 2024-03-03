@@ -44,6 +44,7 @@ export default function RegisterMotivationForm(props: {id: string}) {
           </label>
           <input id="time" type="number" name="time" placeholder="Vaše časové možnosti" className="input input-bordered" required />
         </div>
+        <input id="id" type="hidden" name="id" value={props.id} className="input input-bordered" required />
         <RegisterButton/>
       </form>
     </div>
