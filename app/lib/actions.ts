@@ -43,6 +43,7 @@ export async function createUser(prevState: string | undefined, formData: FormDa
     console.log("Calling fetch");
 
     // TODO change so that POST uses `body: {}` instead of URL params
+    // TODO
     const response: Response = await fetch(`http://localhost:3000/api/user?name=${name}&email=${email}&password=${password_hashed}&uco=${uco}&phone_number=${phone_number}`,
       {
         method: 'POST',
@@ -74,12 +75,14 @@ async function GetUserId(email: string) {
 
 export async function createMotivationForm(prevState: string | undefined, formData: FormData) {
   try {
+    // TODO prevalidovat typy cez zod a az potom posielat
     const why = formData.get("why");
     const who = formData.get("who");
     const goals = formData.get("goals");
     const preferred_events = formData.get("preferred_events");
     const time = formData.get("time");
     const ambassador_id = formData.get("id");
+    // TODO nepouzivat _
 
     if (!why || !who || !goals || !preferred_events || !time || !ambassador_id){
       return "All fields must be filled out"
