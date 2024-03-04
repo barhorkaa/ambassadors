@@ -53,20 +53,12 @@ export async function createUser(prevState: string | undefined, formData: FormDa
 
     console.log("Calling fetch");
 
-    // TODO change so that POST uses `body: {}` instead of URL params
-    // TODO
-    // const response: Response = await fetch(`http://localhost:3000/api/user?name=${name}&email=${email}&password=${password_hashed}&uco=${uco}&phone_number=${phone_number}`,
-    //   {
-    //     method: 'POST',
-    //   });
-    // console.log("Fetch complete");
     const maybeId = await createNewUser(name, email, password_hashed, Number(uco), phone_number);
 
     if (!maybeId) {
       return "Something went wrong"
     }
 
-    // const id_object = await response.json() as {id: string | null}
     id = maybeId.id;
     console.log("id post registration", id)
 
@@ -113,17 +105,6 @@ export async function createMotivationForm(prevState: string | undefined, formDa
     console.log(data)
 
     await createMotivation(data);
-    // const resp = await fetch("http://localhost:3000/api/user/motivation", {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     why: why,
-    //     who: who,
-    //     goals: goals,
-    //     preferred_events: preferred_events,
-    //     time: time,
-    //     ambassador_id: ambassador_id,
-    //   })
-    // })
   }
   catch (error) {
     return "Something went wrong"
