@@ -2,7 +2,7 @@
 
 import React from "react";
 import {useFormState, useFormStatus} from "react-dom";
-import {createMotivationForm} from "@/app/lib/actions";
+import {createMotivationForm} from "@/app/lib/actions/motivation";
 
 export default function RegisterMotivationForm(props: {id: string}) {
   const [errorMessage, dispatch] = useFormState(createMotivationForm, undefined);
