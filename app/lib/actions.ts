@@ -71,13 +71,6 @@ export async function createUser(prevState: string | undefined, formData: FormDa
   redirect(`/register/motivation/${id}`)
 }
 
-async function GetUserId(email: string) {
-  const response = await fetch(`http://localhost:3000/api/user?email=${email}`)
-  const user = await response.json() as (Selectable<User> | undefined);
-
-  return user?.id
-}
-
 export async function createMotivationForm(prevState: string | undefined, formData: FormData) {
   try {
     // TODO prevalidovat typy cez zod a az potom posielat
