@@ -63,7 +63,7 @@ entity EventType {
   deleted_at: DateTime
 }
 
-entity Event_Ambassador {
+entity Event_User {
   id: String <<pk>>
   --
   user_id: String <<FK>>
@@ -119,8 +119,8 @@ Material_Report }o-|| Material
 Event ||---|| Report
 
 User ||-|| MotivationForm
-User ||--o{ Event_Ambassador
-Event ||--o{ Event_Ambassador
+User ||--o{ Event_User
+Event ||--o{ Event_User
 Event }o--|| EventType
 
 @enduml
