@@ -13,9 +13,9 @@ export type MotivationFormData = {
   why: string,
   who: string,
   goals: string,
-  preferred_events: string,
+  preferredEvents: string,
   time: string,
-  ambassador_id: string
+  ambassadorId: string
 }
 
 export async function authenticate(
@@ -47,13 +47,13 @@ export async function createUser(prevState: string | undefined, formData: FormDa
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
-    const password_hashed = await bcrypt.hash(password, 10);
+    const passwordHashed = await bcrypt.hash(password, 10);
     const uco = Number(formData.get("uco") as string);
-    const phone_number = formData.get("phone_number") as string;
+    const phoneNumber = formData.get("phone_number") as string;
 
     console.log("Calling fetch");
 
-    const maybeId = await createNewUser(name, email, password_hashed, Number(uco), phone_number);
+    const maybeId = await createNewUser(name, email, passwordHashed, Number(uco), phoneNumber);
 
     if (!maybeId) {
       return "Something went wrong"
@@ -84,12 +84,11 @@ export async function createMotivationForm(prevState: string | undefined, formDa
     const why = formData.get("why");
     const who = formData.get("who");
     const goals = formData.get("goals");
-    const preferred_events = formData.get("preferred_events");
+    const preferredEvents = formData.get("preferred_events");
     const time = formData.get("time");
-    const ambassador_id = formData.get("id");
-    // TODO nepouzivat _
+    const ambassadorId = formData.get("id");
 
-    if (!why || !who || !goals || !preferred_events || !time || !ambassador_id){
+    if (!why || !who || !goals || !preferredEvents || !time || !ambassadorId){
       return "All fields must be filled out"
     }
 
@@ -97,9 +96,9 @@ export async function createMotivationForm(prevState: string | undefined, formDa
       why: why as string,
       who: who as string,
       goals: goals as string,
-      preferred_events: preferred_events as string,
+      preferredEvents: preferredEvents as string,
       time: time as string,
-      ambassador_id: ambassador_id as string
+      ambassadorId: ambassadorId as string
     }
 
     console.log(data)
