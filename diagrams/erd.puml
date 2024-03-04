@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/entity-diagram
 
-entity RegisterForm {
+entity MotivationForm {
   id: String <<pk>>
   --
   ambassador_id: String
@@ -113,7 +113,7 @@ Report ||-o{ Material_Report
 Material_Report }o-|| Material
 Event ||---|| Report
 
-User ||-|| RegisterForm
+User ||-|| MotivationForm
 User ||--o{ Event_Ambassador
 Event ||--o{ Event_Ambassador
 Event }o--|| EventType
