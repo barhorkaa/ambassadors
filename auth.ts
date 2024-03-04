@@ -3,8 +3,6 @@ import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import bcrypt from 'bcryptjs';
-import {User} from "kysely-codegen";
-import {Selectable} from "kysely";
 import {getUserByEmail} from "@/database/repository/user";
 
 export const { auth, signIn, signOut } = NextAuth({
