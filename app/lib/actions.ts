@@ -84,7 +84,7 @@ export async function createMotivationForm(prevState: string | undefined, formDa
     const why = formData.get("why");
     const who = formData.get("who");
     const goals = formData.get("goals");
-    const preferredEvents = formData.get("preferred_events");
+    const preferredEvents = formData.get("preferredEvents");
     const time = formData.get("time");
     const ambassadorId = formData.get("id");
 

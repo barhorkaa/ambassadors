@@ -32,10 +32,10 @@ export default function RegisterMotivationForm(props: {id: string}) {
         </div>
         <div className="form-control">
           <label className="label"
-                 htmlFor="preferred_events">
+                 htmlFor="preferredEvents">
             <span className="label-text">Jakých akcí byste se chtěli převážně zúčastňovat?</span>
           </label>
-          <input id="preferred_events" type="text" name="preferred_events" placeholder="Výjezdy, Dny otevřených dveří, Veltrhy ..." className="input input-bordered" required />
+          <input id="preferredEvents" type="text" name="preferredEvents" placeholder="Výjezdy, Dny otevřených dveří, Veltrhy ..." className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label"
