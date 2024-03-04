@@ -40,10 +40,10 @@ export default function RegisterForm() {
         </div>
         <div className="form-control">
           <label className="label"
-                 htmlFor="phone_number">
+                 htmlFor="phoneNumber">
             <span className="label-text">Telefonní číslo</span>
           </label>
-          <input id="phone_number" type="number" name="phone_number" placeholder="Telefónní číslo" className="input input-bordered" required />
+          <input id="phoneNumber" type="number" name="phoneNumber" placeholder="Telefónní číslo" className="input input-bordered" required />
         </div>
         <RegisterButton/>
         <div

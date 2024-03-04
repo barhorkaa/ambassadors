@@ -49,7 +49,7 @@ export async function createUser(prevState: string | undefined, formData: FormDa
     const password = formData.get("password") as string;
     const passwordHashed = await bcrypt.hash(password, 10);
     const uco = Number(formData.get("uco") as string);
-    const phoneNumber = formData.get("phone_number") as string;
+    const phoneNumber = formData.get("phoneNumber") as string;
 
     console.log("Calling fetch");
 
