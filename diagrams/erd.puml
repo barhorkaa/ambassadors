@@ -5,7 +5,12 @@ entity MotivationForm {
   id: String <<pk>>
   --
   ambassador_id: String
-  'answers
+  'answers to questions
+  why: String
+  who: String
+  goals: String
+  preferredEvents: String
+  time: String
   --
   created_at: DateTime
   updated_at: DateTime
