@@ -1,5 +1,4 @@
 import * as path from 'path'
-import { createPool } from 'mysql2'
 import { promises as fs } from 'fs'
 import {
   Kysely,
