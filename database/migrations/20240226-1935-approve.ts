@@ -7,7 +7,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .execute()
 
   await db.schema
-    .alterTable('eventAmbassador')
+    .alterTable('eventUser')
     .addColumn('approved', "boolean", (col) => col.notNull().defaultTo(false))
     .execute()
 
@@ -27,7 +27,7 @@ export async function down(db: Kysely<any>): Promise<void> {
     .dropColumn('approved')
     .execute()
 
-  await db.schema.alterTable('eventAmbassador')
+  await db.schema.alterTable('eventUser')
     .dropColumn('approved')
     .execute()
 
