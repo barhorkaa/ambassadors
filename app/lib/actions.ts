@@ -11,9 +11,9 @@ export type MotivationFormData = {
   why: string,
   who: string,
   goals: string,
-  preferredEvents: string,
+  preferred_events: string,
   time: string,
-  ambassadorId: string
+  ambassador_id: string
 }
 
 export async function authenticate(
@@ -87,9 +87,9 @@ export async function createMotivationForm(prevState: string | undefined, formDa
       why: why as string,
       who: who as string,
       goals: goals as string,
-      preferredEvents: preferredEvents as string,
+      preferred_events: preferredEvents as string,
       time: time as string,
-      ambassadorId: ambassadorId as string
+      ambassador_id: ambassadorId as string
     }
 
     console.log(data)
