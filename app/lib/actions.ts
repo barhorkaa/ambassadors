@@ -6,6 +6,16 @@ import bcrypt from 'bcryptjs';
 import {Selectable} from "kysely";
 import {User} from "kysely-codegen";
 import {redirect} from "next/navigation";
+import {createMotivation} from "@/database/repository/motivation";
+
+export type MotivationFormData = {
+  why: string,
+  who: string,
+  goals: string,
+  preferred_events: string,
+  time: string,
+  ambassador_id: string
+}
 
 export async function authenticate(
   prevState: string | undefined,
@@ -88,19 +98,29 @@ export async function createMotivationForm(prevState: string | undefined, formDa
       return "All fields must be filled out"
     }
 
-    console.log(formData)
+    const data: MotivationFormData = {
+      why: why as string,
+      who: who as string,
+      goals: goals as string,
+      preferred_events: preferred_events as string,
+      time: time as string,
+      ambassador_id: ambassador_id as string
+    }
 
-    const resp = await fetch("http://localhost:3000/api/user/motivation", {
-      method: 'POST',
-      body: JSON.stringify({
-        why: why,
-        who: who,
-        goals: goals,
-        preferred_events: preferred_events,
-        time: time,
-        ambassador_id: ambassador_id,
-      })
-    })
+    console.log(data)
+
+    await createMotivation(data);
+    // const resp = await fetch("http://localhost:3000/api/user/motivation", {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     why: why,
+    //     who: who,
+    //     goals: goals,
+    //     preferred_events: preferred_events,
+    //     time: time,
+    //     ambassador_id: ambassador_id,
+    //   })
+    // })
   }
   catch (error) {
     return "Something went wrong"
