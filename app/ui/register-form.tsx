@@ -2,8 +2,8 @@
 
 import React from "react";
 import {useFormState, useFormStatus} from "react-dom";
-import {createUser} from "@/app/lib/actions";
 import {ExclamationCircleIcon} from "@heroicons/react/24/outline";
+import {createUser} from "@/app/lib/actions/user";
 
 export default function RegisterForm() {
   const [errorMessage, dispatch] = useFormState(createUser, undefined)
