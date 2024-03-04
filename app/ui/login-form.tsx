@@ -2,7 +2,7 @@
 
 import { useFormState, useFormStatus } from 'react-dom';
 import React from "react";
-import {ArrowRightIcon, ExclamationCircleIcon} from "@heroicons/react/24/outline";
+import {ExclamationCircleIcon} from "@heroicons/react/24/outline";
 import {authenticate} from "../lib/actions";
 
 export default function LoginForm() {
