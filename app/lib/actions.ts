@@ -7,6 +7,7 @@ import {Selectable} from "kysely";
 import {User} from "kysely-codegen";
 import {redirect} from "next/navigation";
 import {createMotivation} from "@/database/repository/motivation";
+import {createNewUser} from "@/database/repository/user";
 
 export type MotivationFormData = {
   why: string,
@@ -54,19 +55,21 @@ export async function createUser(prevState: string | undefined, formData: FormDa
 
     // TODO change so that POST uses `body: {}` instead of URL params
     // TODO
-    const response: Response = await fetch(`http://localhost:3000/api/user?name=${name}&email=${email}&password=${password_hashed}&uco=${uco}&phone_number=${phone_number}`,
-      {
-        method: 'POST',
-      });
-    console.log("Fetch complete");
+    // const response: Response = await fetch(`http://localhost:3000/api/user?name=${name}&email=${email}&password=${password_hashed}&uco=${uco}&phone_number=${phone_number}`,
+    //   {
+    //     method: 'POST',
+    //   });
+    // console.log("Fetch complete");
+    const maybeId = await createNewUser(name, email, password, Number(uco), phone_number);
 
-    const id_object = await response.json() as {id: string | null}
-    id = id_object.id;
-    console.log("id post registration", id)
-
-    if (!id) {
+    if (!maybeId) {
       return "Something went wrong"
     }
+
+    // const id_object = await response.json() as {id: string | null}
+    id = maybeId.id;
+    console.log("id post registration", id)
+
     // TODO maybe change to better parsing, rn like this for form call
   } catch (error) {
     console.log(error)
