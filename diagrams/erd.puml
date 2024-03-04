@@ -4,7 +4,7 @@
 entity MotivationForm {
   id: String <<pk>>
   --
-  ambassador_id: String
+  user_id: String
   'answers to questions
   why: String
   who: String
@@ -66,7 +66,7 @@ entity EventType {
 entity Event_Ambassador {
   id: String <<pk>>
   --
-  ambassador_id: String <<FK>>
+  user_id: String <<FK>>
   event_id: String <<FK>>
   approved: Boolean
   --
@@ -79,7 +79,7 @@ entity Report {
   id: String <<pk>>
   --
   event_id: String <<FK>>
-  ambassador_id: String
+  user_id: String
   number_of_attendees: int
   approved: Boolean
 'photos
