@@ -25,7 +25,7 @@ entity User {
   email: String
   phone_number: String
   password: String
-  type: UserType
+  role: UserType
   approved: Boolean
   --
   created_at: DateTime
