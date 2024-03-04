@@ -60,7 +60,7 @@ export async function createUser(prevState: string | undefined, formData: FormDa
     //     method: 'POST',
     //   });
     // console.log("Fetch complete");
-    const maybeId = await createNewUser(name, email, password, Number(uco), phone_number);
+    const maybeId = await createNewUser(name, email, password_hashed, Number(uco), phone_number);
 
     if (!maybeId) {
       return "Something went wrong"
