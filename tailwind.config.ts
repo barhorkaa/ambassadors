@@ -16,5 +16,10 @@ const config: Config = {
     },
   },
   plugins: [require("daisyui")],
+  variants: {
+    extend: {
+      display: ["group-hover"],
+    },
+  },
 }
 export default config
