@@ -36,10 +36,20 @@ body {
   background-color: var(--base-background-color);
 }
 
+.custom-carousel {
+  position: relative;
+
+  width: 99.5vw;
+  /*width: auto;*/
+  left: calc(-50vw + 50%);
+  /*position: absolute;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*height: 500px;*/
+}
+
 @media only screen and (max-width: 768px) {
   .body {
-    margin-left: 0;
-    margin-right: 0;
     margin-left: 5%;
     margin-right: 5%;
   }
