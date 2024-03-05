@@ -1,4 +1,4 @@
-import RegisterMotivationForm from "@/app/ui/register-motivation-form";
+import RegisterMotivationForm from "@/app/ui/register/register-motivation-form";
 import React from "react";
 
 export default function UserMotivation({ params }: {params : {id: string}}) {
