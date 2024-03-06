@@ -15,8 +15,15 @@ export async function getUserRole(email: string) : Promise<String> {
   }
 }
 
-export async function getUser() {
+export async function getUserApproval(id: string | undefined) {
+  if (id === undefined) {
+    throw new Error('User has no id');
+  }
+  try {
+    return  db.selectFrom('user').where('id','=', id).select('approved').executeTakeFirstOrThrow();
+  } catch (e) {
 
+  }
 }
 
 export async function createNewUser(name: string, email: string, password: string, uco: number, phone_number: string) {
