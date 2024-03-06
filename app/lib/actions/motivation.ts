@@ -9,7 +9,7 @@ export type MotivationFormData = {
   goals: string,
   preferred_events: string,
   time: string,
-  ambassador_id: string
+  user_id: string
 }
 
 export async function createMotivationForm(prevState: string | undefined, formData: FormData) {
@@ -32,7 +32,7 @@ export async function createMotivationForm(prevState: string | undefined, formDa
       goals: goals as string,
       preferred_events: preferredEvents as string,
       time: time as string,
-      ambassador_id: ambassadorId as string
+      user_id: ambassadorId as string
     }
 
     console.log(data)
