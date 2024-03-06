@@ -2,7 +2,6 @@
 
 import {signIn} from "@/auth";
 import {AuthError} from "next-auth";
-import {getUserApproval} from "@/database/repository/user";
 
 export async function authenticate(
   prevState: string | undefined,
@@ -21,8 +20,4 @@ export async function authenticate(
     }
     throw error;
   }
-}
-
-export async function isUserApproved(id: string) {
-  return await getUserApproval(id);
 }
