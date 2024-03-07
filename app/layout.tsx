@@ -22,7 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {session ? <NavBarUser></NavBarUser> : <NavBar></NavBar>}
+        {session?.user ? <NavBarUser></NavBarUser> : <NavBar></NavBar>}
         <div className={"body"}>
           {children}
         </div>
