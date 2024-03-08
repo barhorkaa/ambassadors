@@ -6,19 +6,21 @@ declare module "next-auth" {
     user: {
       id: string,
       role: string,
-      approved: boolean
+      approved: boolean,
+      motivated: boolean
     } & DefaultSession
   }
 
   interface User extends DefaultUser {
     role: string,
-    approved: boolean
+    approved: boolean,
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT extends DefaultJWT {
     role: string,
-    approved: boolean
+    approved: boolean,
+    motivated: boolean
   }
 }
