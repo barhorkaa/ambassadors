@@ -9,14 +9,20 @@ export const authConfig = {
       console.log("JWT token", token)
       console.log("JWT user", user)
 
-      if (user) token.role = user.role;
+      if (user) {
+        token.role = user.role;
+        token.approved = user.approved;
+      }
       return token;
     },
     async session({ session, token }) {
       console.log("Session token", token)
       console.log("Session session", token)
 
-      if (session?.user) session.user.role = token.role;
+      if (session?.user) {
+        session.user.role = token.role;
+        session.user.approved = token.approved;
+      }
       console.log("Session post role assign:", session)
       return session;
     },
