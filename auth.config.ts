@@ -22,6 +22,7 @@ export const authConfig = {
       if (session?.user) {
         session.user.role = token.role;
         session.user.approved = token.approved;
+        session.user.motivated = token.motivated;
       }
       console.log("Session post role assign:", session)
       return session;
@@ -33,7 +34,16 @@ export const authConfig = {
       console.log("user role is: ", auth?.user.role)
       console.log("user expires is: ", auth)
 
+      const isManager = auth?.user.role == "manager";
+      const isApproved = auth?.user.approved!; // TODO maybe remove the !
+
       const isOnDashboard = nextUrl.pathname.startsWith('/events');
+
+      if (isLoggedIn) {
+        if (!isApproved) {
+          return Response.redirect(new URL('/denied', nextUrl))
+        }
+      }
       if (isOnDashboard) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
