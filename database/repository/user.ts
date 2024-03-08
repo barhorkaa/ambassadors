@@ -15,12 +15,12 @@ export async function getUserRole(email: string) : Promise<String> {
   }
 }
 
-export async function getUserApproval(id: string | undefined) {
-  if (id === undefined) {
+export async function getUserApproval(email: string | undefined) {
+  if (email === undefined) {
     throw new Error('User has no id');
   }
   try {
-    return  db.selectFrom('user').where('id','=', id).select('approved').executeTakeFirstOrThrow();
+    return  db.selectFrom('user').where('email','=', email).select('approved').executeTakeFirstOrThrow();
   } catch (e) {
 
   }
