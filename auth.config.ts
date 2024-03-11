@@ -20,6 +20,7 @@ export const authConfig = {
       console.log("Session session", token)
 
       if (session?.user) {
+        session.user.id = token.sub!;
         session.user.role = token.role;
         session.user.approved = token.approved;
         session.user.motivated = token.motivated;
