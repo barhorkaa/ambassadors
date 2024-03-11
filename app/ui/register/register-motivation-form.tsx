@@ -3,9 +3,12 @@
 import React from "react";
 import {useFormState, useFormStatus} from "react-dom";
 import {createMotivationForm} from "@/app/lib/actions/motivation";
+import {auth} from "@/auth";
 
-export default function RegisterMotivationForm(props: {id: string}) {
+export default async function RegisterMotivationForm() {
   const [errorMessage, dispatch] = useFormState(createMotivationForm, undefined);
+  const session = await auth();
+  const user_id = session?.user.id;
 
   return (
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -44,7 +47,7 @@ export default function RegisterMotivationForm(props: {id: string}) {
           </label>
           <input id="time" type="text" name="time" placeholder="Vaše časové možnosti" className="input input-bordered" required />
         </div>
-        <input id="id" type="hidden" name="id" value={props.id} className="input input-bordered" required />
+        <input id="id" type="hidden" name="id" value={user_id} className="input input-bordered" required />
         <RegisterButton/>
       </form>
     </div>
