@@ -30,10 +30,6 @@ export const authConfig = {
     },
     async authorized({auth, request: {nextUrl}}) {
       const isLoggedIn = !!auth?.user;
-      console.log("user in authorized is: ", auth?.user)
-      console.log("user id is:", auth?.user?.id)
-      console.log("user role is: ", auth?.user.role)
-      console.log("user expires is: ", auth)
 
       const isManager = auth?.user.role == "manager";
       const isApproved = auth?.user.approved!; // TODO maybe remove the !
