@@ -35,5 +35,5 @@ export async function createUser(prevState: string | undefined, formData: FormDa
     return "Something went wrong, error"
   }
 
-  redirect(`/register/motivation/${id}`)
+  redirect(`/register/success`)
 }
