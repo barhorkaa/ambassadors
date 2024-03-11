@@ -1,4 +1,4 @@
-import RegisterMotivationForm from "@/app/ui/register/register-motivation-form";
+import MotivationForm from "@/app/ui/register/motivation-form";
 import React from "react";
 
 export default function UserMotivation() {
@@ -10,7 +10,7 @@ export default function UserMotivation() {
           <p className="py-6">Tento dotazník slouží pro nás jako ukazatel, proč se studenti FI rozhodnou jít propagovat svojí fakultu. Zároveň vaše ochota vyplnit něco na víc dokazuje, že to chcete brát vážně :)</p>
           <p className="py-6">Zároveň je jej potrebné vyplnit, abyste se programu mohli zúčastnit a přihlašovat se na akce.</p>
         </div>
-        <RegisterMotivationForm />
+        <MotivationForm />
       </div>
     </div>
   )

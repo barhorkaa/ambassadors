@@ -5,7 +5,7 @@ import {useFormState, useFormStatus} from "react-dom";
 import {createMotivationForm} from "@/app/lib/actions/motivation";
 import {auth} from "@/auth";
 
-export default async function RegisterMotivationForm() {
+export default async function MotivationForm() {
   const [errorMessage, dispatch] = useFormState(createMotivationForm, undefined);
   const session = await auth();
   const user_id = session?.user.id;
