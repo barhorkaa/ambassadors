@@ -12,6 +12,7 @@ export const authConfig = {
       if (user) {
         token.role = user.role;
         token.approved = user.approved;
+        token.motivated = user.motivated;
       }
       return token;
     },
