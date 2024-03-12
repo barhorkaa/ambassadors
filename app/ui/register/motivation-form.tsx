@@ -1,5 +1,3 @@
-'use client';
-
 import React from "react";
 import {useFormState, useFormStatus} from "react-dom";
 import {createMotivationForm} from "@/app/lib/actions/motivation";
@@ -13,7 +11,7 @@ export default async function MotivationForm() {
 
   return (
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form action={dispatch} className="card-body">
+      <form action={createMotivationForm} className="card-body">
         <div className="form-control">
           <label className="label"
                  htmlFor="name">
@@ -48,8 +46,7 @@ export default async function MotivationForm() {
           </label>
           <input id="time" type="text" name="time" placeholder="Vaše časové možnosti" className="input input-bordered" required />
         </div>
-        <input id="id" type="hidden" name="id" value={user_id} className="input input-bordered" required />
-        <RegisterButton/>
+        <input id="id" type="hidden" name="id" value={userId} className="input input-bordered" required />
         <SubmitButton/>
       </form>
     </div>
