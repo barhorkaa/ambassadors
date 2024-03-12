@@ -7,7 +7,7 @@ import SubmitButton from "@/app/ui/button/submit-button";
 export default async function MotivationForm() {
   const [errorMessage, dispatch] = useFormState(createMotivationForm, undefined);
   const session = await auth();
-  const user_id = session?.user.id;
+  const userId = session?.user.id!; // TODO possibly remove !
 
   return (
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
