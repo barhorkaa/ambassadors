@@ -23,8 +23,9 @@ export const { auth, signIn, signOut } = NextAuth({
           console.log("user role is:", user.role)
 
           if (passwordsMatch) {
-            const hasMotivation = await isUserMotivated(user.id);
-            return {...user, password: null, motivated: hasMotivation};
+            // const hasMotivation = await isUserMotivated(user.id);
+            // return {...user, password: null, motivated: hasMotivation};
+            return {...user, password: null};
           }
         }
 
