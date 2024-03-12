@@ -34,20 +34,27 @@ export const authConfig = {
 
       const isManager = auth?.user.role == "manager";
       const isApproved = auth?.user.approved!; // TODO maybe remove the !
+      const isMotivated = auth?.user.motivated!;
 
       const isOnDashboard = nextUrl.pathname.startsWith('/events');
 
-      if (isLoggedIn) {
-        if (!isApproved) {
-          return Response.redirect(new URL('/denied', nextUrl))
-        }
+      if (!isLoggedIn) {
+        return false // TODO might work by mistake for login page
       }
-      if (isOnDashboard) {
-        if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn) {
-        return Response.redirect(new URL('/events', nextUrl));
+
+      if (!isMotivated) {
+        return Response.redirect(new URL('/motivation', nextUrl))
       }
+      if (!isApproved) {
+        return Response.redirect(new URL('/denied', nextUrl))
+      }
+
+      // if (isOnDashboard) {
+      //   if (isLoggedIn) return true;
+      //   return false; // Redirect unauthenticated users to login page
+      // } else if (isLoggedIn) {
+      //   return Response.redirect(new URL('/events', nextUrl));
+      // }
       return true;
     },
   },
