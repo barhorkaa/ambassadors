@@ -14,7 +14,7 @@ declare module "next-auth" {
   interface User extends DefaultUser {
     role: string,
     approved: boolean,
-    motivated: boolean
+    motivated: boolean,
   }
 }
 
