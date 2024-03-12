@@ -48,3 +48,11 @@ export async function createNewUser(name: string, email: string, password: strin
   console.log("inserted into database");
   return(res);
 }
+
+export async function setUserMotivatedStatus(id: string) {
+  try {
+    await db.updateTable("user").set({"motivated": true}).where("id", "=", id).executeTakeFirstOrThrow();
+  } catch (e) {
+    console.log(e)
+  }
+}
