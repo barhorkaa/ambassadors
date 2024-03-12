@@ -42,5 +42,5 @@ export async function createMotivationForm(formData: FormData) {
   catch (error) {
     return "Something went wrong"
   }
-  redirect("/register/success")
+  redirect("/motivation/success")
 }
