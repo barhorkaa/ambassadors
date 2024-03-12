@@ -4,6 +4,7 @@ import React from "react";
 import {useFormState, useFormStatus} from "react-dom";
 import {createMotivationForm} from "@/app/lib/actions/motivation";
 import {auth} from "@/auth";
+import SubmitButton from "@/app/ui/button/submit-button";
 
 export default async function MotivationForm() {
   const [errorMessage, dispatch] = useFormState(createMotivationForm, undefined);
@@ -49,17 +50,8 @@ export default async function MotivationForm() {
         </div>
         <input id="id" type="hidden" name="id" value={user_id} className="input input-bordered" required />
         <RegisterButton/>
+        <SubmitButton/>
       </form>
     </div>
-  )
-}
-
-function RegisterButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button className="mt-4 w-full bg-amber-200 p-2" aria-disabled={pending}>
-      Odeslat
-    </button>
   )
 }
