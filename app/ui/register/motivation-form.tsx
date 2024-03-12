@@ -1,11 +1,9 @@
 import React from "react";
-import {useFormState, useFormStatus} from "react-dom";
 import {createMotivationForm} from "@/app/lib/actions/motivation";
 import {auth} from "@/auth";
 import SubmitButton from "@/app/ui/button/submit-button";
 
 export default async function MotivationForm() {
-  const [errorMessage, dispatch] = useFormState(createMotivationForm, undefined);
   const session = await auth();
   const userId = session?.user.id!; // TODO possibly remove !
 
