@@ -12,7 +12,7 @@ export type MotivationFormData = {
   user_id: string
 }
 
-export async function createMotivationForm(prevState: string | undefined, formData: FormData) {
+export async function createMotivationForm(formData: FormData) {
   try {
     // TODO prevalidovat typy cez zod a az potom posielat
     const why = formData.get("why");
