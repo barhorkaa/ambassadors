@@ -56,3 +56,12 @@ export async function setUserMotivatedStatus(id: string) {
     console.log(e)
   }
 }
+
+export async function approveUser(id: string) {
+  try {
+    console.log("got to repository, user id is: ", id)
+    await db.updateTable("user").set({approved: true}).where("id", "=", id).executeTakeFirstOrThrow();
+  } catch (e) {
+    console.log(e)
+  }
+}
