@@ -6,6 +6,14 @@ export async function getUserByEmail(email: string): Promise<Selectable<User> | 
   return await db.selectFrom("user").where("email", "=", email).selectAll().executeTakeFirst();
 }
 
+export async function getUserById(id: string): Promise<Selectable<User> | undefined> {
+  try {
+    return await db.selectFrom("user").where("id", "=", id).selectAll().executeTakeFirstOrThrow();
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 export async function getUserRole(email: string) : Promise<String> {
   try {
     const role = await db.selectFrom('user').where('email', '=', email).select('role').executeTakeFirstOrThrow();
