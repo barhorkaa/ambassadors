@@ -57,6 +57,39 @@ export async function setUserMotivatedStatus(id: string) {
   }
 }
 
+export async function getAllManagers(): Promise<Selectable<User>[] | undefined> {
+  try {
+    return db.selectFrom("user").where("role", "=", "manager").selectAll().execute()
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export async function getAllAmbassadors(): Promise<Selectable<User>[] | undefined> {
+  try {
+    return db.selectFrom("user").where("role", "=", "ambassador").selectAll().execute()
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+// TODO implement deduplication function
+// export async function getUsersWithRole(role: string): Promise<Selectable<User>[] | undefined> {
+//   try {
+//     return db.selectFrom("user").where("role", "=", role).selectAll().execute()
+//   } catch (e) {
+//     console.log(e)
+//   }
+// }
+
+export async function getNotApprovedUsers(): Promise<Selectable<User>[] | undefined> {
+  try {
+    return db.selectFrom("user").where("approved", "=", false).selectAll().execute()
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 export async function approveUser(id: string) {
   try {
     console.log("got to repository, user id is: ", id)
