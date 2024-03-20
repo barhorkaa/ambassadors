@@ -1,9 +1,5 @@
 import {UserModel} from "@/models/userModel";
-import ApproveUserModal from "@/app/ui/modals/approve-user-modal";
-import {approveUser} from "@/database/repository/user";
 import {approveUserWithId} from "@/app/lib/actions/users";
-import ApproveButton from "@/app/ui/button/approve-button";
-import {redirect} from "next/navigation";
 import React from "react";
 import Link from "next/link";
 
