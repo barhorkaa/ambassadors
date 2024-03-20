@@ -21,3 +21,11 @@ export async function isUserMotivated(user_id: string) {
     console.log(e)
   }
 }
+
+export async function getMotivationById(id: string) {
+  try {
+    return await db.selectFrom("motivationForm").where("user_id", "=", id).selectAll().executeTakeFirstOrThrow();
+  } catch (e) {
+    console.log(e)
+  }
+}
