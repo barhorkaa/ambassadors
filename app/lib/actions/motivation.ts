@@ -4,11 +4,11 @@ import {createMotivation} from "@/database/repository/motivation";
 import {redirect} from "next/navigation";
 
 export type MotivationFormData = {
-  why: string,
-  who: string,
-  goals: string,
-  preferred_events: string,
-  time: string,
+  why: string | null,
+  who: string | null,
+  goals: string | null,
+  preferred_events: string | null,
+  time: string | null,
   user_id: string
 }
 
