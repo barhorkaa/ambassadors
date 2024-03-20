@@ -4,7 +4,6 @@ import Credentials from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import {getUserByEmail} from "@/database/repository/user";
 import {UserLoginData} from "@/models/userLoginData";
-import {isUserMotivated} from "@/database/repository/motivation";
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
