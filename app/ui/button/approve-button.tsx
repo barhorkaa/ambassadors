@@ -1,6 +1,8 @@
 "use client"
 
 import {useState} from "react";
+import {approveUserById} from "@/app/lib/actions/users";
+import {CheckIcon} from "@heroicons/react/24/outline";
 
 
 export default function ApproveButton(props : {id: string}) {
@@ -11,12 +13,16 @@ export default function ApproveButton(props : {id: string}) {
   }
 
   return(
-    <button onClick={changeState} type="submit" className="btn btn-circle btn-outline">
+    <>
       {show &&
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m4.5 12.75 6 6 9-13.5"/>
-        </svg>
+        <button onClick={async () => {
+          await approveUserById(props.id);
+          changeState()
+        }} type="submit" className="btn btn-circle p-0 m-0 h-2">
+          <CheckIcon className="h-5 w-5"/>
+        </button>
       }
-    </button>
+    </>
+
   )
 }
