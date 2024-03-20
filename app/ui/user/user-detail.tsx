@@ -2,7 +2,7 @@ import {UserModel} from "@/models/userModel";
 
 export default function UserDetail(params: {user: UserModel}) {
   return(
-    <div className="flex flex-col ">
+    <div className="flex flex-col">
       <UserDetailRow label={"Jméno"} value={params.user.name}/>
       <UserDetailRow label={"E-mail"} value={params.user.email}/>
       <UserDetailRow label={"Tel. číslo"} value={params.user.phone_number}/>
