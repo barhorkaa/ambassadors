@@ -18,8 +18,9 @@ export default function ApproveButton(props : {id: string}) {
         <button onClick={async () => {
           await approveUserById(props.id);
           changeState()
-        }} type="submit" className="btn btn-circle p-0 m-0 h-2">
-          <CheckIcon className="h-5 w-5"/>
+        }} type="submit" className="btn bg-amber-300 my-2 h-2">
+          {/*<CheckIcon className="h-5 w-5"/>*/}
+            Potvrdit registraci
         </button>
       }
     </>
