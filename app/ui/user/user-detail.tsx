@@ -2,7 +2,7 @@ import {UserModel} from "@/app/models/userModel";
 
 export default function UserDetail(params: {user: UserModel}) {
   return(
-    <div className="flex flex-col w-1/3 md:w-2/3 sm:w-full">
+    <div className="flex flex-col ">
       <div className="p-2 flex flex-row justify-between bg-amber-100 rounded-md">
         <h2 className="font-bold font-lg">
           Jméno
