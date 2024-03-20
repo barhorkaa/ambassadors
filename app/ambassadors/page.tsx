@@ -15,8 +15,18 @@ export default async function Ambassadors() {
     allManagers = [];
   }
 
+  let unapprovedAmbassadors: UserModel[] | undefined = await getAllManagers();
+  if (unapprovedAmbassadors === undefined) {
+    unapprovedAmbassadors = [];
+  }
+
+
   return(
     <div>
+      <div className="font-bold text-lg p-2">
+        Nepotvrzení uživatelé
+      </div>
+      <UserTable users={unapprovedAmbassadors}/>
       <div className="font-bold text-lg p-2">
         Všichni manažeři
       </div>
