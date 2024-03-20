@@ -1,5 +1,8 @@
 import {UserModel} from "@/app/models/userModel";
 import ApproveButton from "@/app/ui/button/approve-button";
+import {ArrowTopRightOnSquareIcon} from "@heroicons/react/24/outline";
+import Link from "next/link";
+
 
 export default async function UserTable(props: {users: UserModel[]}) {
 
@@ -12,20 +15,26 @@ export default async function UserTable(props: {users: UserModel[]}) {
             <th>UČO</th>
             <th>E-mail</th>
             <th>Tel. číslo</th>
-            <th>Potvrdit</th>
+            <th>Detail</th>
           </tr>
         </thead>
         <tbody>
           {props.users.map((user) => (
-            <tr className="hover">
+            <tr className="hover" >
               <td>{user.name}</td>
               <td>{user.uco}</td>
-              <td>{user.email}</td>
-              <td>{user.phone_number}</td>
-              {!user.approved &&
+                <td>{user.email}</td>
+                <td>{user.phone_number}</td>
+                {/*{!user.approved &&*/}
+                {/*  <td>*/}
+                {/*    <ApproveButton id={user.id}/>*/}
+                {/*  </td>*/}
+                {/*}*/}
               <td>
-                  <ApproveButton/>
-              </td>}
+                <Link href={`ambassadors/${user.id}`}>
+                  <ArrowTopRightOnSquareIcon className="h-5"/>
+                </Link>
+              </td>
             </tr>
           ))}
 
