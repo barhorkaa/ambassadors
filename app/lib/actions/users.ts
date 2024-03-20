@@ -12,3 +12,11 @@ export async function approveUserWithId(formData: FormData) {
     console.log(e)
   }
 }
+
+export async function approveUserById(id: string) {
+  try {
+    await approveUser(id)
+  } catch (e) {
+    console.log(e)
+  }
+}
