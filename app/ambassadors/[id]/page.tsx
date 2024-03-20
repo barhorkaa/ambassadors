@@ -1,6 +1,6 @@
 import UserDetail from "@/app/ui/user/user-detail";
 import {getUserById} from "@/database/repository/user";
-import {UserModel} from "@/app/models/userModel";
+import {UserModel} from "@/models/userModel";
 import MotivationDetail from "@/app/ui/motivation/motivation-detail";
 import {getMotivationById} from "@/database/repository/motivation";
 import {MotivationFormData} from "@/app/lib/actions/motivation";

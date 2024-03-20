@@ -1,4 +1,4 @@
-import {UserModel} from "@/app/models/userModel";
+import {UserModel} from "@/models/userModel";
 import ApproveUserModal from "@/app/ui/modals/approve-user-modal";
 import {approveUser} from "@/database/repository/user";
 import {approveUserWithId} from "@/app/lib/actions/users";

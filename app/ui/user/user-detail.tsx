@@ -1,4 +1,4 @@
-import {UserModel} from "@/app/models/userModel";
+import {UserModel} from "@/models/userModel";
 
 export default function UserDetail(params: {user: UserModel}) {
   return(
