@@ -1,7 +1,6 @@
 import {getAllAmbassadors, getAllManagers} from "@/database/repository/user";
 import React from "react";
 import {UserModel} from "@/models/userModel";
-import UserCard from "@/app/ui/user/user-card";
 import UserTable from "@/app/ui/user/user-table";
 
 export default async function Ambassadors() {
