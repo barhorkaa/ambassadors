@@ -1,12 +1,7 @@
-import {getAllAmbassadors} from "@/database/repository/user";
 import {UserModel} from "@/app/models/userModel";
 import ApproveButton from "@/app/ui/button/approve-button";
 
 export default async function UserTable(props: {users: UserModel[]}) {
-  // let ambassadors: UserModel[] | undefined = await getAllAmbassadors();
-  // if (ambassadors === undefined) {
-  //   ambassadors = []
-  // }
 
   return (
     <div className="overflow-x-auto">
