@@ -2,7 +2,8 @@
 
 import {useState} from "react";
 
-export default function ApproveButton() {
+
+export default function ApproveButton(props : {id: string}) {
   const [show, setShow] = useState(true);
 
   function changeState() {
