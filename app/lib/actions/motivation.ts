@@ -16,10 +16,10 @@ export type MotivationFormData = {
 
 export async function createMotivationForm(formData: FormData) {
   try {
-    const re = MotivationFormModel.safeParse(formData)
+    const parse = MotivationFormModel.safeParse(formData)
 
-    if (re.success) {
-      await createMotivation({data: re.data});
+    if (parse.success) {
+      await createMotivation({data: parse.data});
     }
   }
   catch (error) {
