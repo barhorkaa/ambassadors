@@ -1,4 +1,4 @@
-import {getAllAmbassadors, getAllManagers} from "@/database/repository/user";
+import {getAllAmbassadors, getAllManagers, getNotApprovedUsers} from "@/database/repository/user";
 import React from "react";
 import {UserModel} from "@/models/userModel";
 import UserTable from "@/app/ui/user/user-table";
@@ -14,7 +14,7 @@ export default async function Ambassadors() {
     allManagers = [];
   }
 
-  let unapprovedAmbassadors: UserModel[] | undefined = await getAllManagers();
+  let unapprovedAmbassadors: UserModel[] | undefined = await getNotApprovedUsers();
   if (unapprovedAmbassadors === undefined) {
     unapprovedAmbassadors = [];
   }
