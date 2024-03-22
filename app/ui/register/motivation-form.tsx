@@ -35,7 +35,7 @@ export default async function MotivationForm() {
                  htmlFor="preferredEvents">
             <span className="label-text">Jakých akcí byste se chtěli převážně zúčastňovat?</span>
           </label>
-          <input id="preferredEvents" type="text" name="preferredEvents" placeholder="Výjezdy, Dny otevřených dveří, Veltrhy ..." className="input input-bordered" required />
+          <input id="preferredEvents" type="text" name="preferred_events" placeholder="Výjezdy, Dny otevřených dveří, Veltrhy ..." className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label"
@@ -44,7 +44,7 @@ export default async function MotivationForm() {
           </label>
           <input id="time" type="text" name="time" placeholder="Vaše časové možnosti" className="input input-bordered" required />
         </div>
-        <input id="id" type="hidden" name="id" value={userId} className="input input-bordered" required />
+        <input id="id" type="hidden" name="user_id" value={userId} className="input input-bordered" required />
         <SubmitButton/>
       </form>
     </div>
