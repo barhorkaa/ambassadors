@@ -2,7 +2,6 @@
 
 import {createMotivation} from "@/database/repository/motivation";
 import {redirect} from "next/navigation";
-import {MotivationModel} from "@/models/motivation/motivation-model";
 import {MotivationFormModel} from "@/models/motivation/motivation-form-model";
 
 export async function createMotivationForm(formData: FormData) {
