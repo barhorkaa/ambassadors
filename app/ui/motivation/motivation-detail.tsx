@@ -1,6 +1,6 @@
-import {MotivationFormData} from "@/app/lib/actions/motivation";
+import {MotivationModel} from "@/models/motivation/motivation-model";
 
-export default function MotivationDetail(params : {motivation: MotivationFormData | undefined}) {
+export default function MotivationDetail(params : {motivation: MotivationModel | undefined}) {
   if (params.motivation === undefined) {
     return (
       <>
