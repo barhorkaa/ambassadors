@@ -3,14 +3,14 @@ import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import {getUserByEmail} from "@/database/repository/user";
-import {UserLoginData} from "@/models/auth/user-login-data";
+import {LoginModel} from "@/models/auth/login-model";
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
       async authorize(credentials) {
-        const parsedCredentials = UserLoginData.safeParse(credentials);
+        const parsedCredentials = LoginModel.safeParse(credentials);
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
