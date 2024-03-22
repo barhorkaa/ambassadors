@@ -5,6 +5,7 @@ import MotivationDetail from "@/app/ui/motivation/motivation-detail";
 import {getMotivationById} from "@/database/repository/motivation";
 import {MotivationFormData} from "@/app/lib/actions/motivation";
 import ApproveButton from "@/app/ui/button/approve-button";
+import {MotivationModel} from "@/models/motivation/motivation-model";
 
 export default async function User({params}: { params: { id: string }}) {
   const user: UserModel | undefined = await getUserById(params.id);
@@ -16,7 +17,7 @@ export default async function User({params}: { params: { id: string }}) {
     )
   }
 
-  const userMotivation: MotivationFormData | undefined = await getMotivationById(params.id);
+  const userMotivation: MotivationModel | undefined = await getMotivationById(params.id);
 
   return(
     <div className="flex flex-col">
