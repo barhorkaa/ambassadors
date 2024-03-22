@@ -1,5 +1,4 @@
 import {db} from "@/database/database";
-import {MotivationFormData} from "@/app/lib/actions/motivation";
 import {setUserMotivatedStatus} from "@/database/repository/user";
 import {MotivationModel} from "@/models/motivation/motivation-model";
 
