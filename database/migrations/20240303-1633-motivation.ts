@@ -7,11 +7,11 @@ export async function up(db: Kysely<any>): Promise<void> {
     .execute()
 
   await db.schema.alterTable('motivationForm')
-    .addColumn('why', 'varchar')
-    .addColumn('who', 'varchar')
-    .addColumn('goals', 'varchar')
-    .addColumn('preferred_events', 'varchar')
-    .addColumn('time', 'varchar')
+    .addColumn('why', 'varchar', (col) => col.notNull().defaultTo(""))
+    .addColumn('who', 'varchar', (col) => col.notNull().defaultTo(""))
+    .addColumn('goals', 'varchar', (col) => col.notNull().defaultTo(""))
+    .addColumn('preferred_events', 'varchar', (col) => col.notNull().defaultTo(""))
+    .addColumn('time', 'varchar', (col) => col.notNull().defaultTo(""))
     .execute()
 }
 
