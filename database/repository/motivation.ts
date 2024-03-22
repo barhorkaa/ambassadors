@@ -1,8 +1,9 @@
 import {db} from "@/database/database";
 import {MotivationFormData} from "@/app/lib/actions/motivation";
 import {setUserMotivatedStatus} from "@/database/repository/user";
+import {MotivationModel} from "@/models/motivation/motivation-model";
 
-export async function createMotivation(data: MotivationFormData) {
+export async function createMotivation({data}: { data: MotivationModel }) {
   console.log("Got to repository")
   console.log("Data on repo is: ", data)
   try {
