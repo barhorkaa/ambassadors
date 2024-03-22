@@ -3,7 +3,7 @@ import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import {getUserByEmail} from "@/database/repository/user";
-import {UserLoginData} from "@/models/userLoginData";
+import {UserLoginData} from "@/models/user-login-data";
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
