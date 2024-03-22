@@ -3,7 +3,6 @@ import {getUserById} from "@/database/repository/user";
 import {UserModel} from "@/models/userModel";
 import MotivationDetail from "@/app/ui/motivation/motivation-detail";
 import {getMotivationById} from "@/database/repository/motivation";
-import {MotivationFormData} from "@/app/lib/actions/motivation";
 import ApproveButton from "@/app/ui/button/approve-button";
 import {MotivationModel} from "@/models/motivation/motivation-model";
 
