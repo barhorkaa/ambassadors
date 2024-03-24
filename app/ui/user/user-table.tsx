@@ -19,7 +19,7 @@ export default async function UserTable(props: {users: UserModel[]}) {
         </thead>
         <tbody>
           {props.users.map((user) => (
-            <tr className="hover" >
+            <tr className="hover" key={user.id}>
               <td>{user.name}</td>
               <td>{user.uco}</td>
                 <td>{user.email}</td>
