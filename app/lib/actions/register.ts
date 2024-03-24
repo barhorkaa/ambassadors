@@ -3,18 +3,23 @@
 import bcrypt from "bcryptjs";
 import {createNewUser} from "@/database/repository/user";
 import {redirect} from "next/navigation";
+import {RegistrationFormModel} from "@/models/auth/registration-form-model";
 
 export async function createUser(prevState: string | undefined, formData: FormData) {
   let id = null;
 
   try {
     console.log("Successfully called createUser");
-    console.log(formData.values());
+    console.log(formData);
 
+    const res = RegistrationFormModel.safeParse(formData);
+    console.log("parsed result is: ", res)
+
+    // TODO add data validation with zod
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
-    const passwordHashed = await bcrypt.hash(password, 10);
+    const passwordHashed = await bcrypt.hash(password, 10); // TODO change salt to random
     const uco = Number(formData.get("uco") as string);
     const phoneNumber = formData.get("phoneNumber") as string;
 
