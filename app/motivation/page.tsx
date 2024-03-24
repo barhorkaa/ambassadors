@@ -1,4 +1,4 @@
-import MotivationForm from "@/app/ui/register/motivation-form";
+import MotivationForm from "@/app/ui/motivation/motivation-form";
 import React from "react";
 
 export default function UserMotivation() {
