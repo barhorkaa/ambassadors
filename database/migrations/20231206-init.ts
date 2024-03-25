@@ -28,7 +28,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .createTable('event')
     .addColumn('id', 'char(36)', (col) => col.primaryKey().defaultTo(sql`gen_random_uuid()`))
     .addColumn('name', 'varchar(69)', (col) => col.notNull())
-    .addColumn('date', 'timestamp', (col) => col.notNull())
+    .addColumn('date', 'timestamp', (col) => col.defaultTo(sql`null`))
     .addColumn('event_type_id', 'char(36)', (col) => col.references('eventType.id').onDelete('cascade').notNull())
     .addColumn('created_at', 'timestamp', (col) => col.defaultTo(sql`now()`).notNull())
     .addColumn('updated_at', 'timestamp', (col) => col.defaultTo(sql`now()`).notNull())
