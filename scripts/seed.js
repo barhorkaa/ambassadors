@@ -18,6 +18,11 @@ async function main() {
         dialect: dialect,
     });
 
+    await seedUsers(db)
+
+}
+
+async function seedUsers(db) {
     const users = [
         {
             name: "John Smith",
