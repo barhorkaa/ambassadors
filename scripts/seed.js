@@ -18,8 +18,47 @@ async function main() {
         dialect: dialect,
     });
 
-    await seedUsers(db)
+    // await seedsers(db)
+    // await seedEvents(db)
+    // await seedEventTypes(db)
+}
 
+async function seedEvents(db) {
+    const events = [
+        {
+            name: "Výjezd na Gympabu",
+            event_type_id: "fe6846cf-2cb5-4ef5-81d3-64fd4d11e449",
+            // date: "1710408352",
+            approved: true
+        },
+        {
+            name: "DOD 1",
+            event_type_id: "912b810a-f675-4277-a44b-7182809c1210",
+            // date: "1710408352",
+            approved: false
+        }
+    ]
+
+    await db
+        .insertInto('event').values(events).execute()
+}
+
+async function seedEventTypes(db) {
+    const eventTypes = [
+        {
+            name: "Výjezd na školu",
+            instructions: "napište nám a dohodneme se",
+            description: "pojedete na školu a uděláte prezentaci"
+        },
+        {
+            name: "Den otevřených dveří",
+            instructions: "vidíme se na fakultě",
+            description: "sprevadzat, moderovat, vitat"
+        }
+    ]
+
+    await db
+        .insertInto('eventType').values(eventTypes).execute()
 }
 
 async function seedUsers(db) {
