@@ -10,3 +10,11 @@ export async function getAllEvents() {
     console.log(e)
   }
 }
+
+export async function getEventById(id: string) {
+  try {
+    return await db.selectFrom("event").where("id", "=", id).selectAll().executeTakeFirstOrThrow();
+  } catch (e) {
+    console.log(e)
+  }
+}
