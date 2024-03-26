@@ -23,6 +23,11 @@ const config: Config = {
       'sm': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
     },
+    colors: {
+      'fi': '#F2D45C',
+      'muni': '#0000DC',
+      'black': '#000000',
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
