@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NavBar() {
   return(
-    <nav className="navbar bg-amber-200">
+    <nav className="navbar bg-fi">
       <div className="flex-1">
         <Link className="btn btn-ghost text-xl" href={"/"}>AmbassadorsFIMU</Link>
       </div>
