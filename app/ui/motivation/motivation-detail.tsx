@@ -12,41 +12,41 @@ export default function MotivationDetail(params : {motivation: MotivationModel |
   return(
     <>
       <div className="p-2 bg-amber-100 rounded-md">
-        <h2 className="font-bold font-lg">
+        <h3 className="">
           Proč jste se rozhodli k nám přidat?
-        </h2>
+        </h3>
         <div>
           {params.motivation.why}
         </div>
       </div>
       <div className="p-2">
-        <h2 className="font-bold font-lg">
+        <h3 className="">
           Doporučil vám někto přidat se k programu? Pokud ano, kto?
-        </h2>
+        </h3>
         <div>
           {params.motivation.who}
         </div>
       </div>
       <div className="p-2 bg-amber-100 rounded-md">
-        <h2 className="font-bold font-lg">
+        <h3 className="">
           Co byste chtěli jako ambasador dosáhnout?
-        </h2>
+        </h3>
         <div>
           {params.motivation.goals}
         </div>
       </div>
       <div className="p-2">
-        <h2 className="font-bold font-lg">
+        <h3 className="">
           Jakých akcí byste se chtěli převážně zúčastňovat?
-        </h2>
+        </h3>
         <div>
           {params.motivation.preferred_events}
         </div>
       </div>
       <div className="p-2 bg-amber-100 rounded-md">
-        <h2 className="font-bold font-lg">
+        <h3 className="">
           Kolik času budete mít na ambasadorskou činnost?
-        </h2>
+        </h3>
         <div>
           {params.motivation.time}
         </div>
