@@ -20,28 +20,23 @@ export default async function User({params}: { params: { id: string }}) {
 
   return(
     <div className="flex flex-col">
-      <div className="flex flex-row py-4">
-        <h1 className="font-bold text-3xl">Informace o uživateli: {user.name}</h1>
+      <div className="flex flex-row">
+        <h1>Informace o uživateli: {user.name}</h1>
       </div>
       <hr className=""/>
-      <div className="flex flex-row justify-start gap-10 sm:flex-col">
+      <div className="flex flex-row justify-start gap-10 sm:flex-col py-4 ">
         <div>
           <div className="flex flex-row justify-between">
-            <h2 className="font-bold text-xl py-4">
-              Detail uživatele
-            </h2>
+            <h2>Detail uživatele</h2>
             {
               !user.approved &&
               <ApproveButton id={user.id}/>
             }
           </div>
-
           <UserDetail user={user}/>
         </div>
         <div>
-          <h2 className="font-bold text-xl py-4">
-            Motivační formulář
-          </h2>
+          <h2>Motivační formulář</h2>
           <MotivationDetail motivation={userMotivation}/>
         </div>
       </div>
