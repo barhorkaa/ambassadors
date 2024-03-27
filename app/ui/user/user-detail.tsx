@@ -19,12 +19,12 @@ export function DetailRow(params: {label: string, value: string | number}) {
   return (
     <div>
       <div className="p-2 flex flex-row justify-between">
-        <h2 className="font-extrabold font-lg">
+        <h3>
           {params.label}
-        </h2>
-        <h3 className="ml-16">
-          {params.value}
         </h3>
+        <h4 className="ml-16">
+          {params.value}
+        </h4>
       </div>
       <hr/>
     </div>
