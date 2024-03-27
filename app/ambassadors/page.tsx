@@ -22,21 +22,24 @@ export default async function Ambassadors() {
 
   return(
     <div>
-      <div className="font-bold text-lg p-2">
+      <h1>
+        Uživatelé
+      </h1>
+      <h2>
         Nepotvrzení uživatelé
-      </div>
+      </h2>
       <UserTable users={unapprovedAmbassadors}/>
-      <div className="font-bold text-lg p-2">
+      <h2>
         Všichni manažeři
-      </div>
+      </h2>
       <UserTable users={allManagers}/>
       {/*<div className="flex space-x-4 space-y-4">*/}
       {/*  {allManagers.map((manager) => (<UserCard user={manager}/>) )}*/}
       {/*</div>*/}
       <hr/>
-      <div className="font-bold text-lg p-2">
+      <h2>
         Všichni ambasadoři
-      </div>
+      </h2>
       <UserTable users={allAmbassadors}/>
       {/*<div className="flex flex-wrap md:justify-between   space-y-4">*/}
       {/*  {allAmbassadors.map((ambassador) => (<UserCard user={ambassador}/>) )}*/}
