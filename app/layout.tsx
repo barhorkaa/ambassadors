@@ -23,9 +23,9 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {session?.user ? <NavBarUser></NavBarUser> : <NavBar></NavBar>}
-        <div className={"body"}>
+        <main>
           {children}
-        </div>
+        </main>
         <footer className="footer footer-center p-4 bg-base-300 text-base-content">
           <aside>
             <pre>{JSON.stringify(session, null, 2)}</pre>
