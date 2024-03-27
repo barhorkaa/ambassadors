@@ -20,12 +20,9 @@ export default async function Event({params}: { params: { id: string }}) {
   return(
     <div >
       <div>
-        <h1>
-          Detail akce
-        </h1>
-
+        <h1>Detail akce</h1>
       </div>
-      <div className="flex flex-row justify-start gap-10 sm:flex-col">
+      <div className="flex flex-row justify-start gap-10 sm:flex-col py-4">
         <EventDetail event={event}/>
         <EventTypeDetail eventType={eventType}/>
       </div>
