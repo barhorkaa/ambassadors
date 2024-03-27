@@ -14,7 +14,7 @@ export default async function EventTypeDetail({eventType} : {eventType: EventTyp
   }
 
   return(
-    <div className="flex flex-col w-1/3">
+    <div className="flex flex-col">
       <DetailRow label={"Typ akce"} value={eventType.name}/>
       <DetailRow label={"Popis"} value={eventType.description}/>
       <DetailRow label={"Instrukce"} value={eventType.instructions}/>
