@@ -9,7 +9,7 @@ export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
   return (
-    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className="card">
       <form action={dispatch} className="card-body">
         <div className="form-control">
           <label className="label" htmlFor="email">
