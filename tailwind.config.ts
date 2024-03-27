@@ -24,9 +24,14 @@ const config: Config = {
       // => @media (max-width: 639px) { ... }
     },
     colors: {
-      'fi': '#F2D45C',
+      'fi': {
+        300: '#F2D45C',
+        200: '#F2DE7F',
+        100: '#F3E9A3'
+      },
       'muni': '#0000DC',
       'black': '#000000',
+      'white': '#fafafa'
     },
     extend: {
       backgroundImage: {
