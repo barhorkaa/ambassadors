@@ -3,7 +3,7 @@ import {signOut} from "@/auth";
 
 export default function NavBarUser() {
   return(
-    <div className="navbar bg-fi">
+    <div className="navbar bg-fi-300">
       <div className="navbar-start">
         <div className="dropdown max-h-fit min-h-fit">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
