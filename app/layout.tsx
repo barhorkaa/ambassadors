@@ -4,6 +4,7 @@ import './globals.css'
 import NavBar from "@/app/ui/layout/nav-bar";
 import NavBarUser from "@/app/ui/layout/nav-bar-user";
 import {auth} from "@/auth";
+import {Footer} from "@/app/ui/layout/footer";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,12 +27,7 @@ export default async function RootLayout({
         <main>
           {children}
         </main>
-        <footer className="footer footer-center p-4 bg-base-300 text-base-content">
-          <aside>
-            <pre>{JSON.stringify(session, null, 2)}</pre>
-            <p>Copyright © 2024 - All right reserved by OVVSP FI MU</p>
-          </aside>
-        </footer>
+        <Footer/>
       </body>
     </html>
   )
