@@ -1,5 +1,4 @@
 import Link from "next/link";
-import {signOut} from "@/auth";
 import SideBar from "@/app/ui/layout/side-bar";
 
 export default function NavBarUser() {
