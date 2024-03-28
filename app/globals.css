@@ -43,7 +43,7 @@
     @apply shrink-0 w-full max-w-sm shadow-2xl bg-base-100
   }
   .hero {
-    @apply bg-white
+    @apply bg-white min-h-max
   }
   .custom-carousel {
     position: relative;
