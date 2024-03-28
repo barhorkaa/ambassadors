@@ -3,7 +3,7 @@ import {signOut} from "@/auth";
 
 export default function Success(){
   return(
-    <div className="hero min-h-screen ">
+    <div className="hero">
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">Váš motivační dotazník byl úspešně zaslán!</h1>
