@@ -12,7 +12,7 @@ export default function Success(){
             'use server';
             await signOut();
           }}>
-            <button className="btn bg-amber-300" >Odhlásit se</button>
+            <button>Odhlásit se</button>
           </form>
         </div>
       </div>
