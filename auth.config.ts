@@ -48,6 +48,12 @@ export const authConfig = {
         return Response.redirect(new URL('/denied', nextUrl))
       }
 
+      if (!isManager) {
+        if (nextUrl.pathname.startsWith('/ambassadors') || nextUrl.pathname.startsWith('/events/type')) {
+          return Response.redirect(new URL('/denied/role', nextUrl))
+        }
+      }
+
       // const isOnDashboard = nextUrl.pathname.startsWith('/events');
       // if (isOnDashboard) {
       //   if (isLoggedIn) return true;
