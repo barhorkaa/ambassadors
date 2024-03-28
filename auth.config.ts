@@ -36,7 +36,6 @@ export const authConfig = {
       const isApproved = auth?.user.approved!; // TODO maybe remove the !
       const isMotivated = auth?.user.motivated!;
 
-      const isOnDashboard = nextUrl.pathname.startsWith('/events');
 
       if (!isLoggedIn) {
         return false // TODO might work by mistake for login page
@@ -49,6 +48,7 @@ export const authConfig = {
         return Response.redirect(new URL('/denied', nextUrl))
       }
 
+      // const isOnDashboard = nextUrl.pathname.startsWith('/events');
       // if (isOnDashboard) {
       //   if (isLoggedIn) return true;
       //   return false; // Redirect unauthenticated users to login page
