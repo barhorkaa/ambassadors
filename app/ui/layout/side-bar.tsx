@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import {signOut} from "@/auth";
+import {auth, signOut} from "@/auth";
 import {eventsPages, managerPages, programPages} from "@/app/utils/pages";
 
-export default function SideBar() {
+export default async function SideBar() {
+  const session = await auth();
+
   return(
     <div className="drawer z-10">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -26,6 +28,12 @@ export default function SideBar() {
             <li><Link href={page.url}>{page.name}</Link></li>
           ))}
           <hr/>
+          {session?.user.role == "manager" && <div>
+            {managerPages.map((page) => (
+              <li><Link href={page.url}>{page.name}</Link></li>
+            ))}
+              <hr/>
+          </div>}
           <li>
             <form action={async () => {
               'use server';
