@@ -30,7 +30,7 @@ export default function SideBar() {
               'use server';
               await signOut();
             }}>
-              <div>Odhlásit se</div>
+              <button>Odhlásit se</button>
             </form>
           </li>
 
