@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import {signOut} from "@/auth";
+import {eventsPages, managerPages, programPages} from "@/app/utils/pages";
 
 export default function SideBar() {
   return(
@@ -17,13 +18,13 @@ export default function SideBar() {
           {/*<li><p>&nbsp;</p></li>*/}
           <li><Link href={""}>Můj účet</Link></li>
           <hr/>
-          <li><Link href={""}>Moje akce</Link></li>
-          <li><Link href={"/events"}>Všechny akce</Link></li>
-          <li><Link href={""}>Historie akcií</Link></li>
+          {eventsPages.map((page) => (
+            <li><Link href={page.url}>{page.name}</Link></li>
+          ))}
           <hr/>
-          <li><Link href={"/"}>O programu</Link></li>
-          <li><Link href={""}>Kontakty</Link></li>
-          <li><Link href={""}>Pomocník</Link></li>
+          {programPages.map((page) => (
+            <li><Link href={page.url}>{page.name}</Link></li>
+          ))}
           <hr/>
           <li>
             <form action={async () => {
