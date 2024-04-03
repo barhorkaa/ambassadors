@@ -15,7 +15,7 @@ export default async function Events(){
         <h1 className="text-2xl">
           Akce
         </h1>
-        <button className="btn">
+        <button>
           Přidat akci
         </button>
       </div>
