@@ -1,6 +1,7 @@
 import {getAllEvents} from "@/database/repository/events";
 import {EventModel} from "@/models/event/event-model";
 import EventTable from "@/app/ui/event/event-table";
+import Link from "next/link";
 
 export default async function Events(){
   let allEvents: EventModel[] | undefined = await getAllEvents();
@@ -14,7 +15,9 @@ export default async function Events(){
       <div className="flex flex-row justify-between p-4">
         <h1>Akce</h1>
         <button>
-          Přidat akci
+          <Link href={'/events/new'}>
+            Přidat akci
+          </Link>
         </button>
       </div>
       {/*<div>*/}
