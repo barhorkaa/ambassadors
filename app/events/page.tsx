@@ -12,9 +12,7 @@ export default async function Events(){
   return(
     <>
       <div className="flex flex-row justify-between p-4">
-        <h1 className="text-2xl">
-          Akce
-        </h1>
+        <h1>Akce</h1>
         <button>
           Přidat akci
         </button>
