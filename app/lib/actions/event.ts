@@ -3,6 +3,7 @@
 import {redirect} from "next/navigation";
 import {createEvent} from "@/database/repository/events";
 import {eventBasicModel} from "@/models/event/event-basic-model";
+import {auth} from "@/auth";
 
 export async function createNewEvent(formData: FormData) {
   try {
@@ -15,6 +16,10 @@ export async function createNewEvent(formData: FormData) {
     const parse = eventBasicModel.safeParse(data)
 
     if (parse.success) {
+      const session = await auth();
+      if (session?.user.role === "manager") {
+        parse.data.approved = true
+      }
       await createEvent({event: parse.data});
     }
   }
