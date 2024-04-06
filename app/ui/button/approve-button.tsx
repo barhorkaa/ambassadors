@@ -5,7 +5,7 @@ import {approveUserById} from "@/app/lib/actions/users";
 import {CheckIcon} from "@heroicons/react/24/outline";
 
 
-export default function ApproveButton(props : {id: string}) {
+export default function ApproveButton(props : {fun: any}) {
   const [show, setShow] = useState(true);
 
   function changeState() {
@@ -16,11 +16,11 @@ export default function ApproveButton(props : {id: string}) {
     <>
       {show &&
         <button onClick={async () => {
-          await approveUserById(props.id);
+          await props.fun;
           changeState()
         }}>
           {/*<CheckIcon className="h-5 w-5"/>*/}
-            Potvrdit registraci
+            Potvrdit
         </button>
       }
     </>
