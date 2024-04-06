@@ -5,6 +5,7 @@ import MotivationDetail from "@/app/ui/motivation/motivation-detail";
 import {getMotivationById} from "@/database/repository/motivation";
 import ApproveButton from "@/app/ui/button/approve-button";
 import {MotivationModel} from "@/models/motivation/motivation-model";
+import {approveUserById} from "@/app/lib/actions/users";
 
 export default async function User({params}: { params: { id: string }}) {
   const user: UserModel | undefined = await getUserById(params.id);
@@ -30,7 +31,7 @@ export default async function User({params}: { params: { id: string }}) {
             <h2>Detail uživatele</h2>
             {
               !user.approved &&
-              <ApproveButton id={user.id}/>
+              <ApproveButton fun={await approveUserById(user.id)}/>
             }
           </div>
           <UserDetail user={user}/>
