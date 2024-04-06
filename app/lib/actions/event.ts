@@ -1,7 +1,7 @@
 "use server"
 
 import {redirect} from "next/navigation";
-import {createEvent} from "@/database/repository/events";
+import {approveEvent, createEvent} from "@/database/repository/events";
 import {eventBasicModel} from "@/models/event/event-basic-model";
 import {auth} from "@/auth";
 
@@ -27,4 +27,12 @@ export async function createNewEvent(formData: FormData) {
     return "Something went wrong"
   }
   redirect("/events/success")
+}
+
+export async function approveEventWithId(id: string) {
+  try {
+    await approveEvent(id)
+  } catch (e) {
+    console.log(e)
+  }
 }
