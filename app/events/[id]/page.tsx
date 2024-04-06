@@ -4,6 +4,9 @@ import {EventDetailModel} from "@/models/event/event-detail-model";
 import EventTypeDetail from "@/app/ui/event/event-type-detail";
 import {getEventTypeById} from "@/database/repository/event-type";
 import {EventTypeDetailModel} from "@/models/event-type/event-type-detail-model";
+import {auth} from "@/auth";
+import ApproveButton from "@/app/ui/button/approve-button";
+import {approveEventWithId} from "@/app/lib/actions/event";
 
 export default async function Event({params}: { params: { id: string }}) {
   const event: EventDetailModel | undefined = await getEventById(params.id);
@@ -17,10 +20,12 @@ export default async function Event({params}: { params: { id: string }}) {
 
   const eventType: EventTypeDetailModel | undefined = await getEventTypeById(event.event_type_id);
 
+  const session = await auth();
   return(
     <div >
       <div>
         <h1>Detail akce</h1>
+        {(!event.approved && session?.user.role == "manager") && <ApproveButton fun={await approveEventWithId(event.id)}/>}
       </div>
       <div className="flex flex-row justify-start gap-10 sm:flex-col py-4">
         <EventDetail event={event}/>
