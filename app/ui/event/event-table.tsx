@@ -24,7 +24,7 @@ export default function EventTable({events} : {events: EventModel[]}) {
             </td>
             <td>{event.date !== null ? event.date.toLocaleString() : "Nezadáno"}</td>
             <td>
-              <Link href={`events/${event.id}`}>
+              <Link href={`/events/${event.id}`}>
                 <ArrowTopRightOnSquareIcon className="h-5"/>
               </Link>
             </td>
