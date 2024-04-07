@@ -18,8 +18,8 @@ async function main() {
         dialect: dialect,
     });
 
-    // await seedsers(db)
-    // await seedEvents(db)
+    // await seedUsers(db)
+    await seedEvents(db)
     // await seedEventTypes(db)
 }
 
@@ -27,13 +27,13 @@ async function seedEvents(db) {
     const events = [
         {
             name: "Výjezd na Gympabu",
-            event_type_id: "fe6846cf-2cb5-4ef5-81d3-64fd4d11e449",
+            event_type_id: "21e13253-1f8d-48b5-95ea-0284d21125ac",
             // date: "1710408352",
             approved: true
         },
         {
             name: "DOD 1",
-            event_type_id: "912b810a-f675-4277-a44b-7182809c1210",
+            event_type_id: "f89c4126-c4b2-4d6b-b155-1ab1c19b2955",
             // date: "1710408352",
             approved: false
         }
