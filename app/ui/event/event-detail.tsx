@@ -2,7 +2,7 @@ import {DetailRow} from "@/app/ui/user/user-detail";
 import {EventDetailModel} from "@/models/event/event-detail-model";
 import {auth} from "@/auth";
 
-export default async function ({event}: {event: EventDetailModel}) {
+export default async function EventDetail({event}: {event: EventDetailModel}) {
   const session = await auth();
   return (
     <div className="flex flex-col w-1/3">
