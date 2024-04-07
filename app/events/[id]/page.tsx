@@ -8,6 +8,7 @@ import {auth} from "@/auth";
 import ApproveButton from "@/app/ui/button/approve-button";
 import {approveEventWithId} from "@/app/lib/actions/event";
 import EventSignUpButton from "@/app/ui/button/event-sign-up-button";
+import {isUserSignedUpForEvent} from "@/database/repository/user-event";
 
 export default async function Event({params}: { params: { id: string }}) {
   const event: EventDetailModel | undefined = await getEventById(params.id);
@@ -22,6 +23,12 @@ export default async function Event({params}: { params: { id: string }}) {
   const eventType: EventTypeDetailModel | undefined = await getEventTypeById(event.event_type_id);
 
   const session = await auth();
+  let disabled = false;
+  if (session) {
+    const isSignedOnEvent = await isUserSignedUpForEvent(event.id, session.user.id)
+    disabled = isSignedOnEvent! || !event.approved
+  }
+
   return(
     <div >
       <div className="flex flex-row justify-between">
@@ -29,8 +36,8 @@ export default async function Event({params}: { params: { id: string }}) {
         <div>
           {(!event.approved && session?.user.role == "manager") &&
               <ApproveButton fun={await approveEventWithId(event.id)}/>}
-          {event.approved &&
-              <EventSignUpButton props={{event_id: event.id, user_id: session?.user.id!}}/>}
+          {(session) &&
+              <EventSignUpButton disabled={disabled} event_id={event.id} user_id={session.user.id}/>}
         </div>
 
       </div>
