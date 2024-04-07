@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+// import img from "next/img";
 
 export default function Carousel() {
   return(
     <div className="custom-carousel" >
       <div className="carousel w-full group">
         <div id="slide1" className="carousel-item relative w-full">
-          <Image src="gauseamus.jpg" className="w-full"  alt=""/>
+          <img src="gauseamus.jpg" className="w-full"  alt=""/>
           <div className="hidden group-hover:block">
             <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
               <Link href="#slide4" className="btn btn-circle">❮</Link>
@@ -16,7 +16,7 @@ export default function Carousel() {
           </div>
         </div>
         <div id="slide2" className="carousel-item relative w-full">
-          <Image src="AI4talents.jpg" className="w-full"  alt=""/>
+          <img src="AI4talents.jpg" className="w-full"  alt=""/>
           <div className="hidden group-hover:block">
             <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
               <Link href="#slide1" className="btn btn-circle">❮</Link>
@@ -25,7 +25,7 @@ export default function Carousel() {
           </div>
         </div>
         <div id="slide3" className="carousel-item relative w-full">
-          <Image src="dod_prezentacia.jpg" className="w-full"  alt=""/>
+          <img src="dod_prezentacia.jpg" className="w-full"  alt=""/>
           <div className="hidden group-hover:block">
             <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
               <Link href="#slide2" className="btn btn-circle">❮</Link>
@@ -34,7 +34,7 @@ export default function Carousel() {
           </div>
         </div>
         <div id="slide4" className="carousel-item relative w-full">
-          <Image src="dod_lobby.jpg" className="w-full" alt=""/>
+          <img src="dod_lobby.jpg" className="w-full" alt=""/>
           <div className="hidden group-hover:block">
             <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
               <Link href="#slide3" className="btn btn-circle">❮</Link>
