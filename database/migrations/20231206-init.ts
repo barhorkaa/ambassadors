@@ -69,8 +69,9 @@ export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
     .createTable('eventAmbassador')
     .addColumn('id', 'char(36)', (col) => col.primaryKey().defaultTo(sql`gen_random_uuid()`))
-    .addColumn('ambassador_id', 'char(36)', (col) => col.references('ambassador.id').notNull().unique())
+    .addColumn('ambassador_id', 'char(36)', (col) => col.references('ambassador.id').notNull())
     .addColumn('event_id', 'char(36)', (col) => col.references('event.id').notNull())
+    .addUniqueConstraint("ambassador_event", ["ambassador_id", "event_id"])
     .addColumn('created_at', 'timestamp', (col) => col.defaultTo(sql`now()`).notNull())
     .addColumn('updated_at', 'timestamp', (col) => col.defaultTo(sql`now()`).notNull())
     .addColumn('deleted_at', 'timestamp', (col) => col.defaultTo(sql`null`))
