@@ -20,20 +20,22 @@ export default async function SideBar() {
           {/*<li><p>&nbsp;</p></li>*/}
           <li><Link href={""}>Můj účet</Link></li>
           <hr/>
-          {eventsPages.map((page) => (
-            <li><Link href={page.url}>{page.name}</Link></li>
+          {eventsPages.map((page, index) => (
+            <li key={index}><Link href={page.url}>{page.name}</Link></li>
           ))}
           <hr/>
-          {programPages.map((page) => (
-            <li><Link href={page.url}>{page.name}</Link></li>
+          {programPages.map((page, index) => (
+            <li key={index}><Link href={page.url}>{page.name}</Link></li>
           ))}
           <hr/>
-          {session?.user.role == "manager" && <div>
-            {managerPages.map((page) => (
-              <li><Link href={page.url}>{page.name}</Link></li>
-            ))}
+          {session?.user.role == "manager" &&
+            <div>
+              {managerPages.map((page, index) => (
+                <li key={index}><Link href={page.url}>{page.name}</Link></li>
+              ))}
               <hr/>
-          </div>}
+            </div>
+          }
           <li>
             <form action={async () => {
               'use server';
