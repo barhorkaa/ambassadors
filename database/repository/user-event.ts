@@ -27,3 +27,12 @@ export async function signUpUserForEvent(event_id: string, user_id: string) {
     console.log(e)
   }
 }
+
+export async function isUserSignedUpForEvent(event_id: string, user_id: string) {
+  try {
+    const record = await db.selectFrom("eventUser").where("event_id", "=", event_id).where("user_id", "=", user_id).select("eventUser.id").executeTakeFirst()
+    return record !== undefined
+  } catch (e) {
+    console.log(e)
+  }
+}
