@@ -3,9 +3,8 @@
 import {useState} from "react";
 import {createEventSignUp} from "@/app/lib/actions/event";
 
-export default function EventSignUpButton( { props } : { props: { event_id: string, user_id: string }}) {
-  // const isSignedOnEvent =
-  const [disabled, setDisabled] = useState(false);
+export default function EventSignUpButton( props: { disabled: boolean, event_id: string, user_id: string }) {
+  const [disabled, setDisabled] = useState(props.disabled);
 
   function changeState() {
     setDisabled(!disabled);
