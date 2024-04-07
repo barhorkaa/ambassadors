@@ -4,6 +4,7 @@ import {redirect} from "next/navigation";
 import {approveEvent, createEvent} from "@/database/repository/events";
 import {eventBasicModel} from "@/models/event/event-basic-model";
 import {auth} from "@/auth";
+import {signUpUserForEvent} from "@/database/repository/user-event";
 
 export async function createNewEvent(formData: FormData) {
   try {
@@ -32,6 +33,14 @@ export async function createNewEvent(formData: FormData) {
 export async function approveEventWithId(id: string) {
   try {
     await approveEvent(id)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export async function createEventSignUp(event_id: string, user_id: string) {
+  try {
+    await signUpUserForEvent(event_id, user_id)
   } catch (e) {
     console.log(e)
   }
