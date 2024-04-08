@@ -29,7 +29,7 @@ export default async function EventForm(data: {eventTypes: EventTypeBasicModel[]
         </label>
         <input id="id" value={data.event?.id} type="hidden" name="id" className="input input-bordered" />
       </div>
-      <EventTypeSelect eventTypes={data.eventTypes}/>
+      <EventTypeSelect selectedEvent={data.event?.event_type_id} eventTypes={data.eventTypes}/>
       <SubmitButton/>
     </form>
   )
