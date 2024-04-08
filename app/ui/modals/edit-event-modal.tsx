@@ -11,7 +11,7 @@ export default function EditEventModal(data: {eventTypes: EventTypeBasicModel[],
         if (document) {
           (document.getElementById('my_modal_2') as HTMLFormElement).showModal();
         }
-      }}>open modal</button>
+      }}>Upravit akci</button>
       <dialog id="my_modal_2" className="modal">
         <div className="modal-box">
           <h3>Upravit akci</h3>
