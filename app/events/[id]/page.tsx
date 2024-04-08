@@ -24,8 +24,12 @@ export default async function Event({params}: { params: { id: string }}) {
 
   const session = await auth();
   let disabled = false;
+  let isSignedOnEvent: boolean | undefined = false;
   if (session) {
-    const isSignedOnEvent = await isUserSignedUpForEvent(event.id, session.user.id)
+    isSignedOnEvent = await isUserSignedUpForEvent(event.id, session.user.id)
+    if (isSignedOnEvent == undefined) {
+      isSignedOnEvent = false;
+    }
     disabled = isSignedOnEvent! || !event.approved
   }
 
