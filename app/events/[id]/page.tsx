@@ -9,6 +9,7 @@ import ApproveButton from "@/app/ui/button/approve-button";
 import {approveEventWithId} from "@/app/lib/actions/event";
 import EventSignUpButton from "@/app/ui/button/event-sign-up-button";
 import {isUserSignedUpForEvent} from "@/database/repository/user-event";
+import EditEventModal from "@/app/ui/modals/edit-event-modal";
 import {EventTypeBasicModel} from "@/models/event-type/event-type-basic";
 
 export default async function Event({params}: { params: { id: string }}) {
@@ -48,8 +49,8 @@ export default async function Event({params}: { params: { id: string }}) {
               <ApproveButton fun={await approveEventWithId(event.id)}/>}
           {(session) &&
               <EventSignUpButton disabled={disabled} event_id={event.id} user_id={session.user.id}/>}
+          {isSignedOnEvent && <EditEventModal event={event} eventTypes={eventTypes}/>}
         </div>
-
       </div>
       <div className="flex flex-row justify-start gap-10 sm:flex-col py-4">
         <EventDetail event={event}/>
