@@ -7,6 +7,7 @@ import {auth} from "@/auth";
 import {signUpUserForEvent} from "@/database/repository/user-event";
 
 export async function createNewEvent(formData: FormData) {
+  let result: boolean | undefined = false;
   try {
     const data = {
       name: formData.get("name"),
@@ -21,13 +22,15 @@ export async function createNewEvent(formData: FormData) {
       if (session?.user.role === "manager") {
         parse.data.approved = true
       }
-      await createEvent({event: parse.data});
+      result = await createEvent({event: parse.data});
     }
   }
   catch (error) {
     return "Something went wrong"
   }
-  redirect("/events/success")
+  if (result) {
+    redirect("/events/success")
+  }
 }
 
 export async function updateEventWithId(formData: FormData) {
