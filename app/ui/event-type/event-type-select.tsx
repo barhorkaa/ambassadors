@@ -17,8 +17,7 @@ export default function EventTypeSelect(props: {eventTypes: EventTypeBasicModel[
         <span className="label-text">Typ akce</span>
       </label>
       <select className="select select-bordered w-full max-w-xs" id='eventType' name="event_type_id" value={eventType} onChange={handleEventTypeChange}>
-        <option selected>Vyberte typ akce</option>
-        {eventTypes.map((event) =>
+        <option>Vyberte typ akce</option>
         {props.eventTypes.map((event) =>
           <option key={event.id} value={event.id}>{event.name}</option>
         )}
