@@ -4,7 +4,7 @@ import {redirect} from "next/navigation";
 import {approveEvent, createEvent, updateEvent} from "@/database/repository/events";
 import {eventBasicModel} from "@/models/event/event-basic-model";
 import {auth} from "@/auth";
-import {signUpUserForEvent} from "@/database/repository/user-event";
+import {signUpUserForEvent} from "@/database/repository/event-user";
 
 export async function createNewEvent(formData: FormData) {
   let result: boolean | undefined = false;

@@ -1,7 +1,7 @@
 import {auth} from "@/auth";
 import {EventModel} from "@/models/event/event-model";
 import EventTable from "@/app/ui/event/event-table";
-import {getUserEvents} from "@/database/repository/user-event";
+import {getUserEvents} from "@/database/repository/event-user";
 
 export default async function MyEvents() {
   const session = await auth();

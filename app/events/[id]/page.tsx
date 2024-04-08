@@ -8,7 +8,7 @@ import {auth} from "@/auth";
 import ApproveButton from "@/app/ui/button/approve-button";
 import {approveEventWithId} from "@/app/lib/actions/event";
 import EventSignUpButton from "@/app/ui/button/event-sign-up-button";
-import {isUserSignedUpForEvent} from "@/database/repository/user-event";
+import {isUserSignedUpForEvent} from "@/database/repository/event-user";
 import EditEventModal from "@/app/ui/modals/edit-event-modal";
 import {EventTypeBasicModel} from "@/models/event-type/event-type-basic";
 
