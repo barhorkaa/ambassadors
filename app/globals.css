@@ -19,7 +19,7 @@
 
 @layer base {
   body {
-    @apply text-black bg-white
+    @apply text-black bg-white min-h-screen flex flex-col justify-between
   }
   main {
     @apply bg-white mx-52 my-9 md:mx-12 sm:mx-2.5
