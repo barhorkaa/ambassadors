@@ -24,6 +24,7 @@ export async function createEvent({event} : {event: EventBasicModel}) {
   try {
     console.log("new event is: ", event)
     await db.insertInto("event").values(event).execute();
+    return true
   } catch (e) {
     console.log(e)
   }
