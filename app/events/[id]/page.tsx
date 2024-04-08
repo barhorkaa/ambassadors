@@ -49,7 +49,7 @@ export default async function Event({params}: { params: { id: string }}) {
               <ApproveButton fun={await approveEventWithId(event.id)}/>}
           {(session) &&
               <EventSignUpButton disabled={disabled} event_id={event.id} user_id={session.user.id}/>}
-          {isSignedOnEvent && <EditEventModal event={event} eventTypes={eventTypes}/>}
+          {(session?.user.role === "manager" || isSignedOnEvent) && <EditEventModal event={event} eventTypes={eventTypes}/>}
         </div>
       </div>
       <div className="flex flex-row justify-start gap-10 sm:flex-col py-4">
