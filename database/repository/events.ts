@@ -31,7 +31,7 @@ export async function createEvent({event} : {event: EventBasicModel}) {
 
 export async function approveEvent(id: string) {
   try {
-    await db.updateTable("event").set({approved: true}).where("id", "=", id).executeTakeFirstOrThrow();
+    await db.updateTable("event").set({approved: true, "updated_at": new Date()}).where("id", "=", id).executeTakeFirstOrThrow();
   } catch (e) {
     console.log(e)
   }
