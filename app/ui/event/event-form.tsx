@@ -15,7 +15,7 @@ export default async function EventForm(data: {eventTypes: EventTypeBasicModel[]
                htmlFor="name">
           <span className="label-text">Název akce</span>
         </label>
-        <input id="name" value={data.event?.name} type="text" name="name" placeholder="Gymnázium Třídy Kapitána Jaroše" className="input input-bordered" required />
+        <input id="name" defaultValue={data.event?.name} type="text" name="name" placeholder="Gymnázium Třídy Kapitána Jaroše" className="input input-bordered" required />
       </div>
       <div className="form-control">
         <label className="label" htmlFor="who">
