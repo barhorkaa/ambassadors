@@ -5,6 +5,7 @@ import {EventTypeBasicModel} from "@/models/event-type/event-type-basic";
 import {createNewEvent, updateEventWithId} from "@/app/lib/actions/event";
 import {EventModel} from "@/models/event/event-model";
 import {EventDetailModel} from "@/models/event/event-detail-model";
+import {format} from "date-fns";
 
 export default async function EventForm(data: {eventTypes: EventTypeBasicModel[], event: EventDetailModel | null}) {
 
@@ -21,7 +22,7 @@ export default async function EventForm(data: {eventTypes: EventTypeBasicModel[]
         <label className="label" htmlFor="who">
           <span className="label-text">Datum akce (může zůstat nevyplněno)</span>
         </label>
-        <input id="date"  type="date" name="date" placeholder="" className="input input-bordered" />
+        <input id="date" defaultValue={data.event?.date ? format(data.event?.date, "yyyy-MM-dd") : ""} type="date" name="date" placeholder="" className="input input-bordered" />
       </div>
       <div className="form-control">
         <label className="label" htmlFor="who">
