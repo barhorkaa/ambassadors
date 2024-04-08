@@ -5,12 +5,7 @@ import {EventTypeBasicModel} from "@/models/event-type/event-type-basic";
 import {getAllEventTypesBasics} from "@/database/repository/event-type";
 import {createNewEvent} from "@/app/lib/actions/event";
 
-export default async function EventForm() {
-
-  let eventTypes: EventTypeBasicModel[] | undefined = await getAllEventTypesBasics();
-  if (eventTypes === undefined) {
-    eventTypes = [];
-  }
+export default async function EventForm(data: {eventTypes: EventTypeBasicModel[], event: EventDetailModel | null}) {
 
   return(
     <div className="card">
@@ -32,5 +27,6 @@ export default async function EventForm() {
         <SubmitButton/>
       </form>
     </div>
+      <EventTypeSelect eventTypes={data.eventTypes}/>
   )
 }
