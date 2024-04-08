@@ -2,13 +2,14 @@ import {getEventById} from "@/database/repository/events";
 import EventDetail from "@/app/ui/event/event-detail";
 import {EventDetailModel} from "@/models/event/event-detail-model";
 import EventTypeDetail from "@/app/ui/event/event-type-detail";
-import {getEventTypeById} from "@/database/repository/event-type";
+import {getAllEventTypesBasics, getEventTypeById} from "@/database/repository/event-type";
 import {EventTypeDetailModel} from "@/models/event-type/event-type-detail-model";
 import {auth} from "@/auth";
 import ApproveButton from "@/app/ui/button/approve-button";
 import {approveEventWithId} from "@/app/lib/actions/event";
 import EventSignUpButton from "@/app/ui/button/event-sign-up-button";
 import {isUserSignedUpForEvent} from "@/database/repository/user-event";
+import {EventTypeBasicModel} from "@/models/event-type/event-type-basic";
 
 export default async function Event({params}: { params: { id: string }}) {
   const event: EventDetailModel | undefined = await getEventById(params.id);
@@ -31,6 +32,11 @@ export default async function Event({params}: { params: { id: string }}) {
       isSignedOnEvent = false;
     }
     disabled = isSignedOnEvent! || !event.approved
+  }
+
+  let eventTypes: EventTypeBasicModel[] | undefined = await getAllEventTypesBasics();
+  if (eventTypes === undefined) {
+    eventTypes = [];
   }
 
   return(
