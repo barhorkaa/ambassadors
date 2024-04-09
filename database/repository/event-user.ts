@@ -40,7 +40,7 @@ export async function isUserSignedUpForEvent(event_id: string, user_id: string) 
 export async function getAllUnapprovedSignUps() {
   try {
     return await db.selectFrom("eventUser")
-      .fullJoin("user", "user.id", "user_id")
+      .where("eventUser.approved", "=", false)
       .leftJoin("user", "user.id", "user_id")
       .select(["user.name as user_name", "eventUser.id as id", "eventUser.event_id as event_id", "eventUser.user_id as user_id"])
       .leftJoin("event", "event.id", "event_id")
