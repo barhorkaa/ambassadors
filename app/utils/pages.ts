@@ -42,4 +42,8 @@ export const managerPages: PageUrl[] = [
     name: 'Druhy akcí',
     url: '/events/type',
   },
+  {
+    name: 'Přihlášení na akce',
+    url: '/events/signups',
+  },
 ];
