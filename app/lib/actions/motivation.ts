@@ -5,14 +5,17 @@ import { MotivationFormModel } from '@/models/motivation/motivation-form-model';
 import { redirect } from 'next/navigation';
 
 export async function createMotivationForm(formData: FormData) {
+  let result: boolean | undefined = false;
   try {
     const parse = MotivationFormModel.safeParse(formData);
 
     if (parse.success) {
-      await createMotivation({ data: parse.data });
+      result = await createMotivation({ data: parse.data });
     }
   } catch (error) {
     return 'Something went wrong';
   }
-  redirect('/motivation/success');
+  if (result) {
+    redirect('/motivation/success');
+  }
 }
