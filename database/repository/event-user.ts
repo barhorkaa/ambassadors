@@ -50,3 +50,11 @@ export async function getAllUnapprovedSignUps() {
     console.log(e)
   }
 }
+
+export async function approveEventSignUp(id: string) {
+  try {
+    await db.updateTable("eventUser").where("id", "=", id).set({approved: true, updated_at: new Date()}).execute();
+  } catch (e) {
+    console.log(e)
+  }
+}
