@@ -31,7 +31,7 @@ export default async function User({params}: { params: { id: string }}) {
             <h2>Detail uživatele</h2>
             {
               !user.approved &&
-              <ApproveButton fun={await approveUserById(user.id)}/>
+              <ApproveButton fun={approveUserById} id={user.id}/>
             }
           </div>
           <UserDetail user={user}/>
