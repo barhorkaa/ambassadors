@@ -8,6 +8,7 @@ export async function createMotivation({ data }: { data: MotivationModel }) {
   try {
     await db.insertInto('motivationForm').values(data).execute();
     await setUserMotivatedStatus(data.user_id);
+    return true;
   } catch (e) {
     console.log(e);
   }
