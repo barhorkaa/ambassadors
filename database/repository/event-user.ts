@@ -41,6 +41,7 @@ export async function getAllUnapprovedSignUps() {
   try {
     return await db.selectFrom("eventUser")
       .fullJoin("user", "user.id", "user_id")
+      .leftJoin("user", "user.id", "user_id")
       .select(["user.name as user_name", "eventUser.id as id", "eventUser.event_id as event_id", "eventUser.user_id as user_id"])
       .leftJoin("event", "event.id", "event_id")
       .select("event.name as event_name")
