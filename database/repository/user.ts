@@ -1,4 +1,5 @@
 import { db } from '@/database/database';
+import { RegistrationModel } from '@/models/auth/registration-model';
 import { Selectable } from 'kysely';
 import { User } from 'kysely-codegen';
 
@@ -32,26 +33,13 @@ export async function getUserApproval(email: string | undefined) {
   } catch (e) {}
 }
 
-export async function createNewUser(name: string, email: string, password: string, uco: number, phone_number: string) {
-  console.log('inside createNewUser in repo');
-  const newUser = {
-    name: name,
-    uco: uco,
-    email: email,
-    phone_number: phone_number,
-    password: password,
-  };
-
-  // TODO handle undefined when insert fails
-  let res = null;
+export async function createNewUser(newUser: RegistrationModel) {
   try {
-    res = await db.insertInto('user').values(newUser).returning('id').executeTakeFirst();
+    await db.insertInto('user').values(newUser).returning('id').executeTakeFirst();
+    return true;
   } catch (e) {
     console.log(e);
   }
-
-  console.log('inserted into database');
-  return res;
 }
 
 export async function setUserMotivatedStatus(id: string) {
