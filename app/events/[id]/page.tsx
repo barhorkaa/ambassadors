@@ -46,7 +46,7 @@ export default async function Event({params}: { params: { id: string }}) {
         <h1>Detail akce</h1>
         <div>
           {(!event.approved && session?.user.role == "manager") &&
-              <ApproveButton fun={await approveEventWithId(event.id)}/>}
+              <ApproveButton fun={approveEventWithId} id={event.id}/>}
           {(session) &&
               <EventSignUpButton disabled={disabled} event_id={event.id} user_id={session.user.id}/>}
           {(session?.user.role === "manager" || isSignedOnEvent) && <EditEventModal event={event} eventTypes={eventTypes}/>}
