@@ -1,8 +1,8 @@
 import { approveEventWithId } from '@/app/lib/actions/event';
 import ApproveButton from '@/app/ui/button/approve-button';
 import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
+import EventTypeDetail from '@/app/ui/event-type/event-type-detail';
 import EventDetail from '@/app/ui/event/event-detail';
-import EventTypeDetail from '@/app/ui/event/event-type-detail';
 import EditEventModal from '@/app/ui/modals/edit-event-modal';
 import { auth } from '@/auth';
 import { getAllEventTypesBasics, getEventTypeById } from '@/database/repository/event-type';
