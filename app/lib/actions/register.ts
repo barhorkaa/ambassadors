@@ -1,44 +1,34 @@
 'use server';
 
 import { createNewUser } from '@/database/repository/user';
-import { RegistrationFormModel } from '@/models/auth/registration-form-model';
+import { RegistrationModel, registrationModel } from '@/models/auth/registration-model';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
 
 export async function createUser(prevState: string | undefined, formData: FormData) {
-  let id = null;
+  let result: boolean | undefined = false;
 
   try {
-    console.log('Successfully called createUser');
-    console.log(formData);
+    const newUserForm = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+      uco: formData.get('uco'),
+      phone_number: formData.get('phoneNumber'),
+    };
 
-    const res = RegistrationFormModel.safeParse(formData);
-    console.log('parsed result is: ', res);
+    const parse = registrationModel.safeParse(newUserForm);
 
-    // TODO add data validation with zod
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const password = formData.get('password') as string;
-    const passwordHashed = await bcrypt.hash(password, 10); // TODO change salt to random
-    const uco = Number(formData.get('uco') as string);
-    const phoneNumber = formData.get('phoneNumber') as string;
-
-    console.log('Calling fetch');
-
-    const maybeId = await createNewUser(name, email, passwordHashed, Number(uco), phoneNumber);
-
-    if (!maybeId) {
-      return 'Something went wrong';
+    if (parse.success) {
+      let newUser: RegistrationModel = parse.data;
+      newUser.password = await bcrypt.hash(newUser.password, 10); // TODO change salt to random
+      result = await createNewUser(newUser);
     }
-
-    id = maybeId.id;
-    console.log('id post registration', id);
-
-    // TODO maybe change to better parsing, rn like this for form call
   } catch (error) {
     console.log(error);
     return 'Something went wrong, error';
   }
-
-  redirect(`/register/success`);
+  if (result) {
+    redirect(`/register/success`);
+  }
 }
