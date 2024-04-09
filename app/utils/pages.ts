@@ -1,45 +1,45 @@
 export type PageUrl = {
-  name: string,
-  url: string
-}
+  name: string;
+  url: string;
+};
 
 export const eventsPages: PageUrl[] = [
   {
-    name: "Moje akce",
-    url: "/events/my"
+    name: 'Moje akce',
+    url: '/events/my',
   },
   {
-    name: "Akce",
-    url: "/events"
+    name: 'Akce',
+    url: '/events',
   },
   {
-    name: "Historie akcí",
-    url: "/events/history"
+    name: 'Historie akcí',
+    url: '/events/history',
   },
-]
+];
 
 export const programPages: PageUrl[] = [
   {
-    name: "O programu",
-    url: "/"
+    name: 'O programu',
+    url: '/',
   },
   {
-    name: "Kontakty",
-    url: "/#contacts"
+    name: 'Kontakty',
+    url: '/#contacts',
   },
   {
-    name: "Pomocník",
-    url: "/help"
+    name: 'Pomocník',
+    url: '/help',
   },
-]
+];
 
 export const managerPages: PageUrl[] = [
   {
-    name: "Uživatelé",
-    url: "/ambassadors"
+    name: 'Uživatelé',
+    url: '/ambassadors',
   },
   {
-    name: "Druhy akcí",
-    url: "/events/type"
+    name: 'Druhy akcí',
+    url: '/events/type',
   },
-]
+];

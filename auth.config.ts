@@ -29,28 +29,27 @@ export const authConfig = {
       // console.log("Session post role assign:", session)
       return session;
     },
-    async authorized({auth, request: {nextUrl}}) {
+    async authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
 
-      const isManager = auth?.user.role == "manager";
+      const isManager = auth?.user.role == 'manager';
       const isApproved = auth?.user.approved!; // TODO maybe remove the !
       const isMotivated = auth?.user.motivated!;
 
-
       if (!isLoggedIn) {
-        return false // TODO might work by mistake for login page
+        return false; // TODO might work by mistake for login page
       }
 
       if (!isMotivated) {
-        return Response.redirect(new URL('/motivation', nextUrl))
+        return Response.redirect(new URL('/motivation', nextUrl));
       }
       if (!isApproved) {
-        return Response.redirect(new URL('/denied', nextUrl))
+        return Response.redirect(new URL('/denied', nextUrl));
       }
 
       if (!isManager) {
         if (nextUrl.pathname.startsWith('/ambassadors') || nextUrl.pathname.startsWith('/events/type')) {
-          return Response.redirect(new URL('/denied/role', nextUrl))
+          return Response.redirect(new URL('/denied/role', nextUrl));
         }
       }
 

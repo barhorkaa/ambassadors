@@ -1,10 +1,9 @@
-import {UserModel} from "@/models/userModel";
-import {approveUserWithId} from "@/app/lib/actions/users";
-import React from "react";
-import Link from "next/link";
+import { approveUserWithId } from '@/app/lib/actions/users';
+import { UserModel } from '@/models/userModel';
+import Link from 'next/link';
 
-export default async function UserCard(props: {user: UserModel}) {
-  console.log("user in card is", props.user)
+export default async function UserCard(props: { user: UserModel }) {
+  console.log('user in card is', props.user);
   return (
     <Link
       href={`ambassadors/${props.user.id}`}
@@ -22,21 +21,21 @@ export default async function UserCard(props: {user: UserModel}) {
               <p>E-mail: {props.user.email}</p>
               <p>Tel. číslo: {props.user.phone_number}</p>
             </div>
-            {!props.user.approved &&
-                <div className="card-actions justify-end">
-                    <form action={approveUserWithId}>
-                        <input name="id" type="hidden" value={props.user.id} />
-                        {/*<ApproveButton/>*/}
-                      {/*<button type="submit" className="btn btn-circle btn-outline">*/}
-                      {/*    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m4.5 12.75 6 6 9-13.5" /></svg>*/}
-                      {/*</button>*/}
-                    </form>
-                </div>
-            }
+            {!props.user.approved && (
+              <div className="card-actions justify-end">
+                <form action={approveUserWithId}>
+                  <input name="id" type="hidden" value={props.user.id} />
+                  {/*<ApproveButton/>*/}
+                  {/*<button type="submit" className="btn btn-circle btn-outline">*/}
+                  {/*    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m4.5 12.75 6 6 9-13.5" /></svg>*/}
+                  {/*</button>*/}
+                </form>
+              </div>
+            )}
           </div>
         </div>
       </div>
-    {/*</button>*/}
+      {/*</button>*/}
     </Link>
-  )
+  );
 }

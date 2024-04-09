@@ -1,27 +1,38 @@
-'use client'
+'use client';
 
-import React, {useState} from "react";
-import {EventTypeBasicModel} from "@/models/event-type/event-type-basic";
+import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
+import { useState } from 'react';
 
-export default function EventTypeSelect(props: {eventTypes: EventTypeBasicModel[], selectedEvent: string | undefined}) {
+export default function EventTypeSelect(props: {
+  eventTypes: EventTypeBasicModel[];
+  selectedEvent: string | undefined;
+}) {
   const [eventType, setEventType] = useState(props.selectedEvent);
 
   const handleEventTypeChange = (event: any) => {
     setEventType(event.target.value);
-    console.log("\n\n\n\n", event.target.value)
+    console.log('\n\n\n\n', event.target.value);
   };
 
-  return(
+  return (
     <div className="form-control">
       <label className="label" htmlFor="event_type">
         <span className="label-text">Typ akce</span>
       </label>
-      <select className="select select-bordered w-full max-w-xs" id='eventType' name="event_type_id" value={eventType} onChange={handleEventTypeChange}>
+      <select
+        className="select select-bordered w-full max-w-xs"
+        id="eventType"
+        name="event_type_id"
+        value={eventType}
+        onChange={handleEventTypeChange}
+      >
         <option>Vyberte typ akce</option>
-        {props.eventTypes.map((event) =>
-          <option key={event.id} value={event.id}>{event.name}</option>
-        )}
+        {props.eventTypes.map((event) => (
+          <option key={event.id} value={event.id}>
+            {event.name}
+          </option>
+        ))}
       </select>
     </div>
-  )
+  );
 }

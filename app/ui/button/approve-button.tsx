@@ -1,29 +1,27 @@
-"use client"
+'use client';
 
-import {useState} from "react";
-import {approveUserById} from "@/app/lib/actions/users";
-import {CheckIcon} from "@heroicons/react/24/outline";
+import { useState } from 'react';
 
-
-export default function ApproveButton(props : {fun: any, id: string}) {
+export default function ApproveButton(props: { fun: any; id: string }) {
   const [show, setShow] = useState(true);
 
   function changeState() {
     setShow(!show);
   }
 
-  return(
+  return (
     <>
-      {show &&
-        <button onClick={async () => {
-          await props.fun(props.id);
-          changeState()
-        }}>
+      {show && (
+        <button
+          onClick={async () => {
+            await props.fun(props.id);
+            changeState();
+          }}
+        >
           {/*<CheckIcon className="h-5 w-5"/>*/}
-            Potvrdit
+          Potvrdit
         </button>
-      }
+      )}
     </>
-
-  )
+  );
 }

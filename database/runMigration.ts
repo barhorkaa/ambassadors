@@ -1,16 +1,11 @@
-import * as path from 'path'
-import { Pool } from 'pg'
-import { promises as fs } from 'fs'
-import {
-  Kysely,
-  Migrator,
-  PostgresDialect,
-  FileMigrationProvider,
-} from 'kysely'
+import { promises as fs } from 'fs';
+import { FileMigrationProvider, Kysely, Migrator, PostgresDialect } from 'kysely';
+import * as path from 'path';
+import { Pool } from 'pg';
 
-import * as dotenv from 'dotenv'
-import {DB} from "kysely-codegen";
-dotenv.config({ path: '.env.local' })
+import * as dotenv from 'dotenv';
+import { DB } from 'kysely-codegen';
+dotenv.config({ path: '.env.local' });
 
 async function migrateToLatest() {
   const db = new Kysely<DB>({
@@ -23,7 +18,7 @@ async function migrateToLatest() {
         database: process.env['POSTGRES_DB'],
       }),
     }),
-  })
+  });
 
   const migrator = new Migrator({
     db,
@@ -33,25 +28,25 @@ async function migrateToLatest() {
       // This needs to be an absolute path.
       migrationFolder: path.join(__dirname, 'migrations'),
     }),
-  })
+  });
 
-  const { error, results } = await migrator.migrateToLatest()
+  const { error, results } = await migrator.migrateToLatest();
 
   results?.forEach((it) => {
     if (it.status === 'Success') {
-      console.log(`migration "${it.migrationName}" was executed successfully`)
+      console.log(`migration "${it.migrationName}" was executed successfully`);
     } else if (it.status === 'Error') {
-      console.error(`failed to execute migration "${it.migrationName}"`)
+      console.error(`failed to execute migration "${it.migrationName}"`);
     }
-  })
+  });
 
   if (error) {
-    console.error('failed to migrate')
-    console.error(error)
-    process.exit(1)
+    console.error('failed to migrate');
+    console.error(error);
+    process.exit(1);
   }
 
-  await db.destroy()
+  await db.destroy();
 }
 
-migrateToLatest()
+migrateToLatest();

@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const eventUserBasicModel = z.object({
   id: z.string().nullable(),
@@ -6,6 +6,6 @@ export const eventUserBasicModel = z.object({
   user_id: z.string().nullable(),
   event_id: z.string().nullable(),
   event_name: z.string().nullable(),
-})
+});
 
-export type EventUserBasicModel = z.infer<typeof eventUserBasicModel>
+export type EventUserBasicModel = z.infer<typeof eventUserBasicModel>;

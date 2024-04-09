@@ -1,8 +1,8 @@
-import {EventUserBasicModel} from "@/models/event-user/event-user-basic-model";
-import ApproveButton from "@/app/ui/button/approve-button";
-import {approveUserEvent} from "@/app/lib/actions/event-user";
+import { approveUserEvent } from '@/app/lib/actions/event-user';
+import ApproveButton from '@/app/ui/button/approve-button';
+import { EventUserBasicModel } from '@/models/event-user/event-user-basic-model';
 
-export default async function EventUserTable({eventUsers} : {eventUsers: EventUserBasicModel[]}) {
+export default async function EventUserTable({ eventUsers }: { eventUsers: EventUserBasicModel[] }) {
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -14,15 +14,17 @@ export default async function EventUserTable({eventUsers} : {eventUsers: EventUs
           </tr>
         </thead>
         <tbody>
-        {eventUsers.map((eventUser) => (
-          <tr className="hover" key={eventUser.id}>
-            <td>{eventUser.user_name}</td>
-            <td>{eventUser.event_name}</td>
-            <td><ApproveButton fun={approveUserEvent} id={eventUser.id!}/></td>
-          </tr>
-        ))}
+          {eventUsers.map((eventUser) => (
+            <tr className="hover" key={eventUser.id}>
+              <td>{eventUser.user_name}</td>
+              <td>{eventUser.event_name}</td>
+              <td>
+                <ApproveButton fun={approveUserEvent} id={eventUser.id!} />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }

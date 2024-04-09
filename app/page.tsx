@@ -1,6 +1,5 @@
-import React from "react";
-import FAQ from "@/app/ui/main-page/faq";
-import Carousel from "@/app/ui/main-page/carousel";
+import Carousel from '@/app/ui/main-page/carousel';
+import FAQ from '@/app/ui/main-page/faq';
 
 export default function Home() {
   return (
@@ -9,7 +8,7 @@ export default function Home() {
       <h1>Ambasadorský program Fakulty Informatiky MU</h1>
       <h2>Staň se i ty ambasadorem FI a pomoz nám představit fakultu široké veřejnosti!</h2>
       <h2>Časté otázky</h2>
-      <FAQ/>
+      <FAQ />
     </div>
-  )
+  );
 }

@@ -6,5 +6,5 @@ export default NextAuth(authConfig).auth;
 export const config = {
   // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
   // matcher: ['/((?!api|_next/static|_next/image|/login.*\\.png$).*)'],
-  matcher: ['/events/:path*', '/login/:path*', "/ambassadors/:path*"],
+  matcher: ['/events/:path*', '/login/:path*', '/ambassadors/:path*'],
 };

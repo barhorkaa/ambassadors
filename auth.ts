@@ -1,9 +1,9 @@
-import NextAuth from 'next-auth';
-import { authConfig } from './auth.config';
-import Credentials from 'next-auth/providers/credentials';
+import { getUserByEmail } from '@/database/repository/user';
+import { LoginModel } from '@/models/auth/login-model';
 import bcrypt from 'bcryptjs';
-import {getUserByEmail} from "@/database/repository/user";
-import {LoginModel} from "@/models/auth/login-model";
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+import { authConfig } from './auth.config';
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -18,13 +18,13 @@ export const { auth, signIn, signOut } = NextAuth({
           if (!user) return null;
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
-          console.log("user is:", user)
-          console.log("user role is:", user.role)
+          console.log('user is:', user);
+          console.log('user role is:', user.role);
 
           if (passwordsMatch) {
             // const hasMotivation = await isUserMotivated(user.id);
             // return {...user, password: null, motivated: hasMotivation};
-            return {...user, password: null};
+            return { ...user, password: null };
           }
         }
 

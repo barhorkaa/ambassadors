@@ -1,7 +1,6 @@
-"use client"
+'use client';
 
-import {useFormStatus} from "react-dom";
-import React from "react";
+import { useFormStatus } from 'react-dom';
 
 export default function SubmitButton() {
   const { pending } = useFormStatus();
@@ -10,5 +9,5 @@ export default function SubmitButton() {
     <button className="mt-4 w-full bg-amber-200 p-2" aria-disabled={pending}>
       Odeslat
     </button>
-  )
+  );
 }

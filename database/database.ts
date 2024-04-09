@@ -1,9 +1,9 @@
-import { Pool } from 'pg'
-import { Kysely, PostgresDialect } from 'kysely'
+import { Kysely, PostgresDialect } from 'kysely';
+import { Pool } from 'pg';
 
-import * as dotenv from 'dotenv'
-import {DB} from "kysely-codegen";
-dotenv.config({ path: '.env.local' })
+import * as dotenv from 'dotenv';
+import { DB } from 'kysely-codegen';
+dotenv.config({ path: '.env.local' });
 
 const dialect = new PostgresDialect({
   pool: new Pool({
@@ -13,8 +13,8 @@ const dialect = new PostgresDialect({
     password: process.env['POSTGRES_PASSWORD'],
     database: process.env['POSTGRES_DB'],
     max: 10,
-  })
-})
+  }),
+});
 
 // Database interface is passed to Kysely's constructor, and from now on, Kysely
 // knows your database structure.
@@ -22,4 +22,4 @@ const dialect = new PostgresDialect({
 // to communicate with your database.
 export const db = new Kysely<DB>({
   dialect,
-})
+});

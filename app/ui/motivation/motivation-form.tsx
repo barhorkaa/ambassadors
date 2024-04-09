@@ -1,7 +1,6 @@
-import React from "react";
-import {createMotivationForm} from "@/app/lib/actions/motivation";
-import {auth} from "@/auth";
-import SubmitButton from "@/app/ui/button/submit-button";
+import { createMotivationForm } from '@/app/lib/actions/motivation';
+import SubmitButton from '@/app/ui/button/submit-button';
+import { auth } from '@/auth';
 
 export default async function MotivationForm() {
   const session = await auth();
@@ -11,8 +10,7 @@ export default async function MotivationForm() {
     <div className="card">
       <form action={createMotivationForm} className="card-body">
         <div className="form-control">
-          <label className="label"
-                 htmlFor="name">
+          <label className="label" htmlFor="name">
             <span className="label-text">Proč jste se rozhodli k nám přidat?</span>
           </label>
           <input id="why" type="text" name="why" placeholder="Proč?" className="input input-bordered" required />
@@ -21,32 +19,57 @@ export default async function MotivationForm() {
           <label className="label" htmlFor="who">
             <span className="label-text">Doporučil vám někto přidat se k programu? Pokud ano, kto?</span>
           </label>
-          <input id="who" type="text" name="who" placeholder="Ne / Ano + kto" className="input input-bordered" required />
+          <input
+            id="who"
+            type="text"
+            name="who"
+            placeholder="Ne / Ano + kto"
+            className="input input-bordered"
+            required
+          />
         </div>
         <div className="form-control">
-          <label className="label"
-                 htmlFor="goals">
+          <label className="label" htmlFor="goals">
             <span className="label-text">Co byste chtěli jako ambasador dosáhnout?</span>
           </label>
-          <input id="goals" type="text" name="goals" placeholder="Vaše cíle" className="input input-bordered" required />
+          <input
+            id="goals"
+            type="text"
+            name="goals"
+            placeholder="Vaše cíle"
+            className="input input-bordered"
+            required
+          />
         </div>
         <div className="form-control">
-          <label className="label"
-                 htmlFor="preferredEvents">
+          <label className="label" htmlFor="preferredEvents">
             <span className="label-text">Jakých akcí byste se chtěli převážně zúčastňovat?</span>
           </label>
-          <input id="preferredEvents" type="text" name="preferredEvents" placeholder="Výjezdy, Dny otevřených dveří, Veltrhy ..." className="input input-bordered" required />
+          <input
+            id="preferredEvents"
+            type="text"
+            name="preferredEvents"
+            placeholder="Výjezdy, Dny otevřených dveří, Veltrhy ..."
+            className="input input-bordered"
+            required
+          />
         </div>
         <div className="form-control">
-          <label className="label"
-                 htmlFor="time">
+          <label className="label" htmlFor="time">
             <span className="label-text">Kolik času budete mít na ambasadorskou činnost?</span>
           </label>
-          <input id="time" type="text" name="time" placeholder="Vaše časové možnosti" className="input input-bordered" required />
+          <input
+            id="time"
+            type="text"
+            name="time"
+            placeholder="Vaše časové možnosti"
+            className="input input-bordered"
+            required
+          />
         </div>
         <input id="id" type="hidden" name="userId" value={userId} className="input input-bordered" required />
-        <SubmitButton/>
+        <SubmitButton />
       </form>
     </div>
-  )
+  );
 }

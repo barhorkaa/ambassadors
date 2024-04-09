@@ -19,31 +19,31 @@
 
 @layer base {
   body {
-    @apply text-black bg-white min-h-screen flex flex-col justify-between
+    @apply text-black bg-white min-h-screen flex flex-col justify-between;
   }
   main {
-    @apply bg-white mx-52 my-9 md:mx-12 sm:mx-2.5
+    @apply bg-white mx-52 my-9 md:mx-12 sm:mx-2.5;
   }
   h1 {
-    @apply text-4xl font-bold  sm:text-3xl
+    @apply text-4xl font-bold  sm:text-3xl;
   }
   h2 {
-    @apply text-2xl font-bold  sm:text-xl
+    @apply text-2xl font-bold  sm:text-xl;
   }
   h3 {
-    @apply text-lg font-bold
+    @apply text-lg font-bold;
   }
   button {
-    @apply btn bg-fi-300
+    @apply btn bg-fi-300;
   }
 }
 
 @layer components {
   .card {
-    @apply shrink-0 w-full max-w-sm shadow-2xl bg-base-100
+    @apply shrink-0 w-full max-w-sm shadow-2xl bg-base-100;
   }
   .hero {
-    @apply bg-white min-h-max
+    @apply bg-white min-h-max;
   }
   .custom-carousel {
     position: relative;
@@ -57,7 +57,6 @@
     /*height: 500px;*/
   }
   .hero-title {
-    @apply text-5xl font-bold sm:text-4xl
+    @apply text-5xl font-bold sm:text-4xl;
   }
 }
-

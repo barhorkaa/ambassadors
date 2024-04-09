@@ -1,10 +1,8 @@
-import {UserModel} from "@/models/userModel";
-import {ArrowTopRightOnSquareIcon} from "@heroicons/react/24/outline";
-import Link from "next/link";
+import { UserModel } from '@/models/userModel';
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
-
-export default async function UserTable(props: {users: UserModel[]}) {
-
+export default async function UserTable(props: { users: UserModel[] }) {
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -22,23 +20,22 @@ export default async function UserTable(props: {users: UserModel[]}) {
             <tr className="hover" key={user.id}>
               <td>{user.name}</td>
               <td>{user.uco}</td>
-                <td>{user.email}</td>
-                <td>{user.phone_number}</td>
-                {/*{!user.approved &&*/}
-                {/*  <td>*/}
-                {/*    <ApproveButton id={user.id}/>*/}
-                {/*  </td>*/}
-                {/*}*/}
+              <td>{user.email}</td>
+              <td>{user.phone_number}</td>
+              {/*{!user.approved &&*/}
+              {/*  <td>*/}
+              {/*    <ApproveButton id={user.id}/>*/}
+              {/*  </td>*/}
+              {/*}*/}
               <td>
                 <Link href={`ambassadors/${user.id}`}>
-                  <ArrowTopRightOnSquareIcon className="h-5"/>
+                  <ArrowTopRightOnSquareIcon className="h-5" />
                 </Link>
               </td>
             </tr>
           ))}
-
         </tbody>
       </table>
     </div>
-  )
+  );
 }

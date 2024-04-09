@@ -1,7 +1,6 @@
-import {getAllAmbassadors, getAllManagers, getNotApprovedUsers} from "@/database/repository/user";
-import React from "react";
-import {UserModel} from "@/models/userModel";
-import UserTable from "@/app/ui/user/user-table";
+import UserTable from '@/app/ui/user/user-table';
+import { getAllAmbassadors, getAllManagers, getNotApprovedUsers } from '@/database/repository/user';
+import { UserModel } from '@/models/userModel';
 
 export default async function Ambassadors() {
   let allAmbassadors: UserModel[] | undefined = await getAllAmbassadors();
@@ -19,22 +18,22 @@ export default async function Ambassadors() {
     unapprovedAmbassadors = [];
   }
 
-  return(
+  return (
     <div>
       <h1>Uživatelé</h1>
       <h2>Nepotvrzení uživatelé</h2>
-      <UserTable users={unapprovedAmbassadors}/>
+      <UserTable users={unapprovedAmbassadors} />
       <h2>Všichni manažeři</h2>
-      <UserTable users={allManagers}/>
+      <UserTable users={allManagers} />
       {/*<div className="flex space-x-4 space-y-4">*/}
       {/*  {allManagers.map((manager) => (<UserCard user={manager}/>) )}*/}
       {/*</div>*/}
-      <hr/>
+      <hr />
       <h2>Všichni ambasadoři</h2>
-      <UserTable users={allAmbassadors}/>
+      <UserTable users={allAmbassadors} />
       {/*<div className="flex flex-wrap md:justify-between   space-y-4">*/}
       {/*  {allAmbassadors.map((ambassador) => (<UserCard user={ambassador}/>) )}*/}
       {/*</div>*/}
     </div>
-  )
+  );
 }

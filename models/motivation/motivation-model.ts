@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const motivationModel = z.object({
   why: z.string(),
@@ -6,7 +6,7 @@ export const motivationModel = z.object({
   goals: z.string(),
   preferred_events: z.string(),
   time: z.string(),
-  user_id: z.string()
+  user_id: z.string(),
 });
 
-export type MotivationModel = z.infer<typeof motivationModel>
+export type MotivationModel = z.infer<typeof motivationModel>;
