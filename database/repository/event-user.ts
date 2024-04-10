@@ -1,6 +1,6 @@
 import { db } from '@/database/database';
 
-export async function getUserEvents(user_id: string) {
+export async function getUserSignUps(user_id: string) {
   try {
     console.log('user id is: ', user_id);
     return await db

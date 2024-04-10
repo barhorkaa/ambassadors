@@ -1,6 +1,6 @@
 import EventTable from '@/app/ui/event/event-table';
 import { auth } from '@/auth';
-import { getUserEvents } from '@/database/repository/event-user';
+import { getUserSignUps } from '@/database/repository/event-user';
 import { EventModel } from '@/models/event/event-model';
 
 export default async function MyEvents() {
@@ -9,7 +9,7 @@ export default async function MyEvents() {
   let userEvents: EventModel[] = [];
   if (session) {
     console.log('user id on MyEvents is: ', session.user.id);
-    const userEvents_: EventModel[] | undefined = await getUserEvents(session.user.id);
+    const userEvents_: EventModel[] | undefined = await getUserSignUps(session.user.id);
     if (userEvents_) {
       userEvents = userEvents_;
     }
