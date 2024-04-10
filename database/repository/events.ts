@@ -31,7 +31,7 @@ export async function createEvent({ event }: { event: EventBasicModel }) {
   }
 }
 
-export async function updateEvent({ event }: { event: EventBasicModel }) {
+export async function updateEvent(event: EventBasicModel) {
   try {
     await db
       .updateTable('event')
