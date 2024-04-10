@@ -2,7 +2,7 @@ import { FaqQuestion, faqQuestions } from '@/app/utils/faq-questions';
 
 export default function FAQ() {
   return (
-    <div className="w-full">
+    <div className="w-1/2 sm:w-full">
       {faqQuestions.map((question, index) => (
         <FAQDrawer key={index} faq={question} />
       ))}
