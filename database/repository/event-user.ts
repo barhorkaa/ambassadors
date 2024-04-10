@@ -22,7 +22,7 @@ export async function getUserSignUps(user_id: string) {
   }
 }
 
-export async function createUserEvent(event_id: string, user_id: string) {
+export async function createSignUp(event_id: string, user_id: string) {
   try {
     await db.insertInto('eventUser').values({ user_id: user_id, event_id: event_id }).execute();
   } catch (e) {
