@@ -44,7 +44,7 @@ export async function isUserSignedUpForEvent(event_id: string, user_id: string) 
   }
 }
 
-export async function getAllUnapprovedEventUsers() {
+export async function getAllUnapprovedSignUps() {
   try {
     return await db
       .selectFrom('eventUser')
