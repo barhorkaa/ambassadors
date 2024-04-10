@@ -5,7 +5,7 @@ import { approveEvent, createEvent, updateEvent } from '@/database/repository/ev
 import { eventBasicModel } from '@/models/event/event-basic-model';
 import { redirect } from 'next/navigation';
 
-export async function createNewEvent(formData: FormData) {
+export async function creatEventAction(formData: FormData) {
   let result: boolean | undefined = false;
   try {
     const data = {

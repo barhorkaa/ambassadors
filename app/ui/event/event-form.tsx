@@ -1,4 +1,4 @@
-import { createNewEvent, updateEventWithId } from '@/app/lib/actions/events';
+import { creatEventAction, updateEventWithId } from '@/app/lib/actions/events';
 import SubmitButton from '@/app/ui/button/submit-button';
 import EventTypeSelect from '@/app/ui/event-type/event-type-select';
 import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 
 export default async function EventForm(data: { eventTypes: EventTypeBasicModel[]; event: EventDetailModel | null }) {
   return (
-    <form action={data.event === null ? createNewEvent : updateEventWithId} className="card-body">
+    <form action={data.event === null ? creatEventAction : updateEventWithId} className="card-body">
       <div className="form-control">
         <label className="label" htmlFor="name">
           <span className="label-text">Název akce</span>
