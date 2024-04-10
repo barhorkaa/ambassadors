@@ -40,7 +40,7 @@ export default async function Event({ params }: { params: { id: string } }) {
     <div className="page">
       <div className="flex flex-row justify-between">
         <h1>Detail akce</h1>
-        <div>
+        <div className="flex flex-row gap-4">
           {!event.approved && session?.user.role == 'manager' && (
             <ApproveButton fun={approveEventAction} id={event.id} />
           )}
