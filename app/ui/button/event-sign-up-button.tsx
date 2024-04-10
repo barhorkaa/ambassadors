@@ -1,6 +1,6 @@
 'use client';
 
-import { createEventSignUp } from '@/app/lib/actions/events';
+import { createEventSignUp } from '@/app/lib/actions/event-user';
 import { useState } from 'react';
 
 export default function EventSignUpButton(props: { disabled: boolean; event_id: string; user_id: string }) {
