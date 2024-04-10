@@ -15,14 +15,11 @@ export default function UserDetail(params: { user: UserModel }) {
   );
 }
 
-export function DetailRow(params: { label: string; value: string | number }) {
+export function DetailRow(detail: { label: string; value: string | number }) {
   return (
     <div>
-      <div className="p-2 flex flex-row justify-between">
-        <h3>{params.label}</h3>
-        <h4 className="ml-16">{params.value}</h4>
-      </div>
-      <hr />
+      <p className="font-light">{detail.label}</p>
+      <p className="pl-16 text-xl">{detail.value}</p>
     </div>
   );
 }
