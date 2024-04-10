@@ -22,7 +22,7 @@
     @apply text-black bg-white min-h-screen flex flex-col justify-between;
   }
   main {
-    @apply bg-white mx-52 my-9 md:mx-12 sm:mx-2.5;
+    @apply bg-white mx-52 mb-9 md:mx-12 sm:mx-2.5;
   }
   h1 {
     @apply text-4xl font-semibold  sm:text-3xl;
