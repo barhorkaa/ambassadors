@@ -2,7 +2,7 @@ import { approveUserById } from '@/app/lib/actions/users';
 import ApproveButton from '@/app/ui/button/approve-button';
 import MotivationDetail from '@/app/ui/motivation/motivation-detail';
 import UserDetail from '@/app/ui/user/user-detail';
-import { getMotivationById } from '@/database/repository/motivation';
+import { getUserMotivation } from '@/database/repository/motivation';
 import { getUserById } from '@/database/repository/user';
 import { MotivationModel } from '@/models/motivation/motivation-model';
 import { UserModel } from '@/models/userModel';
@@ -13,7 +13,7 @@ export default async function User({ params }: { params: { id: string } }) {
     return <div>failed to get userto</div>;
   }
 
-  const userMotivation: MotivationModel | undefined = await getMotivationById(params.id);
+  const userMotivation: MotivationModel | undefined = await getUserMotivation(params.id);
 
   return (
     <div className="flex flex-col">

@@ -27,7 +27,7 @@ export async function isUserMotivated(user_id: string) {
   }
 }
 
-export async function getMotivationById(id: string) {
+export async function getUserMotivation(id: string) {
   try {
     return await db.selectFrom('motivationForm').where('user_id', '=', id).selectAll().executeTakeFirstOrThrow();
   } catch (e) {
