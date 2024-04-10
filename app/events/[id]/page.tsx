@@ -1,4 +1,4 @@
-import { approveEventWithId } from '@/app/lib/actions/events';
+import { approveEventAction } from '@/app/lib/actions/events';
 import ApproveButton from '@/app/ui/button/approve-button';
 import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
 import EventTypeDetail from '@/app/ui/event-type/event-type-detail';
@@ -42,7 +42,7 @@ export default async function Event({ params }: { params: { id: string } }) {
         <h1>Detail akce</h1>
         <div>
           {!event.approved && session?.user.role == 'manager' && (
-            <ApproveButton fun={approveEventWithId} id={event.id} />
+            <ApproveButton fun={approveEventAction} id={event.id} />
           )}
           {session && <EventSignUpButton disabled={disabled} event_id={event.id} user_id={session.user.id} />}
           {(session?.user.role === 'manager' || isSignedOnEvent) && (

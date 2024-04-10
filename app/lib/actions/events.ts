@@ -50,7 +50,7 @@ export async function updateEventAction(formData: FormData) {
   }
 }
 
-export async function approveEventWithId(id: string) {
+export async function approveEventAction(id: string) {
   try {
     await approveEvent(id);
   } catch (e) {
