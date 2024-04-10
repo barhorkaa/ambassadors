@@ -42,7 +42,7 @@ export async function createUser(newUser: RegistrationModel) {
   }
 }
 
-export async function setUserMotivatedStatus(id: string) {
+export async function motivateUser(id: string) {
   try {
     await db.updateTable('user').set({ motivated: true }).where('id', '=', id).executeTakeFirstOrThrow();
   } catch (e) {
