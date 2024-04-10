@@ -31,7 +31,7 @@ const config: Config = {
       },
       muni: '#0000DC',
       black: '#000000',
-      white: '#fafafa',
+      white: '#fcfcfc',
     },
     extend: {
       backgroundImage: {
