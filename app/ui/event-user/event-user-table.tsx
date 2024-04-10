@@ -1,4 +1,4 @@
-import { approveUserEventAction } from '@/app/lib/actions/event-user';
+import { approveSignUpAction } from '@/app/lib/actions/event-user';
 import ApproveButton from '@/app/ui/button/approve-button';
 import { EventUserBasicModel } from '@/models/event-user/event-user-basic-model';
 
@@ -19,7 +19,7 @@ export default async function EventUserTable({ eventUsers }: { eventUsers: Event
               <td>{eventUser.user_name}</td>
               <td>{eventUser.event_name}</td>
               <td>
-                <ApproveButton fun={approveUserEventAction} id={eventUser.id!} />
+                <ApproveButton fun={approveSignUpAction} id={eventUser.id!} />
               </td>
             </tr>
           ))}

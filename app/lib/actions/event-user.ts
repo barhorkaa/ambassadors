@@ -2,7 +2,7 @@
 
 import { approveSignUp, createSignUp } from '@/database/repository/event-user';
 
-export async function approveUserEventAction(id: string) {
+export async function approveSignUpAction(id: string) {
   try {
     await approveSignUp(id);
   } catch (e) {
