@@ -1,7 +1,7 @@
 'use server';
 
 import { auth } from '@/auth';
-import { signUpUserForEvent } from '@/database/repository/event-user';
+import { createUserEvent } from '@/database/repository/event-user';
 import { approveEvent, createEvent, updateEvent } from '@/database/repository/events';
 import { eventBasicModel } from '@/models/event/event-basic-model';
 import { redirect } from 'next/navigation';
@@ -61,7 +61,7 @@ export async function approveEventWithId(id: string) {
 
 export async function createEventSignUp(event_id: string, user_id: string) {
   try {
-    await signUpUserForEvent(event_id, user_id);
+    await createUserEvent(event_id, user_id);
   } catch (e) {
     console.log(e);
   }
