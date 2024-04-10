@@ -1,4 +1,4 @@
-import { createNewEvent, updateEventWithId } from '@/app/lib/actions/event';
+import { createNewEvent, updateEventWithId } from '@/app/lib/actions/events';
 import SubmitButton from '@/app/ui/button/submit-button';
 import EventTypeSelect from '@/app/ui/event-type/event-type-select';
 import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';

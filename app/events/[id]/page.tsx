@@ -1,4 +1,4 @@
-import { approveEventWithId } from '@/app/lib/actions/event';
+import { approveEventWithId } from '@/app/lib/actions/events';
 import ApproveButton from '@/app/ui/button/approve-button';
 import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
 import EventTypeDetail from '@/app/ui/event-type/event-type-detail';
