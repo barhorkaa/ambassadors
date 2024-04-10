@@ -1,6 +1,6 @@
 'use server';
 
-import { createNewUser } from '@/database/repository/user';
+import { createUser } from '@/database/repository/user';
 import { RegistrationModel, registrationModel } from '@/models/auth/registration-model';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
@@ -22,7 +22,7 @@ export async function createUserAction(prevState: string | undefined, formData: 
     if (parse.success) {
       let newUser: RegistrationModel = parse.data;
       newUser.password = await bcrypt.hash(newUser.password, 10); // TODO change salt to random
-      result = await createNewUser(newUser);
+      result = await createUser(newUser);
     }
   } catch (error) {
     console.log(error);

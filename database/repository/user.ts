@@ -33,7 +33,7 @@ export async function getUserApproval(email: string | undefined) {
   } catch (e) {}
 }
 
-export async function createNewUser(newUser: RegistrationModel) {
+export async function createUser(newUser: RegistrationModel) {
   try {
     await db.insertInto('user').values(newUser).returning('id').executeTakeFirst();
     return true;
