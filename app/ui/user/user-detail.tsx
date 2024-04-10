@@ -1,3 +1,4 @@
+import DetailRow from '@/app/ui/utils/detail-row';
 import { UserModel } from '@/models/userModel';
 
 export default function UserDetail(params: { user: UserModel }) {
@@ -11,15 +12,6 @@ export default function UserDetail(params: { user: UserModel }) {
       <DetailRow label={'Potvrzen'} value={params.user.approved ? 'Ano' : 'Ne'} />
       <DetailRow label={'Registrovaný'} value={params.user.created_at.toLocaleString()} />
       <DetailRow label={'Aktivní'} value={params.user.deleted_at ? 'Ne' : 'Ano'} />
-    </div>
-  );
-}
-
-export function DetailRow(detail: { label: string; value: string | number }) {
-  return (
-    <div>
-      <p className="font-light">{detail.label}</p>
-      <p className="pl-16 text-xl">{detail.value}</p>
     </div>
   );
 }

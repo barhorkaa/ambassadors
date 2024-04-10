@@ -1,4 +1,4 @@
-import { DetailRow } from '@/app/ui/user/user-detail';
+import DetailRow from '@/app/ui/utils/detail-row';
 import { auth } from '@/auth';
 import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
 
