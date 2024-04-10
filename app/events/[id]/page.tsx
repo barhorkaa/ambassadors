@@ -50,7 +50,7 @@ export default async function Event({ params }: { params: { id: string } }) {
           )}
         </div>
       </div>
-      <div className="flex flex-row justify-start gap-10 sm:flex-col py-4">
+      <div className="flex flex-col gap-6">
         <EventDetail event={event} />
         <EventTypeDetail eventType={eventType} />
       </div>
