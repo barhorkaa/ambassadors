@@ -5,7 +5,7 @@ import { RegistrationModel, registrationModel } from '@/models/auth/registration
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
 
-export async function createUser(prevState: string | undefined, formData: FormData) {
+export async function createUserAction(prevState: string | undefined, formData: FormData) {
   let result: boolean | undefined = false;
 
   try {

@@ -1,11 +1,11 @@
 'use client';
 
-import { createUser } from '@/app/lib/actions/register';
+import { createUserAction } from '@/app/lib/actions/register';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import { useFormState, useFormStatus } from 'react-dom';
 
 export default function RegisterForm() {
-  const [errorMessage, dispatch] = useFormState(createUser, undefined);
+  const [errorMessage, dispatch] = useFormState(createUserAction, undefined);
 
   return (
     <div className="card">
