@@ -1,4 +1,4 @@
-import { createMotivationForm } from '@/app/lib/actions/motivation';
+import { createMotivationAction } from '@/app/lib/actions/motivation';
 import SubmitButton from '@/app/ui/button/submit-button';
 import { auth } from '@/auth';
 
@@ -8,7 +8,7 @@ export default async function MotivationForm() {
 
   return (
     <div className="card">
-      <form action={createMotivationForm} className="card-body">
+      <form action={createMotivationAction} className="card-body">
         <div className="form-control">
           <label className="label" htmlFor="name">
             <span className="label-text">Proč jste se rozhodli k nám přidat?</span>
