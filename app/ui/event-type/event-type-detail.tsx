@@ -12,7 +12,7 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
   return (
     <div className="flex flex-col">
       <DetailRow label={'Typ akce'} value={eventType.name} />
-      <DetailRow label={'Popis'} value={eventType.description} />
+      <DetailRow label={'Popis akce'} value={eventType.description} />
       <DetailRow label={'Instrukce'} value={eventType.instructions} />
       {session?.user.role == 'manager' && (
         <div>
