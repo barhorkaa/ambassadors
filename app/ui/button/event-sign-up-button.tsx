@@ -1,6 +1,6 @@
 'use client';
 
-import { createEventSignUp } from '@/app/lib/actions/event-user';
+import { createSignUpAction } from '@/app/lib/actions/event-user';
 import { useState } from 'react';
 
 export default function EventSignUpButton(props: { disabled: boolean; event_id: string; user_id: string }) {
@@ -13,7 +13,7 @@ export default function EventSignUpButton(props: { disabled: boolean; event_id: 
   return (
     <button
       onClick={async () => {
-        await createEventSignUp(props.event_id, props.user_id);
+        await createSignUpAction(props.event_id, props.user_id);
         changeState();
       }}
       disabled={disabled}

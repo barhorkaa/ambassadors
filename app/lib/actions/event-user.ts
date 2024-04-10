@@ -10,7 +10,7 @@ export async function approveSignUpAction(id: string) {
   }
 }
 
-export async function createEventSignUp(event_id: string, user_id: string) {
+export async function createSignUpAction(event_id: string, user_id: string) {
   try {
     await createSignUp(event_id, user_id);
   } catch (e) {
