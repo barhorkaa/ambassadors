@@ -11,7 +11,7 @@ export default async function Events() {
   }
 
   return (
-    <>
+    <div className="page">
       <div className="flex flex-row justify-between p-4">
         <h1>Akce</h1>
         <button>
@@ -26,6 +26,6 @@ export default async function Events() {
       <div className="py-2">
         <EventTable events={allEvents} />
       </div>
-    </>
+    </div>
   );
 }

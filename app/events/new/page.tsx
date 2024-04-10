@@ -9,7 +9,7 @@ export default async function NewEvent() {
   }
 
   return (
-    <div className="hero">
+    <div className="page hero">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left p-4">
           <h1>Podejte návrh na novou akci</h1>

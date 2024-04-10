@@ -16,7 +16,7 @@ export default async function User({ params }: { params: { id: string } }) {
   const userMotivation: MotivationModel | undefined = await getUserMotivation(params.id);
 
   return (
-    <div className="flex flex-col">
+    <div className="page flex flex-col">
       <div className="flex flex-row">
         <h1>Informace o uživateli: {user.name}</h1>
       </div>

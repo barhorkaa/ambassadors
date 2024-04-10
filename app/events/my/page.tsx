@@ -17,7 +17,7 @@ export default async function MyEvents() {
   }
 
   return (
-    <div>
+    <div className="page">
       <h1>Moje akce</h1>
       <EventTable events={userEvents} />
     </div>

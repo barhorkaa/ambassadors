@@ -10,7 +10,7 @@ export default async function EventSignUps() {
 
   console.log('all sign ups are: ', allSignUps);
   return (
-    <div>
+    <div className="page">
       <h1>Přihlášení na akce</h1>
       <EventUserTable eventUsers={allSignUps} />
     </div>

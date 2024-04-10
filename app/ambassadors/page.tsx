@@ -19,7 +19,7 @@ export default async function Ambassadors() {
   }
 
   return (
-    <div>
+    <div className="page">
       <h1>Uživatelé</h1>
       <h2>Nepotvrzení uživatelé</h2>
       <UserTable users={unapprovedAmbassadors} />
