@@ -43,7 +43,7 @@ export async function updateEventWithId(formData: FormData) {
     const parse = eventBasicModel.safeParse(data);
 
     if (parse.success) {
-      await updateEvent({ event: parse.data });
+      await updateEvent(parse.data);
     }
   } catch (error) {
     return 'Something went wrong';
