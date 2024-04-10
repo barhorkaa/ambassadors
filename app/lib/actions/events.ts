@@ -31,7 +31,7 @@ export async function creatEventAction(formData: FormData) {
   }
 }
 
-export async function updateEventWithId(formData: FormData) {
+export async function updateEventAction(formData: FormData) {
   try {
     const data = {
       name: formData.get('name'),
