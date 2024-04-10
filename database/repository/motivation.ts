@@ -2,12 +2,12 @@ import { db } from '@/database/database';
 import { motivateUser } from '@/database/repository/user';
 import { MotivationModel } from '@/models/motivation/motivation-model';
 
-export async function createMotivation({ data }: { data: MotivationModel }) {
+export async function createMotivation(motivation: MotivationModel) {
   console.log('Got to repository');
-  console.log('Data on repo is: ', data);
+  console.log('Data on repo is: ', motivation);
   try {
-    await db.insertInto('motivationForm').values(data).execute();
-    await motivateUser(data.user_id);
+    await db.insertInto('motivationForm').values(motivation).execute();
+    await motivateUser(motivation.user_id);
     return true;
   } catch (e) {
     console.log(e);

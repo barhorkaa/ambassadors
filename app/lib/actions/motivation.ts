@@ -10,7 +10,7 @@ export async function createMotivationAction(formData: FormData) {
     const parse = MotivationFormModel.safeParse(formData);
 
     if (parse.success) {
-      result = await createMotivation({ data: parse.data });
+      result = await createMotivation(parse.data);
     }
   } catch (error) {
     return 'Something went wrong';
