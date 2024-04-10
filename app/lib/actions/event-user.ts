@@ -1,10 +1,10 @@
 'use server';
 
-import { approveEventSignUp } from '@/database/repository/event-user';
+import { approveEventUser } from '@/database/repository/event-user';
 
 export async function approveUserEventAction(id: string) {
   try {
-    await approveEventSignUp(id);
+    await approveEventUser(id);
   } catch (e) {
     console.log(e);
   }
