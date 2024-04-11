@@ -35,7 +35,11 @@ export async function getUserApproval(email: string | undefined) {
 
 export async function createUser(newUser: RegistrationModel) {
   try {
+    console.log('got to repository');
+    console.log('new user on repo is: ', newUser);
+
     await db.insertInto('user').values(newUser).returning('id').executeTakeFirst();
+    console.log('sucessfully created user');
     return true;
   } catch (e) {
     console.log(e);

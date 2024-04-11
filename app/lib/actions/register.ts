@@ -9,6 +9,7 @@ export async function createUserAction(prevState: string | undefined, formData: 
   let result: boolean | undefined = false;
 
   try {
+    console.log('form data is: ', formData);
     const newUserForm = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -18,10 +19,12 @@ export async function createUserAction(prevState: string | undefined, formData: 
     };
 
     const parse = registrationModel.safeParse(newUserForm);
+    console.log('parse is: ', parse);
 
     if (parse.success) {
       let newUser: RegistrationModel = parse.data;
       newUser.password = await bcrypt.hash(newUser.password, 10); // TODO change salt to random
+      console.log('new user post hash is: ', newUser);
       result = await createUser(newUser);
     }
   } catch (error) {
