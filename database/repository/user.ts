@@ -1,5 +1,6 @@
 import { db } from '@/database/database';
 import { RegistrationModel } from '@/models/auth/registration-model';
+import { UserEditSelfModel } from '@/models/user/user-edit-self-model';
 import { Selectable } from 'kysely';
 import { User } from 'kysely-codegen';
 
@@ -41,6 +42,18 @@ export async function createUser(newUser: RegistrationModel) {
     await db.insertInto('user').values(newUser).returning('id').executeTakeFirst();
     console.log('sucessfully created user');
     return true;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function editUser(user: UserEditSelfModel) {
+  try {
+    await db
+      .updateTable('user')
+      .where('id', '=', user.id)
+      .set({ name: user.name, phone_number: user.phone_number, updated_at: new Date() })
+      .execute();
   } catch (e) {
     console.log(e);
   }
