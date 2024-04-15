@@ -1,3 +1,4 @@
+import EditUserModal from '@/app/ui/modals/edit-user-modal';
 import MotivationDetail from '@/app/ui/motivation/motivation-detail';
 import UserDetail from '@/app/ui/user/user-detail';
 import { auth } from '@/auth';
@@ -18,7 +19,11 @@ export default async function Me() {
 
   return (
     <div className="page">
-      <h1>Moje informace</h1>
+      <div className="flex flex-row justify-between">
+        <h1>Moje informace</h1>
+        <EditUserModal user={user} />
+      </div>
+
       <hr className="divider w-full" />
       <div className="flex flex-row gap-20 sm:flex-col sm:gap-2">
         <UserDetail user={user} />
