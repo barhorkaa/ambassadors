@@ -6,7 +6,7 @@ export default function MotivationDetail(params: { motivation: MotivationModel |
   }
 
   return (
-    <>
+    <div className="flex flex-col">
       <div className="p-2 bg-amber-100 rounded-md">
         <h3 className="">Proč jste se rozhodli k nám přidat?</h3>
         <div>{params.motivation.why}</div>
@@ -27,6 +27,6 @@ export default function MotivationDetail(params: { motivation: MotivationModel |
         <h3 className="">Kolik času budete mít na ambasadorskou činnost?</h3>
         <div>{params.motivation.time}</div>
       </div>
-    </>
+    </div>
   );
 }
