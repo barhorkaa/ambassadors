@@ -26,7 +26,7 @@ export default async function SideBar() {
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content py-8">
           {/*<li><p>&nbsp;</p></li>*/}
           <li>
-            <Link href={''}>Můj účet</Link>
+            <Link href={'/me'}>Můj účet</Link>
           </li>
           <hr />
           {eventsPages.map((page, index) => (
