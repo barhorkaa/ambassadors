@@ -21,15 +21,17 @@ export default async function Ambassadors() {
   return (
     <div className="page">
       <h1>Uživatelé</h1>
+      <hr className="divider w-full" />
       <h2>Nepotvrzení uživatelé</h2>
       <UserTable users={unapprovedAmbassadors} />
-      <h2>Všichni manažeři</h2>
+      <hr className="divider" />
+      <h2>Manažeři</h2>
       <UserTable users={allManagers} />
       {/*<div className="flex space-x-4 space-y-4">*/}
       {/*  {allManagers.map((manager) => (<UserCard user={manager}/>) )}*/}
       {/*</div>*/}
-      <hr />
-      <h2>Všichni ambasadoři</h2>
+      <hr className="divider" />
+      <h2>Ambasadoři</h2>
       <UserTable users={allAmbassadors} />
       {/*<div className="flex flex-wrap md:justify-between   space-y-4">*/}
       {/*  {allAmbassadors.map((ambassador) => (<UserCard user={ambassador}/>) )}*/}
