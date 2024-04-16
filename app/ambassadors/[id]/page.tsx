@@ -20,8 +20,8 @@ export default async function User({ params }: { params: { id: string } }) {
       <div className="flex flex-row">
         <h1>Informace o uživateli: {user.name}</h1>
       </div>
-      <hr className="" />
-      <div className="flex flex-row justify-start gap-10 sm:flex-col py-4 ">
+      <hr className="divider w-full" />
+      <div className="flex flex-row justify-start gap-20 sm:flex-col py-4 ">
         <div>
           <div className="flex flex-row justify-between">
             <h2>Detail uživatele</h2>
