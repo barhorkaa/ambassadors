@@ -17,16 +17,14 @@ export default async function User({ params }: { params: { id: string } }) {
 
   return (
     <div className="page flex flex-col">
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-between">
         <h1>Informace o uživateli: {user.name}</h1>
+        {!user.approved && <ApproveButton fun={approveUserById} id={user.id} />}
       </div>
       <hr className="divider w-full" />
       <div className="flex flex-row justify-start gap-20 sm:flex-col py-4 ">
         <div>
-          <div className="flex flex-row justify-between">
-            <h2>Detail uživatele</h2>
-            {!user.approved && <ApproveButton fun={approveUserById} id={user.id} />}
-          </div>
+          <h2>Detail uživatele</h2>
           <UserDetail user={user} />
         </div>
         <div>
