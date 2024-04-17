@@ -1,3 +1,4 @@
+import EventCard from '@/app/ui/event/event-card';
 import EventTable from '@/app/ui/event/event-table';
 import { getAllEvents } from '@/database/repository/events';
 import { EventModel } from '@/models/event/event-model';
@@ -18,12 +19,12 @@ export default async function Events() {
           <Link href={'/events/new'}>Přidat akci</Link>
         </button>
       </div>
-      {/*<div>*/}
-      {/*  {allEvents.map((event) =>*/}
-      {/*    (<EventCard event={event}/>)*/}
-      {/*  )}*/}
-      {/*</div>*/}
-      <div className="py-2">
+      <div className="flex md:hidden flex-wrap justify-center gap-4 ">
+        {allEvents.map((event) => (
+          <EventCard event={event} />
+        ))}
+      </div>
+      <div className="py-2 hidden md:block">
         <EventTable events={allEvents} />
       </div>
     </div>
