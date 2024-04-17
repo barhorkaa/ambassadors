@@ -84,7 +84,7 @@ export default function Home() {
       <hr className="divider" />
       <div className="py-6">
         <h2 className="pb-4">Časté otázky</h2>
-        <div className="flex flex-row sm:flex-col sm:gap-6 justify-between ">
+        <div className="flex flex-col md:flex-row gap-6 justify-between ">
           <FAQ />
           <img
             src="https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300319.027.cust.jpg"
