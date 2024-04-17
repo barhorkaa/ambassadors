@@ -22,16 +22,16 @@
     @apply text-black bg-white min-h-screen flex flex-col justify-between;
   }
   main {
-    @apply bg-white mx-52 mb-9 md:mx-12 sm:mx-2.5;
+    @apply bg-white lg:mx-52 mb-9 md:mx-12 sm:mx-2.5;
   }
   h1 {
-    @apply text-4xl font-semibold  sm:text-3xl;
+    @apply font-semibold text-3xl md:text-4xl;
   }
   h2 {
-    @apply text-2xl font-semibold  sm:text-xl;
+    @apply font-semibold text-xl md:text-2xl;
   }
   h3 {
-    @apply text-lg font-semibold;
+    @apply font-semibold text-lg;
   }
   button {
     @apply btn bg-fi-300;
@@ -51,10 +51,10 @@
     left: calc(-50vw + 50%);
   }
   .hero-title {
-    @apply text-5xl font-semibold sm:text-4xl;
+    @apply md:text-5xl font-semibold sm:text-4xl;
   }
   .divider {
-    @apply w-96 sm:w-52 h-1 mx-auto my-4 sm:my-4 bg-fi-300 border-0 rounded md:my-10
+    @apply md:w-96 sm:w-52 h-1 mx-auto my-4 sm:my-4 bg-fi-300 border-0 rounded md:my-10
   }
   .page {
     @apply mt-9
