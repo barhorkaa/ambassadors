@@ -38,7 +38,7 @@ export default async function Event({ params }: { params: { id: string } }) {
 
   return (
     <div className="page flex flex-col gap-4">
-      <div className="flex flex-row sm:flex-col justify-between">
+      <div className="flex flex-col md:flex-row justify-between">
         <h1>Detail akce</h1>
         <div className="flex flex-row gap-4">
           {!event.approved && session?.user.role == 'manager' && (
