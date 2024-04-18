@@ -7,8 +7,8 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
   return (
     <div className="w-full">
       <h2 className="text-5xl">{event.name}</h2>
-      <hr className="divider w-full" />
-      <div className="flex flex-row gap-10 sm:flex-col sm:gap-4">
+      <hr className="divider " />
+      <div className="flex flex-col md:flex-row gap-4 md:gap-10">
         <div className="flex flex-row gap-2">
           <CalendarDaysIcon className="h-7" />
           <p className="text-lg">{event.date?.toLocaleDateString()}</p>
@@ -27,7 +27,7 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
           )}
         </div>
         {session?.user.role === 'manager' && (
-          <div className="flex flex-row gap-10 sm:flex-col sm:gap-4">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-10">
             <p className="text-lg">Vytvořeno: {event.created_at.toLocaleDateString()}</p>
             <p className="text-lg">Upraveno: {event.updated_at.toLocaleDateString()}</p>
             <p className="text-lg">
