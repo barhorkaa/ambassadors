@@ -22,7 +22,7 @@ export default async function User({ params }: { params: { id: string } }) {
         {!user.approved && <ApproveButton fun={approveUserById} id={user.id} />}
       </div>
       <hr className="divider w-full" />
-      <div className="flex flex-row justify-start gap-20 sm:flex-col py-4 ">
+      <div className="flex flex-col md:flex-row justify-start gap-20 py-4 ">
         <div>
           <h2>Detail uživatele</h2>
           <UserDetail user={user} />
