@@ -1,3 +1,4 @@
+import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
 import { getAllAmbassadors, getAllManagers, getNotApprovedUsers } from '@/database/repository/user';
 import { UserModel } from '@/models/userModel';
@@ -23,19 +24,34 @@ export default async function Ambassadors() {
       <h1>Uživatelé</h1>
       <hr className="divider w-full" />
       <h2>Nepotvrzení uživatelé</h2>
-      <UserTable users={unapprovedAmbassadors} />
+      <div className="hidden md:block">
+        <UserTable users={unapprovedAmbassadors} />
+      </div>
+      <div className="flex md:hidden flex-wrap justify-center gap-4">
+        {unapprovedAmbassadors.map((user) => (
+          <UserCard user={user} />
+        ))}
+      </div>
       <hr className="divider" />
       <h2>Manažeři</h2>
-      <UserTable users={allManagers} />
-      {/*<div className="flex space-x-4 space-y-4">*/}
-      {/*  {allManagers.map((manager) => (<UserCard user={manager}/>) )}*/}
-      {/*</div>*/}
+      <div className="hidden md:block">
+        <UserTable users={allManagers} />
+      </div>
+      <div className="flex md:hidden flex-wrap justify-center gap-4">
+        {allManagers.map((manager) => (
+          <UserCard user={manager} />
+        ))}
+      </div>
       <hr className="divider" />
       <h2>Ambasadoři</h2>
-      <UserTable users={allAmbassadors} />
-      {/*<div className="flex flex-wrap md:justify-between   space-y-4">*/}
-      {/*  {allAmbassadors.map((ambassador) => (<UserCard user={ambassador}/>) )}*/}
-      {/*</div>*/}
+      <div className="hidden md:block">
+        <UserTable users={allAmbassadors} />
+      </div>
+      <div className="flex md:hidden flex-wrap justify-center gap-4">
+        {allAmbassadors.map((ambassador) => (
+          <UserCard user={ambassador} />
+        ))}
+      </div>
     </div>
   );
 }
