@@ -25,8 +25,9 @@ export default async function Me() {
       </div>
 
       <hr className="divider w-full" />
-      <div className="flex flex-row gap-20 sm:flex-col sm:gap-2">
+      <div className="flex flex-col md:flex-row gap-2 md:gap-20">
         <UserDetail user={user} />
+        <hr className="divider md:hidden" />
         <MotivationDetail motivation={motivation} />
       </div>
     </div>
