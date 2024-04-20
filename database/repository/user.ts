@@ -1,5 +1,6 @@
 import { db } from '@/database/database';
 import { RegistrationModel } from '@/models/auth/registration-model';
+import { UserEditFullModel } from '@/models/user/user-edit-full-model';
 import { UserEditSelfModel } from '@/models/user/user-edit-self-model';
 import { Selectable } from 'kysely';
 import { User } from 'kysely-codegen';
@@ -53,6 +54,24 @@ export async function editUser(user: UserEditSelfModel) {
       .updateTable('user')
       .where('id', '=', user.id)
       .set({ name: user.name, phone_number: user.phone_number, updated_at: new Date() })
+      .execute();
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function editFullUser(user: UserEditFullModel) {
+  try {
+    await db
+      .updateTable('user')
+      .where('id', '=', user.id)
+      .set({
+        name: user.name,
+        phone_number: user.phone_number,
+        uco: user.uco,
+        email: user.email,
+        updated_at: new Date(),
+      })
       .execute();
   } catch (e) {
     console.log(e);
