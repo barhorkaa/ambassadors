@@ -1,9 +1,6 @@
+import { eventTypeDefaultModel } from '@/models/event-type/event-type-default-model';
 import { z } from 'zod';
 
-export const eventTypeCreateModel = z.object({
-  name: z.string(),
-  description: z.string(),
-  instructions: z.string(),
-});
+export const eventTypeCreateModel = eventTypeDefaultModel.omit({ id: true });
 
 export type EventTypeCreateModel = z.infer<typeof eventTypeCreateModel>;
