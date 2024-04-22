@@ -29,7 +29,7 @@ export default async function Ambassadors() {
       </div>
       <div className="flex md:hidden flex-wrap justify-center gap-4">
         {unapprovedAmbassadors.map((user) => (
-          <UserCard user={user} />
+          <UserCard key={user.id} user={user} />
         ))}
       </div>
       <hr className="divider" />
@@ -39,7 +39,7 @@ export default async function Ambassadors() {
       </div>
       <div className="flex md:hidden flex-wrap justify-center gap-4">
         {allManagers.map((manager) => (
-          <UserCard user={manager} />
+          <UserCard key={manager.id} user={manager} />
         ))}
       </div>
       <hr className="divider" />
@@ -49,7 +49,7 @@ export default async function Ambassadors() {
       </div>
       <div className="flex md:hidden flex-wrap justify-center gap-4">
         {allAmbassadors.map((ambassador) => (
-          <UserCard user={ambassador} />
+          <UserCard key={ambassador.id} user={ambassador} />
         ))}
       </div>
     </div>
