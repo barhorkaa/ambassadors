@@ -21,7 +21,7 @@ export default async function Events() {
       </div>
       <div className="flex md:hidden flex-wrap justify-center gap-4 ">
         {allEvents.map((event) => (
-          <EventCard event={event} />
+          <EventCard key={event.id} event={event} />
         ))}
       </div>
       <div className="py-2 hidden md:block">
