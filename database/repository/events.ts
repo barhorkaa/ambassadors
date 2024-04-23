@@ -5,7 +5,7 @@ export async function getAllEvents() {
   try {
     return await db
       .selectFrom('event')
-      .fullJoin('eventType', 'eventType.id', 'event_type_id')
+      .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .select([
         'event.name as name',
         'eventType.name as event_type_name',
