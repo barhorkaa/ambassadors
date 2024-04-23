@@ -121,6 +121,19 @@ export async function getAllSignUps() {
   }
 }
 
+export async function getSignUpsForEvent(event_id: string) {
+  try {
+    return db
+      .selectFrom('eventUser')
+      .where('event_id', '=', event_id)
+      .leftJoin('user', 'user.id', 'eventUser.user_id')
+      .select(['user.name as user_name'])
+      .execute();
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function approveSignUp(id: string) {
   try {
     await db.updateTable('eventUser').where('id', '=', id).set({ approved: true, updated_at: new Date() }).execute();
