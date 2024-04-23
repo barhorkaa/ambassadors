@@ -42,7 +42,13 @@ export async function updateEvent(event: EventBasicModel) {
   try {
     await db
       .updateTable('event')
-      .set({ date: event.date, name: event.name, event_type_id: event.event_type_id, updated_at: new Date() })
+      .set({
+        date: event.date,
+        name: event.name,
+        event_type_id: event.event_type_id,
+        limit: event.limit,
+        updated_at: new Date(),
+      })
       .where('id', '=', event.id!)
       .execute();
   } catch (e) {
