@@ -18,9 +18,7 @@ export default async function EventUserTable({ eventUsers }: { eventUsers: Event
             <tr className="hover" key={eventUser.id}>
               <td>{eventUser.user_name}</td>
               <td>{eventUser.event_name}</td>
-              <td>
-                <ApproveButton fun={approveSignUpAction} id={eventUser.id!} />
-              </td>
+              <td>{!eventUser.approved && <ApproveButton fun={approveSignUpAction} id={eventUser.id!} />}</td>
             </tr>
           ))}
         </tbody>
