@@ -9,7 +9,7 @@ export default async function NavBarUser() {
     <div className="navbar bg-fi-300">
       <div className="navbar-start">
         <div className="dropdown max-h-fit min-h-fit">
-          <SideBar />
+          <SideBar userRole={session?.user.role!} />
         </div>
       </div>
       <div className="navbar-center">
