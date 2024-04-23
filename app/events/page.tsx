@@ -25,7 +25,7 @@ export default async function Events() {
           <Link href={'/events/new'}>Přidat akci</Link>
         </button>
       </div>
-      <hr className="divider w-full" />
+      <hr className="w-full" />
       <h2>Nepotvrzené akce</h2>
       <div className="flex md:hidden flex-wrap justify-center gap-4 ">
         {allUnapprovedEvents.map((event) => (
@@ -35,7 +35,7 @@ export default async function Events() {
       <div className="py-2 hidden md:block">
         <EventTable events={allUnapprovedEvents} />
       </div>
-      <hr className="divider" />
+      <hr />
       <h2>Všechny akce</h2>
       <div className="flex md:hidden flex-wrap justify-center gap-4 ">
         {allEvents.map((event) => (

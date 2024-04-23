@@ -28,7 +28,7 @@ export default async function User({ params }: { params: { id: string } }) {
         {session?.user.id === params.id && session.user.role !== 'manager' && <EditUserModal user={user} />}
         {session?.user.role === 'manager' && <EditUserFullModal user={user} />}
       </div>
-      <hr className="divider w-full" />
+      <hr className="w-full" />
       <div className="flex flex-col md:flex-row justify-start gap-20 py-4 ">
         <div>
           <h2>Detail uživatele</h2>

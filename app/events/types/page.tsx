@@ -20,7 +20,7 @@ export default async function EventsTypes() {
         {session?.user.role === 'manager' && <CreateEventTypeModal />}
       </div>
 
-      <hr className="divider w-full" />
+      <hr className="w-full" />
       {allEventTypes.map((eventType) => (
         <Detail key={eventType.id} eventType={eventType} />
       ))}
@@ -41,7 +41,7 @@ async function Detail(params: { eventType: EventTypeDetailModel }) {
         <DetailRow label={'Popis'} value={params.eventType.description} />
         <DetailRow label={'Instrukce'} value={params.eventType.instructions} />
       </div>
-      <hr className="divider" />
+      <hr />
     </div>
   );
 }

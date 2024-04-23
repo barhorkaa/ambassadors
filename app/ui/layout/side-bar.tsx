@@ -21,26 +21,26 @@ export default async function SideBar() {
           </svg>
         </label>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side min-h-screen">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content py-8">
           {/*<li><p>&nbsp;</p></li>*/}
           <li>
             <Link href={'/me'}>Můj účet</Link>
           </li>
-          <hr />
+          <hr className="w-full mx-0" />
           {eventsPages.map((page, index) => (
             <li key={index}>
               <Link href={page.url}>{page.name}</Link>
             </li>
           ))}
-          <hr />
+          <hr className="w-full mx-0" />
           {programPages.map((page, index) => (
             <li key={index}>
               <Link href={page.url}>{page.name}</Link>
             </li>
           ))}
-          <hr />
+          <hr className="w-full mx-0" />
           {session?.user.role == 'manager' && (
             <div>
               {managerPages.map((page, index) => (
@@ -48,7 +48,7 @@ export default async function SideBar() {
                   <Link href={page.url}>{page.name}</Link>
                 </li>
               ))}
-              <hr />
+              <hr className="w-full mx-0" />
             </div>
           )}
           <li>

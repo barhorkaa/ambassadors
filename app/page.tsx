@@ -62,7 +62,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <hr className="divider" />
+      <hr />
       {/*<div className="flex flex-col">*/}
       {/*  <h2>Zaujal tě Ambasadorský propgram a chtěl byses přidat?</h2>*/}
       {/*  <p className="text-lg">Zaregistruj se ještě dnes!</p>*/}
@@ -81,7 +81,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <hr className="divider" />
+      <hr />
       <div className="py-6">
         <h2 className="pb-4">Časté otázky</h2>
         <div className="flex flex-col md:flex-row gap-6 justify-between ">
@@ -92,7 +92,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <hr className="divider" />
+      <hr />
       <div className="w-full text-center py-6">
         <h2 className="text-5xl">Těšíme se na tebe!</h2>
       </div>

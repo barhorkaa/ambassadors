@@ -56,7 +56,7 @@ export default async function Event({ params }: { params: { id: string } }) {
       <div className="flex flex-col gap-6">
         <EventDetail event={event} />
         <EventUserDetail event_id={event.id} />
-        <hr className="divider" />
+        <hr />
         <EventTypeDetail eventType={eventType} />
       </div>
     </div>

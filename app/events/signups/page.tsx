@@ -17,12 +17,12 @@ export default async function EventSignUps() {
   return (
     <div className="page">
       <h1>Přihlášení na akce</h1>
-      <hr className="divider w-full" />
+      <hr className="w-full" />
       <div>
         <h2>Nepotvrzená přihlášení</h2>
         <EventUserTable eventUsers={allUnapprovedSignUps} />
       </div>
-      <hr className="divider" />
+      <hr />
       <div>
         <h2>Všechna aktuání přihlášení</h2>
         <EventUserTable eventUsers={allSignUps} />

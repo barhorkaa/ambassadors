@@ -22,7 +22,7 @@ export default async function Ambassadors() {
   return (
     <div className="page">
       <h1>Uživatelé</h1>
-      <hr className="divider w-full" />
+      <hr className="w-full" />
       <h2>Nepotvrzení uživatelé</h2>
       <div className="hidden md:block">
         <UserTable users={unapprovedAmbassadors} />
@@ -32,7 +32,7 @@ export default async function Ambassadors() {
           <UserCard key={user.id} user={user} />
         ))}
       </div>
-      <hr className="divider" />
+      <hr />
       <h2>Manažeři</h2>
       <div className="hidden md:block">
         <UserTable users={allManagers} />
@@ -42,7 +42,7 @@ export default async function Ambassadors() {
           <UserCard key={manager.id} user={manager} />
         ))}
       </div>
-      <hr className="divider" />
+      <hr />
       <h2>Ambasadoři</h2>
       <div className="hidden md:block">
         <UserTable users={allAmbassadors} />
