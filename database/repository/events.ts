@@ -20,6 +20,26 @@ export async function getAllEvents() {
   }
 }
 
+export async function getAllUnapprovedEvents() {
+  try {
+    return await db
+      .selectFrom('event')
+      .where('event.approved', '=', false)
+      .leftJoin('eventType', 'eventType.id', 'event_type_id')
+      .select([
+        'event.name as name',
+        'eventType.name as event_type_name',
+        'event_type_id',
+        'date',
+        'event.id as id',
+        'event.limit as limit',
+      ])
+      .execute();
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function getEventById(id: string) {
   try {
     return await db.selectFrom('event').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
