@@ -6,6 +6,7 @@ export const eventUserBasicModel = z.object({
   user_id: z.string().nullable(),
   event_id: z.string().nullable(),
   event_name: z.string().nullable(),
+  approved: z.boolean(),
 });
 
 export type EventUserBasicModel = z.infer<typeof eventUserBasicModel>;
