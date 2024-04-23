@@ -1,24 +1,28 @@
 'use client';
 
-import { createSignUpAction } from '@/app/lib/actions/event-user';
+import { createSignUpAction, deleteSignUpAction } from '@/app/lib/actions/event-user';
 import { useState } from 'react';
 
-export default function EventSignUpButton(props: { disabled: boolean; event_id: string; user_id: string }) {
-  const [disabled, setDisabled] = useState(props.disabled);
+export default function EventSignUpButton(props: { isSignedOnEvent: boolean; event_id: string; user_id: string }) {
+  const [signedOn, setSignedOn] = useState(props.isSignedOnEvent);
 
   function changeState() {
-    setDisabled(!disabled);
+    setSignedOn(!signedOn);
   }
 
   return (
     <button
       onClick={async () => {
-        await createSignUpAction(props.event_id, props.user_id);
+        if (props.isSignedOnEvent) {
+          await deleteSignUpAction(props.event_id, props.user_id);
+        } else {
+          await createSignUpAction(props.event_id, props.user_id);
+        }
         changeState();
       }}
-      disabled={disabled}
+      disabled={false}
     >
-      Přihlásit se
+      {signedOn ? 'Odhlásit se' : 'Přihlásit se'}
     </button>
   );
 }
