@@ -1,15 +1,23 @@
-import { eventsPages, managerPages, programPages } from '@/app/utils/pages';
-import { auth, signOut } from '@/auth';
-import Link from 'next/link';
+'use client';
 
-export default async function SideBar() {
-  const session = await auth();
+import { signOutAction } from '@/app/lib/actions/authentication';
+import { eventsPages, managerPages, programPages } from '@/app/utils/pages';
+import Link from 'next/link';
+import { useState } from 'react';
+
 export default function SideBar({ userRole }: { userRole: string }) {
   // const session = await auth();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="drawer z-10">
-      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+      <input
+        id="my-drawer"
+        type="checkbox"
+        className="drawer-toggle"
+        checked={isOpen}
+        onChange={() => setIsOpen(!isOpen)}
+      />
       <div className="drawer-content">
         <label htmlFor="my-drawer" className="btn btn-ghost btn-circle drawer-button">
           <svg
@@ -28,18 +36,24 @@ export default function SideBar({ userRole }: { userRole: string }) {
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content py-8">
           {/*<li><p>&nbsp;</p></li>*/}
           <li>
-            <Link href={'/me'}>Můj účet</Link>
+            <Link onClick={() => setIsOpen(false)} href={'/me'}>
+              Můj účet
+            </Link>
           </li>
           <hr className="w-full mx-0" />
           {eventsPages.map((page, index) => (
             <li key={index}>
-              <Link href={page.url}>{page.name}</Link>
+              <Link onClick={() => setIsOpen(false)} href={page.url}>
+                {page.name}
+              </Link>
             </li>
           ))}
           <hr className="w-full mx-0" />
           {programPages.map((page, index) => (
             <li key={index}>
-              <Link href={page.url}>{page.name}</Link>
+              <Link onClick={() => setIsOpen(false)} href={page.url}>
+                {page.name}
+              </Link>
             </li>
           ))}
           <hr className="w-full mx-0" />
@@ -47,7 +61,9 @@ export default function SideBar({ userRole }: { userRole: string }) {
             <div>
               {managerPages.map((page, index) => (
                 <li key={index}>
-                  <Link href={page.url}>{page.name}</Link>
+                  <Link onClick={() => setIsOpen(false)} href={page.url}>
+                    {page.name}
+                  </Link>
                 </li>
               ))}
               <hr className="w-full mx-0" />
