@@ -29,6 +29,17 @@ export async function createSignUp(event_id: string, user_id: string, substitute
     console.log(e);
   }
 }
+export async function makeSignUpNotSubstitute(event_id: string, user_id: string) {
+  try {
+    await db
+      .updateTable('eventUser')
+      .where((eb) => eb.and([eb('event_id', '=', event_id), eb('user_id', '=', user_id)]))
+      .set({ substitute: false })
+      .execute();
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 export async function isUserSignedUpForEvent(event_id: string, user_id: string) {
   try {
@@ -64,6 +75,18 @@ export async function getAllUnapprovedSignUps() {
     console.log(e);
   }
 }
+
+export async function getAllSignUps() {
+  try {
+    return await db
+      .selectFrom('eventUser')
+      .leftJoin('user', 'user.id', 'user_id')
+      .select([
+        'user.name as user_name',
+        'eventUser.id as id',
+        'eventUser.event_id as event_id',
+        'eventUser.user_id as user_id',
+        'eventUser.approved as approved',
       ])
       .leftJoin('event', 'event.id', 'event_id')
       .select('event.name as event_name')
