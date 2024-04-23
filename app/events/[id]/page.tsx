@@ -21,14 +21,12 @@ export default async function Event({ params }: { params: { id: string } }) {
   const eventType: EventTypeDetailModel | undefined = await getEventTypeById(event.event_type_id);
 
   const session = await auth();
-  let disabled = false;
   let isSignedOnEvent: boolean | undefined = false;
   if (session) {
     isSignedOnEvent = await isUserSignedUpForEvent(event.id, session.user.id);
     if (isSignedOnEvent == undefined) {
       isSignedOnEvent = false;
     }
-    disabled = isSignedOnEvent! || !event.approved;
   }
 
   let eventTypes: EventTypeBasicModel[] | undefined = await getAllEventTypesBasics();
@@ -45,6 +43,7 @@ export default async function Event({ params }: { params: { id: string } }) {
             <ApproveButton fun={approveEventAction} id={event.id} />
           )}
           {session && <EventSignUpButton disabled={disabled} event_id={event.id} user_id={session.user.id} />}
+              <EventSignUpButton isSignedOnEvent={isSignedOnEvent} event_id={event.id} user_id={session.user.id} />
           {(session?.user.role === 'manager' || isSignedOnEvent) && (
             <EditEventModal event={event} eventTypes={eventTypes} />
           )}
