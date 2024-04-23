@@ -2,6 +2,7 @@ import { approveEventAction } from '@/app/lib/actions/events';
 import ApproveButton from '@/app/ui/button/approve-button';
 import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
 import EventTypeDetail from '@/app/ui/event-type/event-type-detail';
+import { EventUserDetail } from '@/app/ui/event-user/event-user-detail';
 import EventDetail from '@/app/ui/event/event-detail';
 import EditEventModal from '@/app/ui/modals/edit-event-modal';
 import { auth } from '@/auth';
@@ -54,6 +55,8 @@ export default async function Event({ params }: { params: { id: string } }) {
       </div>
       <div className="flex flex-col gap-6">
         <EventDetail event={event} />
+        <EventUserDetail event_id={event.id} />
+        <hr className="divider" />
         <EventTypeDetail eventType={eventType} />
       </div>
     </div>
