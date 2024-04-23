@@ -6,6 +6,7 @@ export const eventModel = z.object({
   date: z.date().nullable(),
   event_type_id: z.string().nullable(),
   event_type_name: z.string().nullable(),
+  limit: z.string().nullable(),
 });
 //   .transform((model) => ({
 //   eventTypeName: model.event_type_name,
