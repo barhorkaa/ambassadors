@@ -54,12 +54,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
             </div>
           )}
           <li>
-            <form
-              action={async () => {
-                'use server';
-                await signOut();
-              }}
-            >
+            <form action={signOutAction}>
               <button>Odhlásit se</button>
             </form>
           </li>
