@@ -1,6 +1,7 @@
 'use server';
 
-import { approveSignUp, createSignUp } from '@/database/repository/event-user';
+import { approveSignUp, createSignUp, deleteSignUp, getSignUpsForEvent } from '@/database/repository/event-user';
+import { getEventById } from '@/database/repository/events';
 
 export async function approveSignUpAction(id: string) {
   try {
@@ -12,7 +13,6 @@ export async function approveSignUpAction(id: string) {
 
 export async function createSignUpAction(event_id: string, user_id: string) {
   try {
-    await createSignUp(event_id, user_id);
     const event = await getEventById(event_id);
     if (event === undefined) {
       return 'Invalid event';
@@ -33,6 +33,10 @@ export async function createSignUpAction(event_id: string, user_id: string) {
     console.log(e);
   }
 }
+
+export async function deleteSignUpAction(event_id: string, user_id: string) {
+  try {
+    await deleteSignUp(event_id, user_id);
   } catch (e) {
     console.log(e);
   }
