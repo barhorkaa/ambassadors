@@ -3,7 +3,7 @@ import { Kysely } from 'kysely';
 export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
     .alterTable('event')
-    .addColumn('limit', 'numeric', (col) => col.defaultTo(1))
+    .addColumn('limit', 'numeric', (col) => col.defaultTo(1).notNull())
     .execute();
 }
 
