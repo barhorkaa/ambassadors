@@ -24,7 +24,7 @@ export async function createSignUpAction(event_id: string, user_id: string) {
       return 'something went wrong';
     }
 
-    if (eventLimit < signedForEvent.length) {
+    if (eventLimit > signedForEvent.length) {
       await createSignUp(event_id, user_id, false);
     } else {
       await createSignUp(event_id, user_id, true);
