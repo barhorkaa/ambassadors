@@ -5,6 +5,7 @@ import Link from 'next/link';
 export default async function SideBar() {
   const session = await auth();
 export default function SideBar({ userRole }: { userRole: string }) {
+  // const session = await auth();
 
   return (
     <div className="drawer z-10">
@@ -42,7 +43,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
             </li>
           ))}
           <hr className="w-full mx-0" />
-          {session?.user.role == 'manager' && (
+          {userRole === 'manager' && (
             <div>
               {managerPages.map((page, index) => (
                 <li key={index}>
