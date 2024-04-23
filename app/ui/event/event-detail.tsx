@@ -1,8 +1,14 @@
 import { auth } from '@/auth';
+import { getSignUpsForEvent } from '@/database/repository/event-user';
 import { EventDetailModel } from '@/models/event/event-detail-model';
-import { CalendarDaysIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
+import { CalendarDaysIcon, CheckCircleIcon, UserGroupIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
 export default async function EventDetail({ event }: { event: EventDetailModel }) {
+  let signedUpForEvent = await getSignUpsForEvent(event.id!);
+  if (signedUpForEvent === undefined) {
+    signedUpForEvent = [];
+  }
+
   const session = await auth();
   return (
     <div className="w-full">
@@ -25,6 +31,12 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
               <p className="text-lg">Nepotvrzeno</p>
             </div>
           )}
+        </div>
+        <div title="Limit" className="flex flex-row gap-2">
+          <UserGroupIcon className="h-7" />
+          <p className="text-lg">
+            {signedUpForEvent.length}/{event.limit}
+          </p>
         </div>
         {session?.user.role === 'manager' && (
           <div className="flex flex-col md:flex-row gap-4 md:gap-10">
