@@ -88,7 +88,7 @@ export default function Home() {
           <FAQ />
           <img
             src="https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300319.027.cust.jpg"
-            className="lg:max-w-md rounded-lg shadow-xl"
+            className="h-fit lg:max-w-md rounded-lg shadow-xl"
           />
         </div>
       </div>
