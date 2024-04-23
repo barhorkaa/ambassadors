@@ -38,6 +38,7 @@ export async function updateEventAction(formData: FormData) {
       date: formData.get('date') == '' ? null : formData.get('date'),
       event_type_id: formData.get('event_type_id'),
       id: formData.get('id'),
+      limit: formData.get('limit'),
     };
 
     const parse = eventBasicModel.safeParse(data);
