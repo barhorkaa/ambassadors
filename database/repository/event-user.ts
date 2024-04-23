@@ -55,6 +55,15 @@ export async function getAllUnapprovedSignUps() {
         'eventUser.id as id',
         'eventUser.event_id as event_id',
         'eventUser.user_id as user_id',
+        'eventUser.approved as approved',
+      ])
+      .leftJoin('event', 'event.id', 'event_id')
+      .select('event.name as event_name')
+      .execute();
+  } catch (e) {
+    console.log(e);
+  }
+}
       ])
       .leftJoin('event', 'event.id', 'event_id')
       .select('event.name as event_name')
