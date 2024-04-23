@@ -13,6 +13,7 @@ export async function getUserSignUps(user_id: string) {
         'event.name as name',
         'event.event_type_id as event_type_id',
         'event.date as date',
+        'event.limit as limit',
       ])
       .fullJoin('eventType', 'event.event_type_id', 'eventType.id')
       .select(['eventType.name as event_type_name'])
