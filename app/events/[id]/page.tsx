@@ -42,8 +42,11 @@ export default async function Event({ params }: { params: { id: string } }) {
           {!event.approved && session?.user.role == 'manager' && (
             <ApproveButton fun={approveEventAction} id={event.id} />
           )}
-          {session && <EventSignUpButton disabled={disabled} event_id={event.id} user_id={session.user.id} />}
+          {session && (
+            <fieldset disabled={!event.approved}>
               <EventSignUpButton isSignedOnEvent={isSignedOnEvent} event_id={event.id} user_id={session.user.id} />
+            </fieldset>
+          )}
           {(session?.user.role === 'manager' || isSignedOnEvent) && (
             <EditEventModal event={event} eventTypes={eventTypes} />
           )}
