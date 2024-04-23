@@ -29,6 +29,31 @@ export async function createSignUp(event_id: string, user_id: string, substitute
     console.log(e);
   }
 }
+
+export async function deleteSignUp(event_id: string, user_id: string) {
+  try {
+    const wasSubstitute = await db
+      .deleteFrom('eventUser')
+      .where((eb) => eb.and([eb('event_id', '=', event_id), eb('user_id', '=', user_id)]))
+      .returning('substitute')
+      .executeTakeFirst();
+
+    if (!wasSubstitute!.substitute!) {
+      const firstSubstitute = await db
+        .selectFrom('eventUser')
+        .where((eb) => eb.and([eb('event_id', '=', event_id), eb('substitute', '=', true)]))
+        .orderBy('created_at', 'desc')
+        .select(['user_id'])
+        .executeTakeFirst();
+
+      console.log(firstSubstitute);
+      await makeSignUpNotSubstitute(event_id, firstSubstitute!.user_id);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function makeSignUpNotSubstitute(event_id: string, user_id: string) {
   try {
     await db
