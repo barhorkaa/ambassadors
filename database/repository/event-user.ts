@@ -121,6 +121,19 @@ export async function getAllSignUps() {
   }
 }
 
+export async function getSubstitutesForEvent(event_id: string) {
+  try {
+    return db
+      .selectFrom('eventUser')
+      .where((eb) => eb.and([eb('event_id', '=', event_id), eb('substitute', '=', true)]))
+      .leftJoin('user', 'user.id', 'eventUser.user_id')
+      .select(['user.name as user_name'])
+      .execute();
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function getSignUpsForEvent(event_id: string) {
   try {
     return db
