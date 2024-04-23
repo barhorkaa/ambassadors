@@ -6,7 +6,14 @@ export async function getAllEvents() {
     return await db
       .selectFrom('event')
       .fullJoin('eventType', 'eventType.id', 'event_type_id')
-      .select(['event.name as name', 'eventType.name as event_type_name', 'event_type_id', 'date', 'event.id as id'])
+      .select([
+        'event.name as name',
+        'eventType.name as event_type_name',
+        'event_type_id',
+        'date',
+        'event.id as id',
+        'event.limit as limit',
+      ])
       .execute();
   } catch (e) {
     console.log(e);
