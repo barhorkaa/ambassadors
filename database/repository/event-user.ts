@@ -125,7 +125,7 @@ export async function getSignUpsForEvent(event_id: string) {
   try {
     return db
       .selectFrom('eventUser')
-      .where('event_id', '=', event_id)
+      .where((eb) => eb.and([eb('event_id', '=', event_id), eb('substitute', '=', false)]))
       .leftJoin('user', 'user.id', 'eventUser.user_id')
       .select(['user.name as user_name'])
       .execute();
