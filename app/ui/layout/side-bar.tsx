@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 export default async function SideBar() {
   const session = await auth();
+export default function SideBar({ userRole }: { userRole: string }) {
 
   return (
     <div className="drawer z-10">
