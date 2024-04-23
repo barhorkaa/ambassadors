@@ -22,7 +22,7 @@ export default function EventTable({ events }: { events: EventModel[] }) {
                 <div className="badge bg-fi-100">{event.event_type_name}</div>
                 {/*{event.event_type_name}*/}
               </td>
-              <td>{event.date !== null ? event.date.toLocaleString() : 'Nezadáno'}</td>
+              <td>{event.date !== null ? event.date.toLocaleDateString() : 'Nezadáno'}</td>
               <td>
                 <Link href={`/events/${event.id}`}>
                   <ArrowTopRightOnSquareIcon className="h-5" />
