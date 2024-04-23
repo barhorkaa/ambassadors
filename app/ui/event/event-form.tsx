@@ -23,6 +23,20 @@ export default async function EventForm(data: { eventTypes: EventTypeBasicModel[
         />
       </div>
       <div className="form-control">
+        <label className="label" htmlFor="name">
+          <span className="label-text">Limit počtu lidí</span>
+        </label>
+        <input
+          id="limit"
+          defaultValue={data.event?.limit}
+          type="number"
+          name="limit"
+          placeholder="Limit počtu lidí"
+          className="input input-bordered"
+          required
+        />
+      </div>
+      <div className="form-control">
         <label className="label" htmlFor="who">
           <span className="label-text">Datum akce (může zůstat nevyplněno)</span>
         </label>
@@ -36,9 +50,6 @@ export default async function EventForm(data: { eventTypes: EventTypeBasicModel[
         />
       </div>
       <div className="form-control">
-        <label className="label" htmlFor="who">
-          <span className="label-text">Datum akce (může zůstat nevyplněno)</span>
-        </label>
         <input id="id" value={data.event?.id} type="hidden" name="id" className="input input-bordered" />
       </div>
       <EventTypeSelect selectedEvent={data.event?.event_type_id} eventTypes={data.eventTypes} />
