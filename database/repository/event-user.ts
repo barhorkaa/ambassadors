@@ -22,9 +22,9 @@ export async function getUserSignUps(user_id: string) {
   }
 }
 
-export async function createSignUp(event_id: string, user_id: string) {
+export async function createSignUp(event_id: string, user_id: string, substitute: boolean) {
   try {
-    await db.insertInto('eventUser').values({ user_id: user_id, event_id: event_id }).execute();
+    await db.insertInto('eventUser').values({ user_id: user_id, event_id: event_id, substitute: substitute }).execute();
   } catch (e) {
     console.log(e);
   }
