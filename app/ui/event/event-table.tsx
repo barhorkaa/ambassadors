@@ -19,7 +19,7 @@ export default function EventTable({ events }: { events: EventModel[] }) {
             <tr className="hover" key={event.id}>
               <td>{event.name}</td>
               <td>
-                <div className="badge bg-amber-300">{event.event_type_name}</div>
+                <div className="badge bg-fi-100">{event.event_type_name}</div>
                 {/*{event.event_type_name}*/}
               </td>
               <td>{event.date !== null ? event.date.toLocaleString() : 'Nezadáno'}</td>
