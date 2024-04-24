@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function EventTable({ events }: { events: EventModel[] }) {
   return (
     <div className="overflow-x-auto">
-      <table className="table">
+      <table className="table table-fixed">
         <thead>
           <tr>
             <th>Název</th>
