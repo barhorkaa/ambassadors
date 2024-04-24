@@ -5,7 +5,7 @@ import { EventUserBasicModel } from '@/models/event-user/event-user-basic-model'
 export default async function EventUserTable({ eventUsers }: { eventUsers: EventUserBasicModel[] }) {
   return (
     <div className="overflow-x-auto">
-      <table className="table">
+      <table className="table table-fixed">
         <thead>
           <tr>
             <th>Uživatel</th>
