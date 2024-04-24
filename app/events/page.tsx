@@ -19,7 +19,7 @@ export default async function Events() {
 
   return (
     <div className="page">
-      <div className="flex flex-row justify-between p-4">
+      <div className="flex flex-row justify-between">
         <h1>Akce</h1>
         <button>
           <Link href={'/events/new'}>Přidat akci</Link>
