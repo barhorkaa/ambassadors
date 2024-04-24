@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default async function UserTable(props: { users: UserModel[] }) {
   return (
     <div className="overflow-x-auto">
-      <table className="table">
+      <table className="table table-fixed">
         <thead>
           <tr>
             <th>Jméno</th>
