@@ -68,7 +68,7 @@ export default async function MotivationForm() {
           />
         </div>
         <input id="id" type="hidden" name="userId" value={userId} className="input input-bordered" required />
-        <SubmitButton />
+        <SubmitButton title={'Odeslat'} />
       </form>
     </div>
   );
