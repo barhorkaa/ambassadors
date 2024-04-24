@@ -1,8 +1,9 @@
 'use client';
 
 import { authenticate } from '@/app/lib/actions/authentication';
+import SubmitButton from '@/app/ui/button/submit-button';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormState } from 'react-dom';
 
 export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
@@ -32,7 +33,7 @@ export default function LoginForm() {
           {/*  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>*/}
           {/*</label>*/}
         </div>
-        <LoginButton />
+        <SubmitButton title={'Přihlásit se'} />
         <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
           {errorMessage && (
             <>
@@ -43,15 +44,5 @@ export default function LoginForm() {
         </div>
       </form>
     </div>
-  );
-}
-
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button className="mt-4 w-full bg-amber-200 p-2" aria-disabled={pending}>
-      Log in
-    </button>
   );
 }
