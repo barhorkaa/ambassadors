@@ -53,7 +53,7 @@ export default async function EventForm(data: { eventTypes: EventTypeBasicModel[
         <input id="id" value={data.event?.id} type="hidden" name="id" className="input input-bordered" />
       </div>
       <EventTypeSelect selectedEvent={data.event?.event_type_id} eventTypes={data.eventTypes} />
-      <SubmitButton />
+      <SubmitButton title={'Odeslat'} />
     </form>
   );
 }
