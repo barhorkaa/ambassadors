@@ -70,7 +70,7 @@ export default function UserEditFullForm(params: { user: UserModel }) {
         className="input input-bordered"
         required
       />
-      <SubmitButton />
+      <SubmitButton title={'Odeslat'} />
     </form>
   );
 }
