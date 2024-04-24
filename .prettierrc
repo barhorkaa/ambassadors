@@ -1,5 +1,5 @@
 {
-  "endOfLine": "lf",
+  "endOfLine": "crlf",
   "semi": true,
   "singleQuote": true,
   "bracketSpacing": true,
