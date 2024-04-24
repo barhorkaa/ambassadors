@@ -1,8 +1,9 @@
 'use client';
 
 import { createUserAction } from '@/app/lib/actions/register';
+import SubmitButton from '@/app/ui/button/submit-button';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormState } from 'react-dom';
 
 export default function RegisterForm() {
   const [errorMessage, dispatch] = useFormState(createUserAction, undefined);
@@ -54,7 +55,7 @@ export default function RegisterForm() {
             required
           />
         </div>
-        <RegisterButton />
+        <SubmitButton title={'Registrovat se'} />
         <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
           {errorMessage && (
             <>
@@ -65,15 +66,5 @@ export default function RegisterForm() {
         </div>
       </form>
     </div>
-  );
-}
-
-function RegisterButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button className="mt-4 w-full bg-amber-200 p-2" aria-disabled={pending}>
-      Register
-    </button>
   );
 }
