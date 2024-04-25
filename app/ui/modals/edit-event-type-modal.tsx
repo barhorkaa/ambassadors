@@ -2,6 +2,7 @@
 
 import { EventTypeForm } from '@/app/ui/event-type/event-type-form';
 import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
+import { PencilIcon } from '@heroicons/react/24/outline';
 
 export default function EditEventTypeModal(data: { eventType: EventTypeDetailModel }) {
   return (
@@ -13,7 +14,8 @@ export default function EditEventTypeModal(data: { eventType: EventTypeDetailMod
           }
         }}
       >
-        Upravit
+        <PencilIcon className="h-5" />
+        <p className="hidden md:block">Upravit</p>
       </button>
       <dialog id={data.eventType.id} className="modal">
         <div className="modal-box">
