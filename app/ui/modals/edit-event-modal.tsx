@@ -21,9 +21,15 @@ export default function EditEventModal(data: { eventTypes: EventTypeBasicModel[]
       </button>
       <dialog id="my_modal_2" className="modal">
         <div className="modal-box">
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-base-100">✕</button>
+          </form>
           <h3>Upravit akci</h3>
           <EventForm event={data.event} eventTypes={data.eventTypes} />
         </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
       </dialog>
     </>
   );
