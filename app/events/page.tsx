@@ -22,8 +22,7 @@ export default async function Events() {
     <div className="page">
       <div className="flex flex-row justify-between">
         <h1>Akce</h1>
-        <button>
-          <Link href={'/events/new'}>Přidat akci</Link>
+        <button className="btn">
           <Link href={'/events/new'}>
             <PlusIcon className="h-5" />
             <p className="hidden md:block">Přidat akci</p>

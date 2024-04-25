@@ -6,6 +6,7 @@ export default function CreateEventTypeModal() {
   return (
     <>
       <button
+        className="btn"
         onClick={() => {
           if (document) {
             (document.getElementById('create_event_type_modal') as HTMLFormElement).showModal();

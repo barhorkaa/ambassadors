@@ -13,7 +13,7 @@ export default function Success() {
               await signOut();
             }}
           >
-            <button>Odhlásit se</button>
+            <button className="btn">Odhlásit se</button>
           </form>
         </div>
       </div>

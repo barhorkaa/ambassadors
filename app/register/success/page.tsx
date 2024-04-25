@@ -11,7 +11,7 @@ export default function Success() {
             manažerů a se budete moct začín plně věnovat svým ambasadorským povinnostem.
           </p>
           <Link href={'/login'}>
-            <button>Přihlásit se</button>
+            <button className="btn">Přihlásit se</button>
           </Link>
         </div>
       </div>

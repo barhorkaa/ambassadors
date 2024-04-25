@@ -8,6 +8,7 @@ export default function EditEventTypeModal(data: { eventType: EventTypeDetailMod
   return (
     <>
       <button
+        className="btn"
         onClick={() => {
           if (document) {
             (document.getElementById(data.eventType.id) as HTMLFormElement).showModal();

@@ -13,6 +13,7 @@ export default function ApproveButton(props: { fun: any; id: string }) {
     <>
       {show && (
         <button
+          className="btn"
           onClick={async () => {
             await props.fun(props.id);
             changeState();

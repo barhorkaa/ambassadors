@@ -8,6 +8,7 @@ export default function EditUserFullModal(data: { user: UserModel }) {
   return (
     <>
       <button
+        className="btn"
         onClick={() => {
           if (document) {
             (document.getElementById('edit_user_modal_manager') as HTMLFormElement).showModal();

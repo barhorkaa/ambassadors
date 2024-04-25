@@ -12,6 +12,7 @@ export default function EventSignUpButton(props: { isSignedOnEvent: boolean; eve
 
   return (
     <button
+      className="btn"
       onClick={async () => {
         if (props.isSignedOnEvent) {
           await deleteSignUpAction(props.event_id, props.user_id);
