@@ -1,5 +1,6 @@
 'use client';
 
+import { CheckIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 
 export default function ApproveButton(props: { fun: any; id: string }) {
@@ -19,8 +20,8 @@ export default function ApproveButton(props: { fun: any; id: string }) {
             changeState();
           }}
         >
-          {/*<CheckIcon className="h-5 w-5"/>*/}
-          Potvrdit
+          <CheckIcon className="h-5" />
+          <p className="hidden md:block">Potvrdit</p>
         </button>
       )}
     </>
