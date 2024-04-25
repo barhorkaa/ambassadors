@@ -1,6 +1,7 @@
 'use client';
 
 import { createSignUpAction, deleteSignUpAction } from '@/app/lib/actions/event-user';
+import { ArrowLeftStartOnRectangleIcon, ArrowRightEndOnRectangleIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 
 export default function EventSignUpButton(props: { isSignedOnEvent: boolean; event_id: string; user_id: string }) {
@@ -23,7 +24,17 @@ export default function EventSignUpButton(props: { isSignedOnEvent: boolean; eve
       }}
       disabled={false}
     >
-      {signedOn ? 'Odhlásit se' : 'Přihlásit se'}
+      {signedOn ? (
+        <>
+          <ArrowLeftStartOnRectangleIcon className="h-5" />
+          <p className="hidden md:block">Odhlásit se</p>
+        </>
+      ) : (
+        <>
+          <ArrowRightEndOnRectangleIcon className="h-5" />
+          <p className="hidden md:block">Přihlásit se</p>
+        </>
+      )}
     </button>
   );
 }
