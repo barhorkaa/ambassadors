@@ -2,6 +2,7 @@ import EventCard from '@/app/ui/event/event-card';
 import EventTable from '@/app/ui/event/event-table';
 import { getAllEvents, getAllUnapprovedEvents } from '@/database/repository/events';
 import { EventModel } from '@/models/event/event-model';
+import { PlusIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 export default async function Events() {
@@ -23,6 +24,10 @@ export default async function Events() {
         <h1>Akce</h1>
         <button>
           <Link href={'/events/new'}>Přidat akci</Link>
+          <Link href={'/events/new'}>
+            <PlusIcon className="h-5" />
+            <p className="hidden md:block">Přidat akci</p>
+          </Link>
         </button>
       </div>
       <hr className="w-full" />
