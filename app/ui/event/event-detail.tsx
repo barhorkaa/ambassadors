@@ -13,7 +13,7 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
   return (
     <div className="w-full">
       <h2 className="text-5xl">{event.name}</h2>
-      <hr />
+      <hr className="w-full" />
       <div className="flex flex-col md:flex-row gap-4 md:gap-10">
         <div className="flex flex-row gap-2">
           <CalendarDaysIcon className="h-7" />
