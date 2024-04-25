@@ -2,6 +2,7 @@
 
 import UserEditForm from '@/app/ui/user/user-edit-form';
 import { UserModel } from '@/models/userModel';
+import { PencilIcon } from '@heroicons/react/24/outline';
 
 export default function EditUserModal(data: { user: UserModel }) {
   return (
@@ -13,7 +14,8 @@ export default function EditUserModal(data: { user: UserModel }) {
           }
         }}
       >
-        Upravit informace
+        <PencilIcon className="h-5" />
+        <p className="hidden md:block">Upravit</p>
       </button>
       <dialog id="edit_user_modal" className="modal">
         <div className="modal-box">
