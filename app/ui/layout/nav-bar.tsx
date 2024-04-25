@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function NavBar() {
@@ -5,7 +6,8 @@ export default function NavBar() {
     <nav className="navbar bg-fi-300">
       <div className="flex-1">
         <Link className="btn btn-ghost text-xl" href={'/'}>
-          AmbassadorsFIMU
+          <Image className="" src={'logo_transparent.svg'} alt="logo" width={40} height={40} />
+          <p className="hidden md:block">AmbassadorsFIMU</p>
         </Link>
       </div>
       <div className="flex-none">
