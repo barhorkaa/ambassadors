@@ -5,7 +5,7 @@ export async function getUserSignUps(user_id: string) {
     console.log('user id is: ', user_id);
     return await db
       .selectFrom('eventUser')
-      .where('user_id', '=', user_id)
+      .where((eb) => eb.and([eb('substitute', '=', false), eb('user_id', '=', user_id)]))
       .fullJoin('event', 'eventUser.event_id', 'event.id')
       .select([
         'event.id as id',
