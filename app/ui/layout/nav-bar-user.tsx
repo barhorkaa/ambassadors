@@ -1,5 +1,6 @@
 import SideBar from '@/app/ui/layout/side-bar';
 import { auth } from '@/auth';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default async function NavBarUser() {
@@ -14,7 +15,8 @@ export default async function NavBarUser() {
       </div>
       <div className="navbar-center">
         <Link className="btn btn-ghost text-xl" href={'/'}>
-          AmbassadorsFIMU
+          <Image className="" src={'logo_transparent.svg'} alt="logo" width={40} height={40} />
+          <p className="hidden md:block">AmbassadorsFIMU</p>
         </Link>
       </div>
       <div className="navbar-end">
