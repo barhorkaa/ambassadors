@@ -23,6 +23,29 @@ export async function getUserSignUps(user_id: string) {
   }
 }
 
+export async function getUserSubstitutes(user_id: string) {
+  try {
+    console.log('user id is: ', user_id);
+    return await db
+      .selectFrom('eventUser')
+      .where((eb) => eb.and([eb('substitute', '=', true), eb('user_id', '=', user_id)]))
+      .fullJoin('event', 'eventUser.event_id', 'event.id')
+      .select([
+        'event.id as id',
+        // "eventUser.approved as event_user_approved",
+        'event.name as name',
+        'event.event_type_id as event_type_id',
+        'event.date as date',
+        'event.limit as limit',
+      ])
+      .fullJoin('eventType', 'event.event_type_id', 'eventType.id')
+      .select(['eventType.name as event_type_name'])
+      .execute();
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function createSignUp(event_id: string, user_id: string, substitute: boolean) {
   try {
     await db.insertInto('eventUser').values({ user_id: user_id, event_id: event_id, substitute: substitute }).execute();
