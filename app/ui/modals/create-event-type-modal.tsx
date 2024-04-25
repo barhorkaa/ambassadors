@@ -1,6 +1,7 @@
 'use client';
 
 import { EventTypeForm } from '@/app/ui/event-type/event-type-form';
+import { PlusIcon } from '@heroicons/react/24/outline';
 
 export default function CreateEventTypeModal() {
   return (
@@ -13,7 +14,8 @@ export default function CreateEventTypeModal() {
           }
         }}
       >
-        Přidat
+        <PlusIcon className="h-5" />
+        <p className="hidden md:block">Přidat</p>
       </button>
       <dialog id="create_event_type_modal" className="modal">
         <div className="modal-box">
