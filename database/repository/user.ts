@@ -17,24 +17,6 @@ export async function getUserById(id: string): Promise<Selectable<User> | undefi
   }
 }
 
-export async function getUserRole(email: string): Promise<String> {
-  try {
-    const role = await db.selectFrom('user').where('email', '=', email).select('role').executeTakeFirstOrThrow();
-    return role.role;
-  } catch (e) {
-    throw new Error('Failed to fetch user role:');
-  }
-}
-
-export async function getUserApproval(email: string | undefined) {
-  if (email === undefined) {
-    throw new Error('User has no id');
-  }
-  try {
-    return db.selectFrom('user').where('email', '=', email).select('approved').executeTakeFirstOrThrow();
-  } catch (e) {}
-}
-
 export async function createUser(newUser: RegistrationModel) {
   try {
     console.log('got to repository');
