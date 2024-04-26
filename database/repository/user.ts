@@ -6,7 +6,11 @@ import { Selectable } from 'kysely';
 import { User } from 'kysely-codegen';
 
 export async function getUserByEmail(email: string): Promise<Selectable<User> | undefined> {
-  return await db.selectFrom('user').where('email', '=', email).selectAll().executeTakeFirst();
+  try {
+    return await db.selectFrom('user').where('email', '=', email).selectAll().executeTakeFirst();
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 export async function getUserById(id: string): Promise<Selectable<User> | undefined> {
