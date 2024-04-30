@@ -5,19 +5,10 @@ import { UserModel } from '@/models/userModel';
 
 export default async function Ambassadors() {
   let allAmbassadors: UserModel[] | undefined = await getAllAmbassadors();
-  if (allAmbassadors === undefined) {
-    allAmbassadors = [];
-  }
 
   let allManagers: UserModel[] | undefined = await getAllManagers();
-  if (allManagers === undefined) {
-    allManagers = [];
-  }
 
   let unapprovedAmbassadors: UserModel[] | undefined = await getNotApprovedUsers();
-  if (unapprovedAmbassadors === undefined) {
-    unapprovedAmbassadors = [];
-  }
 
   return (
     <>
