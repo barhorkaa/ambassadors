@@ -79,7 +79,7 @@ export async function motivateUser(id: string) {
   }
 }
 
-export async function getAllManagers(): Promise<Selectable<User>[] | undefined> {
+export async function getAllManagers(): Promise<Selectable<User>[]> {
   try {
     return db.selectFrom('user').where('role', '=', 'manager').selectAll().execute();
   } catch (e) {
@@ -88,7 +88,7 @@ export async function getAllManagers(): Promise<Selectable<User>[] | undefined> 
   }
 }
 
-export async function getAllAmbassadors(): Promise<Selectable<User>[] | undefined> {
+export async function getAllAmbassadors(): Promise<Selectable<User>[]> {
   try {
     return db.selectFrom('user').where('role', '=', 'ambassador').selectAll().execute();
   } catch (e) {
@@ -106,7 +106,7 @@ export async function getAllAmbassadors(): Promise<Selectable<User>[] | undefine
 //   }
 // }
 
-export async function getNotApprovedUsers(): Promise<Selectable<User>[] | undefined> {
+export async function getNotApprovedUsers(): Promise<Selectable<User>[]> {
   try {
     return db.selectFrom('user').where('approved', '=', false).selectAll().execute();
   } catch (e) {
