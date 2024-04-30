@@ -12,9 +12,6 @@ import { UserModel } from '@/models/userModel';
 
 export default async function User({ params }: { params: { id: string } }) {
   const user: UserModel | undefined = await getUserById(params.id);
-  if (user === undefined) {
-    return <div>failed to get userto</div>;
-  }
 
   const userMotivation: MotivationModel | undefined = await getUserMotivation(params.id);
 
