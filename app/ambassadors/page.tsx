@@ -5,9 +5,7 @@ import { UserModel } from '@/models/userModel';
 
 export default async function Ambassadors() {
   let allAmbassadors: UserModel[] = await getAllAmbassadors();
-
   let allManagers: UserModel[] = await getAllManagers();
-
   let unapprovedAmbassadors: UserModel[] = await getNotApprovedUsers();
 
   return (
