@@ -11,7 +11,8 @@ export async function approveUserWithId(formData: FormData) {
     console.log('approve user with id: ', userId);
     await approveUser(userId);
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw e;
   }
 }
 
@@ -19,7 +20,8 @@ export async function approveUserById(id: string) {
   try {
     await approveUser(id);
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw e;
   }
 }
 
@@ -40,7 +42,8 @@ export async function editUserAction(formData: FormData) {
       await editUser(parse.data);
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw e;
   }
 }
 
@@ -63,6 +66,7 @@ export async function editUserFullAction(formData: FormData) {
       await editFullUser(parse.data);
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw e;
   }
 }
