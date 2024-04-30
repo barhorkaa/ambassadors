@@ -44,3 +44,20 @@ export default async function Ambassadors() {
     </>
   );
 }
+
+function UserList(props: { title: string; list: UserModel[] }) {
+  return (
+    <>
+      <h2>{props.title}</h2>
+      <div className="hidden md:block">
+        <UserTable users={props.list} />
+      </div>
+      <div className="flex md:hidden flex-wrap justify-center gap-4">
+        {props.list.map((user) => (
+          <UserCard key={user.id} user={user} />
+        ))}
+      </div>
+      <hr />
+    </>
+  );
+}
