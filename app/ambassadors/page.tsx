@@ -20,7 +20,7 @@ export default async function Ambassadors() {
   }
 
   return (
-    <div className="page">
+    <>
       <h1>Uživatelé</h1>
       <hr className="w-full" />
       <h2>Nepotvrzení uživatelé</h2>
@@ -52,6 +52,6 @@ export default async function Ambassadors() {
           <UserCard key={ambassador.id} user={ambassador} />
         ))}
       </div>
-    </div>
+    </>
   );
 }
