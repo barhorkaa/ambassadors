@@ -4,11 +4,11 @@ import { getAllAmbassadors, getAllManagers, getNotApprovedUsers } from '@/databa
 import { UserModel } from '@/models/userModel';
 
 export default async function Ambassadors() {
-  let allAmbassadors: UserModel[] | undefined = await getAllAmbassadors();
+  let allAmbassadors: UserModel[] = await getAllAmbassadors();
 
-  let allManagers: UserModel[] | undefined = await getAllManagers();
+  let allManagers: UserModel[] = await getAllManagers();
 
-  let unapprovedAmbassadors: UserModel[] | undefined = await getNotApprovedUsers();
+  let unapprovedAmbassadors: UserModel[] = await getNotApprovedUsers();
 
   return (
     <>
