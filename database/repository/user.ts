@@ -10,6 +10,7 @@ export async function getUserByEmail(email: string): Promise<Selectable<User> | 
     return await db.selectFrom('user').where('email', '=', email).selectAll().executeTakeFirst();
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
 
@@ -18,6 +19,7 @@ export async function getUserById(id: string): Promise<Selectable<User> | undefi
     return await db.selectFrom('user').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
 
@@ -31,6 +33,7 @@ export async function createUser(newUser: RegistrationModel) {
     return true;
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
 
@@ -43,6 +46,7 @@ export async function editUser(user: UserEditSelfModel) {
       .execute();
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
 
@@ -61,6 +65,7 @@ export async function editFullUser(user: UserEditFullModel) {
       .execute();
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
 
@@ -69,6 +74,7 @@ export async function motivateUser(id: string) {
     await db.updateTable('user').set({ motivated: true }).where('id', '=', id).executeTakeFirstOrThrow();
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
 
@@ -77,6 +83,7 @@ export async function getAllManagers(): Promise<Selectable<User>[] | undefined> 
     return db.selectFrom('user').where('role', '=', 'manager').selectAll().execute();
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
 
@@ -85,6 +92,7 @@ export async function getAllAmbassadors(): Promise<Selectable<User>[] | undefine
     return db.selectFrom('user').where('role', '=', 'ambassador').selectAll().execute();
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
 
@@ -102,6 +110,7 @@ export async function getNotApprovedUsers(): Promise<Selectable<User>[] | undefi
     return db.selectFrom('user').where('approved', '=', false).selectAll().execute();
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
 
@@ -111,5 +120,6 @@ export async function approveUser(id: string) {
     await db.updateTable('user').set({ approved: true }).where('id', '=', id).executeTakeFirstOrThrow();
   } catch (e) {
     console.log(e);
+    console.error(e);
   }
 }
