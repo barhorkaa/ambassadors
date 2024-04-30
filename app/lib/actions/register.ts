@@ -6,8 +6,6 @@ import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
 
 export async function createUserAction(prevState: string | undefined, formData: FormData) {
-  let result: boolean | undefined = false;
-
   try {
     console.log('form data is: ', formData);
     const newUserForm = {
@@ -31,7 +29,5 @@ export async function createUserAction(prevState: string | undefined, formData: 
     console.log(error);
     return 'Something went wrong, error';
   }
-  if (result) {
-    redirect(`/register/success`);
-  }
+  redirect(`/register/success`);
 }
