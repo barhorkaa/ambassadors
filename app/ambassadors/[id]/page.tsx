@@ -18,7 +18,7 @@ export default async function User({ params }: { params: { id: string } }) {
   const session = await auth();
 
   return (
-    <div className="page flex flex-col">
+    <div className="flex flex-col">
       <div className="flex flex-row justify-between">
         <h1>Informace o uživateli: {user!.name}</h1>
         <div className="flex flex-row gap-2">
