@@ -15,7 +15,7 @@ export async function getUserByEmail(email: string): Promise<Selectable<User> | 
   }
 }
 
-export async function getUserById(id: string): Promise<Selectable<User> | undefined> {
+export async function getUserById(id: string): Promise<Selectable<User>> {
   try {
     return await db.selectFrom('user').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
   } catch (e) {
