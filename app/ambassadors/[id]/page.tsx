@@ -24,12 +24,16 @@ export default async function User({ params }: { params: { id: string } }) {
         {!user.approved && <ApproveButton fun={approveUserById} id={user.id} />}
         {session?.user.id === params.id && session.user.role !== 'manager' && <EditUserModal user={user} />}
         {session?.user.role === 'manager' && <EditUserFullModal user={user} />}
+        <h1>Informace o uživateli: {user!.name}</h1>
+          {!user!.approved && <ApproveButton fun={approveUserById} id={user!.id} />}
+          {session?.user.id === params.id && session.user.role !== 'manager' && <EditUserModal user={user!} />}
+          {session?.user.role === 'manager' && <EditUserFullModal user={user!} />}
       </div>
       <hr className="w-full" />
       <div className="flex flex-col md:flex-row justify-start gap-20 py-4 ">
         <div>
           <h2>Detail uživatele</h2>
-          <UserDetail user={user} />
+          <UserDetail user={user!} />
         </div>
         <div>
           <h2>Motivační formulář</h2>
