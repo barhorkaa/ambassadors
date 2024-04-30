@@ -1,7 +1,7 @@
 'use server';
 
 import { createUser } from '@/database/repository/user';
-import { RegistrationModel, registrationModel } from '@/models/auth/registration-model';
+import { registrationModel } from '@/models/auth/registration-model';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
 
