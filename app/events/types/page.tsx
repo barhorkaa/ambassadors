@@ -6,11 +6,7 @@ import { getAllEventTypes } from '@/database/repository/event-type';
 import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
 
 export default async function EventsTypes() {
-  const allEventTypes: EventTypeDetailModel[] | undefined = await getAllEventTypes();
-  if (allEventTypes === undefined) {
-    return <div>unable to get events</div>;
-  }
-
+  const allEventTypes: EventTypeDetailModel[] = await getAllEventTypes();
   const session = await auth();
 
   return (
