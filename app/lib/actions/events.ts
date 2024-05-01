@@ -14,15 +14,13 @@ export async function createEventAction(formData: FormData) {
       limit: formData.get('limit'),
     };
 
-    const parse = eventBasicModel.safeParse(data);
+    const parsedData = eventBasicModel.parse(data);
 
-    if (parse.success) {
-      const session = await auth();
-      if (session?.user.role === 'manager') {
-        parse.data.approved = true;
-      }
-      await createEvent({ event: parse.data });
+    const session = await auth();
+    if (session?.user.role === 'manager') {
+      parsedData.approved = true;
     }
+    await createEvent({ event: parsedData });
   } catch (e) {
     console.error(e);
     return 'Something went wrong';
