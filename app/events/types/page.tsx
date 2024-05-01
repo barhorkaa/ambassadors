@@ -15,7 +15,6 @@ export default async function EventsTypes() {
         <h1>Druhy akcii</h1>
         {session?.user.role === 'manager' && <CreateEventTypeModal />}
       </div>
-
       <hr className="w-full" />
       {allEventTypes.map((eventType) => (
         <Detail key={eventType.id} eventType={eventType} />
@@ -28,7 +27,7 @@ async function Detail(params: { eventType: EventTypeDetailModel }) {
   const session = await auth();
 
   return (
-    <div>
+    <>
       <div className="flex flex-row justify-between">
         <h2>{params.eventType.name}</h2>
         {session?.user.role === 'manager' && <EditEventTypeModal eventType={params.eventType} />}
@@ -38,6 +37,6 @@ async function Detail(params: { eventType: EventTypeDetailModel }) {
         <DetailRow label={'Instrukce'} value={params.eventType.instructions} />
       </div>
       <hr />
-    </div>
+    </>
   );
 }
