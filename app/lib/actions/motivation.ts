@@ -7,11 +7,9 @@ import { redirect } from 'next/navigation';
 export async function createMotivationAction(formData: FormData) {
   let result: boolean | undefined = false;
   try {
-    const parse = MotivationFormModel.safeParse(formData);
+    const parsedData = MotivationFormModel.parse(formData);
 
-    if (parse.success) {
-      result = await createMotivation(parse.data);
-    }
+    result = await createMotivation(parsedData);
   } catch (error) {
     return 'Something went wrong';
   }
