@@ -13,11 +13,8 @@ export async function editEventTypeAction(formData: FormData) {
       id: formData.get('id'),
     };
 
-    const parse = eventTypeDefaultModel.safeParse(eventTypeForm);
-
-    if (parse.success) {
-      await editEventType(parse.data);
-    }
+    const parsedData = eventTypeDefaultModel.parse(eventTypeForm);
+    await editEventType(parsedData);
   } catch (e) {
     console.log(e);
   }
