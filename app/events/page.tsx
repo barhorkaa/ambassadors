@@ -19,25 +19,12 @@ export default async function Events() {
         </Link>
       </div>
       <hr className="w-full" />
-      <h2>Nepotvrzené akce</h2>
-      <div className="flex md:hidden flex-wrap justify-center gap-4 ">
-        {allUnapprovedEvents.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))}
-      </div>
-      <div className="py-2 hidden md:block">
-        <EventTable events={allUnapprovedEvents} />
-      </div>
-      <hr />
-      <h2>Všechny akce</h2>
-      <div className="flex md:hidden flex-wrap justify-center gap-4 ">
-        {allEvents.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))}
-      </div>
-      <div className="py-2 hidden md:block">
-        <EventTable events={allEvents} />
-      </div>
+      <EventList title={'Nepotvrzené akce'} list={allUnapprovedEvents} emptyMessage={'Všechny akce jsou potvrzeny'} />
+      <EventList
+        title={'Všechny akce'}
+        list={allEvents}
+        emptyMessage={'Momentálně nejsou k dispozici žádné akce. Jestli chcete někam jet, vtvořte návrh na novou akci.'}
+      />
     </>
   );
 }
