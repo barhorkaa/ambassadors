@@ -15,7 +15,7 @@ export default async function EventSignUps() {
 
   console.log('all sign ups are: ', allUnapprovedSignUps);
   return (
-    <div className="page">
+    <>
       <h1>Přihlášení na akce</h1>
       <hr className="w-full" />
       <div>
@@ -27,6 +27,6 @@ export default async function EventSignUps() {
         <h2>Všechna aktuání přihlášení</h2>
         <EventUserTable eventUsers={allSignUps} />
       </div>
-    </div>
+    </>
   );
 }
