@@ -6,17 +6,8 @@ import { PlusIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 export default async function Events() {
-  let allEvents: EventModel[] | undefined = await getAllEvents();
-  console.log('all events are: ', allEvents);
-  if (allEvents === undefined) {
-    allEvents = [];
-  }
-
-  let allUnapprovedEvents: EventModel[] | undefined = await getAllUnapprovedEvents();
-  console.log('all Unapproved Events are: ', allUnapprovedEvents);
-  if (allUnapprovedEvents === undefined) {
-    allUnapprovedEvents = [];
-  }
+  const allEvents: EventModel[] = await getAllEvents();
+  const allUnapprovedEvents: EventModel[] = await getAllUnapprovedEvents();
 
   return (
     <>
