@@ -22,7 +22,8 @@ export async function creatEventAction(formData: FormData) {
       }
       await createEvent({ event: parse.data });
     }
-  } catch (error) {
+  } catch (e) {
+    console.error(e);
     return 'Something went wrong';
   }
   redirect('/events/success');
@@ -43,7 +44,8 @@ export async function updateEventAction(formData: FormData) {
     if (parse.success) {
       await updateEvent(parse.data);
     }
-  } catch (error) {
+  } catch (e) {
+    console.error(e);
     return 'Something went wrong';
   }
 }
@@ -52,6 +54,6 @@ export async function approveEventAction(id: string) {
   try {
     await approveEvent(id);
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
