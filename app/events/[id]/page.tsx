@@ -27,7 +27,7 @@ export default async function Event({ params }: { params: { id: string } }) {
   const eventTypes: EventTypeBasicModel[] = await getAllEventTypesBasics();
 
   return (
-    <div>
+    <>
       <div className="flex flex-col md:flex-row justify-between">
         <h1>Detail akce</h1>
         <div className="flex flex-row gap-4">
@@ -50,6 +50,6 @@ export default async function Event({ params }: { params: { id: string } }) {
         <hr />
         <EventTypeDetail eventType={eventType} />
       </div>
-    </div>
+    </>
   );
 }
