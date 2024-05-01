@@ -16,19 +16,6 @@ export async function createMotivation(motivation: MotivationModel) {
   }
 }
 
-export async function isUserMotivated(user_id: string) {
-  try {
-    const userMotivation = await db
-      .selectFrom('motivationForm')
-      .where('user_id', '=', user_id)
-      .select('id')
-      .executeTakeFirst();
-    return userMotivation != undefined;
-  } catch (e) {
-    console.error(e);
-  }
-}
-
 export async function getUserMotivation(id: string) {
   try {
     return await db.selectFrom('motivationForm').where('user_id', '=', id).selectAll().executeTakeFirstOrThrow();
