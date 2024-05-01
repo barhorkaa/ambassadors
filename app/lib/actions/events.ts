@@ -11,6 +11,7 @@ export async function createEventAction(formData: FormData) {
       name: formData.get('name'),
       date: formData.get('date') == '' ? null : formData.get('date'),
       event_type_id: formData.get('event_type_id'),
+      limit: formData.get('limit'),
     };
 
     const parse = eventBasicModel.safeParse(data);
