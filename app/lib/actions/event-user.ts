@@ -19,11 +19,7 @@ export async function createSignUpAction(event_id: string, user_id: string) {
 
     const signedForEvent = await getSignUpsForEvent(event_id);
 
-    if (eventLimit > signedForEvent.length) {
-      await createSignUp(event_id, user_id, false);
-    } else {
-      await createSignUp(event_id, user_id, true);
-    }
+    await createSignUp(event_id, user_id, !(eventLimit > signedForEvent.length));
   } catch (e) {
     console.error(e);
     throw e;
