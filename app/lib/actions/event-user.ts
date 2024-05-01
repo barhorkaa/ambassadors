@@ -15,15 +15,9 @@ export async function approveSignUpAction(id: string) {
 export async function createSignUpAction(event_id: string, user_id: string) {
   try {
     const event = await getEventById(event_id);
-    if (event === undefined) {
-      return 'Invalid event';
-    }
     const eventLimit = Number(event.limit!);
 
     const signedForEvent = await getSignUpsForEvent(event_id);
-    if (signedForEvent === undefined) {
-      return 'something went wrong';
-    }
 
     if (eventLimit > signedForEvent.length) {
       await createSignUp(event_id, user_id, false);
