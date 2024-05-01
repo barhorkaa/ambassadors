@@ -3,15 +3,8 @@ import { getAllSignUps, getAllUnapprovedSignUps } from '@/database/repository/ev
 import { EventUserBasicModel } from '@/models/event-user/event-user-basic-model';
 
 export default async function EventSignUps() {
-  let allUnapprovedSignUps: EventUserBasicModel[] | undefined = await getAllUnapprovedSignUps();
-  if (allUnapprovedSignUps === undefined) {
-    allUnapprovedSignUps = [];
-  }
-
-  let allSignUps: EventUserBasicModel[] | undefined = await getAllSignUps();
-  if (allSignUps === undefined) {
-    allSignUps = [];
-  }
+  const allUnapprovedSignUps: EventUserBasicModel[] = await getAllUnapprovedSignUps();
+  const allSignUps: EventUserBasicModel[] = await getAllSignUps();
 
   console.log('all sign ups are: ', allUnapprovedSignUps);
   return (
