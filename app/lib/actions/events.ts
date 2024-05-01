@@ -6,7 +6,6 @@ import { eventBasicModel } from '@/models/event/event-basic-model';
 import { redirect } from 'next/navigation';
 
 export async function creatEventAction(formData: FormData) {
-  let result: boolean | undefined = false;
   try {
     const data = {
       name: formData.get('name'),
@@ -21,14 +20,12 @@ export async function creatEventAction(formData: FormData) {
       if (session?.user.role === 'manager') {
         parse.data.approved = true;
       }
-      result = await createEvent({ event: parse.data });
+      await createEvent({ event: parse.data });
     }
   } catch (error) {
     return 'Something went wrong';
   }
-  if (result) {
-    redirect('/events/success');
-  }
+  redirect('/events/success');
 }
 
 export async function updateEventAction(formData: FormData) {
