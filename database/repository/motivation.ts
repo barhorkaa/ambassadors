@@ -10,7 +10,7 @@ export async function createMotivation(motivation: MotivationModel) {
     await motivateUser(motivation.user_id);
     return true;
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -23,7 +23,7 @@ export async function isUserMotivated(user_id: string) {
       .executeTakeFirst();
     return userMotivation != undefined;
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -31,6 +31,6 @@ export async function getUserMotivation(id: string) {
   try {
     return await db.selectFrom('motivationForm').where('user_id', '=', id).selectAll().executeTakeFirstOrThrow();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
