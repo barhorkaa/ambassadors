@@ -1,4 +1,5 @@
 import { db } from '@/database/database';
+import { DatabaseError } from '@/errors/database-error';
 import { EventTypeCreateModel } from '@/models/event-type/event-type-create-model';
 import { EventTypeDefaultModel } from '@/models/event-type/event-type-default-model';
 
@@ -7,6 +8,7 @@ export async function getEventTypeById(id: string) {
     return await db.selectFrom('eventType').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get event type details', cause: e });
   }
 }
 
@@ -15,6 +17,7 @@ export async function getAllEventTypesBasics() {
     return await db.selectFrom('eventType').select(['name', 'id']).execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get event types', cause: e });
   }
 }
 
@@ -23,6 +26,7 @@ export async function getAllEventTypes() {
     return await db.selectFrom('eventType').selectAll().execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all event types', cause: e });
   }
 }
 
@@ -31,6 +35,7 @@ export async function createEventType(eventType: EventTypeCreateModel) {
     await db.insertInto('eventType').values(eventType).execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create event type', cause: e });
   }
 }
 
@@ -48,5 +53,6 @@ export async function editEventType(eventType: EventTypeDefaultModel) {
       .execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to edit event type', cause: e });
   }
 }
