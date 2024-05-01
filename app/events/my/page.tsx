@@ -23,7 +23,7 @@ export default async function MyEvents() {
   }
 
   return (
-    <div className="page">
+    <>
       <h1>Moje akce</h1>
       <hr className="w-full" />
       <div>
@@ -49,6 +49,6 @@ export default async function MyEvents() {
           <EventTable events={userSubstitutes} />
         </div>
       </div>
-    </div>
+    </>
   );
 }
