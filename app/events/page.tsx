@@ -19,7 +19,7 @@ export default async function Events() {
   }
 
   return (
-    <div className="page">
+    <>
       <div className="flex flex-row justify-between">
         <h1>Akce</h1>
         <Link className="btn" href={'/events/new'}>
@@ -48,5 +48,8 @@ export default async function Events() {
         <EventTable events={allEvents} />
       </div>
     </div>
+    </>
+  );
+}
   );
 }
