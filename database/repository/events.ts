@@ -1,4 +1,5 @@
 import { db } from '@/database/database';
+import { DatabaseError } from '@/errors/database-error';
 import { EventBasicModel } from '@/models/event/event-basic-model';
 
 export async function getAllEvents() {
@@ -16,7 +17,8 @@ export async function getAllEvents() {
       ])
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all events', cause: e });
   }
 }
 
@@ -36,7 +38,8 @@ export async function getAllUnapprovedEvents() {
       ])
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get unapproved events', cause: e });
   }
 }
 
@@ -44,7 +47,8 @@ export async function getEventById(id: string) {
   try {
     return await db.selectFrom('event').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to event with id', cause: e });
   }
 }
 
@@ -54,7 +58,8 @@ export async function createEvent({ event }: { event: EventBasicModel }) {
     await db.insertInto('event').values(event).execute();
     return true;
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create a new event', cause: e });
   }
 }
 
@@ -72,7 +77,8 @@ export async function updateEvent(event: EventBasicModel) {
       .where('id', '=', event.id!)
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to update an event', cause: e });
   }
 }
 
@@ -84,6 +90,7 @@ export async function approveEvent(id: string) {
       .where('id', '=', id)
       .executeTakeFirstOrThrow();
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to approve event', cause: e });
   }
 }
