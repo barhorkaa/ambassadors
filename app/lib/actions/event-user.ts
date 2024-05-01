@@ -7,7 +7,7 @@ export async function approveSignUpAction(id: string) {
   try {
     await approveSignUp(id);
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -30,7 +30,7 @@ export async function createSignUpAction(event_id: string, user_id: string) {
       await createSignUp(event_id, user_id, true);
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -38,6 +38,6 @@ export async function deleteSignUpAction(event_id: string, user_id: string) {
   try {
     await deleteSignUp(event_id, user_id);
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
