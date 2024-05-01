@@ -45,12 +45,10 @@ export async function editUserFullAction(formData: FormData) {
       email: formData.get('email'),
     };
 
-    const parse = userEditFullModel.safeParse(user);
-    console.log('parse is: ', parse);
+    const parsedData = userEditFullModel.parse(user);
+    console.log('parsedData is: ', parsedData);
 
-    if (parse.success) {
-      await editFullUser(parse.data);
-    }
+    await editFullUser(parsedData);
   } catch (e) {
     console.error(e);
     throw e;
