@@ -45,7 +45,7 @@ export async function updateEventAction(formData: FormData) {
     }
   } catch (e) {
     console.error(e);
-    return 'Something went wrong';
+    return 'Something went wrong'; // TODO decide if like this or throw
   }
 }
 
