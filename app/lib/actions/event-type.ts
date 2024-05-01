@@ -28,11 +28,8 @@ export async function createEventTypeAction(formData: FormData) {
       instructions: formData.get('instructions'),
     };
 
-    const parse = eventTypeCreateModel.safeParse(eventTypeForm);
-
-    if (parse.success) {
-      await createEventType(parse.data);
-    }
+    const parsedData = eventTypeCreateModel.parse(eventTypeForm);
+    await createEventType(parsedData);
   } catch (e) {
     console.log(e);
   }
