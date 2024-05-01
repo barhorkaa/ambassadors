@@ -6,7 +6,7 @@ export async function getEventTypeById(id: string) {
   try {
     return await db.selectFrom('eventType').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -14,7 +14,7 @@ export async function getAllEventTypesBasics() {
   try {
     return await db.selectFrom('eventType').select(['name', 'id']).execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -22,7 +22,7 @@ export async function getAllEventTypes() {
   try {
     return await db.selectFrom('eventType').selectAll().execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -30,7 +30,7 @@ export async function createEventType(eventType: EventTypeCreateModel) {
   try {
     await db.insertInto('eventType').values(eventType).execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -47,6 +47,6 @@ export async function editEventType(eventType: EventTypeDefaultModel) {
       })
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
