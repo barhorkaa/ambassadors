@@ -6,7 +6,6 @@ export default async function EventSignUps() {
   const allUnapprovedSignUps: EventUserBasicModel[] = await getAllUnapprovedSignUps();
   const allSignUps: EventUserBasicModel[] = await getAllSignUps();
 
-  console.log('all sign ups are: ', allUnapprovedSignUps);
   return (
     <>
       <h1>Přihlášení na akce</h1>
