@@ -17,6 +17,7 @@ export async function editEventTypeAction(formData: FormData) {
     await editEventType(parsedData);
   } catch (e) {
     console.error(e);
+    throw e;
   }
 }
 
@@ -32,5 +33,6 @@ export async function createEventTypeAction(formData: FormData) {
     await createEventType(parsedData);
   } catch (e) {
     console.error(e);
+    throw e;
   }
 }
