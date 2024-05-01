@@ -23,12 +23,10 @@ export async function editUserAction(formData: FormData) {
       phone_number: formData.get('phoneNumber'),
     };
 
-    const parse = userEditSelfModel.safeParse(user);
-    console.log('parse is: ', parse);
+    const parsedData = userEditSelfModel.parse(user);
+    console.log('parsedData is: ', parsedData);
 
-    if (parse.success) {
-      await editUser(parse.data);
-    }
+    await editUser(parsedData);
   } catch (e) {
     console.error(e);
     throw e;
