@@ -56,7 +56,6 @@ export async function createEvent({ event }: { event: EventBasicModel }) {
   try {
     console.log('new event is: ', event);
     await db.insertInto('event').values(event).execute();
-    return true;
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create a new event', cause: e });
