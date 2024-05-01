@@ -2,7 +2,7 @@ import RegisterForm from '@/app/ui/auth/register-form';
 
 export default function Register() {
   return (
-    <div className="page hero">
+    <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left p-4">
           <h1>Přidejte se k nám a dělejte FI dobré jméno!</h1>
