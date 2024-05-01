@@ -1,5 +1,4 @@
-import EventCard from '@/app/ui/event/event-card';
-import EventTable from '@/app/ui/event/event-table';
+import { EventList } from '@/app/ui/utils/event-list';
 import { getAllEvents, getAllUnapprovedEvents } from '@/database/repository/events';
 import { EventModel } from '@/models/event/event-model';
 import { PlusIcon } from '@heroicons/react/24/outline';
@@ -25,29 +24,6 @@ export default async function Events() {
         list={allEvents}
         emptyMessage={'Momentálně nejsou k dispozici žádné akce. Jestli chcete někam jet, vtvořte návrh na novou akci.'}
       />
-    </>
-  );
-}
-
-function EventList(props: { title: string; list: EventModel[]; emptyMessage: string }) {
-  return (
-    <>
-      <h2>{props.title}</h2>
-      {props.list.length === 0 ? (
-        <p className="text-lg py-2">{props.emptyMessage}</p>
-      ) : (
-        <>
-          <div className="flex md:hidden flex-wrap justify-center gap-4 ">
-            {props.list.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
-          <div className="py-2 hidden md:block">
-            <EventTable events={props.list} />
-          </div>
-        </>
-      )}
-      <hr />
     </>
   );
 }
