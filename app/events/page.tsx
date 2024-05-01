@@ -47,9 +47,22 @@ export default async function Events() {
       <div className="py-2 hidden md:block">
         <EventTable events={allEvents} />
       </div>
-    </div>
     </>
   );
 }
+
+function EventList(props: { title: string; list: EventModel[] }) {
+  return (
+    <>
+      <h2>{props.title}</h2>
+      <div className="flex md:hidden flex-wrap justify-center gap-4 ">
+        {props.list.map((event) => (
+          <EventCard key={event.id} event={event} />
+        ))}
+      </div>
+      <div className="py-2 hidden md:block">
+        <EventTable events={props.list} />
+      </div>
+    </>
   );
 }
