@@ -16,7 +16,7 @@ export default async function EventsTypes() {
   return (
     <>
       <div className="flex flex-row justify-between">
-        <h1>Typy akcii</h1>
+        <h1>Druhy akcii</h1>
         {session?.user.role === 'manager' && <CreateEventTypeModal />}
       </div>
 
