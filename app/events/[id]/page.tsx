@@ -12,18 +12,20 @@ import { getEventById } from '@/database/repository/events';
 import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
 import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
 import { EventDetailModel } from '@/models/event/event-detail-model';
+import { redirect } from 'next/navigation';
 
 export default async function Event({ params }: { params: { id: string } }) {
   const event: EventDetailModel = await getEventById(params.id);
   const eventType: EventTypeDetailModel = await getEventTypeById(event.event_type_id);
 
   const session = await auth();
+  if (!session) {
+    redirect('/login');
+  }
   let isSignedOnEvent: boolean | undefined = false;
-  if (session) {
-    isSignedOnEvent = await isUserSignedUpForEvent(event.id, session.user.id);
-    if (isSignedOnEvent == undefined) {
-      isSignedOnEvent = false;
-    }
+  isSignedOnEvent = await isUserSignedUpForEvent(event.id, session.user.id);
+  if (isSignedOnEvent == undefined) {
+    isSignedOnEvent = false;
   }
 
   const eventTypes: EventTypeBasicModel[] = await getAllEventTypesBasics();
