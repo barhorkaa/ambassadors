@@ -16,7 +16,7 @@ export async function editEventTypeAction(formData: FormData) {
     const parsedData = eventTypeDefaultModel.parse(eventTypeForm);
     await editEventType(parsedData);
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -31,6 +31,6 @@ export async function createEventTypeAction(formData: FormData) {
     const parsedData = eventTypeCreateModel.parse(eventTypeForm);
     await createEventType(parsedData);
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
