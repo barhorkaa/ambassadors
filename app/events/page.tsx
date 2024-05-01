@@ -42,18 +42,25 @@ export default async function Events() {
   );
 }
 
-function EventList(props: { title: string; list: EventModel[] }) {
+function EventList(props: { title: string; list: EventModel[]; emptyMessage: string }) {
   return (
     <>
       <h2>{props.title}</h2>
-      <div className="flex md:hidden flex-wrap justify-center gap-4 ">
-        {props.list.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))}
-      </div>
-      <div className="py-2 hidden md:block">
-        <EventTable events={props.list} />
-      </div>
+      {props.list.length === 0 ? (
+        <p className="text-lg py-2">{props.emptyMessage}</p>
+      ) : (
+        <>
+          <div className="flex md:hidden flex-wrap justify-center gap-4 ">
+            {props.list.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+          <div className="py-2 hidden md:block">
+            <EventTable events={props.list} />
+          </div>
+        </>
+      )}
+      <hr />
     </>
   );
 }
