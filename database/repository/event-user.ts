@@ -19,7 +19,7 @@ export async function getUserSignUps(user_id: string) {
       .select(['eventType.name as event_type_name'])
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -42,7 +42,7 @@ export async function getUserSubstitutes(user_id: string) {
       .select(['eventType.name as event_type_name'])
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -50,7 +50,7 @@ export async function createSignUp(event_id: string, user_id: string, substitute
   try {
     await db.insertInto('eventUser').values({ user_id: user_id, event_id: event_id, substitute: substitute }).execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -74,7 +74,7 @@ export async function deleteSignUp(event_id: string, user_id: string) {
       await makeSignUpNotSubstitute(event_id, firstSubstitute!.user_id);
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -86,7 +86,7 @@ export async function makeSignUpNotSubstitute(event_id: string, user_id: string)
       .set({ substitute: false })
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -100,7 +100,7 @@ export async function isUserSignedUpForEvent(event_id: string, user_id: string) 
       .executeTakeFirst();
     return record !== undefined;
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -121,7 +121,7 @@ export async function getAllUnapprovedSignUps() {
       .select('event.name as event_name')
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -141,7 +141,7 @@ export async function getAllSignUps() {
       .select('event.name as event_name')
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -154,7 +154,7 @@ export async function getSubstitutesForEvent(event_id: string) {
       .select(['user.name as user_name'])
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -167,7 +167,7 @@ export async function getSignUpsForEvent(event_id: string) {
       .select(['user.name as user_name'])
       .execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
@@ -175,6 +175,6 @@ export async function approveSignUp(id: string) {
   try {
     await db.updateTable('eventUser').where('id', '=', id).set({ approved: true, updated_at: new Date() }).execute();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
