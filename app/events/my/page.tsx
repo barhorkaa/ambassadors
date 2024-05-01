@@ -1,5 +1,4 @@
-import EventCard from '@/app/ui/event/event-card';
-import EventTable from '@/app/ui/event/event-table';
+import { EventList } from '@/app/ui/utils/event-list';
 import { auth } from '@/auth';
 import { getUserSignUps, getUserSubstitutes } from '@/database/repository/event-user';
 import { EventModel } from '@/models/event/event-model';
@@ -26,29 +25,16 @@ export default async function MyEvents() {
     <>
       <h1>Moje akce</h1>
       <hr className="w-full" />
-      <div>
-        <h2>Akce, kde jsem přihlášen</h2>
-        <div className="flex md:hidden flex-wrap justify-center gap-4 ">
-          {userEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
-        </div>
-        <div className="py-2 hidden md:block">
-          <EventTable events={userEvents} />
-        </div>
-      </div>
-      <hr />
-      <div>
-        <h2>Akce, kde jsem náhradník</h2>
-        <div className="flex md:hidden flex-wrap justify-center gap-4 ">
-          {userSubstitutes.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
-        </div>
-        <div className="py-2 hidden md:block">
-          <EventTable events={userSubstitutes} />
-        </div>
-      </div>
+      <EventList
+        title={'Akce, kde jsem přihlášen'}
+        list={userEvents}
+        emptyMessage={'Zatím nejste přihlášen na žádnou akci. Přihlásit se můžete v sekci Akce ve vaší aplikaci.'}
+      />
+      <EventList
+        title={'Akce, kde jsem náhradník'}
+        list={userSubstitutes}
+        emptyMessage={'Nejste nahraníkem na žádné akci.'}
+      />
     </>
   );
 }
