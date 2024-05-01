@@ -10,15 +10,18 @@ export default async function EventSignUps() {
     <>
       <h1>Přihlášení na akce</h1>
       <hr className="w-full" />
-      <div>
-        <h2>Nepotvrzená přihlášení</h2>
-        <EventUserTable eventUsers={allUnapprovedSignUps} />
-      </div>
+      <SignUpList title={'Nepotvrzená přihlášení'} list={allUnapprovedSignUps} />
       <hr />
-      <div>
-        <h2>Všechna aktuání přihlášení</h2>
-        <EventUserTable eventUsers={allSignUps} />
-      </div>
+      <SignUpList title={'Všechna aktuání přihlášení'} list={allSignUps} />
     </>
+  );
+}
+
+function SignUpList(props: { title: string; list: EventUserBasicModel[] }) {
+  return (
+    <div>
+      <h2>{props.title}</h2>
+      <EventUserTable eventUsers={props.list} />
+    </div>
   );
 }
