@@ -2,10 +2,10 @@ import { EventList } from '@/app/ui/utils/event-list';
 import { auth } from '@/auth';
 import { getUserSignUps, getUserSubstitutes } from '@/database/repository/event-user';
 import { EventModel } from '@/models/event/event-model';
+import { redirect } from 'next/navigation';
 
 export default async function MyEvents() {
   const session = await auth();
-
   let userEvents: EventModel[] = [];
   let userSubstitutes: EventModel[] = [];
   if (session) {
