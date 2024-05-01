@@ -22,11 +22,7 @@ export default async function Event({ params }: { params: { id: string } }) {
   if (!session) {
     redirect('/login');
   }
-  let isSignedOnEvent: boolean | undefined = false;
-  isSignedOnEvent = await isUserSignedUpForEvent(event.id, session.user.id);
-  if (isSignedOnEvent == undefined) {
-    isSignedOnEvent = false;
-  }
+  const isSignedOnEvent = await isUserSignedUpForEvent(event.id, session.user.id);
 
   const eventTypes: EventTypeBasicModel[] = await getAllEventTypesBasics();
 
