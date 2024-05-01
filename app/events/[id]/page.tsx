@@ -14,12 +14,8 @@ import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-mode
 import { EventDetailModel } from '@/models/event/event-detail-model';
 
 export default async function Event({ params }: { params: { id: string } }) {
-  const event: EventDetailModel | undefined = await getEventById(params.id);
-  if (event === undefined) {
-    return <div>Unable to get the event</div>;
-  }
-
-  const eventType: EventTypeDetailModel | undefined = await getEventTypeById(event.event_type_id);
+  const event: EventDetailModel = await getEventById(params.id);
+  const eventType: EventTypeDetailModel = await getEventTypeById(event.event_type_id);
 
   const session = await auth();
   let isSignedOnEvent: boolean | undefined = false;
@@ -30,10 +26,7 @@ export default async function Event({ params }: { params: { id: string } }) {
     }
   }
 
-  let eventTypes: EventTypeBasicModel[] | undefined = await getAllEventTypesBasics();
-  if (eventTypes === undefined) {
-    eventTypes = [];
-  }
+  const eventTypes: EventTypeBasicModel[] = await getAllEventTypesBasics();
 
   return (
     <div className="page flex flex-col gap-4">
