@@ -38,11 +38,9 @@ export async function updateEventAction(formData: FormData) {
       limit: formData.get('limit'),
     };
 
-    const parse = eventBasicModel.safeParse(data);
+    const parsedData = eventBasicModel.parse(data);
 
-    if (parse.success) {
-      await updateEvent(parse.data);
-    }
+    await updateEvent(parsedData);
   } catch (e) {
     console.error(e);
     return 'Something went wrong'; // TODO decide if like this or throw
