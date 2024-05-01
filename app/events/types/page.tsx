@@ -8,29 +8,28 @@ import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-mode
 export default async function EventsTypes() {
   const allEventTypes: EventTypeDetailModel[] = await getAllEventTypes();
   const session = await auth();
+  const isManager = session?.user.role === 'manager';
 
   return (
     <>
       <div className="flex flex-row justify-between">
         <h1>Druhy akcii</h1>
-        {session?.user.role === 'manager' && <CreateEventTypeModal />}
+        {isManager && <CreateEventTypeModal />}
       </div>
       <hr className="w-full" />
       {allEventTypes.map((eventType) => (
-        <Detail key={eventType.id} eventType={eventType} />
+        <Detail key={eventType.id} eventType={eventType} isManager={isManager} />
       ))}
     </>
   );
 }
 
-async function Detail(params: { eventType: EventTypeDetailModel }) {
-  const session = await auth();
-
+function Detail(params: { eventType: EventTypeDetailModel; isManager: boolean }) {
   return (
     <>
       <div className="flex flex-row justify-between">
         <h2>{params.eventType.name}</h2>
-        {session?.user.role === 'manager' && <EditEventTypeModal eventType={params.eventType} />}
+        {params.isManager && <EditEventTypeModal eventType={params.eventType} />}
       </div>
       <div>
         <DetailRow label={'Popis'} value={params.eventType.description} />
