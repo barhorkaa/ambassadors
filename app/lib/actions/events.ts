@@ -54,5 +54,6 @@ export async function approveEventAction(id: string) {
     await approveEvent(id);
   } catch (e) {
     console.error(e);
+    throw e;
   }
 }
