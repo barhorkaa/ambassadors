@@ -14,7 +14,7 @@ export default async function EventsTypes() {
   const session = await auth();
 
   return (
-    <div className="page">
+    <>
       <div className="flex flex-row justify-between">
         <h1>Typy akcii</h1>
         {session?.user.role === 'manager' && <CreateEventTypeModal />}
@@ -24,7 +24,7 @@ export default async function EventsTypes() {
       {allEventTypes.map((eventType) => (
         <Detail key={eventType.id} eventType={eventType} />
       ))}
-    </div>
+    </>
   );
 }
 
