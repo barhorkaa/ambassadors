@@ -1,4 +1,5 @@
 import { db } from '@/database/database';
+import { DatabaseError } from '@/errors/database-error';
 
 export async function getUserSignUps(user_id: string) {
   try {
@@ -20,6 +21,7 @@ export async function getUserSignUps(user_id: string) {
       .execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get user signups', cause: e });
   }
 }
 
@@ -43,6 +45,7 @@ export async function getUserSubstitutes(user_id: string) {
       .execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get user substitutes', cause: e });
   }
 }
 
@@ -51,6 +54,7 @@ export async function createSignUp(event_id: string, user_id: string, substitute
     await db.insertInto('eventUser').values({ user_id: user_id, event_id: event_id, substitute: substitute }).execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create a user signup', cause: e });
   }
 }
 
@@ -75,6 +79,7 @@ export async function deleteSignUp(event_id: string, user_id: string) {
     }
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_DELETE_ERROR', message: 'Unable to delete user signup', cause: e });
   }
 }
 
@@ -87,6 +92,7 @@ export async function makeSignUpNotSubstitute(event_id: string, user_id: string)
       .execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to promote a substitute', cause: e });
   }
 }
 
@@ -101,6 +107,7 @@ export async function isUserSignedUpForEvent(event_id: string, user_id: string) 
     return record !== undefined;
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get signups for an event', cause: e });
   }
 }
 
@@ -122,6 +129,7 @@ export async function getAllUnapprovedSignUps() {
       .execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all unapproved signups', cause: e });
   }
 }
 
@@ -142,6 +150,7 @@ export async function getAllSignUps() {
       .execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all signups', cause: e });
   }
 }
 
@@ -155,6 +164,7 @@ export async function getSubstitutesForEvent(event_id: string) {
       .execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get substitutes for event', cause: e });
   }
 }
 
@@ -168,6 +178,7 @@ export async function getSignUpsForEvent(event_id: string) {
       .execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get signups for event', cause: e });
   }
 }
 
@@ -176,5 +187,6 @@ export async function approveSignUp(id: string) {
     await db.updateTable('eventUser').where('id', '=', id).set({ approved: true, updated_at: new Date() }).execute();
   } catch (e) {
     console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to approve signup', cause: e });
   }
 }
