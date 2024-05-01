@@ -3,10 +3,7 @@ import { getAllEventTypesBasics } from '@/database/repository/event-type';
 import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
 
 export default async function NewEvent() {
-  let eventTypes: EventTypeBasicModel[] | undefined = await getAllEventTypesBasics();
-  if (eventTypes === undefined) {
-    eventTypes = [];
-  }
+  const eventTypes: EventTypeBasicModel[] = await getAllEventTypesBasics();
 
   return (
     <div className="hero">
