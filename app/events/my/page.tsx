@@ -6,20 +6,12 @@ import { redirect } from 'next/navigation';
 
 export default async function MyEvents() {
   const session = await auth();
-  let userEvents: EventModel[] = [];
-  let userSubstitutes: EventModel[] = [];
-  if (session) {
-    console.log('user id on MyEvents is: ', session.user.id);
-    const userEvents_: EventModel[] | undefined = await getUserSignUps(session.user.id);
-    if (userEvents_) {
-      userEvents = userEvents_;
-    }
-    const userSubstitutes_: EventModel[] | undefined = await getUserSubstitutes(session.user.id);
-    if (userSubstitutes_) {
-      userSubstitutes = userSubstitutes_;
-    }
-    console.log('events of this user are: ', userEvents);
+  if (!session) {
+    redirect('/login');
   }
+
+  const userEvents: EventModel[] = await getUserSignUps(session.user.id);
+  const userSubstitutes: EventModel[] = await getUserSubstitutes(session.user.id);
 
   return (
     <>
