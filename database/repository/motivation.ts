@@ -9,7 +9,6 @@ export async function createMotivation(motivation: MotivationModel) {
   try {
     await db.insertInto('motivationForm').values(motivation).execute();
     await motivateUser(motivation.user_id);
-    return true;
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create motivation', cause: e });
