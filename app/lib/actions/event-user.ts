@@ -8,6 +8,7 @@ export async function approveSignUpAction(id: string) {
     await approveSignUp(id);
   } catch (e) {
     console.error(e);
+    throw e;
   }
 }
 
@@ -31,6 +32,7 @@ export async function createSignUpAction(event_id: string, user_id: string) {
     }
   } catch (e) {
     console.error(e);
+    throw e;
   }
 }
 
@@ -39,5 +41,6 @@ export async function deleteSignUpAction(event_id: string, user_id: string) {
     await deleteSignUp(event_id, user_id);
   } catch (e) {
     console.error(e);
+    throw e;
   }
 }
