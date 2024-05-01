@@ -15,7 +15,7 @@ export default async function NavBarUser() {
       </div>
       <div className="navbar-center">
         <Link className="btn btn-ghost text-xl" href={'/'}>
-          <Image className="" src="logo_transparent.svg" alt="logo" width={40} height={40} />
+          <Image className="" src="/logo_transparent.svg" alt="logo" width={40} height={40} />
           <p className="hidden md:block">AmbassadorsFIMU</p>
         </Link>
       </div>
