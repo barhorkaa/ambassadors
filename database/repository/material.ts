@@ -39,6 +39,6 @@ export async function createMaterial(material: MaterialCreateModel) {
     return await db.insertInto('material').values(material).execute();
   } catch (e) {
     console.error(e);
-    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all materials', cause: e });
+    throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create a material', cause: e });
   }
 }
