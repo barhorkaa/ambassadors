@@ -14,7 +14,7 @@ export async function getMaterialById(id: string) {
 
 export async function getAllMaterials() {
   try {
-    return await db.selectFrom('material').selectAll().executeTakeFirst();
+    return await db.selectFrom('material').selectAll().execute();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all materials', cause: e });
