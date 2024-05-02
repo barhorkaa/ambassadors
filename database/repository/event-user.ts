@@ -124,6 +124,7 @@ export async function getAllUnapprovedSignUps() {
         'eventUser.event_id as event_id',
         'eventUser.user_id as user_id',
         'eventUser.approved as approved',
+        'eventUser.substitute as substitute',
       ])
       .leftJoin('event', 'event.id', 'event_id')
       .select('event.name as event_name')
@@ -145,6 +146,7 @@ export async function getAllSignUps() {
         'eventUser.event_id as event_id',
         'eventUser.user_id as user_id',
         'eventUser.approved as approved',
+        'eventUser.substitute as substitute',
       ])
       .leftJoin('event', 'event.id', 'event_id')
       .select('event.name as event_name')
