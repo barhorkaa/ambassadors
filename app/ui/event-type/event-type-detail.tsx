@@ -6,7 +6,7 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
   const session = await auth();
 
   if (eventType === undefined) {
-    return <div>Unable to load eventType details</div>;
+    return <p className="text-lg">Nepodařilo se získat infomace o typu akce</p>;
   }
 
   return (
