@@ -7,7 +7,7 @@ import EventDetail from '@/app/ui/event/event-detail';
 import EditEventModal from '@/app/ui/modals/edit-event-modal';
 import { auth } from '@/auth';
 import { getAllEventTypesBasics, getEventTypeById } from '@/database/repository/event-type';
-import { isUserSignedUpForEvent } from '@/database/repository/event-user';
+import { userSignUpForEventStatus } from '@/database/repository/event-user';
 import { getEventById } from '@/database/repository/events';
 import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
 import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
@@ -22,7 +22,7 @@ export default async function Event({ params }: { params: { id: string } }) {
   if (!session) {
     redirect('/login');
   }
-  const isSignedOnEvent = await isUserSignedUpForEvent(event.id, session.user.id);
+  const userStatus = await userSignUpForEventStatus(event.id, session.user.id);
 
   const eventTypes: EventTypeBasicModel[] = await getAllEventTypesBasics();
 
@@ -36,7 +36,11 @@ export default async function Event({ params }: { params: { id: string } }) {
           )}
           {session && (
             <fieldset disabled={!event.approved}>
-              <EventSignUpButton isSignedOnEvent={isSignedOnEvent} event_id={event.id} user_id={session.user.id} />
+              <EventSignUpButton
+                isSignedOnEvent={userStatus !== undefined}
+                event_id={event.id}
+                user_id={session.user.id}
+              />
             </fieldset>
           )}
           {(session?.user.role === 'manager' || isSignedOnEvent) && (
