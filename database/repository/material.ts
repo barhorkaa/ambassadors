@@ -36,7 +36,7 @@ export async function editMaterial(material: MaterialEditModel) {
 
 export async function createMaterial(material: MaterialCreateModel) {
   try {
-    return await db.insertInto('material').values(material).execute();
+    await db.insertInto('material').values(material).execute();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create a material', cause: e });
