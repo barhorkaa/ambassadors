@@ -34,9 +34,9 @@ export function MaterialForm(params: { material: MaterialEditModel | null }) {
           required
         />
       </div>
-      {/*<div className="form-control">*/}
-      {/*  <input id="id" value={params.material?.id} type="hidden" name="id" className="input input-bordered" />*/}
-      {/*</div>*/}
+      <div className="form-control">
+        <input id="id" value={params.material?.id} type="hidden" name="id" className="input input-bordered" />
+      </div>
       <SubmitButton title={'Odeslat'} />
     </form>
   );
