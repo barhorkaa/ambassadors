@@ -12,7 +12,7 @@ import { UserModel } from '@/models/userModel';
 
 export default async function User({ params }: { params: { id: string } }) {
   const user: UserModel = await getUserById(params.id);
-  const userMotivation: MotivationModel = await getUserMotivation(params.id);
+  const userMotivation: MotivationModel | undefined = await getUserMotivation(params.id);
 
   const session = await auth();
 
