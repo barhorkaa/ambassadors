@@ -17,7 +17,7 @@ export async function createMotivation(motivation: MotivationModel) {
 
 export async function getUserMotivation(id: string) {
   try {
-    return await db.selectFrom('motivationForm').where('user_id', '=', id).selectAll().executeTakeFirstOrThrow();
+    return await db.selectFrom('motivationForm').where('user_id', '=', id).selectAll().executeTakeFirst();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get user motivation', cause: e });
