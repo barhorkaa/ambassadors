@@ -43,7 +43,8 @@ export default async function Event({ params }: { params: { id: string } }) {
               />
             </fieldset>
           )}
-          {(session?.user.role === 'manager' || (userStatus !== undefined && !userStatus.substitute)) && (
+          {(session?.user.role === 'manager' ||
+            (userStatus !== undefined && !userStatus.substitute && new Date() <= event.date!)) && (
             <EditEventModal event={event} eventTypes={eventTypes} />
           )}
         </div>
