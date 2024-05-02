@@ -11,6 +11,7 @@ export default async function EventUserTable({ eventUsers }: { eventUsers: Event
           <tr>
             <th>Uživatel</th>
             <th>Akce</th>
+            <th>Náhradník</th>
             <th>Potvrdit</th>
             <th>Vymazat</th>
           </tr>
@@ -20,6 +21,7 @@ export default async function EventUserTable({ eventUsers }: { eventUsers: Event
             <tr className="hover" key={eventUser.id}>
               <td>{eventUser.user_name}</td>
               <td>{eventUser.event_name}</td>
+              <td>{eventUser.substitute ? 'Ano' : 'Ne'}</td>
               <td>{!eventUser.approved && <ApproveButton fun={approveSignUpAction} id={eventUser.id!} />}</td>
               <td>
                 {
