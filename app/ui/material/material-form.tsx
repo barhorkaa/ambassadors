@@ -1,9 +1,9 @@
 import { editEventTypeAction } from '@/app/lib/actions/event-type';
 import { createMaterialAction } from '@/app/lib/actions/material';
 import SubmitButton from '@/app/ui/button/submit-button';
-import { MaterialCreateModel } from '@/models/material/material-create-model';
+import { MaterialEditModel } from '@/models/material/material-edit-model';
 
-export function MaterialForm(params: { material: MaterialCreateModel | null }) {
+export function MaterialForm(params: { material: MaterialEditModel | null }) {
   return (
     <form action={params.material === null ? createMaterialAction : editEventTypeAction} className="card-body">
       <div className="form-control">
