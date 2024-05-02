@@ -1,3 +1,4 @@
+import MaterialDetail from '@/app/ui/material/material-detail';
 import CreateMaterialModal from '@/app/ui/modals/create-material-modal';
 import { auth } from '@/auth';
 import { getAllMaterials } from '@/database/repository/material';
@@ -14,8 +15,10 @@ export default async function Material() {
         <h1>Materiály</h1>
         {isManager && <CreateMaterialModal />}
       </div>
-
       <hr className="w-full" />
+      {allMaterials.map((material) => (
+        <MaterialDetail material={material} isManager={isManager} />
+      ))}
     </>
   );
 }
