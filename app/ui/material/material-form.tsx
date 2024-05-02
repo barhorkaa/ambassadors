@@ -1,11 +1,10 @@
-import { editEventTypeAction } from '@/app/lib/actions/event-type';
-import { createMaterialAction } from '@/app/lib/actions/material';
+import { createMaterialAction, editMaterialAction } from '@/app/lib/actions/material';
 import SubmitButton from '@/app/ui/button/submit-button';
 import { MaterialEditModel } from '@/models/material/material-edit-model';
 
 export function MaterialForm(params: { material: MaterialEditModel | null }) {
   return (
-    <form action={params.material === null ? createMaterialAction : editEventTypeAction} className="card-body">
+    <form action={params.material === null ? createMaterialAction : editMaterialAction} className="card-body">
       <div className="form-control">
         <label className="label" htmlFor="email">
           <span className="label-text">Název materiálu</span>
