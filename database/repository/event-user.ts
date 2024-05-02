@@ -96,15 +96,14 @@ export async function makeSignUpNotSubstitute(event_id: string, user_id: string)
   }
 }
 
-export async function isUserSignedUpForEvent(event_id: string, user_id: string) {
+export async function userSignUpForEventStatus(event_id: string, user_id: string) {
   try {
-    const record = await db
+    return await db
       .selectFrom('eventUser')
       .where('event_id', '=', event_id)
       .where('user_id', '=', user_id)
-      .select('eventUser.id')
+      .select('substitute')
       .executeTakeFirst();
-    return record !== undefined;
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get signups for an event', cause: e });
