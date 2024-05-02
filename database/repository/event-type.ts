@@ -5,7 +5,7 @@ import { EventTypeDefaultModel } from '@/models/event-type/event-type-default-mo
 
 export async function getEventTypeById(id: string) {
   try {
-    return await db.selectFrom('eventType').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
+    return await db.selectFrom('eventType').where('id', '=', id).selectAll().executeTakeFirst();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get event type details', cause: e });
