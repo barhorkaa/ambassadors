@@ -3,7 +3,7 @@ import { MotivationModel } from '@/models/motivation/motivation-model';
 
 export default function MotivationDetail(params: { motivation: MotivationModel | undefined }) {
   if (params.motivation === undefined) {
-    return <>the user is not motivated</>;
+    return <p className="text-lg">Užiatel zatím nevyplnil motivační formulář</p>;
   }
 
   return (
