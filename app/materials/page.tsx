@@ -17,7 +17,7 @@ export default async function Material() {
       </div>
       <hr className="w-full" />
       {allMaterials.map((material) => (
-        <MaterialDetail material={material} isManager={isManager} />
+        <MaterialDetail key={material.id} material={material} isManager={isManager} />
       ))}
     </>
   );
