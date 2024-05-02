@@ -75,7 +75,9 @@ export async function deleteSignUp(event_id: string, user_id: string) {
         .executeTakeFirst();
 
       console.log(firstSubstitute);
-      await makeSignUpNotSubstitute(event_id, firstSubstitute!.user_id);
+      if (firstSubstitute) {
+        await makeSignUpNotSubstitute(event_id, firstSubstitute!.user_id);
+      }
     }
   } catch (e) {
     console.error(e);
