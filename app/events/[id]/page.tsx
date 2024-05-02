@@ -16,7 +16,7 @@ import { redirect } from 'next/navigation';
 
 export default async function Event({ params }: { params: { id: string } }) {
   const event: EventDetailModel = await getEventById(params.id);
-  const eventType: EventTypeDetailModel = await getEventTypeById(event.event_type_id);
+  const eventType: EventTypeDetailModel | undefined = await getEventTypeById(event.event_type_id);
 
   const session = await auth();
   if (!session) {
