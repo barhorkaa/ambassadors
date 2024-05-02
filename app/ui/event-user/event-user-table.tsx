@@ -1,5 +1,6 @@
 import { approveSignUpAction } from '@/app/lib/actions/event-user';
 import ApproveButton from '@/app/ui/button/approve-button';
+import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
 import { EventUserBasicModel } from '@/models/event-user/event-user-basic-model';
 
 export default async function EventUserTable({ eventUsers }: { eventUsers: EventUserBasicModel[] }) {
@@ -11,6 +12,7 @@ export default async function EventUserTable({ eventUsers }: { eventUsers: Event
             <th>Uživatel</th>
             <th>Akce</th>
             <th>Potvrdit</th>
+            <th>Vymazat</th>
           </tr>
         </thead>
         <tbody>
@@ -19,6 +21,15 @@ export default async function EventUserTable({ eventUsers }: { eventUsers: Event
               <td>{eventUser.user_name}</td>
               <td>{eventUser.event_name}</td>
               <td>{!eventUser.approved && <ApproveButton fun={approveSignUpAction} id={eventUser.id!} />}</td>
+              <td>
+                {
+                  <EventSignUpButton
+                    isSignedOnEvent={true}
+                    event_id={eventUser.event_id!}
+                    user_id={eventUser.user_id!}
+                  />
+                }
+              </td>
             </tr>
           ))}
         </tbody>
