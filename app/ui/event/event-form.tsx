@@ -1,8 +1,8 @@
 import { createEventAction, updateEventAction } from '@/app/lib/actions/events';
 import SubmitButton from '@/app/ui/button/submit-button';
 import EventTypeSelect from '@/app/ui/event-type/event-type-select';
+import { EventDetailModel } from '@/models/event-models';
 import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
-import { EventDetailModel } from '@/models/event/event-detail-model';
 import { format } from 'date-fns';
 
 export default async function EventForm(data: { eventTypes: EventTypeBasicModel[]; event: EventDetailModel | null }) {
@@ -52,7 +52,7 @@ export default async function EventForm(data: { eventTypes: EventTypeBasicModel[
       <div className="form-control">
         <input id="id" value={data.event?.id} type="hidden" name="id" className="input input-bordered" />
       </div>
-      <EventTypeSelect selectedEvent={data.event?.event_type_id} eventTypes={data.eventTypes} />
+      <EventTypeSelect selectedEvent={data.event?.eventTypeId} eventTypes={data.eventTypes} />
       <SubmitButton title={'Odeslat'} />
     </form>
   );
