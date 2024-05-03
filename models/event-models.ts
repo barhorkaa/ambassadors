@@ -7,9 +7,9 @@ export type EventModel = {
   limit: number;
 };
 
-export type EventDetailModel = EventModel & {
+export type EventDetailModel = Omit<EventModel, 'eventTypeName'> & {
   approved: boolean;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date | null;
 };
