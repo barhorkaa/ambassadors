@@ -1,5 +1,5 @@
 import { getSignUpsForEvent } from '@/database/repository/event-user';
-import { EventModel } from '@/models/event/event-model';
+import { EventModel } from '@/models/event-models';
 import { CalendarDaysIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
@@ -14,7 +14,7 @@ export default async function EventCard({ event }: { event: EventModel }) {
       <Link href={`/events/${event.id}`}>
         <div className="card-body">
           <h2 className="">{event.name}</h2>
-          <div className="badge bg-fi-100">{event.event_type_name}</div>
+          <div className="badge bg-fi-100">{event.eventTypeName}</div>
           <div className="flex flex-row gap-2">
             <CalendarDaysIcon className="h-5" />
             <p className="">{event.date !== null ? event.date.toLocaleDateString() : 'Nezadáno'}</p>
