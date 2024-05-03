@@ -41,28 +41,6 @@ export async function getAllEvents(approved: boolean) {
   }
 }
 
-export async function getAllUnapprovedEvents() {
-  try {
-    const result = await db
-      .selectFrom('event')
-      .where('event.approved', '=', false)
-      .leftJoin('eventType', 'eventType.id', 'event_type_id')
-      .select([
-        'event.name as name',
-        'eventType.name as event_type_name',
-        'event_type_id',
-        'date',
-        'event.id as id',
-        'event.limit as limit',
-      ])
-      .execute();
-    return adapter(result);
-  } catch (e) {
-    console.error(e);
-    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get unapproved events', cause: e });
-  }
-}
-
 export async function getEventById(id: string) {
   try {
     return await db.selectFrom('event').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
