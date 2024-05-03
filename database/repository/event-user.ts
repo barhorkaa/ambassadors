@@ -1,10 +1,11 @@
 import { db } from '@/database/database';
+import { adapter } from '@/database/repository/events';
 import { DatabaseError } from '@/errors/database-error';
 
 export async function getUserSignUps(user_id: string, substitute: boolean) {
   try {
     console.log('user id is: ', user_id);
-    return await db
+    const result = await db
       .selectFrom('eventUser')
       .where((eb) => eb.and([eb('substitute', '=', substitute), eb('user_id', '=', user_id)]))
       .fullJoin('event', 'eventUser.event_id', 'event.id')
@@ -19,6 +20,18 @@ export async function getUserSignUps(user_id: string, substitute: boolean) {
       .fullJoin('eventType', 'event.event_type_id', 'eventType.id')
       .select(['eventType.name as event_type_name'])
       .execute();
+
+    const resultNoNull = result.map((event) => {
+      return {
+        id: event.id!,
+        name: event.name!,
+        event_type_id: event.event_type_id!,
+        date: event.date!,
+        limit: event.limit!,
+        event_type_name: event.event_type_name!,
+      };
+    });
+    return adapter(resultNoNull);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get user signups', cause: e });
