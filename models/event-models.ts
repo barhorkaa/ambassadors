@@ -6,3 +6,10 @@ export type EventModel = {
   eventTypeName: string | null;
   limit: number;
 };
+
+export type EventDetailModel = EventModel & {
+  approved: boolean;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at: Date;
+};
