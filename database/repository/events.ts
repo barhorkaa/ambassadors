@@ -21,7 +21,7 @@ export function adapter(
 
 export async function getAllEvents() {
   try {
-    return await db
+    const result = await db
       .selectFrom('event')
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .select([
@@ -33,6 +33,7 @@ export async function getAllEvents() {
         'event.limit as limit',
       ])
       .execute();
+    return adapter(result);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all events', cause: e });
@@ -41,7 +42,7 @@ export async function getAllEvents() {
 
 export async function getAllUnapprovedEvents() {
   try {
-    return await db
+    const result = await db
       .selectFrom('event')
       .where('event.approved', '=', false)
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
@@ -54,6 +55,7 @@ export async function getAllUnapprovedEvents() {
         'event.limit as limit',
       ])
       .execute();
+    return adapter(result);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get unapproved events', cause: e });
