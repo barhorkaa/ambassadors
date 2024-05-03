@@ -1,4 +1,4 @@
-import { EventModel } from '@/models/event/event-model';
+import { EventModel } from '@/models/event-models';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
@@ -19,7 +19,7 @@ export default function EventTable({ events }: { events: EventModel[] }) {
             <tr className="hover" key={event.id}>
               <td>{event.name}</td>
               <td>
-                <div className="badge bg-fi-100">{event.event_type_name}</div>
+                <div className="badge bg-fi-100">{event.eventTypeName}</div>
                 {/*{event.event_type_name}*/}
               </td>
               <td>{event.date !== null ? event.date.toLocaleDateString() : 'Nezadáno'}</td>
