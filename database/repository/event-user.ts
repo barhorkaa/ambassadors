@@ -1,12 +1,12 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
 
-export async function getUserSignUps(user_id: string) {
+export async function getUserSignUps(user_id: string, substitute: boolean) {
   try {
     console.log('user id is: ', user_id);
     return await db
       .selectFrom('eventUser')
-      .where((eb) => eb.and([eb('substitute', '=', false), eb('user_id', '=', user_id)]))
+      .where((eb) => eb.and([eb('substitute', '=', substitute), eb('user_id', '=', user_id)]))
       .fullJoin('event', 'eventUser.event_id', 'event.id')
       .select([
         'event.id as id',
