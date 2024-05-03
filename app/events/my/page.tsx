@@ -2,6 +2,7 @@ import { EventList } from '@/app/ui/utils/event-list';
 import { auth } from '@/auth';
 import { getUserSignUps, getUserSubstitutes } from '@/database/repository/event-user';
 import { EventModel } from '@/models/event/event-model';
+import { getUserSignUps } from '@/database/repository/event-user';
 import { redirect } from 'next/navigation';
 
 export default async function MyEvents() {
@@ -10,8 +11,8 @@ export default async function MyEvents() {
     redirect('/login');
   }
 
-  const userEvents: EventModel[] = await getUserSignUps(session.user.id);
-  const userSubstitutes: EventModel[] = await getUserSubstitutes(session.user.id);
+  const userEvents: EventModel[] = await getUserSignUps(session.user.id, false);
+  const userSubstitutes: EventModel[] = await getUserSignUps(session.user.id, true);
 
   return (
     <>
