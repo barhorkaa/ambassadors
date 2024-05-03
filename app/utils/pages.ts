@@ -33,14 +33,21 @@ export const programPages: PageUrl[] = [
   },
 ];
 
-export const managerPages: PageUrl[] = [
+export const otherPages: PageUrl[] = [
   {
-    name: 'Uživatelé',
-    url: '/ambassadors',
+    name: 'Materiály',
+    url: '/materials',
   },
   {
     name: 'Druhy akcí',
     url: '/events/types',
+  },
+];
+
+export const managerPages: PageUrl[] = [
+  {
+    name: 'Uživatelé',
+    url: '/ambassadors',
   },
   {
     name: 'Přihlášení na akce',
