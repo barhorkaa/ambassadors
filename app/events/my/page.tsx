@@ -1,7 +1,5 @@
 import { EventList } from '@/app/ui/utils/event-list';
 import { auth } from '@/auth';
-import { getUserSignUps, getUserSubstitutes } from '@/database/repository/event-user';
-import { EventModel } from '@/models/event/event-model';
 import { getUserSignUps } from '@/database/repository/event-user';
 import { redirect } from 'next/navigation';
 
