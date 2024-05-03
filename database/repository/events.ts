@@ -1,6 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
-import { EventBasicModel } from '@/models/event/event-basic-model';
+import { EventBasicModel } from '@/models/event-models';
 import { objectToCamel } from 'ts-case-convert';
 
 export function adapter(
