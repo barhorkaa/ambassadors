@@ -19,10 +19,11 @@ export function adapter(
   });
 }
 
-export async function getAllEvents() {
+export async function getAllEvents(approved: boolean) {
   try {
     const result = await db
       .selectFrom('event')
+      .where('event.approved', '=', approved)
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .select([
         'event.name as name',
