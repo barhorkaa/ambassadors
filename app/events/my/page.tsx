@@ -1,6 +1,7 @@
 import { EventList } from '@/app/ui/utils/event-list';
 import { auth } from '@/auth';
 import { getUserSignUps } from '@/database/repository/event-user';
+import { EventModel } from '@/models/event-models';
 import { redirect } from 'next/navigation';
 
 export default async function MyEvents() {
