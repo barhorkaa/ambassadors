@@ -43,7 +43,9 @@ export async function getAllEvents(approved: boolean) {
 
 export async function getEventById(id: string) {
   try {
-    return await db.selectFrom('event').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
+    const result = await db.selectFrom('event').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
+    const event = objectToCamel(result);
+    return { ...event, limit: +event.limit };
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to event with id', cause: e });
