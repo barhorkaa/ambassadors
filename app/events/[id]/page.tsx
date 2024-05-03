@@ -9,14 +9,14 @@ import { auth } from '@/auth';
 import { getAllEventTypesBasics, getEventTypeById } from '@/database/repository/event-type';
 import { userSignUpForEventStatus } from '@/database/repository/event-user';
 import { getEventById } from '@/database/repository/events';
+import { EventDetailModel } from '@/models/event-models';
 import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
 import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
-import { EventDetailModel } from '@/models/event/event-detail-model';
 import { redirect } from 'next/navigation';
 
 export default async function Event({ params }: { params: { id: string } }) {
   const event: EventDetailModel = await getEventById(params.id);
-  const eventType: EventTypeDetailModel | undefined = await getEventTypeById(event.event_type_id);
+  const eventType: EventTypeDetailModel | undefined = await getEventTypeById(event.eventTypeId);
 
   const session = await auth();
   if (!session) {
