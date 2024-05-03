@@ -1,6 +1,23 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
 import { EventBasicModel } from '@/models/event/event-basic-model';
+import { objectToCamel } from 'ts-case-convert';
+
+export function adapter(
+  toAdapt: {
+    event_type_id: string;
+    date: Date | null;
+    name: string;
+    event_type_name: string | null;
+    id: string;
+    limit: string;
+  }[]
+) {
+  const camel = objectToCamel(toAdapt);
+  return camel.map((event) => {
+    return { ...event, limit: +event.limit };
+  });
+}
 
 export async function getAllEvents() {
   try {
