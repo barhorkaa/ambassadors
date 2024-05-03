@@ -2,7 +2,7 @@
 
 import { auth } from '@/auth';
 import { approveEvent, createEvent, updateEvent } from '@/database/repository/events';
-import { eventBasicModel } from '@/models/event/event-basic-model';
+import { eventBasicModel } from '@/models/event-models';
 import { redirect } from 'next/navigation';
 
 export async function createEventAction(formData: FormData) {
