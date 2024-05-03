@@ -1,6 +1,6 @@
 import EventCard from '@/app/ui/event/event-card';
 import EventTable from '@/app/ui/event/event-table';
-import { EventModel } from '@/models/event/event-model';
+import { EventModel } from '@/models/event-models';
 
 export function EventList(props: { title: string; list: EventModel[]; emptyMessage: string }) {
   return (
