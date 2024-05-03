@@ -1,6 +1,6 @@
 import { auth } from '@/auth';
 import { getSignUpsForEvent } from '@/database/repository/event-user';
-import { EventDetailModel } from '@/models/event/event-detail-model';
+import { EventDetailModel } from '@/models/event-models';
 import { CalendarDaysIcon, CheckCircleIcon, UserGroupIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
 export default async function EventDetail({ event }: { event: EventDetailModel }) {
