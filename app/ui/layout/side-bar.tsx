@@ -1,7 +1,7 @@
 'use client';
 
 import { signOutAction } from '@/app/lib/actions/authentication';
-import { eventsPages, managerPages, programPages } from '@/app/utils/pages';
+import { eventsPages, managerPages, otherPages, programPages } from '@/app/utils/pages';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -42,6 +42,14 @@ export default function SideBar({ userRole }: { userRole: string }) {
           </li>
           <hr className="w-full mx-0" />
           {eventsPages.map((page, index) => (
+            <li key={index}>
+              <Link onClick={() => setIsOpen(false)} href={page.url}>
+                {page.name}
+              </Link>
+            </li>
+          ))}
+          <hr className="w-full mx-0" />
+          {otherPages.map((page, index) => (
             <li key={index}>
               <Link onClick={() => setIsOpen(false)} href={page.url}>
                 {page.name}
