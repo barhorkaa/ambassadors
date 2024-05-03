@@ -1,6 +1,7 @@
 import { EventList } from '@/app/ui/utils/event-list';
 import { getAllEvents, getAllUnapprovedEvents } from '@/database/repository/events';
 import { EventModel } from '@/models/event/event-model';
+import { EventModel } from '@/models/event-models';
 import { PlusIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
