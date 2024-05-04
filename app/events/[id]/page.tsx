@@ -4,7 +4,7 @@ import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
 import EventTypeDetail from '@/app/ui/event-type/event-type-detail';
 import { EventUserDetail } from '@/app/ui/event-user/event-user-detail';
 import EventDetail from '@/app/ui/event/event-detail';
-import EditEventModal from '@/app/ui/modals/edit-event-modal';
+import EditEventModal from '@/app/ui/modals/edit/edit-event-modal';
 import { auth } from '@/auth';
 import { getAllEventTypesBasics, getEventTypeById } from '@/database/repository/event-type';
 import { userSignUpForEventStatus } from '@/database/repository/event-user';
