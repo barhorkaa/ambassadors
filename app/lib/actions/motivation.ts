@@ -1,7 +1,7 @@
 'use server';
 
 import { createMotivation } from '@/database/repository/motivation';
-import { motivationModel } from '@/models/motivation-models';
+import { motivationSchema } from '@/models/motivation-models';
 import { redirect } from 'next/navigation';
 
 export async function createMotivationAction(formData: FormData) {
@@ -15,7 +15,7 @@ export async function createMotivationAction(formData: FormData) {
       userId: formData.get('userId'),
     };
 
-    const parsedData = motivationModel.parse(motivationForm);
+    const parsedData = motivationSchema.parse(motivationForm);
     await createMotivation(parsedData);
   } catch (error) {
     return 'Something went wrong';
