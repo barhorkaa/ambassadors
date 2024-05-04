@@ -1,34 +1,12 @@
 'use client';
 
 import { EventTypeForm } from '@/app/ui/event-type/event-type-form';
-import { PlusIcon } from '@heroicons/react/24/outline';
+import ModalLayout from '@/app/ui/modals/modal-layout';
 
 export default function CreateEventTypeModal() {
   return (
-    <>
-      <button
-        className="btn"
-        onClick={() => {
-          if (document) {
-            (document.getElementById('create_event_type_modal') as HTMLFormElement).showModal();
-          }
-        }}
-      >
-        <PlusIcon className="h-5" />
-        <p className="hidden md:block">Přidat</p>
-      </button>
-      <dialog id="create_event_type_modal" className="modal">
-        <div className="modal-box">
-          <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-base-100">✕</button>
-          </form>
-          <h3>Nový typ akce</h3>
-          <EventTypeForm eventType={null} />
-        </div>
-        <form method="dialog" className="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
-    </>
+    <ModalLayout id={'create_event_type_modal'} title={'Nový typ akce'} create={true}>
+      <EventTypeForm eventType={null} />
+    </ModalLayout>
   );
 }
