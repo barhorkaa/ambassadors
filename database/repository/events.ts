@@ -1,7 +1,7 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
 import { EventManipulationModel } from '@/models/event-models';
-import { objectToCamel } from 'ts-case-convert';
+import { objectToCamel, objectToSnake } from 'ts-case-convert';
 
 export function adapter(
   toAdapt: {
@@ -55,7 +55,7 @@ export async function getEventById(id: string) {
 export async function createEvent({ event }: { event: EventManipulationModel }) {
   try {
     console.log('new event is: ', event);
-    await db.insertInto('event').values(event).execute();
+    await db.insertInto('event').values(objectToSnake(event)).execute();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create a new event', cause: e });
@@ -69,7 +69,7 @@ export async function updateEvent(event: EventManipulationModel) {
       .set({
         date: event.date,
         name: event.name,
-        event_type_id: event.event_type_id,
+        event_type_id: event.eventTypeId,
         limit: event.limit,
         updated_at: new Date(),
       })
