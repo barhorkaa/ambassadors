@@ -1,6 +1,6 @@
 import { createEventTypeAction, editEventTypeAction } from '@/app/lib/actions/event-type';
 import SubmitButton from '@/app/ui/button/submit-button';
-import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
+import { EventTypeDetailModel } from '@/models/event-type-models';
 
 export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }) {
   return (

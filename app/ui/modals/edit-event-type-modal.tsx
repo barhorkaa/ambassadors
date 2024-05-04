@@ -1,7 +1,7 @@
 'use client';
 
 import { EventTypeForm } from '@/app/ui/event-type/event-type-form';
-import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
+import { EventTypeDetailModel } from '@/models/event-type-models';
 import { PencilIcon } from '@heroicons/react/24/outline';
 
 export default function EditEventTypeModal(data: { eventType: EventTypeDetailModel }) {

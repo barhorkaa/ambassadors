@@ -1,6 +1,6 @@
 import DetailRow from '@/app/ui/utils/detail-row';
 import { auth } from '@/auth';
-import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
+import { EventTypeDetailModel } from '@/models/event-type-models';
 
 export default async function EventTypeDetail({ eventType }: { eventType: EventTypeDetailModel | undefined }) {
   const session = await auth();

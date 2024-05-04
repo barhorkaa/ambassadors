@@ -3,7 +3,7 @@ import EditEventTypeModal from '@/app/ui/modals/edit-event-type-modal';
 import DetailRow from '@/app/ui/utils/detail-row';
 import { auth } from '@/auth';
 import { getAllEventTypes } from '@/database/repository/event-type';
-import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
+import { EventTypeDetailModel } from '@/models/event-type-models';
 
 export default async function EventsTypes() {
   const allEventTypes: EventTypeDetailModel[] = await getAllEventTypes();
