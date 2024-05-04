@@ -1,7 +1,7 @@
 'use server';
 
 import { createUser } from '@/database/repository/user';
-import { registrationModel } from '@/models/user-models';
+import { userCreateSchema } from '@/models/user-models';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
 
@@ -16,7 +16,7 @@ export async function createUserAction(prevState: string | undefined, formData: 
       phone_number: formData.get('phoneNumber'),
     };
 
-    const newUser = registrationModel.parse(newUserForm);
+    const newUser = userCreateSchema.parse(newUserForm);
     newUser.password = await bcrypt.hash(newUser.password, 10); // TODO change salt to random
 
     console.log('new user post hash is: ', newUser);

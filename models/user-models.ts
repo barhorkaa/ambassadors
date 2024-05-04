@@ -10,7 +10,7 @@ export const userEditSchema = z.object({
 });
 export type UserEditModel = z.infer<typeof userEditSchema>;
 
-export const registrationModel = z.object({
+export const userCreateSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   password: z.string(),
@@ -18,7 +18,7 @@ export const registrationModel = z.object({
   phone_number: z.string().min(9).max(16),
 });
 
-export type RegistrationModel = z.infer<typeof registrationModel>;
+export type RegistrationModel = z.infer<typeof userCreateSchema>;
 
 export type UserModel = {
   id: string;
