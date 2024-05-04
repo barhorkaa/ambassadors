@@ -1,3 +1,14 @@
+import { z } from 'zod';
+
+export const userSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  phone_number: z.string(),
+  uco: z.string().pipe(z.coerce.number()).optional(),
+  email: z.string().optional(),
+});
+export type UserManipulationModel = z.infer<typeof userSchema>;
+
 export type UserModel = {
   id: string;
   uco: number;
@@ -12,14 +23,3 @@ export type UserModel = {
   updated_at: Date;
   deleted_at: Date | null;
 };
-
-import { z } from 'zod';
-
-export const userSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  phone_number: z.string(),
-  uco: z.string().pipe(z.coerce.number()).optional(),
-  email: z.string().optional(),
-});
-export type UserManipulationModel = z.infer<typeof userSchema>;
