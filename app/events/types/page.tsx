@@ -1,4 +1,4 @@
-import CreateEventTypeModal from '@/app/ui/modals/create-event-type-modal';
+import CreateEventTypeModal from '@/app/ui/modals/create/create-event-type-modal';
 import EditEventTypeModal from '@/app/ui/modals/edit-event-type-modal';
 import DetailRow from '@/app/ui/utils/detail-row';
 import { auth } from '@/auth';
