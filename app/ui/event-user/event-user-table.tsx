@@ -1,7 +1,7 @@
 import { approveSignUpAction } from '@/app/lib/actions/event-user';
 import ApproveButton from '@/app/ui/button/approve-button';
 import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
-import { EventUserBasicModel } from '@/models/event-user/event-user-basic-model';
+import { EventUserBasicModel } from '@/models/event-user-models';
 
 export default async function EventUserTable({ eventUsers }: { eventUsers: EventUserBasicModel[] }) {
   return (
