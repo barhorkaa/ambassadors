@@ -1,6 +1,6 @@
 import { approveUserById } from '@/app/lib/actions/users';
 import ApproveButton from '@/app/ui/button/approve-button';
-import EditUserModal from '@/app/ui/modals/edit-user-modal';
+import EditUserModal from '@/app/ui/modals/edit/edit-user-modal';
 import MotivationDetail from '@/app/ui/motivation/motivation-detail';
 import UserDetail from '@/app/ui/user/user-detail';
 import { auth } from '@/auth';
