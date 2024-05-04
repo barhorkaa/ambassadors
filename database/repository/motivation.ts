@@ -2,7 +2,7 @@ import { db } from '@/database/database';
 import { motivateUser } from '@/database/repository/user';
 import { DatabaseError } from '@/errors/database-error';
 import { MotivationModel } from '@/models/motivation-models';
-import { objectToSnake } from 'ts-case-convert';
+import { objectToCamel, objectToSnake } from 'ts-case-convert';
 
 export async function createMotivation(motivation: MotivationModel) {
   console.log('Got to repository');
@@ -18,7 +18,12 @@ export async function createMotivation(motivation: MotivationModel) {
 
 export async function getUserMotivation(id: string) {
   try {
-    return await db.selectFrom('motivationForm').where('user_id', '=', id).selectAll().executeTakeFirst();
+    const result = await db.selectFrom('motivationForm').where('user_id', '=', id).selectAll().executeTakeFirst();
+    if (result) {
+      return objectToCamel(result);
+    } else {
+      return result;
+    }
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get user motivation', cause: e });
