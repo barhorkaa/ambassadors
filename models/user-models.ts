@@ -8,7 +8,7 @@ export const userEditSchema = z.object({
   uco: z.string().min(6).max(6).pipe(z.coerce.number()).optional(),
   phone_number: z.string().min(9).max(16),
 });
-export type UserManipulationModel = z.infer<typeof userEditSchema>;
+export type UserEditModel = z.infer<typeof userEditSchema>;
 
 export const registrationModel = z.object({
   name: z.string(),
