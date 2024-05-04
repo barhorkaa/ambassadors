@@ -40,11 +40,9 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
         </div>
         {session?.user.role === 'manager' && (
           <div className="flex flex-col md:flex-row gap-4 md:gap-10">
-            <p className="text-lg">Vytvořeno: {event.created_at.toLocaleDateString()}</p>
-            <p className="text-lg">Upraveno: {event.updated_at.toLocaleDateString()}</p>
-            <p className="text-lg">
-              Smazáno: {event.deleted_at === null ? 'Ne' : event.deleted_at.toLocaleDateString()}
-            </p>
+            <p className="text-lg">Vytvořeno: {event.createdAt.toLocaleDateString()}</p>
+            <p className="text-lg">Upraveno: {event.updatedAt.toLocaleDateString()}</p>
+            <p className="text-lg">Smazáno: {event.deletedAt === null ? 'Ne' : event.deletedAt.toLocaleDateString()}</p>
           </div>
         )}
       </div>
