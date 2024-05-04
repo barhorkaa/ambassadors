@@ -103,7 +103,7 @@ export async function userSignUpForEventStatus(event_id: string, user_id: string
 
 export async function getAllSignUps(approved: boolean) {
   try {
-    return await db
+    const result = await db
       .selectFrom('eventUser')
       .where('eventUser.approved', '=', approved)
       .leftJoin('user', 'user.id', 'user_id')
@@ -118,6 +118,18 @@ export async function getAllSignUps(approved: boolean) {
       .leftJoin('event', 'event.id', 'event_id')
       .select('event.name as event_name')
       .execute();
+
+    return result.map((event) => {
+      return {
+        id: event.id!,
+        eventName: event.event_name!,
+        eventId: event.event_id!,
+        userName: event.user_name!,
+        userId: event.user_id!,
+        approved: event.approved!,
+        substitute: event.substitute!,
+      };
+    });
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all signups', cause: e });
