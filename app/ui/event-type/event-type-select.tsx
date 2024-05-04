@@ -19,7 +19,7 @@ export default function EventTypeSelect(props: { eventTypes: EventTypeMinModel[]
       <select
         className="select select-bordered w-full max-w-xs"
         id="eventType"
-        name="event_type_id"
+        name="eventTypeId"
         value={eventType}
         onChange={handleEventTypeChange}
       >

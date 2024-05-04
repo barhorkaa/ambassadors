@@ -10,7 +10,7 @@ export async function createEventAction(formData: FormData) {
     const data = {
       name: formData.get('name'),
       date: formData.get('date') == '' ? null : formData.get('date'),
-      event_type_id: formData.get('event_type_id'),
+      eventTypeId: formData.get('eventTypeId'),
       limit: formData.get('limit'),
     };
 
@@ -43,7 +43,7 @@ export async function updateEventAction(formData: FormData) {
     const data = {
       name: formData.get('name'),
       date: formData.get('date') == '' ? null : formData.get('date'),
-      event_type_id: formData.get('event_type_id'),
+      eventTypeId: formData.get('eventTypeId'),
       id: formData.get('id'),
       limit: formData.get('limit'),
     };

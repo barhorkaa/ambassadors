@@ -6,7 +6,7 @@ export const eventSchema = z.object({
   name: z.string(),
   date: z.string().pipe(z.coerce.date()).nullable(),
   limit: z.string().pipe(z.coerce.number()),
-  event_type_id: z.string(),
+  eventTypeId: z.string(),
   approved: z.string().pipe(z.coerce.boolean()).default(''),
 });
 export type EventManipulationModel = z.infer<typeof eventSchema>;
