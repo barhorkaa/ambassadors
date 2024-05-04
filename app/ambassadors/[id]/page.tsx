@@ -1,6 +1,5 @@
 import { approveUserById } from '@/app/lib/actions/users';
 import ApproveButton from '@/app/ui/button/approve-button';
-import EditUserFullModal from '@/app/ui/modals/edit-user-full-modal';
 import EditUserModal from '@/app/ui/modals/edit-user-modal';
 import MotivationDetail from '@/app/ui/motivation/motivation-detail';
 import UserDetail from '@/app/ui/user/user-detail';
@@ -23,9 +22,9 @@ export default async function User({ params }: { params: { id: string } }) {
         <div className="flex flex-row gap-2">
           {!user!.approved && <ApproveButton fun={approveUserById} id={user!.id} />}
           {session?.user.role === 'manager' ? (
-            <EditUserFullModal user={user!} />
+            <EditUserModal user={user!} full={true} />
           ) : (
-            session?.user.id === params.id && <EditUserModal user={user!} />
+            session?.user.id === params.id && <EditUserModal user={user!} full={false} />
           )}
         </div>
       </div>
