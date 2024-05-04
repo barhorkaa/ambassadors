@@ -20,6 +20,16 @@ export async function createEventAction(formData: FormData) {
     if (session?.user.role === 'manager') {
       parsedData.approved = true;
     }
+    // console.log('before append: ', formData);
+    // formData.append('approved', String(session?.user.role === 'manager'));
+    // console.log('after append: ', formData);
+    // const p = eventFormModel.parse(formData);
+    // console.log('parse is: ', p);
+
+    // if (p.success) {
+    //   console.log('parse on new is: ', p.data);
+    // }
+
     await createEvent({ event: parsedData });
   } catch (e) {
     console.error(e);
