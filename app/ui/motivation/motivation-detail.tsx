@@ -20,7 +20,7 @@ export default function MotivationDetail(params: { motivation: MotivationModel |
       <div className="pb-4">
         <DetailRow
           label={'Jakých akcí byste se chtěli převážně zúčastňovat?'}
-          value={params.motivation.preferred_events}
+          value={params.motivation.preferredEvents}
         />
       </div>
       <div className="pb-4">
