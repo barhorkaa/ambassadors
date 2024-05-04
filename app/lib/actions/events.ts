@@ -2,7 +2,7 @@
 
 import { auth } from '@/auth';
 import { approveEvent, createEvent, updateEvent } from '@/database/repository/events';
-import { eventBasicModel } from '@/models/event-models';
+import { eventSchema } from '@/models/event-models';
 import { redirect } from 'next/navigation';
 
 export async function createEventAction(formData: FormData) {
@@ -14,7 +14,7 @@ export async function createEventAction(formData: FormData) {
       limit: formData.get('limit'),
     };
 
-    const parsedData = eventBasicModel.parse(data);
+    const parsedData = eventSchema.parse(data);
 
     const session = await auth();
     if (session?.user.role === 'manager') {
@@ -48,7 +48,7 @@ export async function updateEventAction(formData: FormData) {
       limit: formData.get('limit'),
     };
 
-    const parsedData = eventBasicModel.parse(data);
+    const parsedData = eventSchema.parse(data);
 
     await updateEvent(parsedData);
   } catch (e) {

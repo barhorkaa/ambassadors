@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { zfd } from 'zod-form-data';
 
-export const eventBasicModel = z.object({
+export const eventSchema = z.object({
   id: z.string().optional(),
   name: z.string(),
   date: z.string().pipe(z.coerce.date()).nullable(),
@@ -9,6 +9,7 @@ export const eventBasicModel = z.object({
   event_type_id: z.string(),
   approved: z.string().pipe(z.coerce.boolean()).default(''),
 });
+export type EventBasicModel = z.infer<typeof eventSchema>;
 
 export const eventFormModel = zfd.formData({
   id: zfd.text(z.string().optional()),
@@ -18,8 +19,6 @@ export const eventFormModel = zfd.formData({
   event_type_id: zfd.text(z.string()),
   approved: zfd.text(z.string().pipe(z.coerce.boolean()).default('')),
 });
-
-export type EventBasicModel = z.infer<typeof eventBasicModel>;
 
 export type EventModel = {
   id: string;
