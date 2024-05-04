@@ -1,10 +1,16 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
 import { EventTypeManipulationModel } from '@/models/event-type-models';
+import { objectToCamel } from 'ts-case-convert';
 
 export async function getEventTypeById(id: string) {
   try {
-    return await db.selectFrom('eventType').where('id', '=', id).selectAll().executeTakeFirst();
+    const result = await db.selectFrom('eventType').where('id', '=', id).selectAll().executeTakeFirst();
+    if (result) {
+      return objectToCamel(result);
+    } else {
+      return result;
+    }
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get event type details', cause: e });
@@ -22,7 +28,8 @@ export async function getAllEventTypesBasics() {
 
 export async function getAllEventTypes() {
   try {
-    return await db.selectFrom('eventType').selectAll().execute();
+    const result = await db.selectFrom('eventType').selectAll().execute();
+    return objectToCamel(result);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all event types', cause: e });
