@@ -1,7 +1,7 @@
 'use server';
 
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
-import { userEditFullModel } from '@/models/user/user-edit-full-model';
+import { userEditFullModel } from '@/models/user-models';
 import { userEditSelfModel } from '@/models/user/user-edit-self-model';
 
 export async function approveUserById(id: string) {
