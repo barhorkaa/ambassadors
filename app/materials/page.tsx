@@ -1,5 +1,5 @@
 import MaterialDetail from '@/app/ui/material/material-detail';
-import CreateMaterialModal from '@/app/ui/modals/create-material-modal';
+import CreateMaterialModal from '@/app/ui/modals/create/create-material-modal';
 import { auth } from '@/auth';
 import { getAllMaterials } from '@/database/repository/material';
 import { MaterialDetailModel } from '@/models/material-models';
