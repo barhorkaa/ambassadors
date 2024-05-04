@@ -2,7 +2,7 @@ import { editUserFullAction } from '@/app/lib/actions/users';
 import SubmitButton from '@/app/ui/button/submit-button';
 import { UserModel } from '@/models/user-models';
 
-export default function UserEditFullForm(params: { user: UserModel; full: boolean }) {
+export default function UserEditForm(params: { user: UserModel; full: boolean }) {
   return (
     <form action={editUserFullAction} className="card-body">
       <div className="form-control">
