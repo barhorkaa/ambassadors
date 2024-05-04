@@ -16,11 +16,11 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
       <DetailRow label={'Instrukce'} value={eventType.instructions} />
       {session?.user.role == 'manager' && (
         <div>
-          <DetailRow label={'Vytvořeno'} value={eventType.created_at.toLocaleString()} />
-          <DetailRow label={'Upraveno'} value={eventType.updated_at.toLocaleString()} />
+          <DetailRow label={'Vytvořeno'} value={eventType.createdAt.toLocaleString()} />
+          <DetailRow label={'Upraveno'} value={eventType.updatedAt.toLocaleString()} />
           <DetailRow
             label={'Zmazáno'}
-            value={eventType.deleted_at == null ? 'Ne' : eventType.deleted_at.toLocaleString()}
+            value={eventType.deletedAt == null ? 'Ne' : eventType.deletedAt.toLocaleString()}
           />
         </div>
       )}
