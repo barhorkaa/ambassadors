@@ -2,12 +2,13 @@ import { db } from '@/database/database';
 import { motivateUser } from '@/database/repository/user';
 import { DatabaseError } from '@/errors/database-error';
 import { MotivationModel } from '@/models/motivation-models';
+import { objectToSnake } from 'ts-case-convert';
 
 export async function createMotivation(motivation: MotivationModel) {
   console.log('Got to repository');
   console.log('Data on repo is: ', motivation);
   try {
-    await db.insertInto('motivationForm').values(motivation).execute();
+    await db.insertInto('motivationForm').values(objectToSnake(motivation)).execute();
     await motivateUser(motivation.user_id);
   } catch (e) {
     console.error(e);
