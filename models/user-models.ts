@@ -24,11 +24,3 @@ export const userEditFullModel = z.object({
 });
 
 export type UserEditFullModel = z.infer<typeof userEditFullModel>;
-
-export const userEditSelfModel = z.object({
-  id: z.string(),
-  name: z.string(),
-  phone_number: z.string(),
-});
-
-export type UserEditSelfModel = z.infer<typeof userEditSelfModel>;
