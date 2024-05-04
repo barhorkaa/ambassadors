@@ -1,11 +1,12 @@
 import { z } from 'zod';
 
 export const userSchema = z.object({
-  id: z.string(),
+  id: z.string().optional(),
   name: z.string(),
-  phone_number: z.string(),
-  uco: z.string().pipe(z.coerce.number()).optional(),
-  email: z.string().optional(),
+  email: z.string().email().optional(),
+  password: z.string().optional(),
+  uco: z.string().min(6).max(6).pipe(z.coerce.number()).optional(),
+  phone_number: z.string().min(9).max(16),
 });
 export type UserManipulationModel = z.infer<typeof userSchema>;
 
