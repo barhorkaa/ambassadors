@@ -1,7 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
-import { MaterialCreateModel } from '@/models/material/material-create-model';
-import { MaterialEditModel } from '@/models/material/material-edit-model';
+import { MaterialManipulationModel } from '@/models/material-models';
 
 export async function getMaterialById(id: string) {
   try {
@@ -21,11 +20,11 @@ export async function getAllMaterials() {
   }
 }
 
-export async function editMaterial(material: MaterialEditModel) {
+export async function editMaterial(material: MaterialManipulationModel) {
   try {
     await db
       .updateTable('material')
-      .where('id', '=', material.id)
+      .where('id', '=', material.id!)
       .set({ name: material.name, description: material.description, updated_at: new Date() })
       .execute();
   } catch (e) {
@@ -34,7 +33,7 @@ export async function editMaterial(material: MaterialEditModel) {
   }
 }
 
-export async function createMaterial(material: MaterialCreateModel) {
+export async function createMaterial(material: MaterialManipulationModel) {
   try {
     await db.insertInto('material').values(material).execute();
   } catch (e) {

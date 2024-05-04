@@ -1,8 +1,8 @@
 import { createMaterialAction, editMaterialAction } from '@/app/lib/actions/material';
 import SubmitButton from '@/app/ui/button/submit-button';
-import { MaterialEditModel } from '@/models/material/material-edit-model';
+import { MaterialManipulationModel } from '@/models/material-models';
 
-export function MaterialForm(params: { material: MaterialEditModel | null }) {
+export function MaterialForm(params: { material: MaterialManipulationModel | null }) {
   return (
     <form action={params.material === null ? createMaterialAction : editMaterialAction} className="card-body">
       <div className="form-control">
