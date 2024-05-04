@@ -1,5 +1,5 @@
 import DetailRow from '@/app/ui/utils/detail-row';
-import { UserModel } from '@/models/userModel';
+import { UserModel } from '@/models/user-models';
 
 export default function UserDetail(params: { user: UserModel }) {
   return (

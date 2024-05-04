@@ -1,7 +1,7 @@
 'use client';
 
 import UserEditFullForm from '@/app/ui/user/user-edit-full-form';
-import { UserModel } from '@/models/userModel';
+import { UserModel } from '@/models/user-models';
 import { PencilIcon } from '@heroicons/react/24/outline';
 
 export default function EditUserFullModal(data: { user: UserModel }) {

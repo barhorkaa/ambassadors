@@ -8,7 +8,7 @@ import { auth } from '@/auth';
 import { getUserMotivation } from '@/database/repository/motivation';
 import { getUserById } from '@/database/repository/user';
 import { MotivationModel } from '@/models/motivation/motivation-model';
-import { UserModel } from '@/models/userModel';
+import { UserModel } from '@/models/user-models';
 
 export default async function User({ params }: { params: { id: string } }) {
   const user: UserModel = await getUserById(params.id);

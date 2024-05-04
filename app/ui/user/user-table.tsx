@@ -1,4 +1,4 @@
-import { UserModel } from '@/models/userModel';
+import { UserModel } from '@/models/user-models';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 

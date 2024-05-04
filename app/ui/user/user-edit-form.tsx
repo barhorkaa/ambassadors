@@ -1,6 +1,6 @@
 import { editUserAction } from '@/app/lib/actions/users';
 import SubmitButton from '@/app/ui/button/submit-button';
-import { UserModel } from '@/models/userModel';
+import { UserModel } from '@/models/user-models';
 
 export default function UserEditForm(params: { user: UserModel }) {
   return (

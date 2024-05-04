@@ -1,7 +1,7 @@
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
 import { getAllAmbassadors, getAllManagers, getNotApprovedUsers } from '@/database/repository/user';
-import { UserModel } from '@/models/userModel';
+import { UserModel } from '@/models/user-models';
 
 export default async function Ambassadors() {
   let allAmbassadors: UserModel[] = await getAllAmbassadors();

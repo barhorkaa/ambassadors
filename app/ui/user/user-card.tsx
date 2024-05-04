@@ -1,4 +1,4 @@
-import { UserModel } from '@/models/userModel';
+import { UserModel } from '@/models/user-models';
 import Link from 'next/link';
 
 export default async function UserCard(props: { user: UserModel }) {
