@@ -1,8 +1,3 @@
-export type EventTypeMinModel = {
-  id: string;
-  name: string;
-};
-
 import { z } from 'zod';
 
 export const eventTypeSchema = z.object({
@@ -12,6 +7,11 @@ export const eventTypeSchema = z.object({
   instructions: z.string(),
 });
 export type EventTypeManipulationModel = z.infer<typeof eventTypeSchema>;
+
+export type EventTypeMinModel = {
+  id: string;
+  name: string;
+};
 
 export type EventTypeDetailModel = EventTypeMinModel & {
   description: string;
