@@ -19,18 +19,12 @@ export default async function EventUserTable({ eventUsers }: { eventUsers: Event
         <tbody>
           {eventUsers.map((eventUser) => (
             <tr className="hover" key={eventUser.id}>
-              <td>{eventUser.user_name}</td>
-              <td>{eventUser.event_name}</td>
+              <td>{eventUser.userName}</td>
+              <td>{eventUser.eventName}</td>
               <td>{eventUser.substitute ? 'Ano' : 'Ne'}</td>
               <td>{!eventUser.approved && <ApproveButton fun={approveSignUpAction} id={eventUser.id!} />}</td>
               <td>
-                {
-                  <EventSignUpButton
-                    isSignedOnEvent={true}
-                    event_id={eventUser.event_id!}
-                    user_id={eventUser.user_id!}
-                  />
-                }
+                {<EventSignUpButton isSignedOnEvent={true} event_id={eventUser.eventId!} user_id={eventUser.userId!} />}
               </td>
             </tr>
           ))}
