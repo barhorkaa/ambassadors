@@ -1,7 +1,7 @@
 'use server';
 
 import { createEventType, editEventType } from '@/database/repository/event-type';
-import { eventTypeCreateModel, eventTypeDefaultModel } from '@/models/event-type-models';
+import { eventTypeCreateModel, eventTypeSchema } from '@/models/event-type-models';
 
 export async function editEventTypeAction(formData: FormData) {
   try {
@@ -12,7 +12,7 @@ export async function editEventTypeAction(formData: FormData) {
       id: formData.get('id'),
     };
 
-    const parsedData = eventTypeDefaultModel.parse(eventTypeForm);
+    const parsedData = eventTypeSchema.parse(eventTypeForm);
     await editEventType(parsedData);
   } catch (e) {
     console.error(e);

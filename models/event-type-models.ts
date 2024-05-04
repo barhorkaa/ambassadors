@@ -5,16 +5,16 @@ export type EventTypeMinModel = {
 
 import { z } from 'zod';
 
-export const eventTypeDefaultModel = z.object({
+export const eventTypeSchema = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string(),
   instructions: z.string(),
 });
 
-export type EventTypeDefaultModel = z.infer<typeof eventTypeDefaultModel>;
+export type EventTypeDefaultModel = z.infer<typeof eventTypeSchema>;
 
-export const eventTypeCreateModel = eventTypeDefaultModel.omit({ id: true });
+export const eventTypeCreateModel = eventTypeSchema.omit({ id: true });
 
 export type EventTypeCreateModel = z.infer<typeof eventTypeCreateModel>;
 
