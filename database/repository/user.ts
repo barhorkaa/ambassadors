@@ -1,8 +1,7 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
 import { RegistrationModel } from '@/models/auth/registration-model';
-import { UserEditFullModel } from '@/models/user-models';
-import { UserEditSelfModel } from '@/models/user/user-edit-self-model';
+import { UserEditFullModel, UserEditSelfModel } from '@/models/user-models';
 import { Selectable } from 'kysely';
 import { User } from 'kysely-codegen';
 
