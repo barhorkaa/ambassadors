@@ -9,7 +9,7 @@ export async function createMotivation(motivation: MotivationModel) {
   console.log('Data on repo is: ', motivation);
   try {
     await db.insertInto('motivationForm').values(objectToSnake(motivation)).execute();
-    await motivateUser(motivation.user_id);
+    await motivateUser(motivation.userId);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create motivation', cause: e });
