@@ -1,4 +1,4 @@
-import EditMaterialModal from '@/app/ui/modals/edit-material-modal';
+import EditMaterialModal from '@/app/ui/modals/edit/edit-material-modal';
 import DetailRow from '@/app/ui/utils/detail-row';
 import { MaterialDetailModel } from '@/models/material-models';
 
