@@ -1,8 +1,7 @@
 'use server';
 
 import { createEventType, editEventType } from '@/database/repository/event-type';
-import { eventTypeDefaultModel } from '@/models/event-type-models';
-import { eventTypeCreateModel } from '@/models/event-type/event-type-create-model';
+import { eventTypeCreateModel, eventTypeDefaultModel } from '@/models/event-type-models';
 
 export async function editEventTypeAction(formData: FormData) {
   try {
