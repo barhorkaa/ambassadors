@@ -1,9 +1,9 @@
 export type EventUserBasicModel = {
   id: string;
-  user_name: string;
+  userName: string;
   substitute: boolean;
-  user_id: string;
-  event_id: string;
-  event_name: string;
+  userId: string;
+  eventId: string;
+  eventName: string;
   approved: boolean;
 };
