@@ -1,6 +1,7 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
 import { MaterialManipulationModel } from '@/models/material-models';
+import { objectToCamel } from 'ts-case-convert';
 
 export async function getMaterialById(id: string) {
   try {
@@ -13,7 +14,9 @@ export async function getMaterialById(id: string) {
 
 export async function getAllMaterials() {
   try {
-    return await db.selectFrom('material').selectAll().execute();
+    const result = await db.selectFrom('material').selectAll().execute();
+    const camel = objectToCamel(result);
+    return objectToCamel(result);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all materials', cause: e });
