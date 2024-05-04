@@ -15,7 +15,7 @@ export type UserModel = {
 
 import { z } from 'zod';
 
-export const userEditFullModel = z.object({
+export const userSchema = z.object({
   id: z.string(),
   name: z.string(),
   phone_number: z.string(),
@@ -23,4 +23,4 @@ export const userEditFullModel = z.object({
   email: z.string().optional(),
 });
 
-export type UserEditFullModel = z.infer<typeof userEditFullModel>;
+export type UserEditFullModel = z.infer<typeof userSchema>;
