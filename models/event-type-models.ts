@@ -11,8 +11,7 @@ export const eventTypeSchema = z.object({
   description: z.string(),
   instructions: z.string(),
 });
-
-export type EventTypeDefaultModel = z.infer<typeof eventTypeSchema>;
+export type EventTypeManipulationModel = z.infer<typeof eventTypeSchema>;
 
 export const eventTypeCreateModel = eventTypeSchema.omit({ id: true });
 

@@ -1,6 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
-import { EventTypeCreateModel, EventTypeDefaultModel } from '@/models/event-type-models';
+import { EventTypeCreateModel, EventTypeManipulationModel } from '@/models/event-type-models';
 
 export async function getEventTypeById(id: string) {
   try {
@@ -38,11 +38,11 @@ export async function createEventType(eventType: EventTypeCreateModel) {
   }
 }
 
-export async function editEventType(eventType: EventTypeDefaultModel) {
+export async function editEventType(eventType: EventTypeManipulationModel) {
   try {
     await db
       .updateTable('eventType')
-      .where('id', '=', eventType.id)
+      .where('id', '=', eventType.id!)
       .set({
         name: eventType.name,
         description: eventType.description,
