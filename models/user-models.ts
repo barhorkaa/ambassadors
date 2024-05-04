@@ -17,8 +17,7 @@ export const userCreateSchema = z.object({
   uco: z.string().min(6).max(6).pipe(z.coerce.number()),
   phone_number: z.string().min(9).max(16),
 });
-
-export type RegistrationModel = z.infer<typeof userCreateSchema>;
+export type UserCreateModel = z.infer<typeof userCreateSchema>;
 
 export type UserModel = {
   id: string;

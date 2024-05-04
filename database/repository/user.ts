@@ -1,6 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
-import { RegistrationModel, UserEditModel } from '@/models/user-models';
+import { UserCreateModel, UserEditModel } from '@/models/user-models';
 import { Selectable } from 'kysely';
 import { User } from 'kysely-codegen';
 
@@ -22,7 +22,7 @@ export async function getUserById(id: string): Promise<Selectable<User>> {
   }
 }
 
-export async function createUser(newUser: RegistrationModel) {
+export async function createUser(newUser: UserCreateModel) {
   try {
     console.log('got to repository');
     console.log('new user on repo is: ', newUser);
