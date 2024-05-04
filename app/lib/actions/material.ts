@@ -1,8 +1,7 @@
 'use server';
 
 import { createMaterial, editMaterial } from '@/database/repository/material';
-import { materialCreateModel } from '@/models/material/material-create-model';
-import { materialEditModel } from '@/models/material/material-edit-model';
+import { materialSchema } from '@/models/material-models';
 
 export async function createMaterialAction(formData: FormData) {
   try {
@@ -11,7 +10,7 @@ export async function createMaterialAction(formData: FormData) {
       description: formData.get('description'),
     };
 
-    const parsedData = materialCreateModel.parse(materialForm);
+    const parsedData = materialSchema.parse(materialForm);
     await createMaterial(parsedData);
   } catch (e) {
     console.error(e);
@@ -27,7 +26,7 @@ export async function editMaterialAction(formData: FormData) {
       description: formData.get('description'),
     };
 
-    const parsedData = materialEditModel.parse(materialForm);
+    const parsedData = materialSchema.parse(materialForm);
     await editMaterial(parsedData);
   } catch (e) {
     console.error(e);
