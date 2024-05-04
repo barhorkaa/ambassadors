@@ -1,10 +1,10 @@
 'use client';
 
 import { MaterialForm } from '@/app/ui/material/material-form';
-import { MaterialFullModel } from '@/models/material/material-full-model';
+import { MaterialDetailModel } from '@/models/material-models';
 import { PencilIcon } from '@heroicons/react/24/outline';
 
-export default function EditMaterialModal(data: { material: MaterialFullModel }) {
+export default function EditMaterialModal(data: { material: MaterialDetailModel }) {
   return (
     <>
       <button

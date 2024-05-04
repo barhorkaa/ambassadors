@@ -1,8 +1,8 @@
 import EditMaterialModal from '@/app/ui/modals/edit-material-modal';
 import DetailRow from '@/app/ui/utils/detail-row';
-import { MaterialFullModel } from '@/models/material/material-full-model';
+import { MaterialDetailModel } from '@/models/material-models';
 
-export default function MaterialDetail(params: { material: MaterialFullModel; isManager: boolean }) {
+export default function MaterialDetail(params: { material: MaterialDetailModel; isManager: boolean }) {
   return (
     <div>
       <div className="flex flex-row justify-between">
