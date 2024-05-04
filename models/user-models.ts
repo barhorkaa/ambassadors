@@ -22,5 +22,4 @@ export const userSchema = z.object({
   uco: z.string().pipe(z.coerce.number()).optional(),
   email: z.string().optional(),
 });
-
-export type UserEditFullModel = z.infer<typeof userSchema>;
+export type UserManipulationModel = z.infer<typeof userSchema>;

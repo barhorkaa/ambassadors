@@ -1,7 +1,7 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
 import { RegistrationModel } from '@/models/auth/registration-model';
-import { UserEditFullModel } from '@/models/user-models';
+import { UserManipulationModel } from '@/models/user-models';
 import { Selectable } from 'kysely';
 import { User } from 'kysely-codegen';
 
@@ -36,7 +36,7 @@ export async function createUser(newUser: RegistrationModel) {
   }
 }
 
-export async function editUser(user: UserEditFullModel) {
+export async function editUser(user: UserManipulationModel) {
   try {
     await db
       .updateTable('user')
@@ -49,7 +49,7 @@ export async function editUser(user: UserEditFullModel) {
   }
 }
 
-export async function editFullUser(user: UserEditFullModel) {
+export async function editFullUser(user: UserManipulationModel) {
   try {
     await db
       .updateTable('user')
