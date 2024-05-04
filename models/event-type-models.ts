@@ -13,3 +13,7 @@ export const eventTypeDefaultModel = z.object({
 });
 
 export type EventTypeDefaultModel = z.infer<typeof eventTypeDefaultModel>;
+
+export const eventTypeCreateModel = eventTypeDefaultModel.omit({ id: true });
+
+export type EventTypeCreateModel = z.infer<typeof eventTypeCreateModel>;
