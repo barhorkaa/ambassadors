@@ -5,7 +5,7 @@ import { EventDetailModel } from '@/models/event-models';
 import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
 import { format } from 'date-fns';
 
-export default async function EventForm(data: { eventTypes: EventTypeBasicModel[]; event: EventDetailModel | null }) {
+export default function EventForm(data: { eventTypes: EventTypeBasicModel[]; event: EventDetailModel | null }) {
   return (
     <form action={data.event === null ? createEventAction : updateEventAction} className="card-body">
       <div className="form-control">
