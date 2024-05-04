@@ -22,8 +22,11 @@ export default async function User({ params }: { params: { id: string } }) {
         <h1>Informace o uživateli: {user!.name}</h1>
         <div className="flex flex-row gap-2">
           {!user!.approved && <ApproveButton fun={approveUserById} id={user!.id} />}
-          {session?.user.id === params.id && session.user.role !== 'manager' && <EditUserModal user={user!} />}
-          {session?.user.role === 'manager' && <EditUserFullModal user={user!} />}
+          {session?.user.role === 'manager' ? (
+            <EditUserFullModal user={user!} />
+          ) : (
+            session?.user.id === params.id && <EditUserModal user={user!} />
+          )}
         </div>
       </div>
       <hr className="w-full" />
