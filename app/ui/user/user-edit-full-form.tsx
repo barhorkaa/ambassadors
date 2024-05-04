@@ -2,7 +2,7 @@ import { editUserFullAction } from '@/app/lib/actions/users';
 import SubmitButton from '@/app/ui/button/submit-button';
 import { UserModel } from '@/models/user-models';
 
-export default function UserEditFullForm(params: { user: UserModel }) {
+export default function UserEditFullForm(params: { user: UserModel; full: boolean }) {
   return (
     <form action={editUserFullAction} className="card-body">
       <div className="form-control">
@@ -33,34 +33,38 @@ export default function UserEditFullForm(params: { user: UserModel }) {
           required
         />
       </div>
-      <div className="form-control">
-        <label className="label" htmlFor="uco">
-          <span className="label-text">UČO</span>
-        </label>
-        <input
-          id="uco"
-          defaultValue={Number(params.user.uco)}
-          type="number"
-          name="uco"
-          placeholder="UČO"
-          className="input input-bordered"
-          required
-        />
-      </div>
-      <div className="form-control">
-        <label className="label" htmlFor="email">
-          <span className="label-text">Email</span>
-        </label>
-        <input
-          id="email"
-          defaultValue={params.user.email}
-          type="email"
-          name="email"
-          placeholder="E-mail"
-          className="input input-bordered"
-          required
-        />
-      </div>
+      {params.full && (
+        <>
+          <div className="form-control">
+            <label className="label" htmlFor="uco">
+              <span className="label-text">UČO</span>
+            </label>
+            <input
+              id="uco"
+              defaultValue={Number(params.user.uco)}
+              type="number"
+              name="uco"
+              placeholder="UČO"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label" htmlFor="email">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              id="email"
+              defaultValue={params.user.email}
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              className="input input-bordered"
+              required
+            />
+          </div>
+        </>
+      )}
       <input
         id="id"
         defaultValue={params.user.email}
