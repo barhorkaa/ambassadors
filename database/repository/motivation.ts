@@ -1,7 +1,7 @@
 import { db } from '@/database/database';
 import { motivateUser } from '@/database/repository/user';
 import { DatabaseError } from '@/errors/database-error';
-import { MotivationModel } from '@/models/motivation/motivation-model';
+import { MotivationModel } from '@/models/motivation-models';
 
 export async function createMotivation(motivation: MotivationModel) {
   console.log('Got to repository');

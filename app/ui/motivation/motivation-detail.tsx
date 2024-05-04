@@ -1,5 +1,5 @@
 import DetailRow from '@/app/ui/utils/detail-row';
-import { MotivationModel } from '@/models/motivation/motivation-model';
+import { MotivationModel } from '@/models/motivation-models';
 
 export default function MotivationDetail(params: { motivation: MotivationModel | undefined }) {
   if (params.motivation === undefined) {
