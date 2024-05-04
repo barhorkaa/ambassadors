@@ -124,10 +124,11 @@ export async function getAllUnapprovedSignUps() {
   }
 }
 
-export async function getAllSignUps() {
+export async function getAllSignUps(approved: boolean) {
   try {
     return await db
       .selectFrom('eventUser')
+      .where('eventUser.approved', '=', approved)
       .leftJoin('user', 'user.id', 'user_id')
       .select([
         'user.name as user_name',
