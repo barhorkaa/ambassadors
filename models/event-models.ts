@@ -9,7 +9,7 @@ export const eventSchema = z.object({
   event_type_id: z.string(),
   approved: z.string().pipe(z.coerce.boolean()).default(''),
 });
-export type EventBasicModel = z.infer<typeof eventSchema>;
+export type EventManipulationModel = z.infer<typeof eventSchema>;
 
 export const eventFormModel = zfd.formData({
   id: zfd.text(z.string().optional()),

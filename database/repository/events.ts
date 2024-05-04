@@ -1,6 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
-import { EventBasicModel } from '@/models/event-models';
+import { EventManipulationModel } from '@/models/event-models';
 import { objectToCamel } from 'ts-case-convert';
 
 export function adapter(
@@ -52,7 +52,7 @@ export async function getEventById(id: string) {
   }
 }
 
-export async function createEvent({ event }: { event: EventBasicModel }) {
+export async function createEvent({ event }: { event: EventManipulationModel }) {
   try {
     console.log('new event is: ', event);
     await db.insertInto('event').values(event).execute();
@@ -62,7 +62,7 @@ export async function createEvent({ event }: { event: EventBasicModel }) {
   }
 }
 
-export async function updateEvent(event: EventBasicModel) {
+export async function updateEvent(event: EventManipulationModel) {
   try {
     await db
       .updateTable('event')
