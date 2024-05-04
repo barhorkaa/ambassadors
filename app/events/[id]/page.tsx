@@ -10,7 +10,7 @@ import { getAllEventTypesBasics, getEventTypeById } from '@/database/repository/
 import { userSignUpForEventStatus } from '@/database/repository/event-user';
 import { getEventById } from '@/database/repository/events';
 import { EventDetailModel } from '@/models/event-models';
-import { EventTypeBasicModel } from '@/models/event-type-models';
+import { EventTypeMinModel } from '@/models/event-type-models';
 import { EventTypeDetailModel } from '@/models/event-type/event-type-detail-model';
 import { redirect } from 'next/navigation';
 
@@ -24,7 +24,7 @@ export default async function Event({ params }: { params: { id: string } }) {
   }
   const userStatus = await userSignUpForEventStatus(event.id, session.user.id);
 
-  const eventTypes: EventTypeBasicModel[] = await getAllEventTypesBasics();
+  const eventTypes: EventTypeMinModel[] = await getAllEventTypesBasics();
 
   return (
     <>

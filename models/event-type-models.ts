@@ -1,4 +1,4 @@
-export type EventTypeBasicModel = {
+export type EventTypeMinModel = {
   id: string;
   name: string;
 };

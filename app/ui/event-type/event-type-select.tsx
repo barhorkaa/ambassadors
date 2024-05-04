@@ -1,12 +1,9 @@
 'use client';
 
-import { EventTypeBasicModel } from '@/models/event-type-models';
+import { EventTypeMinModel } from '@/models/event-type-models';
 import { useState } from 'react';
 
-export default function EventTypeSelect(props: {
-  eventTypes: EventTypeBasicModel[];
-  selectedEvent: string | undefined;
-}) {
+export default function EventTypeSelect(props: { eventTypes: EventTypeMinModel[]; selectedEvent: string | undefined }) {
   const [eventType, setEventType] = useState(props.selectedEvent);
 
   const handleEventTypeChange = (event: any) => {

@@ -2,10 +2,10 @@ import { createEventAction, updateEventAction } from '@/app/lib/actions/events';
 import SubmitButton from '@/app/ui/button/submit-button';
 import EventTypeSelect from '@/app/ui/event-type/event-type-select';
 import { EventDetailModel } from '@/models/event-models';
-import { EventTypeBasicModel } from '@/models/event-type-models';
+import { EventTypeMinModel } from '@/models/event-type-models';
 import { format } from 'date-fns';
 
-export default function EventForm(data: { eventTypes: EventTypeBasicModel[]; event: EventDetailModel | null }) {
+export default function EventForm(data: { eventTypes: EventTypeMinModel[]; event: EventDetailModel | null }) {
   return (
     <form action={data.event === null ? createEventAction : updateEventAction} className="card-body">
       <div className="form-control">

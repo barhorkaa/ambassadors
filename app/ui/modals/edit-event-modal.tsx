@@ -2,10 +2,10 @@
 
 import EventForm from '@/app/ui/event/event-form';
 import { EventDetailModel } from '@/models/event-models';
-import { EventTypeBasicModel } from '@/models/event-type-models';
+import { EventTypeMinModel } from '@/models/event-type-models';
 import { PencilIcon } from '@heroicons/react/24/outline';
 
-export default function EditEventModal(data: { eventTypes: EventTypeBasicModel[]; event: EventDetailModel }) {
+export default function EditEventModal(data: { eventTypes: EventTypeMinModel[]; event: EventDetailModel }) {
   return (
     <>
       <button
