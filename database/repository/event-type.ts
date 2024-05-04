@@ -1,6 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
-import { EventTypeCreateModel, EventTypeManipulationModel } from '@/models/event-type-models';
+import { EventTypeManipulationModel } from '@/models/event-type-models';
 
 export async function getEventTypeById(id: string) {
   try {
@@ -29,7 +29,7 @@ export async function getAllEventTypes() {
   }
 }
 
-export async function createEventType(eventType: EventTypeCreateModel) {
+export async function createEventType(eventType: EventTypeManipulationModel) {
   try {
     await db.insertInto('eventType').values(eventType).execute();
   } catch (e) {
