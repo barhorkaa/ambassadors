@@ -1,7 +1,7 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
+import { EventTypeDefaultModel } from '@/models/event-type-models';
 import { EventTypeCreateModel } from '@/models/event-type/event-type-create-model';
-import { EventTypeDefaultModel } from '@/models/event-type/event-type-default-model';
 
 export async function getEventTypeById(id: string) {
   try {
