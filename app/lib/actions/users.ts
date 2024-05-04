@@ -1,7 +1,7 @@
 'use server';
 
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
-import { userEditFullModel, userEditSelfModel } from '@/models/user-models';
+import { userEditFullModel } from '@/models/user-models';
 
 export async function approveUserById(id: string) {
   try {
@@ -22,7 +22,7 @@ export async function editUserAction(formData: FormData) {
       phone_number: formData.get('phoneNumber'),
     };
 
-    const parsedData = userEditSelfModel.parse(user);
+    const parsedData = userEditFullModel.parse(user);
     console.log('parsedData is: ', parsedData);
 
     await editUser(parsedData);
