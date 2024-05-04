@@ -1,7 +1,7 @@
 'use server';
 
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
-import { userSchema } from '@/models/user-models';
+import { userEditSchema } from '@/models/user-models';
 
 export async function approveUserById(id: string) {
   try {
@@ -22,7 +22,7 @@ export async function editUserAction(formData: FormData) {
       phone_number: formData.get('phoneNumber'),
     };
 
-    const parsedData = userSchema.parse(user);
+    const parsedData = userEditSchema.parse(user);
     console.log('parsedData is: ', parsedData);
 
     await editUser(parsedData);
@@ -44,7 +44,7 @@ export async function editUserFullAction(formData: FormData) {
       email: formData.get('email'),
     };
 
-    const parsedData = userSchema.parse(user);
+    const parsedData = userEditSchema.parse(user);
     console.log('parsedData is: ', parsedData);
 
     await editFullUser(parsedData);

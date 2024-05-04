@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const userSchema = z.object({
+export const userEditSchema = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string().email().optional(),
@@ -8,7 +8,7 @@ export const userSchema = z.object({
   uco: z.string().min(6).max(6).pipe(z.coerce.number()).optional(),
   phone_number: z.string().min(9).max(16),
 });
-export type UserManipulationModel = z.infer<typeof userSchema>;
+export type UserManipulationModel = z.infer<typeof userEditSchema>;
 
 export const registrationModel = z.object({
   name: z.string(),
