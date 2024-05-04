@@ -1,7 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
-import { RegistrationModel } from '@/models/auth/registration-model';
-import { UserManipulationModel } from '@/models/user-models';
+import { RegistrationModel, UserManipulationModel } from '@/models/user-models';
 import { Selectable } from 'kysely';
 import { User } from 'kysely-codegen';
 
