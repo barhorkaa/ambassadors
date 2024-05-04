@@ -2,7 +2,7 @@ import { createEventAction, updateEventAction } from '@/app/lib/actions/events';
 import SubmitButton from '@/app/ui/button/submit-button';
 import EventTypeSelect from '@/app/ui/event-type/event-type-select';
 import { EventDetailModel } from '@/models/event-models';
-import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
+import { EventTypeBasicModel } from '@/models/event-type-models';
 import { format } from 'date-fns';
 
 export default function EventForm(data: { eventTypes: EventTypeBasicModel[]; event: EventDetailModel | null }) {

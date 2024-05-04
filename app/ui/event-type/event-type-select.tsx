@@ -1,6 +1,6 @@
 'use client';
 
-import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
+import { EventTypeBasicModel } from '@/models/event-type-models';
 import { useState } from 'react';
 
 export default function EventTypeSelect(props: {

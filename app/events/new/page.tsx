@@ -1,6 +1,6 @@
 import EventForm from '@/app/ui/event/event-form';
 import { getAllEventTypesBasics } from '@/database/repository/event-type';
-import { EventTypeBasicModel } from '@/models/event-type/event-type-basic';
+import { EventTypeBasicModel } from '@/models/event-type-models';
 
 export default async function NewEvent() {
   const eventTypes: EventTypeBasicModel[] = await getAllEventTypesBasics();
