@@ -19,9 +19,7 @@
 
 @layer base {
   body {
-    @apply text-black bg-white min-h-screen flex flex-col justify-between;
-    /*grid-cols-1 auto-rows-min grid-rows-3*/
-    /*grid grid-flow-row auto-rows-min*/
+    @apply text-black bg-white min-h-screen grid grid-rows-[min-content_1fr_min-content];
   }
   main {
     @apply bg-white mb-9 mx-2.5 md:mx-12 lg:mx-52;
