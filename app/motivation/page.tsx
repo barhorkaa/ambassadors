@@ -11,7 +11,8 @@ export default async function UserMotivation() {
   if (session.user.motivated) {
     redirect('/events');
   }
-  const userId = session?.user.id!; // TODO possibly remove !
+  const userId = session.user.id;
+
   return (
     <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse">
