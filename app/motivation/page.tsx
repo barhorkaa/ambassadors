@@ -1,6 +1,8 @@
 import MotivationForm from '@/app/ui/motivation/motivation-form';
+  const session = await auth();
 
 export default function UserMotivation() {
+  const userId = session?.user.id!; // TODO possibly remove !
   return (
     <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -14,7 +16,7 @@ export default function UserMotivation() {
             Zároveň je jej potrebné vyplnit, abyste se programu mohli zúčastnit a přihlašovat se na akce.
           </p>
         </div>
-        <MotivationForm />
+        <MotivationForm userId={userId} />
       </div>
     </div>
   );
