@@ -1,7 +1,16 @@
 import MotivationForm from '@/app/ui/motivation/motivation-form';
-  const session = await auth();
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
-export default function UserMotivation() {
+export default async function UserMotivation() {
+  const session = await auth();
+  if (!session) {
+    redirect('/');
+  }
+
+  if (session.user.motivated) {
+    redirect('/events');
+  }
   const userId = session?.user.id!; // TODO possibly remove !
   return (
     <div className="hero">
