@@ -48,7 +48,9 @@ export const authConfig = {
       }
 
       if (!isManager) {
-        if (nextUrl.pathname.startsWith('/ambassadors') || nextUrl.pathname.startsWith('/events/type')) {
+        if (nextUrl.pathname.startsWith('/ambassadors/')) {
+          return true;
+        } else if (nextUrl.pathname.startsWith('/ambassadors')) {
           return Response.redirect(new URL('/denied/role', nextUrl));
         }
       }
