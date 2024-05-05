@@ -1,11 +1,7 @@
 import { createMotivationAction } from '@/app/lib/actions/motivation';
 import SubmitButton from '@/app/ui/button/submit-button';
-import { auth } from '@/auth';
 
-export default async function MotivationForm() {
-  const session = await auth();
-  const userId = session?.user.id!; // TODO possibly remove !
-
+export default function MotivationForm({ userId }: { userId: string }) {
   return (
     <div className="card">
       <form action={createMotivationAction} className="card-body">
