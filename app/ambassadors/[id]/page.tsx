@@ -4,11 +4,15 @@ import EditUserModal from '@/app/ui/modals/edit/edit-user-modal';
 import { auth } from '@/auth';
 import { getUserById } from '@/database/repository/user';
 import { UserModel } from '@/models/user-models';
+import { redirect } from 'next/navigation';
 
 export default async function User({ params }: { params: { id: string } }) {
   const user: UserModel = await getUserById(params.id);
 
   const session = await auth();
+  if (session?.user.role !== 'manager' && params.id !== session?.user.id) {
+    redirect('/denied/role');
+  }
 
   return (
     <div className="flex flex-col">
