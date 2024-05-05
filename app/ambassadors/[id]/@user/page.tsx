@@ -6,9 +6,11 @@ export default async function User({ params }: { params: { id: string } }) {
   const user: UserModel = await getUserById(params.id);
 
   return (
-    <div>
-      <h2>Detail uživatele</h2>
-      <UserDetail user={user!} />
+    <div className="card card-compact md:card-normal shadow-md rounded-none h-fit">
+      <div className="card-body">
+        <h2 className="card-title">Detail uživatele</h2>
+        <UserDetail user={user!} />
+      </div>
     </div>
   );
 }
