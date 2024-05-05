@@ -15,8 +15,11 @@ export default function Layout({
 }) {
   return (
     <section>
+      <div className="align-text-bottom">
+        <h1 className="font-light text-xl">Informace o uživateli</h1>
+      </div>
       {children}
-      <div className="grid grid-cols-2 grid-rows-1">
+      <div className="grid grid-cols-1 grid-rows-[min-content_min-content] md:grid-cols-3 md:grid-rows-1 gap-4 md:px-6">
         {user}
         {motivation}
       </div>
