@@ -1,6 +1,11 @@
-import { signOut } from '@/auth';
+import { auth, signOut } from '@/auth';
+import { redirect } from 'next/navigation';
 
-export default function Success() {
+export default async function Success() {
+  const session = await auth();
+  if (!session) {
+    redirect('/');
+  }
   return (
     <div className="page hero">
       <div className="hero-content text-center">
