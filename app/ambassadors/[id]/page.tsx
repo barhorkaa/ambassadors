@@ -12,8 +12,8 @@ export default async function User({ params }: { params: { id: string } }) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row justify-between">
-        <h1>Informace o uživateli: {user!.name}</h1>
+      <div className="flex flex-row justify-between items-end">
+        <h1>{user!.name}</h1>
         <div className="flex flex-row gap-2">
           {!user!.approved && <ApproveButton fun={approveUserById} id={user!.id} />}
           {session?.user.role === 'manager' ? (
