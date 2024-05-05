@@ -6,9 +6,11 @@ export default async function Motivation({ params }: { params: { id: string } })
   const userMotivation: MotivationModel = await getUserMotivation(params.id);
 
   return (
-    <div>
-      <h2>Motivační formulář</h2>
-      <MotivationDetail motivation={userMotivation} />
+    <div className="card-compact md:card-normal md:col-span-2 bg-base-100 shadow-md">
+      <div className="card-body">
+        <h2 className="card-title">Motivační formulář</h2>
+        <MotivationDetail motivation={userMotivation} />
+      </div>
     </div>
   );
 }
