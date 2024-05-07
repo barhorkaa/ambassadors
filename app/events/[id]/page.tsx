@@ -4,6 +4,7 @@ import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
 import EventTypeDetail from '@/app/ui/event-type/event-type-detail';
 import { EventUserDetail } from '@/app/ui/event-user/event-user-detail';
 import EventDetail from '@/app/ui/event/event-detail';
+import CreateReportModal from '@/app/ui/modals/create/create-report-modal';
 import EditEventModal from '@/app/ui/modals/edit/edit-event-modal';
 import { auth } from '@/auth';
 import { getAllEventTypesBasics, getEventTypeById } from '@/database/repository/event-type';
@@ -45,6 +46,9 @@ export default async function Event({ params }: { params: { id: string } }) {
           {(session?.user.role === 'manager' ||
             (userStatus !== undefined && !userStatus.substitute && new Date() <= event.date!)) && (
             <EditEventModal event={event} eventTypes={eventTypes} />
+          )}
+          {userStatus !== undefined && !userStatus.substitute && new Date() > event.date! && (
+            <CreateReportModal eventId={event.id}></CreateReportModal>
           )}
         </div>
       </div>
