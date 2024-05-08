@@ -5,7 +5,7 @@ import { objectToCamel } from 'ts-case-convert';
 
 export async function getEventTypeById(id: string) {
   try {
-    const result = await db.selectFrom('eventType').where('id', '=', id).selectAll().executeTakeFirst();
+    const result = await db.selectFrom('eventType').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
     if (result) {
       return objectToCamel(result);
     } else {
