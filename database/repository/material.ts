@@ -23,6 +23,16 @@ export async function getAllMaterials() {
   }
 }
 
+export async function getAllMaterialsMin() {
+  try {
+    const result = await db.selectFrom('material').select(['material.id as id', 'material.name as name']).execute();
+    return result;
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all materials', cause: e });
+  }
+}
+
 export async function editMaterial(material: MaterialManipulationModel) {
   try {
     await db
