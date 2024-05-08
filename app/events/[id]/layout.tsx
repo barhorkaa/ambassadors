@@ -28,12 +28,12 @@ export default function Layout({
         <h1 className="font-light text-xl">Detail akce</h1>
       </div>
       {children}
-      <div>
+      <div className="flex flex-col gap-4">
         {event}
-        <div className="grid grid-cols-3 grid-rows-3">
-          {type}
-          {users}
-          {report}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-9 md:grid-rows-2">
+          <div className="row-start-2 md:row-start-1 md:col-start-1 md:col-span-6">{type}</div>
+          <div className="row-start-1 md:col-start-7 md:col-span-3 md:row-span-2">{users}</div>
+          <div className="md:col-start-2 md:row-start-2 md:row-end-2 md:col-span-5 ">{report}</div>
         </div>
       </div>
     </section>
