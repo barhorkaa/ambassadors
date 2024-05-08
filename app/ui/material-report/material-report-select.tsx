@@ -14,8 +14,8 @@ export default function MaterialReportSelect(props: {
   };
 
   return (
-    <div>
-      <div className="form-control">
+    <div className="form-control grid grid-rows-1 grid-cols-3">
+      <div className="form-control col-span-2">
         <label className="label" htmlFor="material">
           <span className="label-text">Typ akce</span>
         </label>
