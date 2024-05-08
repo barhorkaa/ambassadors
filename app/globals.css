@@ -62,4 +62,7 @@
   .page {
     @apply mt-9
   }
+  .data-display {
+    @apply bg-base-100 shadow-md rounded-none
+  }
 }
