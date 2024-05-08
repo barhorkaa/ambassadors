@@ -14,7 +14,7 @@ export default function MaterialReportSelect(props: {
   };
 
   return (
-    <div className="form-control grid grid-rows-1 grid-cols-3">
+    <div className="form-control">
       <div className="form-control col-span-2">
         <label className="label" htmlFor="material">
           <span className="label-text">Typ akce</span>
@@ -33,19 +33,6 @@ export default function MaterialReportSelect(props: {
             </option>
           ))}
         </select>
-      </div>
-      <div className="form-control">
-        <label className="label" htmlFor="numerOfAttendees">
-          <span className="label-text">Počet kusů</span>
-        </label>
-        <input
-          id="amount"
-          type="number"
-          name="amount"
-          placeholder="Počet kusů"
-          className="input input-bordered"
-          required
-        />
       </div>
     </div>
   );
