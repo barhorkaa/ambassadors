@@ -1,18 +1,11 @@
 import MaterialReportSelect from '@/app/ui/material-report/material-report-select';
 import { MaterialMinModel } from '@/models/material-models';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
 function DynamicForm({ materials }: { materials: MaterialMinModel[] }) {
   const [inputs, setInputs] = useState([{ materialId: '', amount: 0 }]);
 
   console.log('inpusts are: ', inputs);
-  // Function to handle change in input field
-  const handleInputChange = (index: number, event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    const list = [...inputs];
-    // list[index][name] = value;
-    setInputs(list);
-  };
 
   const handleAddClick = () => {
     setInputs([...inputs, { materialId: '', amount: 0 }]);
@@ -37,7 +30,6 @@ function DynamicForm({ materials }: { materials: MaterialMinModel[] }) {
             {inputs.length - 1 === i && <button onClick={handleAddClick}>Add</button>}
           </div>
         ))}
-        {/*<button type="submit">Submit</button>*/}
       </div>
     </div>
   );
