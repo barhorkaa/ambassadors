@@ -1,15 +1,30 @@
 'use server';
 
+import { createReport } from '@/database/repository/report';
+import { reportSchema } from '@/models/report-models';
+
 export async function createReportAction(formData: FormData) {
-  console.log('got to action');
   try {
-    console.log('in action form data is: ', formData);
+    const materials_amounts = {
+      materialIds: formData.getAll('materialId'),
+      materialAmounts: formData.getAll('amount'),
+    };
+
+    const materials = materials_amounts.materialIds.map((mat, i) => {
+      return { materialId: mat, amount: materials_amounts.materialAmounts[i] };
+    });
+
     const reportForm = {
       eventId: formData.get('eventId'),
       ideas: formData.get('ideas'),
       notes: formData.get('notes'),
-      numerOfAttendees: formData.get('numerOfAttendees'),
+      numberOfAttendees: formData.get('numerOfAttendees'),
+      materials: materials,
     };
+
+    const parsedData = reportSchema.parse(reportForm);
+
+    await createReport(parsedData);
   } catch (e) {
     console.error(e);
     throw e;
