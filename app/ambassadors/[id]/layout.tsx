@@ -1,3 +1,4 @@
+import BackNavigation from '@/app/ui/layout/back-navigation';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,7 +16,8 @@ export default function Layout({
 }) {
   return (
     <section>
-      <div className="align-text-bottom">
+      <div className="align-text-bottom flex flex-row gap-4">
+        <BackNavigation href={'/ambassadors'} tooltip={'Zpátky na Uživatele'} />
         <h1 className="font-light text-xl">Informace o uživateli</h1>
       </div>
       {children}
