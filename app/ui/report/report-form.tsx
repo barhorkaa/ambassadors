@@ -1,7 +1,9 @@
 import { createReportAction } from '@/app/lib/actions/report';
 import SubmitButton from '@/app/ui/button/submit-button';
+import DynamicForm from '@/app/ui/material-report/material-add';
+import { MaterialMinModel } from '@/models/material-models';
 
-export default function ReportForm({ eventId }: { eventId: string }) {
+export default function ReportForm({ eventId, materials }: { eventId: string; materials: MaterialMinModel[] }) {
   console.log('tjsi sksm');
   return (
     <form action={createReportAction} className="card-body">
@@ -45,6 +47,7 @@ export default function ReportForm({ eventId }: { eventId: string }) {
         />
       </div>
       <input id="id" type="hidden" name="eventId" value={eventId} className="input input-bordered" required />
+      <DynamicForm materials={materials} />
       <SubmitButton title={'Odeslat'} />
     </form>
     // </div>
