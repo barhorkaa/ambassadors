@@ -18,19 +18,17 @@ function DynamicForm({ materials }: { materials: MaterialMinModel[] }) {
   };
 
   return (
-    <div>
-      <div className="form-control">
-        <label className="label" htmlFor="numerOfAttendees">
-          <span className="label-text">materiály</span>
-        </label>
-        {inputs.map((input, i) => (
-          <div key={i}>
-            <MaterialReportSelect materials={materials} selectedEvent={undefined} />
-            {inputs.length !== 1 && <button onClick={() => handleRemoveClick(i)}>Remove</button>}
-            {inputs.length - 1 === i && <button onClick={handleAddClick}>Add</button>}
-          </div>
-        ))}
-      </div>
+    <div className="form-control">
+      <label className="label" htmlFor="numerOfAttendees">
+        <span className="label-text">materiály</span>
+      </label>
+      {inputs.map((input, i) => (
+        <div key={i}>
+          <MaterialReportSelect materials={materials} selectedEvent={undefined} />
+          {inputs.length !== 1 && <button onClick={() => handleRemoveClick(i)}>Remove</button>}
+          {inputs.length - 1 === i && <button onClick={handleAddClick}>Add</button>}
+        </div>
+      ))}
     </div>
   );
 }
