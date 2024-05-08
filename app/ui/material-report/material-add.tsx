@@ -16,6 +16,12 @@ export default function MaterialAdd({ materials }: { materials: MaterialMinModel
     setInputs(list);
   };
 
+  const handleInputChange = (index: number, event: ChangeEvent<HTMLInputElement>) => {
+    const list = [...inputs];
+    list[index] = { amount: +event.target.value };
+    setInputs(list);
+  };
+
   return (
     <div className="form-control">
       <label className="label" htmlFor="materials">
