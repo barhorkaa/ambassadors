@@ -11,7 +11,7 @@ export default async function UsersPage({ params }: { params: { id: string } }) 
   const userStatus = await userSignUpForEventStatus(event.id, session?.user.id!);
 
   return (
-    <div className="card rounded-none shadow-md">
+    <div className="data-display">
       <div className="card-body">
         <div className="flex flex-row justify-between items-end">
           <h2 className="card-title font-light text-sm">Přihlášení na akci</h2>

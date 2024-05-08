@@ -8,7 +8,7 @@ export default async function ReportPage({ params }: { params: { id: string } })
   const materials: MaterialMinModel[] = await getAllMaterials();
 
   return (
-    <div className="card shadow-md rounded-none">
+    <div className="data-display">
       <div className="card-body">
         <h2 className="card-title">Zpráva z akce</h2>
 

@@ -8,7 +8,7 @@ export default async function TypePage({ params }: { params: { id: string } }) {
   const eventType: EventTypeDetailModel = await getEventTypeById(event.eventTypeId);
 
   return (
-    <div className="card shadow-md rounded-none">
+    <div className="data-display">
       <div className="card-body">
         <h2 className="card-title font-light text-sm">Typ akce</h2>
         <h3 className="text-xl">{eventType.name}</h3>

@@ -7,7 +7,11 @@ export default async function EventPage({ params }: { params: { id: string } }) 
 
   return (
     <div>
-      <EventDetail event={event} />
+      <div className="data-display">
+        <div className="card-body">
+          <EventDetail event={event} />
+        </div>
+      </div>
     </div>
   );
 }
