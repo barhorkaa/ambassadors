@@ -34,13 +34,13 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
         />
       </div>
       <div className="form-control">
-        <label className="label" htmlFor="numerOfAttendees">
+        <label className="label" htmlFor="numberOfAttendees">
           <span className="label-text">Kolik lidí bylo na akci?</span>
         </label>
         <input
-          id="numerOfAttendees"
+          id="numberOfAttendees"
           type="number"
-          name="numerOfAttendees"
+          name="numberOfAttendees"
           placeholder="Počet zúčastněných"
           className="input input-bordered"
           required

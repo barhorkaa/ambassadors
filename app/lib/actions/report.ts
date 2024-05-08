@@ -18,7 +18,7 @@ export async function createReportAction(formData: FormData) {
       eventId: formData.get('eventId'),
       ideas: formData.get('ideas'),
       notes: formData.get('notes'),
-      numberOfAttendees: formData.get('numerOfAttendees'),
+      numberOfAttendees: formData.get('numberOfAttendees'),
       materials: materials,
     };
 
