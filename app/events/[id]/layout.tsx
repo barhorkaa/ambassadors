@@ -30,7 +30,7 @@ export default function Layout({
       {children}
       <div className="flex flex-col gap-4">
         {event}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-9 md:grid-rows-2">
+        <div className="grid grid-cols-[min-content_min-conent] gap-4 md:grid-cols-9 md:grid-rows-[min-content_min-conent]">
           <div className="row-start-2 md:row-start-1 md:col-start-1 md:col-span-6">{type}</div>
           <div className="row-start-1 md:col-start-7 md:col-span-3 md:row-span-2">{users}</div>
           <div className="md:col-start-2 md:row-start-2 md:row-end-2 md:col-span-5 ">{report}</div>
