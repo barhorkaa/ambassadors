@@ -5,8 +5,6 @@ import { useState } from 'react';
 function DynamicForm({ materials }: { materials: MaterialMinModel[] }) {
   const [inputs, setInputs] = useState([{ materialId: '', amount: 0 }]);
 
-  console.log('inpusts are: ', inputs);
-
   const handleAddClick = () => {
     setInputs([...inputs, { materialId: '', amount: 0 }]);
   };
