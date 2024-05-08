@@ -1,6 +1,11 @@
+import { approveEventAction } from '@/app/lib/actions/events';
+import ApproveButton from '@/app/ui/button/approve-button';
+import EditEventModal from '@/app/ui/modals/edit/edit-event-modal';
 import { auth } from '@/auth';
-import { getSignUpsForEvent } from '@/database/repository/event-user';
+import { getAllEventTypesBasics } from '@/database/repository/event-type';
+import { getSignUpsForEvent, userSignUpForEventStatus } from '@/database/repository/event-user';
 import { EventDetailModel } from '@/models/event-models';
+import { EventTypeMinModel } from '@/models/event-type-models';
 import { CalendarDaysIcon, CheckCircleIcon, UserGroupIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
 export default async function EventDetail({ event }: { event: EventDetailModel }) {
@@ -8,11 +13,24 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
   if (signedUpForEvent === undefined) {
     signedUpForEvent = [];
   }
-
   const session = await auth();
+  const userStatus = await userSignUpForEventStatus(event.id, session?.user.id!);
+  const eventTypes: EventTypeMinModel[] = await getAllEventTypesBasics();
+
   return (
     <div className="w-full">
-      <h2 className="text-5xl">{event.name}</h2>
+      <div className="flex flex-row justify-between">
+        <h2 className="text-5xl">{event.name}</h2>
+        <div className="flex flex-row gap-4">
+          {!event.approved && session?.user.role == 'manager' && (
+            <ApproveButton fun={approveEventAction} id={event.id} />
+          )}
+          {(session?.user.role === 'manager' ||
+            (userStatus !== undefined && !userStatus.substitute && new Date() <= event.date!)) && (
+            <EditEventModal event={event} eventTypes={eventTypes} />
+          )}
+        </div>
+      </div>
       <hr className="w-full" />
       <div className="flex flex-col md:flex-row gap-4 md:gap-10">
         <div className="flex flex-row gap-2">
