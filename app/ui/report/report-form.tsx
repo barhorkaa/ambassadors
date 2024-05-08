@@ -4,7 +4,6 @@ import MaterialAdd from '@/app/ui/material-report/material-add';
 import { MaterialMinModel } from '@/models/material-models';
 
 export default function ReportForm({ eventId, materials }: { eventId: string; materials: MaterialMinModel[] }) {
-  console.log('tjsi sksm');
   return (
     <form action={createReportAction} className="card-body">
       <div className="form-control">
@@ -50,6 +49,5 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
       <MaterialAdd materials={materials} />
       <SubmitButton title={'Odeslat'} />
     </form>
-    // </div>
   );
 }
