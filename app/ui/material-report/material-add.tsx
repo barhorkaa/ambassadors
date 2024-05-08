@@ -1,13 +1,13 @@
 import MaterialReportSelect from '@/app/ui/material-report/material-report-select';
 import { MaterialMinModel } from '@/models/material-models';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 export default function MaterialAdd({ materials }: { materials: MaterialMinModel[] }) {
-  const [inputs, setInputs] = useState([{ materialId: '', amount: 0 }]);
+  const [inputs, setInputs] = useState([{ amount: 0 }]);
 
   const handleAddClick = () => {
-    setInputs([...inputs, { materialId: '', amount: 0 }]);
+    setInputs([...inputs, { amount: 0 }]);
   };
 
   const handleRemoveClick = (index: number) => {
@@ -32,7 +32,7 @@ export default function MaterialAdd({ materials }: { materials: MaterialMinModel
       </label>
       {inputs.map((input, i) => (
         <div key={i} className="grid grid-cols-8 items-end gap-2">
-          <div className="col-span-7">
+          <div className="col-span-5">
             <MaterialReportSelect materials={materials} selectedEvent={undefined} />
           </div>
           <div className="form-control col-span-2">
