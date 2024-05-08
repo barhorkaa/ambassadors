@@ -2,7 +2,7 @@ import MaterialReportSelect from '@/app/ui/material-report/material-report-selec
 import { MaterialMinModel } from '@/models/material-models';
 import { useState } from 'react';
 
-export default function DynamicForm({ materials }: { materials: MaterialMinModel[] }) {
+export default function MaterialAdd({ materials }: { materials: MaterialMinModel[] }) {
   const [inputs, setInputs] = useState([{ materialId: '', amount: 0 }]);
 
   const handleAddClick = () => {
