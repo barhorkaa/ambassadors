@@ -29,6 +29,21 @@ export default function MaterialAdd({ materials }: { materials: MaterialMinModel
           <div className="col-span-7">
             <MaterialReportSelect materials={materials} selectedEvent={undefined} />
           </div>
+          <div className="form-control col-span-2">
+            <label className="label" htmlFor="numerOfAttendees">
+              <span className="label-text">Počet kusů</span>
+            </label>
+            <input
+              id="amount"
+              type="number"
+              onChange={(event) => handleInputChange(i, event)}
+              name="amount"
+              value={input.amount}
+              placeholder="Počet kusů"
+              className="input input-bordered"
+              required
+            />
+          </div>
           {inputs.length !== 1 && (
             <button
               type="button"
