@@ -8,11 +8,11 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
   return (
     <form action={createReportAction} className="card-body">
       <div className="form-control">
-        <label className="label" htmlFor="name">
+        <label className="label" htmlFor="notes">
           <span className="label-text">Co se na akci dělo?</span>
         </label>
         <input
-          id="why"
+          id="notes"
           type="text"
           name="notes"
           placeholder="Poznámky k dění na akci"
@@ -21,11 +21,11 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
         />
       </div>
       <div className="form-control">
-        <label className="label" htmlFor="who">
+        <label className="label" htmlFor="ideas">
           <span className="label-text">Co do budoucna zlepšit?</span>
         </label>
         <input
-          id="who"
+          id="ideas"
           type="text"
           name="ideas"
           placeholder="Vaše nápady na zlepšení"
