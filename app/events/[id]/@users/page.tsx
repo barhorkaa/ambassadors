@@ -13,16 +13,19 @@ export default async function UsersPage({ params }: { params: { id: string } }) 
   return (
     <div className="card rounded-none shadow-md">
       <div className="card-body">
-        {session && (
-          <fieldset disabled={!event.approved}>
-            <EventSignUpButton
-              isSignedOnEvent={userStatus !== undefined}
-              event_id={event.id}
-              user_id={session.user.id}
-            />
-          </fieldset>
-        )}
-        <h2 className="card-title">Přihlášení</h2>
+        <div className="flex flex-row justify-between items-end">
+          <h2 className="card-title font-light text-sm">Přihlášení na akci</h2>
+          {session && (
+            <fieldset disabled={!event.approved}>
+              <EventSignUpButton
+                isSignedOnEvent={userStatus !== undefined}
+                event_id={event.id}
+                user_id={session.user.id}
+              />
+            </fieldset>
+          )}
+        </div>
+
         <EventUserDetail event_id={params.id} />
       </div>
     </div>
