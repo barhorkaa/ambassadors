@@ -10,8 +10,10 @@ import { auth } from '@/auth';
 import { getAllEventTypesBasics, getEventTypeById } from '@/database/repository/event-type';
 import { userSignUpForEventStatus } from '@/database/repository/event-user';
 import { getEventById } from '@/database/repository/events';
+import { getAllMaterials } from '@/database/repository/material';
 import { EventDetailModel } from '@/models/event-models';
 import { EventTypeDetailModel, EventTypeMinModel } from '@/models/event-type-models';
+import { MaterialMinModel } from '@/models/material-models';
 import { redirect } from 'next/navigation';
 
 export default async function Event({ params }: { params: { id: string } }) {
@@ -25,6 +27,8 @@ export default async function Event({ params }: { params: { id: string } }) {
   const userStatus = await userSignUpForEventStatus(event.id, session.user.id);
 
   const eventTypes: EventTypeMinModel[] = await getAllEventTypesBasics();
+
+  const materials: MaterialMinModel[] = await getAllMaterials();
 
   return (
     <>
@@ -48,7 +52,7 @@ export default async function Event({ params }: { params: { id: string } }) {
             <EditEventModal event={event} eventTypes={eventTypes} />
           )}
           {userStatus !== undefined && !userStatus.substitute && new Date() > event.date! && (
-            <CreateReportModal eventId={event.id}></CreateReportModal>
+            <CreateReportModal eventId={event.id} materials={materials}></CreateReportModal>
           )}
         </div>
       </div>
