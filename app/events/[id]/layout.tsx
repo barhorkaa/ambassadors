@@ -1,6 +1,5 @@
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import BackNavigation from '@/app/ui/layout/back-navigation';
 import { Metadata } from 'next';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Detail akce | AmbassadorsFIMU',
@@ -22,9 +21,7 @@ export default function Layout({
   return (
     <section>
       <div className="align-text-base flex flex-row gap-4">
-        <Link href={'/events'}>
-          <ArrowLeftIcon title="Zpátky na Akce" className="h-5" />
-        </Link>
+        <BackNavigation href={'/events'} tooltip={'Zpátky na akce'} />
         <h1 className="font-light text-xl">Detail akce</h1>
       </div>
       {children}
