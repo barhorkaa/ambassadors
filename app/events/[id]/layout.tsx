@@ -1,4 +1,6 @@
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Detail akce | AmbassadorsFIMU',
@@ -19,7 +21,10 @@ export default function Layout({
 }) {
   return (
     <section>
-      <div className="align-text-bottom">
+      <div className="align-text-base flex flex-row gap-4">
+        <Link href={'/events'}>
+          <ArrowLeftIcon title="Zpátky na Akce" className="h-5" />
+        </Link>
         <h1 className="font-light text-xl">Detail akce</h1>
       </div>
       {children}
