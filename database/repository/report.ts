@@ -39,7 +39,13 @@ export async function createMaterialReports(materials: MaterialAmountModel[], re
 
 export async function getEventReport(eventId: string) {
   try {
-    const report = await db.selectFrom('report').where('event_id', '=', eventId).selectAll().executeTakeFirstOrThrow();
+    const reportList = await db.selectFrom('report').where('event_id', '=', eventId).selectAll().execute();
+
+    if (reportList.length !== 1) {
+      return undefined;
+    }
+    const report = reportList[0];
+
     const materials = await db
       .selectFrom('materialReport')
       .where('report_id', '=', report.id)
