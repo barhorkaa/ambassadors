@@ -1,7 +1,7 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
 import { MaterialAmountModel, ReportModel } from '@/models/report-models';
-import { objectToSnake } from 'ts-case-convert';
+import { objectToCamel, objectToSnake } from 'ts-case-convert';
 
 export async function createReport(report: ReportModel) {
   try {
@@ -27,6 +27,35 @@ export async function createMaterialReports(materials: MaterialAmountModel[], re
     });
 
     await db.insertInto('materialReport').values(fullMaterials).execute();
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({
+      name: 'DATABASE_CREATE_ERROR',
+      message: 'Unable to create report material records',
+      cause: e,
+    });
+  }
+}
+
+export async function getEventReport(eventId: string) {
+  try {
+    const report = await db.selectFrom('report').where('event_id', '=', eventId).selectAll().executeTakeFirstOrThrow();
+    const materials = await db
+      .selectFrom('materialReport')
+      .where('report_id', '=', report.id)
+      .leftJoin('material', 'material.id', 'material_id')
+      .select(['material_id', 'amount', 'material.name as material_name'])
+      .execute();
+
+    const bla = objectToCamel(report);
+    return {
+      ...bla,
+      ideas: report.ideas!,
+      notes: report.notes!,
+      materials: materials.map((mat) => {
+        return { materialId: mat.material_id, amount: mat.amount!, materialName: mat.material_name! };
+      }),
+    };
   } catch (e) {
     console.error(e);
     throw new DatabaseError({
