@@ -2,6 +2,7 @@
 
 import { approveSignUp, createSignUp, deleteSignUp, getSignUpsForEvent } from '@/database/repository/event-user';
 import { getEventById } from '@/database/repository/events';
+import { revalidatePath } from 'next/cache';
 
 export async function approveSignUpAction(id: string) {
   try {
@@ -10,6 +11,7 @@ export async function approveSignUpAction(id: string) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/events/[id]/page');
 }
 
 export async function createSignUpAction(event_id: string, user_id: string) {
@@ -24,6 +26,7 @@ export async function createSignUpAction(event_id: string, user_id: string) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/events/[id]/page');
 }
 
 export async function deleteSignUpAction(event_id: string, user_id: string) {
@@ -33,4 +36,5 @@ export async function deleteSignUpAction(event_id: string, user_id: string) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/events/[id]/page');
 }
