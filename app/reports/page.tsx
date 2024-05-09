@@ -6,6 +6,7 @@ export default async function () {
   return (
     <>
       <h1>Zprávy z akcí</h1>
+      <hr className="w-full" />
       <EventList
         title={''}
         list={eventsWithUnapprovedReports!}
