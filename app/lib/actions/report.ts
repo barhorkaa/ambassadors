@@ -1,6 +1,6 @@
 'use server';
 
-import { createReport } from '@/database/repository/report';
+import { approveReport, createReport } from '@/database/repository/report';
 import { reportSchema } from '@/models/report-models';
 
 export async function createReportAction(formData: FormData) {
@@ -25,6 +25,15 @@ export async function createReportAction(formData: FormData) {
     const parsedData = reportSchema.parse(reportForm);
 
     await createReport(parsedData);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
+export async function approveReportAction(id: string) {
+  try {
+    await approveReport(id);
   } catch (e) {
     console.error(e);
     throw e;
