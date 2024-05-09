@@ -3,6 +3,7 @@
 import { auth } from '@/auth';
 import { approveEvent, createEvent, updateEvent } from '@/database/repository/events';
 import { eventSchema } from '@/models/event-models';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 export async function createEventAction(formData: FormData) {
@@ -55,6 +56,7 @@ export async function updateEventAction(formData: FormData) {
     console.error(e);
     return 'Something went wrong'; // TODO decide if like this or throw
   }
+  revalidatePath('/events/[id]/page');
 }
 
 export async function approveEventAction(id: string) {
@@ -64,4 +66,5 @@ export async function approveEventAction(id: string) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/events/[id]/page');
 }
