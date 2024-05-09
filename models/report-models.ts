@@ -15,3 +15,9 @@ export const reportSchema = z.object({
   // ambassadors: z.string(),
 });
 export type ReportModel = z.infer<typeof reportSchema>;
+
+export type ReportDetailModel = ReportModel & {
+  createdAt: Date;
+  deletedAt: Date | null;
+  updatedAt: Date;
+};
