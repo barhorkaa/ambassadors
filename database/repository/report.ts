@@ -104,3 +104,16 @@ export async function getEventsWithUnapprovedReports() {
     console.error(e);
   }
 }
+
+export async function approveReport(id: string) {
+  try {
+    await db.updateTable('report').where('id', '=', id).set({ approved: true, updated_at: new Date() }).execute();
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({
+      name: 'DATABASE_UPDATE_ERROR',
+      message: 'Unable to approve report',
+      cause: e,
+    });
+  }
+}
