@@ -1,9 +1,11 @@
 import CreateReportModal from '@/app/ui/modals/create/create-report-modal';
+import ReportDetail from '@/app/ui/report/report-detail';
 import { getAllMaterials } from '@/database/repository/material';
+import { getEventReport } from '@/database/repository/report';
 import { MaterialMinModel } from '@/models/material-models';
 
 export default async function ReportPage({ params }: { params: { id: string } }) {
-  const eventReport = false;
+  const eventReport = await getEventReport(params.id);
 
   const materials: MaterialMinModel[] = await getAllMaterials();
 
@@ -17,10 +19,9 @@ export default async function ReportPage({ params }: { params: { id: string } })
             <CreateReportModal eventId={params.id} materials={materials} />
           </div>
         ) : (
-          <div></div>
+          <ReportDetail report={eventReport} />
         )}
       </div>
-      {/*<h1>hello</h1>*/}
     </div>
   );
 }
