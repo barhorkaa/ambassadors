@@ -2,6 +2,7 @@
 
 import { createMaterial, editMaterial } from '@/database/repository/material';
 import { materialSchema } from '@/models/material-models';
+import { revalidatePath } from 'next/cache';
 
 export async function createMaterialAction(formData: FormData) {
   try {
@@ -16,6 +17,7 @@ export async function createMaterialAction(formData: FormData) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/materials');
 }
 
 export async function editMaterialAction(formData: FormData) {
@@ -32,4 +34,5 @@ export async function editMaterialAction(formData: FormData) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/materials');
 }
