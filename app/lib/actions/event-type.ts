@@ -2,6 +2,7 @@
 
 import { createEventType, editEventType } from '@/database/repository/event-type';
 import { eventTypeSchema } from '@/models/event-type-models';
+import { revalidatePath } from 'next/cache';
 
 export async function editEventTypeAction(formData: FormData) {
   try {
@@ -18,6 +19,7 @@ export async function editEventTypeAction(formData: FormData) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/events/types');
 }
 
 export async function createEventTypeAction(formData: FormData) {
@@ -34,4 +36,5 @@ export async function createEventTypeAction(formData: FormData) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/events/types');
 }
