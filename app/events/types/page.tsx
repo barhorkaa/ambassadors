@@ -17,16 +17,18 @@ export default async function EventsTypes() {
         {isManager && <CreateEventTypeModal />}
       </div>
       <hr className="w-full" />
-      {allEventTypes.map((eventType) => (
-        <Detail key={eventType.id} eventType={eventType} isManager={isManager} />
-      ))}
+      <div className="flex flex-col gap-6">
+        {allEventTypes.map((eventType) => (
+          <Detail key={eventType.id} eventType={eventType} isManager={isManager} />
+        ))}
+      </div>
     </>
   );
 }
 
 function Detail(params: { eventType: EventTypeDetailModel; isManager: boolean }) {
   return (
-    <>
+    <div className="data-display card-body">
       <div className="flex flex-row justify-between">
         <h2>{params.eventType.name}</h2>
         {params.isManager && <EditEventTypeModal eventType={params.eventType} />}
@@ -35,7 +37,7 @@ function Detail(params: { eventType: EventTypeDetailModel; isManager: boolean })
         <DetailRow label={'Popis'} value={params.eventType.description} />
         <DetailRow label={'Instrukce'} value={params.eventType.instructions} />
       </div>
-      <hr />
-    </>
+      {/*<hr />*/}
+    </div>
   );
 }
