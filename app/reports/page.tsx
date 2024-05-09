@@ -5,7 +5,7 @@ export default async function () {
   const eventsWithUnapprovedReports = await getEventsWithUnapprovedReports();
   return (
     <>
-      <h1>Zprávy z výjezdů</h1>
+      <h1>Zprávy z akcí</h1>
       <EventList
         title={''}
         list={eventsWithUnapprovedReports!}
