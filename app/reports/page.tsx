@@ -1,7 +1,7 @@
 import { EventList } from '@/app/ui/utils/event-list';
 import { getEventsWithUnapprovedReports } from '@/database/repository/report';
 
-export default async function () {
+export default async function Page() {
   const eventsWithUnapprovedReports = await getEventsWithUnapprovedReports();
   return (
     <>
