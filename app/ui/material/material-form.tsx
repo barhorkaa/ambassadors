@@ -36,7 +36,10 @@ export function MaterialForm(params: { material: MaterialManipulationModel | nul
       <div className="form-control">
         <input id="id" value={params.material?.id} type="hidden" name="id" className="input input-bordered" />
       </div>
-      <SubmitButton title={'Odeslat'} />
+      <SubmitButton
+        title={'Odeslat'}
+        modalId={params.material === null ? 'create_material_modal' : params.material.id}
+      />
     </form>
   );
 }

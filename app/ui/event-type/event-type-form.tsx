@@ -50,7 +50,10 @@ export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }
       <div className="form-control">
         <input id="id" value={params.eventType?.id} type="hidden" name="id" className="input input-bordered" />
       </div>
-      <SubmitButton title={'Odeslat'} />
+      <SubmitButton
+        title={'Odeslat'}
+        modalId={params.eventType === null ? 'create_event_type_modal' : params.eventType.id}
+      />
     </form>
   );
 }

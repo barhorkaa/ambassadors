@@ -47,7 +47,7 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
       </div>
       <input id="id" type="hidden" name="eventId" value={eventId} className="input input-bordered" required />
       <MaterialAdd materials={materials} />
-      <SubmitButton title={'Odeslat'} />
+      <SubmitButton title={'Odeslat'} modalId={'create_report_modal'} />
     </form>
   );
 }

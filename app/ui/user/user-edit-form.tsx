@@ -66,7 +66,7 @@ export default function UserEditForm(params: { user: UserModel; full: boolean })
         </>
       )}
       <input id="id" type="hidden" name="id" value={params.user.id} className="input input-bordered" required />
-      <SubmitButton title={'Odeslat'} />
+      <SubmitButton title={'Odeslat'} modalId={params.user.id} />
     </form>
   );
 }

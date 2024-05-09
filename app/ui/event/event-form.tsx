@@ -53,7 +53,7 @@ export default function EventForm(data: { eventTypes: EventTypeMinModel[]; event
         <input id="id" value={data.event?.id} type="hidden" name="id" className="input input-bordered" />
       </div>
       <EventTypeSelect selectedEvent={data.event?.eventTypeId} eventTypes={data.eventTypes} />
-      <SubmitButton title={'Odeslat'} />
+      <SubmitButton title={'Odeslat'} modalId={data.event === null ? undefined : data.event.id} />
     </form>
   );
 }
