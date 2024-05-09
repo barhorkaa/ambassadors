@@ -17,9 +17,11 @@ export default async function Material() {
         {isManager && <CreateMaterialModal />}
       </div>
       <hr className="w-full" />
-      {allMaterials.map((material) => (
-        <MaterialDetail key={material.id} material={material} isManager={isManager} />
-      ))}
+      <div className="flex flex-col gap-6">
+        {allMaterials.map((material) => (
+          <MaterialDetail key={material.id} material={material} isManager={isManager} />
+        ))}
+      </div>
     </>
   );
 }

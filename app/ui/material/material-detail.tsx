@@ -4,7 +4,7 @@ import { MaterialDetailModel } from '@/models/material-models';
 
 export default function MaterialDetail(params: { material: MaterialDetailModel; isManager: boolean }) {
   return (
-    <div>
+    <div className="data-display card-body">
       <div className="flex flex-row justify-between">
         <h2>{params.material.name}</h2>
         {params.isManager && <EditMaterialModal material={params.material} />}
@@ -12,7 +12,6 @@ export default function MaterialDetail(params: { material: MaterialDetailModel; 
       <div>
         <DetailRow label={'Popis'} value={params.material.description!} />
       </div>
-      <hr />
     </div>
   );
 }
