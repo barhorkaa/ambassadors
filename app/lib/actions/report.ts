@@ -2,6 +2,7 @@
 
 import { approveReport, createReport } from '@/database/repository/report';
 import { reportSchema } from '@/models/report-models';
+import { revalidatePath } from 'next/cache';
 
 export async function createReportAction(formData: FormData) {
   try {
@@ -29,6 +30,7 @@ export async function createReportAction(formData: FormData) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/events/[id]/page');
 }
 
 export async function approveReportAction(id: string) {
@@ -38,4 +40,5 @@ export async function approveReportAction(id: string) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/events/[id]/page');
 }
