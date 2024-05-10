@@ -9,6 +9,7 @@ export async function getUserSignUps(user_id: string, substitute: boolean) {
       .selectFrom('eventUser')
       .where((eb) => eb.and([eb('substitute', '=', substitute), eb('user_id', '=', user_id)]))
       .fullJoin('event', 'eventUser.event_id', 'event.id')
+      .where('event.deleted_at', 'is', null)
       .select([
         'event.id as id',
         // "eventUser.approved as event_user_approved",
@@ -116,6 +117,7 @@ export async function getAllSignUps(approved: boolean) {
         'eventUser.substitute as substitute',
       ])
       .leftJoin('event', 'event.id', 'event_id')
+      .where('event.deleted_at', 'is', null)
       .select('event.name as event_name')
       .execute();
 
