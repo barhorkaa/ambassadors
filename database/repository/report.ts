@@ -1,5 +1,4 @@
 import { db } from '@/database/database';
-import { adapter } from '@/database/repository/events';
 import { DatabaseError } from '@/errors/database-error';
 import { MaterialAmountModel, ReportModel } from '@/models/report-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
@@ -70,38 +69,6 @@ export async function getEventReport(eventId: string) {
       message: 'Unable to create report material records',
       cause: e,
     });
-  }
-}
-
-export async function getEventsWithUnapprovedReports() {
-  try {
-    const result = await db
-      .selectFrom('report')
-      .where('report.approved', '=', false)
-      .leftJoin('event', 'event.id', 'event_id')
-      .leftJoin('eventType', 'eventType.id', 'event_type_id')
-      .select([
-        'event.name as name',
-        'eventType.name as event_type_name',
-        'event_type_id',
-        'date',
-        'event.id as id',
-        'event.limit as limit',
-      ])
-      .execute();
-    const resultNoNull = result.map((event) => {
-      return {
-        id: event.id!,
-        name: event.name!,
-        event_type_id: event.event_type_id!,
-        date: event.date!,
-        limit: event.limit!,
-        event_type_name: event.event_type_name!,
-      };
-    });
-    return adapter(resultNoNull);
-  } catch (e) {
-    console.error(e);
   }
 }
 
