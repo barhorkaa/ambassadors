@@ -19,7 +19,7 @@ export async function getEventTypeById(id: string) {
 
 export async function getAllEventTypesBasics() {
   try {
-    return await db.selectFrom('eventType').select(['name', 'id']).execute();
+    return await db.selectFrom('eventType').where('deleted_at', 'is', null).select(['name', 'id']).execute();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get event types', cause: e });
