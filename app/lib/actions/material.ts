@@ -1,6 +1,6 @@
 'use server';
 
-import { createMaterial, editMaterial } from '@/database/repository/material';
+import { createMaterial, deleteMaterial, editMaterial } from '@/database/repository/material';
 import { materialSchema } from '@/models/material-models';
 import { revalidatePath } from 'next/cache';
 
@@ -30,6 +30,16 @@ export async function editMaterialAction(formData: FormData) {
 
     const parsedData = materialSchema.parse(materialForm);
     await editMaterial(parsedData);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+  revalidatePath('/materials');
+}
+
+export async function deleteMaterialAction(id: string) {
+  try {
+    await deleteMaterial(id);
   } catch (e) {
     console.error(e);
     throw e;
