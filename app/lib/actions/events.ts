@@ -1,7 +1,7 @@
 'use server';
 
 import { auth } from '@/auth';
-import { approveEvent, createEvent, updateEvent } from '@/database/repository/events';
+import { approveEvent, createEvent, deleteEvent, updateEvent } from '@/database/repository/events';
 import { eventSchema } from '@/models/event-models';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
@@ -62,6 +62,16 @@ export async function updateEventAction(formData: FormData) {
 export async function approveEventAction(id: string) {
   try {
     await approveEvent(id);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+  revalidatePath('/events/[id]/page');
+}
+
+export async function deleteEventAction(id: string) {
+  try {
+    await deleteEvent(id);
   } catch (e) {
     console.error(e);
     throw e;
