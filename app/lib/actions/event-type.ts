@@ -1,6 +1,6 @@
 'use server';
 
-import { createEventType, editEventType } from '@/database/repository/event-type';
+import { createEventType, deleteEventType, editEventType } from '@/database/repository/event-type';
 import { eventTypeSchema } from '@/models/event-type-models';
 import { revalidatePath } from 'next/cache';
 
@@ -32,6 +32,16 @@ export async function createEventTypeAction(formData: FormData) {
 
     const parsedData = eventTypeSchema.parse(eventTypeForm);
     await createEventType(parsedData);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+  revalidatePath('/events/types');
+}
+
+export async function deleteEventTypeAction(id: string) {
+  try {
+    await deleteEventType(id);
   } catch (e) {
     console.error(e);
     throw e;
