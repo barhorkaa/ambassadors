@@ -62,3 +62,12 @@ export async function editEventType(eventType: EventTypeManipulationModel) {
     throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to edit event type', cause: e });
   }
 }
+
+export async function deleteEventType(id: string) {
+  try {
+    await db.updateTable('eventType').where('id', '=', id).set({ deleted_at: new Date() }).executeTakeFirstOrThrow();
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_DELETE_ERROR', message: 'Unable to delete event type', cause: e });
+  }
+}
