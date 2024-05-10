@@ -42,11 +42,11 @@ export async function getAllEvents(approved: boolean) {
   }
 }
 
-export async function getEventsWithUnapprovedReports() {
+export async function getEventsWithReports(approved: boolean) {
   try {
     const result = await db
       .selectFrom('report')
-      .where('report.approved', '=', false)
+      .where('report.approved', '=', approved)
       .leftJoin('event', 'event.id', 'event_id')
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .select([

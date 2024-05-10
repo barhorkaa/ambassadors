@@ -1,8 +1,8 @@
 import { EventList } from '@/app/ui/utils/event-list';
-import { getEventsWithUnapprovedReports } from '@/database/repository/events';
+import { getEventsWithReports } from '@/database/repository/events';
 
 export default async function Page() {
-  const eventsWithUnapprovedReports = await getEventsWithUnapprovedReports();
+  const eventsWithUnapprovedReports = await getEventsWithReports(false);
   return (
     <>
       <h1>Zprávy z akcí</h1>
