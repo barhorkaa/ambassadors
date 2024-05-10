@@ -1,3 +1,5 @@
+import DeleteEventTypeModal from '@/app/ui/modals/delete/delete-event-type-modal';
+import EditEventTypeModal from '@/app/ui/modals/edit/edit-event-type-modal';
 import DetailRow from '@/app/ui/utils/detail-row';
 import { auth } from '@/auth';
 import { EventTypeDetailModel } from '@/models/event-type-models';
@@ -10,10 +12,20 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
   }
 
   return (
-    <div>
-      <DetailRow label={'Typ akce'} value={eventType.name} />
-      <DetailRow label={'Popis akce'} value={eventType.description} />
-      <DetailRow label={'Instrukce'} value={eventType.instructions} />
+    <div className="data-display card-body">
+      <div className="flex flex-row justify-between">
+        <h2>{eventType.name}</h2>
+        {session?.user.role === 'manager' && (
+          <div className="flex gap-4">
+            <DeleteEventTypeModal eventTypeId={eventType.id} />
+            <EditEventTypeModal eventType={eventType} />
+          </div>
+        )}
+      </div>
+      <div>
+        <DetailRow label={'Popis'} value={eventType.description} />
+        <DetailRow label={'Instrukce'} value={eventType.instructions} />
+      </div>
       {session?.user.role == 'manager' && (
         <div>
           <DetailRow label={'Vytvořeno'} value={eventType.createdAt.toLocaleString()} />
