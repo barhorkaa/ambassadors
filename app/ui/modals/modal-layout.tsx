@@ -1,6 +1,7 @@
 'use client';
 
-import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+
 type ModalType = 'create' | 'edit' | 'delete';
 
 export default function ModalLayout({
@@ -24,17 +25,7 @@ export default function ModalLayout({
           }
         }}
       >
-        {create ? (
-          <>
-            <PlusIcon className="h-5" />
-            <p className="hidden md:block">Přidat</p>
-          </>
-        ) : (
-          <>
-            <PencilIcon className="h-5" />
-            <p className="hidden md:block">Upravit</p>
-          </>
-        )}
+        <ButtonContent modalType={modalType} />
       </button>
       <dialog id={id} className="modal">
         <div className="modal-box">
@@ -50,4 +41,30 @@ export default function ModalLayout({
       </dialog>
     </>
   );
+}
+
+function ButtonContent({ modalType }: { modalType: ModalType }) {
+  switch (modalType) {
+    case 'create':
+      return (
+        <>
+          <PlusIcon className="h-5" />
+          <p className="hidden md:block">Přidat</p>
+        </>
+      );
+    case 'edit':
+      return (
+        <>
+          <PencilIcon className="h-5" />
+          <p className="hidden md:block">Upravit</p>
+        </>
+      );
+    case 'delete':
+      return (
+        <>
+          <TrashIcon className="h-5" />
+          <p className="hidden md:block">Smazat</p>
+        </>
+      );
+  }
 }
