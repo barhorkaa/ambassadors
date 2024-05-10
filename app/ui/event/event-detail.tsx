@@ -1,5 +1,6 @@
 import { approveEventAction } from '@/app/lib/actions/events';
 import ApproveButton from '@/app/ui/button/approve-button';
+import DeleteEventModal from '@/app/ui/modals/delete/delete-event-modal';
 import EditEventModal from '@/app/ui/modals/edit/edit-event-modal';
 import { auth } from '@/auth';
 import { getAllEventTypesBasics } from '@/database/repository/event-type';
@@ -21,15 +22,18 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
     <div className="w-full">
       <div className="flex flex-row justify-between">
         <h2 className="text-5xl">{event.name}</h2>
-        <div className="flex flex-row gap-4">
-          {!event.approved && session?.user.role == 'manager' && (
-            <ApproveButton fun={approveEventAction} id={event.id} />
-          )}
-          {(session?.user.role === 'manager' ||
-            (userStatus !== undefined && !userStatus.substitute && new Date() <= event.date!)) && (
-            <EditEventModal event={event} eventTypes={eventTypes} />
-          )}
-        </div>
+        {event.deletedAt === null && (
+          <div className="flex flex-row gap-4">
+            {!event.approved && session?.user.role == 'manager' && (
+              <ApproveButton fun={approveEventAction} id={event.id} />
+            )}
+            {(session?.user.role === 'manager' ||
+              (userStatus !== undefined && !userStatus.substitute && new Date() <= event.date!)) && (
+              <EditEventModal event={event} eventTypes={eventTypes} />
+            )}
+            {session?.user.role === 'manager' && <DeleteEventModal eventId={event.id} />}
+          </div>
+        )}
       </div>
       <hr className="w-full" />
       <div className="flex flex-col md:flex-row gap-4 md:gap-10">
