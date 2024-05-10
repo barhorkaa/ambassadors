@@ -14,7 +14,7 @@ export async function getMaterialById(id: string) {
 
 export async function getAllMaterials() {
   try {
-    const result = await db.selectFrom('material').selectAll().execute();
+    const result = await db.selectFrom('material').where('deleted_at', 'is', null).selectAll().execute();
     const camel = objectToCamel(result);
     return objectToCamel(result);
   } catch (e) {
