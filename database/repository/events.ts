@@ -24,6 +24,7 @@ export async function getAllEvents(approved: boolean) {
     const result = await db
       .selectFrom('event')
       .where('event.approved', '=', approved)
+      .where('event.deleted_at', 'is', null)
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .select([
         'event.name as name',
