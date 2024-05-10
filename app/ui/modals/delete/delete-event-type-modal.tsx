@@ -6,7 +6,7 @@ import ModalLayout from '@/app/ui/modals/modal-layout';
 
 export default function DeleteEventTypeModal({ eventTypeId }: { eventTypeId: string }) {
   return (
-    <ModalLayout id={'delete_event_type_modal'} title={'Opravdu chcete smazat tento typ akce?'} modalType={'delete'}>
+    <ModalLayout id={eventTypeId} title={'Opravdu chcete smazat tento typ akce?'} modalType={'delete'}>
       <div className="pt-4 flex flex-col gap-4">
         <p>Smazáni typu akce se nedá vrátit.</p>
         <p>
@@ -14,7 +14,7 @@ export default function DeleteEventTypeModal({ eventTypeId }: { eventTypeId: str
           nezměneny.
         </p>
         <div className="flex justify-end">
-          <DeleteButton fun={deleteEventTypeAction} id={eventTypeId} modalId={'delete_event_type_modal'} />
+          <DeleteButton fun={deleteEventTypeAction} id={eventTypeId} modalId={eventTypeId} />
         </div>
       </div>
     </ModalLayout>
