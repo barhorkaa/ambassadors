@@ -19,7 +19,7 @@ export default async function Material() {
       <hr className="w-full" />
       <div className="flex flex-col gap-6">
         {allMaterials.map((material) => (
-          <MaterialDetail key={material.id} material={material} isManager={isManager} />
+          <MaterialDetail key={material.id} material={material} />
         ))}
       </div>
     </>
