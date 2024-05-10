@@ -1,17 +1,18 @@
 'use client';
 
 import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline';
+type ModalType = 'create' | 'edit' | 'delete';
 
 export default function ModalLayout({
   children,
   id,
   title,
-  create,
+  modalType,
 }: {
   children: any;
   id: string;
   title: string;
-  create: boolean;
+  modalType: ModalType;
 }) {
   return (
     <>
