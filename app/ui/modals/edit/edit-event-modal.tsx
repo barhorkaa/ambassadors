@@ -7,7 +7,7 @@ import { EventTypeMinModel } from '@/models/event-type-models';
 
 export default function EditEventModal(data: { eventTypes: EventTypeMinModel[]; event: EventDetailModel }) {
   return (
-    <ModalLayout id={data.event.id} title={'Upravit akci'} create={false}>
+    <ModalLayout id={data.event.id} title={'Upravit akci'} modalType={'edit'}>
       <EventForm event={data.event} eventTypes={data.eventTypes} />
     </ModalLayout>
   );

@@ -6,7 +6,7 @@ import { MaterialMinModel } from '@/models/material-models';
 
 export default function CreateReportModal({ eventId, materials }: { eventId: string; materials: MaterialMinModel[] }) {
   return (
-    <ModalLayout id={'create_report_modal'} title={'Vytvořit zprávu'} create={true}>
+    <ModalLayout id={'create_report_modal'} title={'Vytvořit zprávu'} modalType={'create'}>
       <ReportForm eventId={eventId} materials={materials} />
     </ModalLayout>
   );
