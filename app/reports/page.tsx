@@ -1,5 +1,5 @@
 import { EventList } from '@/app/ui/utils/event-list';
-import { getEventsWithUnapprovedReports } from '@/database/repository/report';
+import { getEventsWithUnapprovedReports } from '@/database/repository/events';
 
 export default async function Page() {
   const eventsWithUnapprovedReports = await getEventsWithUnapprovedReports();
