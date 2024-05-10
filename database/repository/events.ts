@@ -93,3 +93,12 @@ export async function approveEvent(id: string) {
     throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to approve event', cause: e });
   }
 }
+
+export async function deleteEvent(id: string) {
+  try {
+    await db.updateTable('event').where('id', '=', id).set({ deleted_at: new Date() }).executeTakeFirstOrThrow();
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_DELETE_ERROR', message: 'Unable to delete event', cause: e });
+  }
+}
