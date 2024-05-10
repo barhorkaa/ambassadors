@@ -28,7 +28,7 @@ export async function getAllEventTypesBasics() {
 
 export async function getAllEventTypes() {
   try {
-    const result = await db.selectFrom('eventType').selectAll().execute();
+    const result = await db.selectFrom('eventType').where('deleted_at', 'is', null).selectAll().execute();
     return objectToCamel(result);
   } catch (e) {
     console.error(e);
