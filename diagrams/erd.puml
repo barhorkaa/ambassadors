@@ -5,11 +5,10 @@ entity MotivationForm {
   id: String <<pk>>
   --
   user_id: String
-  'answers to questions
   why: String
   who: String
   goals: String
-  preferredEvents: String
+  preferred_events: String
   time: String
   --
   created_at: DateTime
@@ -20,13 +19,14 @@ entity MotivationForm {
 entity User {
   id: String <<pk>>
   --
-  UCO: int
+  UCO: Number
   name: String
   email: String
   phone_number: String
   password: String
   role: UserType
   approved: Boolean
+  motivated: Boolean
   --
   created_at: DateTime
   updated_at: DateTime
@@ -42,9 +42,10 @@ entity Event {
   id: String <<pk>>
   --
   name: String
-  date: Date
+  date: Date | null
   event_type_id: String
   approved: Boolean
+  limit: Number
   --
   created_at: DateTime
   updated_at: DateTime
@@ -69,20 +70,18 @@ entity Event_User {
   user_id: String <<FK>>
   event_id: String <<FK>>
   approved: Boolean
+  substitute: Boolean
   --
   created_at: DateTime
   updated_at: DateTime
-  deleted_at: DateTime
 }
 
 entity Report {
   id: String <<pk>>
   --
   event_id: String <<FK>>
-  user_id: String
-  number_of_attendees: int
+  number_of_attendees: Number
   approved: Boolean
-'photos
   notes: String
   ideas: String
   --
@@ -96,7 +95,7 @@ entity Material_Report {
   --
   material_id: String <<FK>>
   report_id: String <<FK>>
-  amount: int
+  amount: Number
   --
   created_at: DateTime
   updated_at: DateTime
