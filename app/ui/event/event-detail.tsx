@@ -28,6 +28,7 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
             {(session?.user.role === 'manager' ||
               (userStatus !== undefined &&
                 !userStatus.substitute &&
+                userStatus.approved &&
                 (event.date === null || new Date() <= event.date))) && (
               <EditEventModal event={event} eventTypes={eventTypes} />
             )}
