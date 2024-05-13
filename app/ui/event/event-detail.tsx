@@ -18,10 +18,10 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
 
   return (
     <div className="w-full">
-      <div className="flex flex-row justify-between">
-        <h2 className="text-5xl">{event.name}</h2>
+      <div className="flex flex-col md:flex-row justify-between">
+        <h1 className="w-1/2">{event.name}</h1>
         {event.deletedAt === null && (
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-row gap-4 ">
             {!event.approved && session?.user.role == 'manager' && (
               <ApproveButton fun={approveEventAction} id={event.id} />
             )}
@@ -41,7 +41,7 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
           <CalendarDaysIcon className="h-7" />
           <p className="text-lg">{event.date === null ? 'Nezadáno' : event.date.toLocaleDateString()}</p>
         </div>
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row justify-between">
           {event.approved ? (
             <div className="flex flex-row gap-2">
               <CheckCircleIcon className="h-7" />
