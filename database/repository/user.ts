@@ -58,6 +58,7 @@ export async function editFullUser(user: UserEditModel) {
         phone_number: user.phone_number,
         uco: user.uco,
         email: user.email,
+        role: user.role,
         updated_at: new Date(),
       })
       .execute();
