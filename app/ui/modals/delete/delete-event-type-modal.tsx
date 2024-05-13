@@ -14,7 +14,7 @@ export default function DeleteEventTypeModal({ eventTypeId }: { eventTypeId: str
           nezměneny.
         </p>
         <div className="flex justify-end">
-          <DeleteButton fun={deleteEventTypeAction} id={'delete' + eventTypeId} modalId={eventTypeId} />
+          <DeleteButton fun={deleteEventTypeAction} id={eventTypeId} modalId={'delete' + eventTypeId} />
         </div>
       </div>
     </ModalLayout>
