@@ -38,7 +38,7 @@ export function MaterialForm(params: { material: MaterialManipulationModel | nul
       </div>
       <SubmitButton
         title={'Odeslat'}
-        modalId={params.material === null ? 'create_material_modal' : params.material.id}
+        modalId={params.material === null ? 'create_material_modal' : 'edit' + params.material.id}
       />
     </form>
   );
