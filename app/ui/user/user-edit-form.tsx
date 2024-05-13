@@ -1,10 +1,10 @@
-import { editUserFullAction } from '@/app/lib/actions/users';
+import { editUserAction, editUserFullAction } from '@/app/lib/actions/users';
 import SubmitButton from '@/app/ui/button/submit-button';
 import { UserModel } from '@/models/user-models';
 
 export default function UserEditForm({ user, full }: { user: UserModel; full: boolean }) {
   return (
-    <form action={editUserFullAction} className="card-body">
+    <form action={full ? editUserFullAction : editUserAction} className="card-body">
       <div className="form-control">
         <label className="label" htmlFor="name">
           <span className="label-text">Celé jméno</span>
