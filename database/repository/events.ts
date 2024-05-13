@@ -19,7 +19,7 @@ export function adapter(
   });
 }
 
-export async function getAllEvents(approved: boolean) {
+export async function getAllActiveEvents(approved: boolean) {
   try {
     const result = await db
       .selectFrom('event')

@@ -1,12 +1,12 @@
 import { EventList } from '@/app/ui/utils/event-list';
-import { getAllEvents } from '@/database/repository/events';
+import { getAllActiveEvents } from '@/database/repository/events';
 import { EventModel } from '@/models/event-models';
 import { PlusIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 export default async function Events() {
-  const allEvents: EventModel[] = await getAllEvents(true);
-  const allUnapprovedEvents: EventModel[] = await getAllEvents(false);
+  const allEvents: EventModel[] = await getAllActiveEvents(true);
+  const allUnapprovedEvents: EventModel[] = await getAllActiveEvents(false);
 
   return (
     <>
