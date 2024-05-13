@@ -12,7 +12,7 @@ export default async function EventsTypes() {
   return (
     <>
       <div className="flex flex-row justify-between">
-        <h1>Druhy akcii</h1>
+        <h1>Druhy akcí</h1>
         {isManager && <CreateEventTypeModal />}
       </div>
       <hr className="w-full" />
