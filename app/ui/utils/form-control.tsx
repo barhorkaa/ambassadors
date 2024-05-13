@@ -5,6 +5,7 @@ export default function FormControl({
   defaultValue,
   inputType = 'input',
   placeholder,
+  required = true,
 }: {
   title: string;
   id: string;
@@ -12,6 +13,7 @@ export default function FormControl({
   defaultValue?: string | number;
   inputType?: 'area' | 'input';
   placeholder?: string;
+  required?: boolean;
 }) {
   return (
     <div className="form-control">
@@ -19,9 +21,16 @@ export default function FormControl({
         <span className="label-text">{title}</span>
       </label>
       {inputType === 'input' ? (
-        <input id={id} defaultValue={defaultValue} type={type} name={id} placeholder={placeholder ?? title} required />
+        <input
+          id={id}
+          defaultValue={defaultValue}
+          type={type}
+          name={id}
+          placeholder={placeholder ?? title}
+          required={required}
+        />
       ) : (
-        <textarea id={id} defaultValue={defaultValue} name={id} placeholder={title} required />
+        <textarea id={id} defaultValue={defaultValue} name={id} placeholder={title} required={required} />
       )}
     </div>
   );
