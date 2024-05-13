@@ -52,7 +52,7 @@ export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }
       </div>
       <SubmitButton
         title={'Odeslat'}
-        modalId={params.eventType === null ? 'create_event_type_modal' : params.eventType.id}
+        modalId={params.eventType === null ? 'create_event_type_modal' : 'edit' + params.eventType.id}
       />
     </form>
   );
