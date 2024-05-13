@@ -22,9 +22,6 @@ export default function LoginForm() {
             <span className="label-text">Password</span>
           </label>
           <input id="password" type="password" name="password" placeholder="password" required />
-          {/*<label className="label">*/}
-          {/*  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>*/}
-          {/*</label>*/}
         </div>
         <SubmitButton title={'Přihlásit se'} />
         <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
