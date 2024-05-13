@@ -17,7 +17,7 @@ export default function MaterialReportSelect(props: {
     <div className="form-control">
       <div className="form-control col-span-2">
         <label className="label" htmlFor="material">
-          <span className="label-text">Typ akce</span>
+          <span className="label-text">Typ materiálu</span>
         </label>
         <select
           className="select select-bordered w-full max-w-xs"
