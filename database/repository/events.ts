@@ -44,7 +44,7 @@ export async function getAllActiveEvents(approved: boolean) {
   }
 }
 
-export async function getEventsWithReports(approved: boolean) {
+export async function getAllHistoryEvents(approved: boolean) {
   try {
     const result = await db
       .selectFrom('report')
