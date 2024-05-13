@@ -4,7 +4,7 @@ import { CalendarDaysIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 export default async function EventCard({ event }: { event: EventModel }) {
-  let signedUpForEvent = await getSignUpsForEvent(event.id!);
+  let signedUpForEvent = await getSignUpsForEvent(event.id!, false);
   if (signedUpForEvent === undefined) {
     signedUpForEvent = [];
   }
