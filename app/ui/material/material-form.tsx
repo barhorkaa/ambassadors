@@ -3,30 +3,27 @@ import SubmitButton from '@/app/ui/button/submit-button';
 import FormControl from '@/app/ui/utils/form-control';
 import { MaterialManipulationModel } from '@/models/material-models';
 
-export function MaterialForm(params: { material: MaterialManipulationModel | null }) {
+export function MaterialForm({ material }: { material: MaterialManipulationModel | null }) {
   return (
-    <form action={params.material === null ? createMaterialAction : editMaterialAction} className="card-body">
+    <form action={material === null ? createMaterialAction : editMaterialAction} className="card-body">
       <FormControl
         title={'Název materiálu'}
         id={'name'}
         type={'text'}
-        defaultValue={params.material?.name}
+        defaultValue={material?.name}
         inputType={'input'}
       />
       <FormControl
         title={'Popis materiálu'}
         id={'description'}
         type={''}
-        defaultValue={params.material?.description}
+        defaultValue={material?.description}
         inputType={'area'}
       />
       <div className="form-control">
-        <input id="id" value={params.material?.id} type="hidden" name="id" />
+        <input id="id" value={material?.id} type="hidden" name="id" />
       </div>
-      <SubmitButton
-        title={'Odeslat'}
-        modalId={params.material === null ? 'create_material_modal' : 'edit' + params.material.id}
-      />
+      <SubmitButton title={'Odeslat'} modalId={material === null ? 'create_material_modal' : 'edit' + material.id} />
     </form>
   );
 }
