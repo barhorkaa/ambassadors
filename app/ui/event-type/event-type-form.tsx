@@ -2,16 +2,16 @@ import { createEventTypeAction, editEventTypeAction } from '@/app/lib/actions/ev
 import SubmitButton from '@/app/ui/button/submit-button';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 
-export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }) {
+export function EventTypeForm({ eventType }: { eventType: EventTypeDetailModel | null }) {
   return (
-    <form action={params.eventType === null ? createEventTypeAction : editEventTypeAction} className="card-body">
+    <form action={eventType === null ? createEventTypeAction : editEventTypeAction} className="card-body">
       <div className="form-control">
         <label className="label" htmlFor="email">
           <span className="label-text">Název typu akce</span>
         </label>
         <input
           id="name"
-          defaultValue={params.eventType?.name}
+          defaultValue={eventType?.name}
           type="text"
           name="name"
           placeholder="Název typu akce"
@@ -24,7 +24,7 @@ export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }
         </label>
         <textarea
           id="description"
-          defaultValue={params.eventType?.description}
+          defaultValue={eventType?.description}
           name="description"
           placeholder="Popis akce"
           required
@@ -36,18 +36,18 @@ export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }
         </label>
         <textarea
           id="instructions"
-          defaultValue={params.eventType?.instructions}
+          defaultValue={eventType?.instructions}
           name="instructions"
           placeholder="Instrukce pro ambasadory"
           required
         />
       </div>
       <div className="form-control">
-        <input id="id" value={params.eventType?.id} type="hidden" name="id" />
+        <input id="id" value={eventType?.id} type="hidden" name="id" />
       </div>
       <SubmitButton
         title={'Odeslat'}
-        modalId={params.eventType === null ? 'create_event_type_modal' : 'edit' + params.eventType.id}
+        modalId={eventType === null ? 'create_event_type_modal' : 'edit' + eventType.id}
       />
     </form>
   );
