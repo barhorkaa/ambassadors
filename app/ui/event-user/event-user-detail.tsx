@@ -1,45 +1,43 @@
-import { getSignUpsForEvent, getSubstitutesForEvent } from '@/database/repository/event-user';
+import { getSignUpsForEvent } from '@/database/repository/event-user';
 import { UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 export async function EventUserDetail({ event_id }: { event_id: string }) {
-  let signedUpForEvent = await getSignUpsForEvent(event_id);
-  let substitutesForEvent = await getSubstitutesForEvent(event_id);
+  let signedUpForEvent = await getSignUpsForEvent(event_id, false);
+  let substitutesForEvent = await getSignUpsForEvent(event_id, true);
 
   return (
     <div className="flex flex-col">
-      <div>
-        <h3 className="card-title">Přihlášení</h3>
-        {signedUpForEvent.length !== 0 ? (
-          <div>
-            {signedUpForEvent.map((user) => (
-              <Link href={`/ambassadors/${user.user_id}`} key={user.user_id} className="flex flex-row gap-4 pl-8 py-2">
-                <UserIcon className="h-6" />
-                <p className="text-lg">{user.user_name}</p>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <div>Na akci není přihlášen nikto</div>
-        )}
-      </div>
-      <div>
-        {/*<h3 className="card-title">Záskok</h3>*/}
-        {substitutesForEvent.length !== 0 ? (
-          <div>
-            <h3 className="card-title">Záskok</h3>
+      <UserList title={'Přihlášení'} userList={signedUpForEvent} emptyMessage={'Na akci není přihlášen nikto'} />
+      <UserList title={'Záskok'} userList={substitutesForEvent} emptyMessage={''} />
+    </div>
+  );
+}
 
-            {substitutesForEvent.map((user, iterator) => (
-              <div key={iterator} className="flex flex-row gap-4 pl-16 py-2">
-                <UserIcon className="h-6" />
-                <p className="text-lg">{user.user_name}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
+function UserList({
+  title,
+  userList,
+  emptyMessage,
+}: {
+  title: string;
+  userList: { user_id: string; user_name: string | null }[];
+  emptyMessage: string;
+}) {
+  return (
+    <div>
+      {userList.length !== 0 ? (
+        <div>
+          <h3 className="card-title">{title}</h3>
+          {userList.map((user) => (
+            <Link href={`/ambassadors/${user.user_id}`} key={user.user_id} className="flex flex-row gap-4 pl-16 py-2">
+              <UserIcon className="h-6" />
+              <p className="text-lg">{user.user_name}</p>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div>{emptyMessage}</div>
+      )}
     </div>
   );
 }
