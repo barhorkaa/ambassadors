@@ -23,13 +23,12 @@ export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }
         <label className="label" htmlFor="password">
           <span className="label-text">Popis akce</span>
         </label>
-        <input
+        <textarea
           id="description"
           defaultValue={params.eventType?.description}
-          type="text"
           name="description"
           placeholder="Popis akce"
-          className="input input-bordered"
+          className="textarea textarea-bordered"
           required
         />
       </div>
@@ -37,13 +36,12 @@ export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }
         <label className="label" htmlFor="password">
           <span className="label-text">Instrukce pro ambasadory</span>
         </label>
-        <input
+        <textarea
           id="instructions"
           defaultValue={params.eventType?.instructions}
-          type="text"
           name="instructions"
           placeholder="Instrukce pro ambasadory"
-          className="input input-bordered"
+          className="textarea textarea-bordered"
           required
         />
       </div>
