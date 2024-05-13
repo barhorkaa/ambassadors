@@ -44,6 +44,7 @@ export async function editUserFullAction(formData: FormData) {
       phone_number: formData.get('phoneNumber'),
       uco: formData.get('uco'),
       email: formData.get('email'),
+      role: formData.get('role'),
     };
 
     const parsedData = userEditSchema.parse(user);
