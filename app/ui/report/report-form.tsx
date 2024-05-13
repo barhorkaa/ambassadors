@@ -15,7 +15,6 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
           type="number"
           name="numberOfAttendees"
           placeholder="Počet zúčastněných"
-          className="input input-bordered"
           required
         />
       </div>
@@ -32,7 +31,7 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
         </label>
         <textarea id="ideas" name="ideas" placeholder="Vaše nápady na zlepšení" required />
       </div>
-      <input id="id" type="hidden" name="eventId" value={eventId} className="input input-bordered" required />
+      <input id="id" type="hidden" name="eventId" value={eventId} required />
       <SubmitButton title={'Odeslat'} modalId={'create_report_modal'} />
     </form>
   );

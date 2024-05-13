@@ -9,15 +9,7 @@ export default function UserEditForm(params: { user: UserModel; full: boolean })
         <label className="label" htmlFor="name">
           <span className="label-text">Celé jméno</span>
         </label>
-        <input
-          id="name"
-          defaultValue={params.user.name}
-          type="text"
-          name="name"
-          placeholder="Jméno"
-          className="input input-bordered"
-          required
-        />
+        <input id="name" defaultValue={params.user.name} type="text" name="name" placeholder="Jméno" required />
       </div>
       <div className="form-control">
         <label className="label" htmlFor="phoneNumber">
@@ -29,7 +21,6 @@ export default function UserEditForm(params: { user: UserModel; full: boolean })
           type="number"
           name="phoneNumber"
           placeholder="Telefónní číslo"
-          className="input input-bordered"
           required
         />
       </div>
@@ -45,7 +36,6 @@ export default function UserEditForm(params: { user: UserModel; full: boolean })
               type="number"
               name="uco"
               placeholder="UČO"
-              className="input input-bordered"
               required
             />
           </div>
@@ -59,13 +49,12 @@ export default function UserEditForm(params: { user: UserModel; full: boolean })
               type="email"
               name="email"
               placeholder="E-mail"
-              className="input input-bordered"
               required
             />
           </div>
         </>
       )}
-      <input id="id" type="hidden" name="id" value={params.user.id} className="input input-bordered" required />
+      <input id="id" type="hidden" name="id" value={params.user.id} required />
       <SubmitButton title={'Odeslat'} modalId={params.user.id} />
     </form>
   );

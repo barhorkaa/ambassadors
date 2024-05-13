@@ -48,7 +48,6 @@ export default function MaterialAdd({ materials }: { materials: MaterialMinModel
               name="amount"
               value={input.amount}
               placeholder="Počet kusů"
-              className="input input-bordered"
               required
             />
           </div>

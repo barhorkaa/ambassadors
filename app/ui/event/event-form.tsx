@@ -18,7 +18,6 @@ export default function EventForm(data: { eventTypes: EventTypeMinModel[]; event
           type="text"
           name="name"
           placeholder="Gymnázium Třídy Kapitána Jaroše"
-          className="input input-bordered"
           required
         />
       </div>
@@ -32,7 +31,6 @@ export default function EventForm(data: { eventTypes: EventTypeMinModel[]; event
           type="number"
           name="limit"
           placeholder="Limit počtu lidí"
-          className="input input-bordered"
           required
         />
       </div>
@@ -46,11 +44,10 @@ export default function EventForm(data: { eventTypes: EventTypeMinModel[]; event
           type="date"
           name="date"
           placeholder=""
-          className="input input-bordered"
         />
       </div>
       <div className="form-control">
-        <input id="id" value={data.event?.id} type="hidden" name="id" className="input input-bordered" />
+        <input id="id" value={data.event?.id} type="hidden" name="id" />
       </div>
       <EventTypeSelect selectedEvent={data.event?.eventTypeId} eventTypes={data.eventTypes} />
       <SubmitButton title={'Odeslat'} modalId={data.event === null ? undefined : data.event.id} />

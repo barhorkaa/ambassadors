@@ -15,7 +15,6 @@ export function MaterialForm(params: { material: MaterialManipulationModel | nul
           type="text"
           name="name"
           placeholder="Název typu akce"
-          className="input input-bordered"
           required
         />
       </div>
@@ -32,7 +31,7 @@ export function MaterialForm(params: { material: MaterialManipulationModel | nul
         />
       </div>
       <div className="form-control">
-        <input id="id" value={params.material?.id} type="hidden" name="id" className="input input-bordered" />
+        <input id="id" value={params.material?.id} type="hidden" name="id" />
       </div>
       <SubmitButton
         title={'Odeslat'}

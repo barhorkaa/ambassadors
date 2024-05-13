@@ -15,20 +15,13 @@ export default function LoginForm() {
           <label className="label" htmlFor="email">
             <span className="label-text">Email</span>
           </label>
-          <input id="email" type="email" name="email" placeholder="email" className="input input-bordered" required />
+          <input id="email" type="email" name="email" placeholder="email" required />
         </div>
         <div className="form-control">
           <label className="label" htmlFor="password">
             <span className="label-text">Password</span>
           </label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            placeholder="password"
-            className="input input-bordered"
-            required
-          />
+          <input id="password" type="password" name="password" placeholder="password" required />
           {/*<label className="label">*/}
           {/*  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>*/}
           {/*</label>*/}
