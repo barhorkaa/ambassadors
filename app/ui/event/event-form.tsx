@@ -5,16 +5,22 @@ import { EventDetailModel } from '@/models/event-models';
 import { EventTypeMinModel } from '@/models/event-type-models';
 import { format } from 'date-fns';
 
-export default function EventForm(data: { eventTypes: EventTypeMinModel[]; event: EventDetailModel | null }) {
+export default function EventForm({
+  eventTypes,
+  event,
+}: {
+  eventTypes: EventTypeMinModel[];
+  event: EventDetailModel | null;
+}) {
   return (
-    <form action={data.event === null ? createEventAction : updateEventAction} className="card-body">
+    <form action={event === null ? createEventAction : updateEventAction} className="card-body">
       <div className="form-control">
         <label className="label" htmlFor="name">
           <span className="label-text">Název akce</span>
         </label>
         <input
           id="name"
-          defaultValue={data.event?.name}
+          defaultValue={event?.name}
           type="text"
           name="name"
           placeholder="Gymnázium Třídy Kapitána Jaroše"
@@ -27,7 +33,7 @@ export default function EventForm(data: { eventTypes: EventTypeMinModel[]; event
         </label>
         <input
           id="limit"
-          defaultValue={data.event?.limit}
+          defaultValue={event?.limit}
           type="number"
           name="limit"
           placeholder="Limit počtu lidí"
@@ -40,17 +46,17 @@ export default function EventForm(data: { eventTypes: EventTypeMinModel[]; event
         </label>
         <input
           id="date"
-          defaultValue={data.event?.date ? format(data.event?.date, 'yyyy-MM-dd') : ''}
+          defaultValue={event?.date ? format(event?.date, 'yyyy-MM-dd') : ''}
           type="date"
           name="date"
           placeholder=""
         />
       </div>
       <div className="form-control">
-        <input id="id" value={data.event?.id} type="hidden" name="id" />
+        <input id="id" value={event?.id} type="hidden" name="id" />
       </div>
-      <EventTypeSelect selectedEvent={data.event?.eventTypeId} eventTypes={data.eventTypes} />
-      <SubmitButton title={'Odeslat'} modalId={data.event === null ? undefined : data.event.id} />
+      <EventTypeSelect selectedEvent={event?.eventTypeId} eventTypes={eventTypes} />
+      <SubmitButton title={'Odeslat'} modalId={event === null ? undefined : event.id} />
     </form>
   );
 }
