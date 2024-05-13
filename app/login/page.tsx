@@ -18,7 +18,9 @@ export default async function Login() {
             informatiky Masarykovy Univerzity světu!
           </p>
         </div>
-        <LoginForm />
+        <div className="card">
+          <LoginForm />
+        </div>
       </div>
     </div>
   );
