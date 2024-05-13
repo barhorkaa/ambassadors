@@ -152,11 +152,11 @@ export async function getSubstitutesForEvent(event_id: string) {
   }
 }
 
-export async function getSignUpsForEvent(event_id: string) {
+export async function getSignUpsForEvent(event_id: string, substitute: boolean) {
   try {
     return db
       .selectFrom('eventUser')
-      .where((eb) => eb.and([eb('event_id', '=', event_id), eb('substitute', '=', false)]))
+      .where((eb) => eb.and([eb('event_id', '=', event_id), eb('substitute', '=', substitute)]))
       .leftJoin('user', 'user.id', 'eventUser.user_id')
       .select(['user.name as user_name', 'user_id'])
       .execute();
