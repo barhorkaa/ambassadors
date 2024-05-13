@@ -25,6 +25,8 @@ export async function getAllEvents(approved: boolean) {
       .selectFrom('event')
       .where('event.approved', '=', approved)
       .where('event.deleted_at', 'is', null)
+      .leftJoin('report', 'report.event_id', 'event.id')
+      .where('report.id', 'is', null)
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .select([
         'event.name as name',
