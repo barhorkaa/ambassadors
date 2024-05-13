@@ -138,20 +138,6 @@ export async function getAllSignUps(approved: boolean) {
   }
 }
 
-export async function getSubstitutesForEvent(event_id: string) {
-  try {
-    return db
-      .selectFrom('eventUser')
-      .where((eb) => eb.and([eb('event_id', '=', event_id), eb('substitute', '=', true)]))
-      .leftJoin('user', 'user.id', 'eventUser.user_id')
-      .select(['user.name as user_name'])
-      .execute();
-  } catch (e) {
-    console.error(e);
-    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get substitutes for event', cause: e });
-  }
-}
-
 export async function getSignUpsForEvent(event_id: string, substitute: boolean) {
   try {
     return db
