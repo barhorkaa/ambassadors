@@ -2,6 +2,7 @@
 
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
 import { userEditSchema } from '@/models/user-models';
+import { revalidatePath } from 'next/cache';
 
 export async function approveUserById(id: string) {
   try {
@@ -30,6 +31,7 @@ export async function editUserAction(formData: FormData) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/ambassadors/[id]');
 }
 
 export async function editUserFullAction(formData: FormData) {
@@ -52,4 +54,5 @@ export async function editUserFullAction(formData: FormData) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/ambassadors/[id]');
 }
