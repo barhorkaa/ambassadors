@@ -2,14 +2,14 @@ import { editUserFullAction } from '@/app/lib/actions/users';
 import SubmitButton from '@/app/ui/button/submit-button';
 import { UserModel } from '@/models/user-models';
 
-export default function UserEditForm(params: { user: UserModel; full: boolean }) {
+export default function UserEditForm({ user, full }: { user: UserModel; full: boolean }) {
   return (
     <form action={editUserFullAction} className="card-body">
       <div className="form-control">
         <label className="label" htmlFor="name">
           <span className="label-text">Celé jméno</span>
         </label>
-        <input id="name" defaultValue={params.user.name} type="text" name="name" placeholder="Jméno" required />
+        <input id="name" defaultValue={user.name} type="text" name="name" placeholder="Jméno" required />
       </div>
       <div className="form-control">
         <label className="label" htmlFor="phoneNumber">
@@ -17,45 +17,31 @@ export default function UserEditForm(params: { user: UserModel; full: boolean })
         </label>
         <input
           id="phoneNumber"
-          defaultValue={Number(params.user.phone_number)}
+          defaultValue={Number(user.phone_number)}
           type="number"
           name="phoneNumber"
           placeholder="Telefónní číslo"
           required
         />
       </div>
-      {params.full && (
+      {full && (
         <>
           <div className="form-control">
             <label className="label" htmlFor="uco">
               <span className="label-text">UČO</span>
             </label>
-            <input
-              id="uco"
-              defaultValue={Number(params.user.uco)}
-              type="number"
-              name="uco"
-              placeholder="UČO"
-              required
-            />
+            <input id="uco" defaultValue={Number(user.uco)} type="number" name="uco" placeholder="UČO" required />
           </div>
           <div className="form-control">
             <label className="label" htmlFor="email">
               <span className="label-text">Email</span>
             </label>
-            <input
-              id="email"
-              defaultValue={params.user.email}
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              required
-            />
+            <input id="email" defaultValue={user.email} type="email" name="email" placeholder="E-mail" required />
           </div>
         </>
       )}
-      <input id="id" type="hidden" name="id" value={params.user.id} required />
-      <SubmitButton title={'Odeslat'} modalId={params.user.id} />
+      <input id="id" type="hidden" name="id" value={user.id} required />
+      <SubmitButton title={'Odeslat'} modalId={user.id} />
     </form>
   );
 }
