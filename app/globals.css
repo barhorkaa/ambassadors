@@ -63,6 +63,6 @@
     @apply mt-9
   }
   .data-display {
-    @apply bg-base-100 shadow-md rounded-none
+    @apply bg-base-100 shadow-md rounded-none card-compact md:card-normal
   }
 }
