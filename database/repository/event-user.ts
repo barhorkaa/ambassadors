@@ -144,7 +144,7 @@ export async function getSignUpsForEvent(event_id: string, substitute: boolean) 
       .selectFrom('eventUser')
       .where((eb) => eb.and([eb('event_id', '=', event_id), eb('substitute', '=', substitute)]))
       .leftJoin('user', 'user.id', 'eventUser.user_id')
-      .select(['user.name as user_name', 'user_id'])
+      .select(['user.name as user_name', 'user_id', 'eventUser.approved as approved'])
       .execute();
   } catch (e) {
     console.error(e);
