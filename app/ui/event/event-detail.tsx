@@ -10,10 +10,8 @@ import { EventTypeMinModel } from '@/models/event-type-models';
 import { CalendarDaysIcon, CheckCircleIcon, UserGroupIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
 export default async function EventDetail({ event }: { event: EventDetailModel }) {
-  let signedUpForEvent = await getSignUpsForEvent(event.id!);
-  if (signedUpForEvent === undefined) {
-    signedUpForEvent = [];
-  }
+  let signedUpForEvent = await getSignUpsForEvent(event.id!, false);
+
   const session = await auth();
   const userStatus = await userSignUpForEventStatus(event.id, session?.user.id!);
   const eventTypes: EventTypeMinModel[] = await getAllEventTypesBasics();
@@ -28,7 +26,9 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
               <ApproveButton fun={approveEventAction} id={event.id} />
             )}
             {(session?.user.role === 'manager' ||
-              (userStatus !== undefined && !userStatus.substitute && new Date() <= event.date!)) && (
+              (userStatus !== undefined &&
+                !userStatus.substitute &&
+                (event.date === null || new Date() <= event.date))) && (
               <EditEventModal event={event} eventTypes={eventTypes} />
             )}
             {session?.user.role === 'manager' && <DeleteEventModal eventId={event.id} />}
