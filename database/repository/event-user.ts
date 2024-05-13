@@ -94,7 +94,7 @@ export async function userSignUpForEventStatus(event_id: string, user_id: string
       .selectFrom('eventUser')
       .where('event_id', '=', event_id)
       .where('user_id', '=', user_id)
-      .select('substitute')
+      .select(['substitute', 'eventUser.approved as approved'])
       .executeTakeFirst();
   } catch (e) {
     console.error(e);
