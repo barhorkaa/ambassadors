@@ -6,10 +6,10 @@ import { ChangeEvent, useState } from 'react';
 // https://www.freecodecamp.org/news/build-dynamic-forms-in-react/
 // https://borstch.com/snippet/dynamic-form-fields-with-nextjs
 export default function MaterialAdd({ materials }: { materials: MaterialMinModel[] }) {
-  const [inputs, setInputs] = useState([{ amount: 0 }]);
+  const [inputs, setInputs] = useState([{ amount: '' }]);
 
   const handleAddClick = () => {
-    setInputs([...inputs, { amount: 0 }]);
+    setInputs([...inputs, { amount: '' }]);
   };
 
   const handleRemoveClick = (index: number) => {
@@ -20,7 +20,7 @@ export default function MaterialAdd({ materials }: { materials: MaterialMinModel
 
   const handleInputChange = (index: number, event: ChangeEvent<HTMLInputElement>) => {
     const list = [...inputs];
-    list[index] = { amount: +event.target.value };
+    list[index] = { amount: event.target.value };
     setInputs(list);
   };
 
