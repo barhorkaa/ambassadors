@@ -6,17 +6,10 @@ import { MaterialManipulationModel } from '@/models/material-models';
 export function MaterialForm({ material }: { material: MaterialManipulationModel | null }) {
   return (
     <form action={material === null ? createMaterialAction : editMaterialAction} className="card-body">
-      <FormControl
-        title={'Název materiálu'}
-        id={'name'}
-        type={'text'}
-        defaultValue={material?.name}
-        inputType={'input'}
-      />
+      <FormControl title={'Název materiálu'} id={'name'} defaultValue={material?.name} />
       <FormControl
         title={'Popis materiálu'}
         id={'description'}
-        type={''}
         defaultValue={material?.description}
         inputType={'area'}
       />
