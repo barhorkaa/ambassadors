@@ -7,6 +7,20 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
   return (
     <form action={createReportAction} className="card-body">
       <div className="form-control">
+        <label className="label" htmlFor="numberOfAttendees">
+          <span className="label-text">Kolik lidí bylo na akci?</span>
+        </label>
+        <input
+          id="numberOfAttendees"
+          type="number"
+          name="numberOfAttendees"
+          placeholder="Počet zúčastněných"
+          className="input input-bordered"
+          required
+        />
+      </div>
+      <MaterialAdd materials={materials} />
+      <div className="form-control">
         <label className="label" htmlFor="notes">
           <span className="label-text">Co se na akci dělo?</span>
         </label>
@@ -30,21 +44,7 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
           required
         />
       </div>
-      <div className="form-control">
-        <label className="label" htmlFor="numberOfAttendees">
-          <span className="label-text">Kolik lidí bylo na akci?</span>
-        </label>
-        <input
-          id="numberOfAttendees"
-          type="number"
-          name="numberOfAttendees"
-          placeholder="Počet zúčastněných"
-          className="input input-bordered"
-          required
-        />
-      </div>
       <input id="id" type="hidden" name="eventId" value={eventId} className="input input-bordered" required />
-      <MaterialAdd materials={materials} />
       <SubmitButton title={'Odeslat'} modalId={'create_report_modal'} />
     </form>
   );
