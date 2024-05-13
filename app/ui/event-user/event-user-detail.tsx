@@ -1,5 +1,6 @@
 import { getSignUpsForEvent, getSubstitutesForEvent } from '@/database/repository/event-user';
 import { UserIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 export async function EventUserDetail({ event_id }: { event_id: string }) {
   let signedUpForEvent = await getSignUpsForEvent(event_id);
@@ -11,11 +12,11 @@ export async function EventUserDetail({ event_id }: { event_id: string }) {
         <h3 className="card-title">Přihlášení</h3>
         {signedUpForEvent.length !== 0 ? (
           <div>
-            {signedUpForEvent.map((user, iterator) => (
-              <div key={iterator} className="flex flex-row gap-4 pl-8 py-2">
+            {signedUpForEvent.map((user) => (
+              <Link href={`/ambassadors/${user.user_id}`} key={user.user_id} className="flex flex-row gap-4 pl-8 py-2">
                 <UserIcon className="h-6" />
                 <p className="text-lg">{user.user_name}</p>
-              </div>
+              </Link>
             ))}
           </div>
         ) : (
