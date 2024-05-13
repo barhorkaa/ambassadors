@@ -11,7 +11,9 @@ export default function Register() {
             informatiky Masarykovy Univerzity světu!
           </p>
         </div>
-        <RegisterForm />
+        <div className="card">
+          <RegisterForm />
+        </div>
       </div>
     </div>
   );
