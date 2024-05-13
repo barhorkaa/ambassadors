@@ -23,13 +23,11 @@ export function MaterialForm(params: { material: MaterialManipulationModel | nul
         <label className="label" htmlFor="password">
           <span className="label-text">Popis materiálu</span>
         </label>
-        <input
+        <textarea
           id="description"
           defaultValue={params.material?.description}
-          type="text"
           name="description"
           placeholder="Popis akce"
-          className="input input-bordered"
           required
         />
       </div>
