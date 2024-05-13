@@ -35,7 +35,7 @@ export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }
       </div>
       <div className="form-control">
         <label className="label" htmlFor="password">
-          <span className="label-text">strukce pro ambasadory</span>
+          <span className="label-text">Instrukce pro ambasadory</span>
         </label>
         <input
           id="instructions"
