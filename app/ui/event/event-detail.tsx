@@ -39,7 +39,7 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
       <div className="flex flex-col md:flex-row gap-4 md:gap-10">
         <div className="flex flex-row gap-2">
           <CalendarDaysIcon className="h-7" />
-          <p className="text-lg">{event.date?.toLocaleDateString()}</p>
+          <p className="text-lg">{event.date === null ? 'Nezadáno' : event.date.toLocaleDateString()}</p>
         </div>
         <div className="flex flex-row gap-2">
           {event.approved ? (
