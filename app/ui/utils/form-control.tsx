@@ -1,16 +1,16 @@
 export default function FormControl({
   title,
   id,
-  type,
+  type = 'text',
   defaultValue,
-  inputType,
+  inputType = 'input',
   placeholder,
 }: {
   title: string;
   id: string;
-  type: string;
-  defaultValue: string | number | undefined;
-  inputType: 'area' | 'input';
+  type?: 'text' | 'number';
+  defaultValue?: string | number;
+  inputType?: 'area' | 'input';
   placeholder?: string;
 }) {
   return (
