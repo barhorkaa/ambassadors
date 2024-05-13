@@ -2,6 +2,7 @@
 
 import { authenticate } from '@/app/lib/actions/authentication';
 import SubmitButton from '@/app/ui/button/submit-button';
+import FormControl from '@/app/ui/utils/form-control';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import { useFormState } from 'react-dom';
 
@@ -10,18 +11,8 @@ export default function LoginForm() {
 
   return (
     <form action={dispatch} className="card-body">
-      <div className="form-control">
-        <label className="label" htmlFor="email">
-          <span className="label-text">Email</span>
-        </label>
-        <input id="email" type="email" name="email" placeholder="email" required />
-      </div>
-      <div className="form-control">
-        <label className="label" htmlFor="password">
-          <span className="label-text">Password</span>
-        </label>
-        <input id="password" type="password" name="password" placeholder="password" required />
-      </div>
+      <FormControl title={'E-mail'} id={'email'} />
+      <FormControl title={'Heslo'} id={'password'} type={'password'} />
       <SubmitButton title={'Přihlásit se'} />
       <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
         {errorMessage && (
