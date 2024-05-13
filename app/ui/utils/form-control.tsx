@@ -8,7 +8,7 @@ export default function FormControl({
 }: {
   title: string;
   id: string;
-  type?: 'text' | 'number';
+  type?: 'text' | 'number' | 'password';
   defaultValue?: string | number;
   inputType?: 'area' | 'input';
   placeholder?: string;
