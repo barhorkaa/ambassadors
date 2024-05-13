@@ -10,12 +10,11 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
         <label className="label" htmlFor="notes">
           <span className="label-text">Co se na akci dělo?</span>
         </label>
-        <input
+        <textarea
           id="notes"
-          type="text"
           name="notes"
           placeholder="Poznámky k dění na akci"
-          className="input input-bordered"
+          className="textarea textarea-bordered"
           required
         />
       </div>
@@ -23,12 +22,11 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
         <label className="label" htmlFor="ideas">
           <span className="label-text">Co do budoucna zlepšit?</span>
         </label>
-        <input
+        <textarea
           id="ideas"
-          type="text"
           name="ideas"
           placeholder="Vaše nápady na zlepšení"
-          className="input input-bordered"
+          className="textarea textarea-bordered"
           required
         />
       </div>
