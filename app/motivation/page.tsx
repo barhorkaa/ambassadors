@@ -26,7 +26,9 @@ export default async function UserMotivation() {
             Zároveň je jej potrebné vyplnit, abyste se programu mohli zúčastnit a přihlašovat se na akce.
           </p>
         </div>
-        <MotivationForm userId={userId} />
+        <div className="card">
+          <MotivationForm userId={userId} />
+        </div>
       </div>
     </div>
   );
