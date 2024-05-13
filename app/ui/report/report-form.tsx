@@ -24,25 +24,13 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
         <label className="label" htmlFor="notes">
           <span className="label-text">Co se na akci dělo?</span>
         </label>
-        <textarea
-          id="notes"
-          name="notes"
-          placeholder="Poznámky k dění na akci"
-          className="textarea textarea-bordered"
-          required
-        />
+        <textarea id="notes" name="notes" placeholder="Poznámky k dění na akci" required />
       </div>
       <div className="form-control">
         <label className="label" htmlFor="ideas">
           <span className="label-text">Co do budoucna zlepšit?</span>
         </label>
-        <textarea
-          id="ideas"
-          name="ideas"
-          placeholder="Vaše nápady na zlepšení"
-          className="textarea textarea-bordered"
-          required
-        />
+        <textarea id="ideas" name="ideas" placeholder="Vaše nápady na zlepšení" required />
       </div>
       <input id="id" type="hidden" name="eventId" value={eventId} className="input input-bordered" required />
       <SubmitButton title={'Odeslat'} modalId={'create_report_modal'} />

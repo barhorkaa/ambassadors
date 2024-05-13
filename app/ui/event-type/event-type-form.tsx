@@ -28,7 +28,6 @@ export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }
           defaultValue={params.eventType?.description}
           name="description"
           placeholder="Popis akce"
-          className="textarea textarea-bordered"
           required
         />
       </div>
@@ -41,7 +40,6 @@ export function EventTypeForm(params: { eventType: EventTypeDetailModel | null }
           defaultValue={params.eventType?.instructions}
           name="instructions"
           placeholder="Instrukce pro ambasadory"
-          className="textarea textarea-bordered"
           required
         />
       </div>
