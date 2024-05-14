@@ -22,11 +22,6 @@ export default async function UserTable({ users }: { users: UserModel[] }) {
               <td>{user.uco}</td>
               <td>{user.email}</td>
               <td>{user.phone_number}</td>
-              {/*{!user.approved &&*/}
-              {/*  <td>*/}
-              {/*    <ApproveButton id={user.id}/>*/}
-              {/*  </td>*/}
-              {/*}*/}
               <td>
                 <Link href={`ambassadors/${user.id}`}>
                   <ArrowTopRightOnSquareIcon className="h-5" />
