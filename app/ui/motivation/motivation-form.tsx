@@ -13,6 +13,7 @@ export default function MotivationForm({ userId }: { userId: string }) {
         placeholder={'Ne / Ano + kto'}
       />
       <FormControl title={'Co byste chtěli jako ambasador dosáhnout?'} id={'goals'} placeholder={'Vaše cíle'} />
+        inputType={'area'}
       <FormControl
         title={'Jakých akcí byste se chtěli převážně zúčastňovat?'}
         id={'preferredEvents'}
