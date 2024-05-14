@@ -26,7 +26,7 @@ export default async function Layout({
         <h1 className="font-light text-xl">Informace o uživateli</h1>
       </div>
       {children}
-      <div className="grid grid-cols-1 grid-rows-[min-content_min-content] md:grid-cols-3 md:grid-rows-1 gap-4 md:px-6">
+      <div className="grid grid-cols-1 grid-rows-[min-content_min-content] md:grid-cols-2 md:grid-rows-1 gap-4 md:px-6">
         {user}
         {motivation}
       </div>
