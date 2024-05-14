@@ -3,11 +3,18 @@ export type PageUrl = {
   url: string;
 };
 
-export const eventsPages: PageUrl[] = [
+export const mePages: PageUrl[] = [
+  {
+    name: 'Můj účet',
+    url: '/me',
+  },
   {
     name: 'Moje akce',
     url: '/events/my',
   },
+];
+
+export const eventsPages: PageUrl[] = [
   {
     name: 'Akce',
     url: '/events',
