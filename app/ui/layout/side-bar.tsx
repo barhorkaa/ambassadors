@@ -39,6 +39,18 @@ export default function SideBar({ userRole }: { userRole: string }) {
             </Link>
           </li>
           <hr className="w-full mx-0" />
+          {userRole === 'manager' && (
+            <div>
+              {managerPages.map((page, index) => (
+                <li key={index}>
+                  <Link onClick={() => setIsOpen(false)} href={page.url}>
+                    {page.name}
+                  </Link>
+                </li>
+              ))}
+              <hr className="w-full mx-0" />
+            </div>
+          )}
           {eventsPages.map((page, index) => (
             <li key={index}>
               <Link onClick={() => setIsOpen(false)} href={page.url}>
@@ -63,18 +75,6 @@ export default function SideBar({ userRole }: { userRole: string }) {
             </li>
           ))}
           <hr className="w-full mx-0" />
-          {userRole === 'manager' && (
-            <div>
-              {managerPages.map((page, index) => (
-                <li key={index}>
-                  <Link onClick={() => setIsOpen(false)} href={page.url}>
-                    {page.name}
-                  </Link>
-                </li>
-              ))}
-              <hr className="w-full mx-0" />
-            </div>
-          )}
           <li>
             <form action={signOutAction}>
               <button>Odhlásit se</button>
