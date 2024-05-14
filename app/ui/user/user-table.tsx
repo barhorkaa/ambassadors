@@ -1,6 +1,9 @@
+'use client';
+
 import { UserModel } from '@/models/user-models';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 export default function UserTable({ users }: { users: UserModel[] }) {
   return (
@@ -17,11 +20,25 @@ export default function UserTable({ users }: { users: UserModel[] }) {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr className="hover" key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.uco}</td>
-              <td>{user.email}</td>
-              <td>{user.phone_number}</td>
+            <tr
+              className="hover"
+              key={user.id}
+              onClick={() => {
+                redirect(`ambassadors/${user.id}`);
+              }}
+            >
+              <td>
+                <Link href={`ambassadors/${user.id}`}>{user.name}</Link>
+              </td>
+              <td>
+                <Link href={`ambassadors/${user.id}`}>{user.uco}</Link>
+              </td>
+              <td>
+                <Link href={`ambassadors/${user.id}`}>{user.email}</Link>
+              </td>
+              <td>
+                <Link href={`ambassadors/${user.id}`}>{user.phone_number} </Link>
+              </td>
               <td>
                 <Link href={`ambassadors/${user.id}`}>
                   <ArrowTopRightOnSquareIcon className="h-5" />
