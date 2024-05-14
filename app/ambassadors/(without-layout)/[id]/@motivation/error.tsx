@@ -2,11 +2,8 @@
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
-    <div className="page flex flex-col gap-6 items-center">
-      <h1>Uživatel není motivován</h1>
-      <button className="btn" onClick={() => reset()}>
-        Zkusit znovu
-      </button>
+    <div>
+      <h2>Uživatel nemá zatím vyplněný motivační formulář</h2>
     </div>
   );
 }
