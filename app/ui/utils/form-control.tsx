@@ -30,7 +30,13 @@ export default function FormControl({
           required={required}
         />
       ) : (
-        <textarea id={id} defaultValue={defaultValue} name={id} placeholder={title} required={required} />
+        <textarea
+          id={id}
+          defaultValue={defaultValue}
+          name={id}
+          placeholder={placeholder ?? title}
+          required={required}
+        />
       )}
     </div>
   );
