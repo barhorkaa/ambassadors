@@ -13,7 +13,7 @@ export default function RegisterForm() {
     <form action={dispatch} className="card-body">
       <FormControl title={'Celé jméno'} id={'name'} placeholder={'Jméno'} />
       <FormControl title={'E-mail'} id={'email'} />
-      <FormControl title={'Heslo'} id={'password'} />
+      <FormControl title={'Heslo'} id={'password'} type={'password'} />
       <FormControl title={'UČO'} id={'uco'} />
       <FormControl title={'Telefonní číslo'} id={'phoneNumber'} />
       <SubmitButton title={'Registrovat se'} />
