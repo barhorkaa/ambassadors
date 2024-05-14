@@ -8,7 +8,7 @@ export default function UserEditForm({ user, full }: { user: UserModel; full: bo
   return (
     <form action={full ? editUserFullAction : editUserAction} className="card-body">
       <FormControl title={'Celé jméno'} id={'name'} defaultValue={user.name} placeholder={'Jméno'} />
-      <FormControl title={'Telefonní číslo'} id={'phoneNumber'} type={'number'} defaultValue={+user.phone_number} />
+      <FormControl title={'Telefonní číslo'} id={'phoneNumber'} type={'text'} defaultValue={user.phone_number} />
       {full && (
         <>
           <FormControl title={'UČO'} id={'uco'} type={'number'} defaultValue={+user.uco} />
