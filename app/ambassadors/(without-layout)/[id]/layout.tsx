@@ -22,7 +22,7 @@ export default async function Layout({
   return (
     <section>
       <div className="align-text-bottom flex flex-row gap-4">
-        <BackNavigation href={'/ambassadors'} tooltip={'Zpátky na Uživatele'} />
+        {session?.user.role === 'manager' && <BackNavigation href={'/ambassadors'} tooltip={'Zpátky na Uživatele'} />}
         <h1 className="font-light text-xl">Informace o uživateli</h1>
       </div>
       {children}
