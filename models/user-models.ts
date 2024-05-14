@@ -7,7 +7,7 @@ export const userEditSchema = z.object({
   password: z.string().optional(),
   uco: z.string().min(6).max(6).pipe(z.coerce.number()).optional(),
   phone_number: z.string().min(9).max(16),
-  role: z.union([z.literal('ambassador'), z.literal('manager')]),
+  role: z.union([z.literal('ambassador'), z.literal('manager')]).optional(),
 });
 export type UserEditModel = z.infer<typeof userEditSchema>;
 
