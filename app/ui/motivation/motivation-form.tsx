@@ -5,21 +5,24 @@ import FormControl from '@/app/ui/utils/form-control';
 export default function MotivationForm({ userId }: { userId: string }) {
   return (
     <form action={createMotivationAction} className="card-body">
-      <FormControl title={'Proč jste se rozhodli k nám přidat?'} id={'why'} placeholder={'Proč'} />
+      <FormControl title={'Proč jste se rozhodli k nám přidat?'} id={'why'} inputType={'area'} placeholder={'Proč'} />
       <FormControl
         title={'Doporučil vám někto přidat se k programu? Pokud ano, kto?'}
         id={'who'}
+        inputType={'area'}
         placeholder={'Ne / Ano + kto'}
       />
       <FormControl title={'Co byste chtěli jako ambasador dosáhnout?'} id={'goals'} placeholder={'Vaše cíle'} />
       <FormControl
         title={'Jakých akcí byste se chtěli převážně zúčastňovat?'}
         id={'preferredEvents'}
+        inputType={'area'}
         placeholder={'Výjezdy, Dny otevřených dveří, Veltrhy ...'}
       />
       <FormControl
         title={'Kolik času budete mít na ambasadorskou činnost?'}
         id={'time'}
+        inputType={'area'}
         placeholder={'Vaše časové možnosti'}
       />
       <input id="id" type="hidden" name="userId" value={userId} required />
