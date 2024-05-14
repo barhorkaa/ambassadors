@@ -3,6 +3,7 @@ import ApproveButton from '@/app/ui/button/approve-button';
 import CreateReportModal from '@/app/ui/modals/create/create-report-modal';
 import ReportDetail from '@/app/ui/report/report-detail';
 import { auth } from '@/auth';
+import { userSignUpForEventStatus } from '@/database/repository/event-user';
 import { getEventById } from '@/database/repository/events';
 import { getAllMaterials } from '@/database/repository/material';
 import { getEventReport } from '@/database/repository/report';
@@ -15,6 +16,9 @@ export default async function ReportPage({ params }: { params: { id: string } })
 
   const materials: MaterialMinModel[] = await getAllMaterials();
   const session = await auth();
+
+  const userStatus = await userSignUpForEventStatus(event.id, session?.user.id!);
+
   return (
     <div className="data-display">
       <div className="card-body">
@@ -28,7 +32,13 @@ export default async function ReportPage({ params }: { params: { id: string } })
           <>
             {!eventReport ? (
               <div className="w-full h-full flex items-center justify-center">
-                <CreateReportModal eventId={params.id} materials={materials} />
+                {(session?.user.role === 'manager' ||
+                  (userStatus !== undefined &&
+                    !userStatus.substitute &&
+                    userStatus.approved &&
+                    (event.date === null || new Date() <= event.date))) && (
+                  <CreateReportModal eventId={params.id} materials={materials} />
+                )}
               </div>
             ) : (
               <ReportDetail report={eventReport} />
