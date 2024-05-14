@@ -35,8 +35,8 @@ export const programPages: PageUrl[] = [
     url: '/#contacts',
   },
   {
-    name: 'Pomocník',
-    url: '/help',
+    name: 'Časté otázky',
+    url: '/#faq',
   },
 ];
 
