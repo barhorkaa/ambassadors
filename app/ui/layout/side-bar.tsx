@@ -1,7 +1,7 @@
 'use client';
 
 import { signOutAction } from '@/app/lib/actions/authentication';
-import { eventsPages, managerPages, otherPages, programPages } from '@/app/utils/pages';
+import { eventsPages, managerPages, mePages, otherPages, programPages } from '@/app/utils/pages';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -33,11 +33,13 @@ export default function SideBar({ userRole }: { userRole: string }) {
       <div className="drawer-side min-h-screen">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content py-8">
-          <li>
-            <Link onClick={() => setIsOpen(false)} href={'/me'}>
-              Můj účet
-            </Link>
-          </li>
+          {mePages.map((page, index) => (
+            <li key={index}>
+              <Link onClick={() => setIsOpen(false)} href={page.url}>
+                {page.name}
+              </Link>
+            </li>
+          ))}
           <hr className="w-full mx-0" />
           {userRole === 'manager' && (
             <div>
