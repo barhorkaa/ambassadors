@@ -2,7 +2,7 @@ import { UserModel } from '@/models/user-models';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-export default async function UserTable(props: { users: UserModel[] }) {
+export default async function UserTable({ users }: { users: UserModel[] }) {
   return (
     <div className="overflow-x-auto">
       <table className="table table-fixed">
@@ -16,7 +16,7 @@ export default async function UserTable(props: { users: UserModel[] }) {
           </tr>
         </thead>
         <tbody>
-          {props.users.map((user) => (
+          {users.map((user) => (
             <tr className="hover" key={user.id}>
               <td>{user.name}</td>
               <td>{user.uco}</td>
