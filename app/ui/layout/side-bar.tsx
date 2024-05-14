@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export default function SideBar({ userRole }: { userRole: string }) {
-  // const session = await auth();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -34,7 +33,6 @@ export default function SideBar({ userRole }: { userRole: string }) {
       <div className="drawer-side min-h-screen">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content py-8">
-          {/*<li><p>&nbsp;</p></li>*/}
           <li>
             <Link onClick={() => setIsOpen(false)} href={'/me'}>
               Můj účet
