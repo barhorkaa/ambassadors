@@ -5,24 +5,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div className="flex space-y-4 min-h-screen flex-col items-start">
-      {/*<Carousel />*/}
       <Banner />
-      {/*<div className="flex flex-row sm:flex-col py-4">*/}
-      {/*  <div className="w-1/2 sm:w-full">*/}
-      {/*    <h2>Ambasadorský program Fakulty&nbsp;Informatiky&nbsp;MU</h2>*/}
-      {/*    <p className="text-lg py-4">*/}
-      {/*      Ambasadorský program již po dlouhá léta zviditelňuje Fakultu Informatiky v očích veřejnosti prostřednictvím*/}
-      {/*      výjezdů na střední školy, organizací Dní otevřeých dveří nebo taky účastí na veltrzích jako je Gaudeamus*/}
-      {/*      nebo Kam na vysokú Roadshow. Naši ambasadoři na akci reprezentují svoji fakultu a komunikací s uchazeči o*/}
-      {/*      studium sdílejí své zkušenosti, radosti i staroti. Všechno samozřejmě se správnou kompenzacií jejich času!*/}
-      {/*    </p>*/}
-      {/*  </div>*/}
-      {/*  <img*/}
-      {/*    className="mask mask-squircle w-1/2 sm:w-full"*/}
-      {/*    src="https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300314.032.cust.jpg"*/}
-      {/*    alt="AI 4 talets"*/}
-      {/*  />*/}
-      {/*</div>*/}
       <div className="hero">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
@@ -63,13 +46,6 @@ export default function Home() {
         </div>
       </div>
       <hr />
-      {/*<div className="flex flex-col">*/}
-      {/*  <h2>Zaujal tě Ambasadorský propgram a chtěl byses přidat?</h2>*/}
-      {/*  <p className="text-lg">Zaregistruj se ještě dnes!</p>*/}
-      {/*  <button>*/}
-      {/*    <Link href={'/login'}>Registovat</Link>*/}
-      {/*  </button>*/}
-      {/*</div>*/}
       <div className="hero">
         <div className="hero-content text-center">
           <div className="">
