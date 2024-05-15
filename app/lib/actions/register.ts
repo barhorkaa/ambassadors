@@ -4,6 +4,7 @@ import { createUser } from '@/database/repository/user';
 import { userCreateSchema } from '@/models/user-models';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
+import { z } from 'zod';
 
 export async function createUserAction(prevState: string | undefined, formData: FormData) {
   try {
@@ -23,7 +24,11 @@ export async function createUserAction(prevState: string | undefined, formData: 
     await createUser(newUser);
   } catch (error) {
     console.log(error);
-    return 'Something went wrong, error';
+    if (error instanceof z.ZodError) {
+      return error.issues.map((issue) => {
+        return issue.message;
+      })[0];
+    } else return 'Something went wrong';
   }
   redirect(`/register/success`);
 }
