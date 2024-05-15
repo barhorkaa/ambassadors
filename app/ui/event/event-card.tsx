@@ -11,7 +11,7 @@ export default async function EventCard({ event }: { event: EventModel }) {
 
   return (
     <div className="card w-5/6 bg-base-100 shadow-lg">
-      <Link href={`/events/${event.id}`}>
+      <Link href={`/events/${event.id}`} prefetch={false}>
         <div className="card-body">
           <h2 className="">{event.name}</h2>
           <div className="badge bg-fi-100">{event.eventTypeName}</div>
