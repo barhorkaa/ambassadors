@@ -11,6 +11,7 @@ export async function approveUserById(id: string) {
     console.error(e);
     throw e;
   }
+  revalidatePath('/ambassadors/[id]/page');
 }
 
 export async function editUserAction(formData: FormData) {
