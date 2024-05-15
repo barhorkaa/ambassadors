@@ -13,22 +13,22 @@ export function adapter(
     limit: string;
   }[]
 ) {
-  console.log('got to adapter at: ', new Date().toLocaleString());
+  console.log('got to adapter at: ', new Date());
   const camel = objectToCamel(toAdapt);
-  console.log('camelized at: ', new Date().toLocaleString());
+  console.log('camelized at: ', new Date());
 
-  console.log('starting limit chnage at: ', new Date().toLocaleString());
+  console.log('starting limit chnage at: ', new Date());
   const result = camel.map((event) => {
     return { ...event, limit: +event.limit };
   });
-  console.log('finished limit chnage at: ', new Date().toLocaleString());
+  console.log('finished limit chnage at: ', new Date());
 
   return result;
 }
 
 export async function getAllActiveEvents(approved: boolean) {
   try {
-    console.log('got to database at: ', new Date().toLocaleString());
+    console.log('got to database at: ', new Date());
 
     const result = await db
       .selectFrom('event')
@@ -46,12 +46,12 @@ export async function getAllActiveEvents(approved: boolean) {
         'event.limit as limit',
       ])
       .execute();
-    console.log('got result from database at: ', new Date().toLocaleString());
+    console.log('got result from database at: ', new Date());
     const final = adapter(result);
-    console.log('got final result from adapter at: ', new Date().toLocaleString());
+    console.log('got final result from adapter at: ', new Date());
     return final;
   } catch (e) {
-    console.log('got error at: ', new Date().toLocaleString());
+    console.log('got error at: ', new Date());
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all events', cause: e });
   }
