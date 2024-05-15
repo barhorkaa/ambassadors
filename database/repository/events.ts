@@ -3,7 +3,7 @@ import { DatabaseError } from '@/errors/database-error';
 import { EventManipulationModel } from '@/models/event-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
 
-export function adapter(
+export async function adapter(
   toAdapt: {
     event_type_id: string;
     date: Date | null;
@@ -47,7 +47,7 @@ export async function getAllActiveEvents(approved: boolean) {
       ])
       .execute();
     console.log('got result from database at: ', new Date());
-    const final = adapter(result);
+    const final = await adapter(result);
     console.log('got final result from adapter at: ', new Date());
     return final;
   } catch (e) {
