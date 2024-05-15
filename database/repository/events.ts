@@ -13,14 +13,23 @@ export function adapter(
     limit: string;
   }[]
 ) {
+  console.log('got to adapter at: ', new Date().toLocaleDateString());
   const camel = objectToCamel(toAdapt);
-  return camel.map((event) => {
+  console.log('camelized at: ', new Date().toLocaleDateString());
+
+  console.log('starting limit chnage at: ', new Date().toLocaleDateString());
+  const result = camel.map((event) => {
     return { ...event, limit: +event.limit };
   });
+  console.log('finished limit chnage at: ', new Date().toLocaleDateString());
+
+  return result;
 }
 
 export async function getAllActiveEvents(approved: boolean) {
   try {
+    console.log('got to database at: ', new Date().toLocaleDateString());
+
     const result = await db
       .selectFrom('event')
       .where('event.approved', '=', approved)
@@ -37,8 +46,12 @@ export async function getAllActiveEvents(approved: boolean) {
         'event.limit as limit',
       ])
       .execute();
-    return adapter(result);
+    console.log('got result from database at: ', new Date().toLocaleDateString());
+    const final = adapter(result);
+    console.log('got final result from adapter at: ', new Date().toLocaleDateString());
+    return final;
   } catch (e) {
+    console.log('got error at: ', new Date().toLocaleDateString());
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all events', cause: e });
   }
