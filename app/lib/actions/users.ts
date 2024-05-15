@@ -32,7 +32,7 @@ export async function editUserAction(formData: FormData) {
     console.error(e);
     throw e;
   }
-  revalidatePath('/ambassadors/[id]');
+  revalidatePath('/ambassadors/[id]/page');
 }
 
 export async function editUserFullAction(formData: FormData) {
@@ -56,5 +56,5 @@ export async function editUserFullAction(formData: FormData) {
     console.error(e);
     throw e;
   }
-  revalidatePath('/ambassadors/[id]');
+  revalidatePath('/ambassadors/[id]/page');
 }
