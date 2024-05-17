@@ -49,7 +49,7 @@
 
 @layer components {
   .card {
-    @apply shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-base-200}
+    @apply shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-base-300}
   .btn {
     @apply bg-fi-300 text-black
   }
