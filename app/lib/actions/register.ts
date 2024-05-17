@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
-export async function createUserAction(prevState: string | undefined, formData: FormData) {
+export async function createUserAction(prevState: any, formData: FormData) {
   try {
     console.log('form data is: ', formData);
     const newUserForm = {
@@ -25,10 +25,15 @@ export async function createUserAction(prevState: string | undefined, formData: 
   } catch (error) {
     console.log(error);
     if (error instanceof z.ZodError) {
-      return error.issues.map((issue) => {
-        return issue.message;
-      })[0];
-    } else return 'Something went wrong';
+      return {
+        errors: error.issues,
+        generic: undefined,
+      };
+    } else
+      return {
+        errors: [],
+        generic: 'Something went wrong',
+      };
   }
   redirect(`/register/success`);
 }
