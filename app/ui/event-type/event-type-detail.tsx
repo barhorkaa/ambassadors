@@ -24,7 +24,7 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
       </div>
       <div>
         <DetailRow label={''} value={eventType.description} />
-        <DetailRow label={'Instrukce'} value={eventType.instructions} />
+        <DetailRow label={'Instrukce pro ambasadory'} value={eventType.instructions} />
       </div>
       {session?.user.role == 'manager' && (
         <div>
