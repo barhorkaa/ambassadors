@@ -2,6 +2,7 @@ import { approveReportAction } from '@/app/lib/actions/report';
 import ApproveButton from '@/app/ui/button/approve-button';
 import CreateReportModal from '@/app/ui/modals/create/create-report-modal';
 import ReportDetail from '@/app/ui/report/report-detail';
+import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { userSignUpForEventStatus } from '@/database/repository/event-user';
 import { getEventById } from '@/database/repository/events';
@@ -24,7 +25,7 @@ export default async function ReportPage({ params }: { params: { id: string } })
       <div className="card-body">
         <div className="flex flex-row justify-between items-end">
           <h2 className="card-title">Zpráva z akce</h2>
-          {session?.user.role === 'manager' && eventReport && !eventReport.approved && (
+          {session?.user.role === UserRoles.manager && eventReport && !eventReport.approved && (
             <ApproveButton fun={approveReportAction} id={eventReport.id} />
           )}
         </div>
@@ -32,7 +33,7 @@ export default async function ReportPage({ params }: { params: { id: string } })
           <>
             {!eventReport ? (
               <div className="w-full h-full flex items-center justify-center">
-                {(session?.user.role === 'manager' ||
+                {(session?.user.role === UserRoles.manager ||
                   (userStatus !== undefined &&
                     !userStatus.substitute &&
                     userStatus.approved &&
