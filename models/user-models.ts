@@ -15,7 +15,7 @@ export const userCreateSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   password: z.string().min(6, { message: 'Heslo musí obsahovat alespoň 6 znaků' }),
-  uco: z.string().min(6).max(6).pipe(z.coerce.number()),
+  uco: z.string().max(6, { message: 'UČO může obsahovat nejvíce 6 znaků' }).pipe(z.coerce.number()),
   phone_number: z.string().min(9).max(16),
 });
 export type UserCreateModel = z.infer<typeof userCreateSchema>;
