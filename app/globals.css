@@ -19,10 +19,10 @@
 
 @layer base {
   body {
-    @apply text-black bg-white min-h-screen grid grid-rows-[min-content_1fr_min-content] grid-cols-1;
+    @apply bg-white dark:bg-base-100 min-h-screen grid grid-rows-[min-content_1fr_min-content] grid-cols-1;
   }
   main {
-    @apply bg-white mb-9 mx-2.5 md:mx-12 xl:mx-52;
+    @apply bg-white dark:bg-base-100 mb-9 mx-2.5 md:mx-12 xl:mx-52;
   }
   section {
     @apply mt-9
@@ -49,13 +49,15 @@
 
 @layer components {
   .card {
-    @apply shrink-0 w-full max-w-sm shadow-2xl bg-base-100;
-  }
+    @apply shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-base-200}
   .btn {
-    @apply bg-fi-300
+    @apply bg-fi-300 text-black
+  }
+  .badge {
+    @apply text-black
   }
   .hero {
-    @apply bg-white min-h-max;
+    @apply bg-white dark:bg-base-100 min-h-max;
   }
   .custom-carousel {
     position: relative;
@@ -69,6 +71,6 @@
     @apply mt-9
   }
   .data-display {
-    @apply bg-base-100 shadow-md rounded-none card-compact md:card-normal
+    @apply bg-base-100 dark:bg-base-200 shadow-md rounded-none card-compact md:card-normal
   }
 }
