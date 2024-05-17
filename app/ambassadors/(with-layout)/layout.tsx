@@ -17,9 +17,9 @@ export default function Layout({
 }) {
   return (
     <section>
-      <h1>Uživatelé</h1>
+      <h1 className="content">Uživatelé</h1>
       <hr className="w-full" />
-      <div role="tablist" className="tabs tabs-lifted">
+      <div role="tablist" className="tabs tabs-lifted content">
         <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Nepotvrzeni" />
         <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
           {unapproved}
