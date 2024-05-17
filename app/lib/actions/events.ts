@@ -1,5 +1,6 @@
 'use server';
 
+import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { approveEvent, createEvent, deleteEvent, updateEvent } from '@/database/repository/events';
 import { eventSchema } from '@/models/event-models';
@@ -18,11 +19,11 @@ export async function createEventAction(formData: FormData) {
     const parsedData = eventSchema.parse(data);
 
     const session = await auth();
-    if (session?.user.role === 'manager') {
+    if (session?.user.role === UserRoles.manager) {
       parsedData.approved = true;
     }
     // console.log('before append: ', formData);
-    // formData.append('approved', String(session?.user.role === 'manager'));
+    // formData.append('approved', String(session?.user.role === UserRoles.manager));
     // console.log('after append: ', formData);
     // const p = eventFormModel.parse(formData);
     // console.log('parse is: ', p);

@@ -1,5 +1,6 @@
 import EventTypeDetail from '@/app/ui/event-type/event-type-detail';
 import CreateEventTypeModal from '@/app/ui/modals/create/create-event-type-modal';
+import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { getAllEventTypes } from '@/database/repository/event-type';
 import { EventTypeDetailModel } from '@/models/event-type-models';
@@ -7,7 +8,7 @@ import { EventTypeDetailModel } from '@/models/event-type-models';
 export default async function EventsTypes() {
   const allEventTypes: EventTypeDetailModel[] = await getAllEventTypes();
   const session = await auth();
-  const isManager = session?.user.role === 'manager';
+  const isManager = session?.user.role === UserRoles.manager;
 
   return (
     <>

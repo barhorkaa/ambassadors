@@ -1,12 +1,13 @@
 import MaterialDetail from '@/app/ui/material/material-detail';
 import CreateMaterialModal from '@/app/ui/modals/create/create-material-modal';
+import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { getAllMaterials } from '@/database/repository/material';
 import { MaterialDetailModel } from '@/models/material-models';
 
 export default async function Material() {
   const session = await auth();
-  const isManager = session?.user.role === 'manager';
+  const isManager = session?.user.role === UserRoles.manager;
 
   const allMaterials: MaterialDetailModel[] = await getAllMaterials();
 

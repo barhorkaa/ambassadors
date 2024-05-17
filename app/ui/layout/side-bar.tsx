@@ -2,6 +2,7 @@
 
 import { signOutAction } from '@/app/lib/actions/authentication';
 import { eventsPages, managerPages, mePages, otherPages, programPages } from '@/app/utils/pages';
+import { UserRoles } from '@/app/utils/user-roles';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -41,7 +42,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
             </li>
           ))}
           <hr className="w-full mx-0" />
-          {userRole === 'manager' && (
+          {userRole === UserRoles.manager && (
             <div>
               {managerPages.map((page, index) => (
                 <li key={index}>

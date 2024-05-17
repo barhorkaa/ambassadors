@@ -2,6 +2,7 @@ import { approveEventAction } from '@/app/lib/actions/events';
 import ApproveButton from '@/app/ui/button/approve-button';
 import DeleteEventModal from '@/app/ui/modals/delete/delete-event-modal';
 import EditEventModal from '@/app/ui/modals/edit/edit-event-modal';
+import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { getAllEventTypesBasics } from '@/database/repository/event-type';
 import { getSignUpsForEvent, userSignUpForEventStatus } from '@/database/repository/event-user';
@@ -22,17 +23,17 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
         <h1 className="w-1/2">{event.name}</h1>
         {event.deletedAt === null && (
           <div className="flex flex-row gap-4 ">
-            {!event.approved && session?.user.role == 'manager' && (
+            {!event.approved && session?.user.role == UserRoles.manager && (
               <ApproveButton fun={approveEventAction} id={event.id} />
             )}
-            {(session?.user.role === 'manager' ||
+            {(session?.user.role === UserRoles.manager ||
               (userStatus !== undefined &&
                 !userStatus.substitute &&
                 userStatus.approved &&
                 (event.date === null || new Date() <= event.date))) && (
               <EditEventModal event={event} eventTypes={eventTypes} />
             )}
-            {session?.user.role === 'manager' && <DeleteEventModal eventId={event.id} />}
+            {session?.user.role === UserRoles.manager && <DeleteEventModal eventId={event.id} />}
           </div>
         )}
       </div>
@@ -61,7 +62,7 @@ export default async function EventDetail({ event }: { event: EventDetailModel }
             {signedUpForEvent.length}/{event.limit}
           </p>
         </div>
-        {session?.user.role === 'manager' && (
+        {session?.user.role === UserRoles.manager && (
           <div className="flex flex-col md:flex-row gap-4 md:gap-10">
             <p className="text-lg">Vytvořeno: {event.createdAt.toLocaleDateString()}</p>
             <p className="text-lg">Upraveno: {event.updatedAt.toLocaleDateString()}</p>
