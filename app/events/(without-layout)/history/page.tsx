@@ -6,9 +6,11 @@ export default async function EventsHistoryPage() {
 
   return (
     <div>
-      <h1>Historie akcí</h1>
+      <h1 className="content">Historie akcí</h1>
       <hr className="w-full" />
-      <EventList title={''} list={eventsWithApprovedReports!} emptyMessage={'V historii nic zatím nemáme'} />
+      <div className="content">
+        <EventList title={''} list={eventsWithApprovedReports!} emptyMessage={'V historii nic zatím nemáme'} />
+      </div>
     </div>
   );
 }
