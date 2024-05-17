@@ -7,7 +7,7 @@ export default function UserDetail(params: { user: UserModel }) {
       <DetailRow label={'E-mail'} value={params.user.email} />
       <DetailRow label={'Tel. číslo'} value={params.user.phone_number} />
       <DetailRow label={'UČO'} value={params.user.uco} />
-      <DetailRow label={'Role'} value={params.user.role} />
+      <DetailRow label={'Role'} value={params.user.role === 'manager' ? 'Manažér' : 'Ambasador'} />
       <DetailRow label={'Potvrzen'} value={params.user.approved ? 'Ano' : 'Ne'} />
       <DetailRow label={'Registrovaný'} value={params.user.created_at.toLocaleString('cs-CZ')} />
       <DetailRow label={'Aktivní'} value={params.user.deleted_at ? 'Ne' : 'Ano'} />
