@@ -42,12 +42,12 @@ export const programPages: PageUrl[] = [
 
 export const otherPages: PageUrl[] = [
   {
-    name: 'Materiály',
-    url: '/materials',
-  },
-  {
     name: 'Druhy akcí',
     url: '/events/types',
+  },
+  {
+    name: 'Materiály',
+    url: '/materials',
   },
 ];
 
