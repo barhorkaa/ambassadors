@@ -9,7 +9,11 @@ export async function getUserByEmail(email: string): Promise<Selectable<User> | 
     return await db.selectFrom('user').where('email', '=', email).selectAll().executeTakeFirst();
   } catch (e) {
     console.error(e);
-    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Failed to get user with this email', cause: e });
+    throw new DatabaseError({
+      name: 'DATABASE_GET_ERROR',
+      message: 'Failed to get user with this email',
+      cause: e,
+    });
   }
 }
 
@@ -31,6 +35,14 @@ export async function createUser(newUser: UserCreateModel) {
     console.log('sucessfully created user');
   } catch (e) {
     console.error(e);
+    // if (e instanceof DatabaseError) {
+    //   switch (e.code) {
+    //     case '23505':
+    //       throw e;
+    //   }
+    // }
+    // console.log('Typ erroru je: ', typeof e);
+    // console.log('error name is: ', e.name);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create User', cause: e });
   }
 }
@@ -44,7 +56,11 @@ export async function editUser(user: UserEditModel) {
       .execute();
   } catch (e) {
     console.error(e);
-    throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Could not update user, partial', cause: e });
+    throw new DatabaseError({
+      name: 'DATABASE_UPDATE_ERROR',
+      message: 'Could not update user, partial',
+      cause: e,
+    });
   }
 }
 
@@ -109,7 +125,11 @@ export async function getNotApprovedUsers(): Promise<Selectable<User>[]> {
     return db.selectFrom('user').where('approved', '=', false).selectAll().execute();
   } catch (e) {
     console.error(e);
-    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Could not get unapproved ambassadors', cause: e });
+    throw new DatabaseError({
+      name: 'DATABASE_GET_ERROR',
+      message: 'Could not get unapproved ambassadors',
+      cause: e,
+    });
   }
 }
 
