@@ -14,7 +14,7 @@ export default async function NavBarUser() {
         </div>
       </div>
       <div className="navbar-center">
-        <Link className="btn btn-ghost text-xl" href={'/'}>
+        <Link className="btn btn-ghost text-xl" href={'/'} prefetch={false}>
           <Image className="" src="/logo_transparent.svg" alt="logo" width={40} height={40} />
           <p className="hidden md:block">AmbassadorsFIMU</p>
         </Link>
@@ -23,7 +23,7 @@ export default async function NavBarUser() {
         {/*<button className="btn btn-ghost btn-circle">*/}
         {/*  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>*/}
         {/*</button>*/}
-        <Link className="hidden md:flex flex-row gap-4 text-black" href={'/me'}>
+        <Link className="hidden md:flex flex-row gap-4 text-black" href={'/me'} prefetch={false}>
           <h3>{session?.user.name}</h3>
         </Link>
       </div>
