@@ -12,12 +12,12 @@ export default async function EventsTypes() {
 
   return (
     <>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between content items-end">
         <h1>Druhy akcí</h1>
         {isManager && <CreateEventTypeModal />}
       </div>
       <hr className="w-full" />
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 content">
         {allEventTypes.map((eventType) => (
           <EventTypeDetail key={eventType.id} eventType={eventType} />
         ))}
