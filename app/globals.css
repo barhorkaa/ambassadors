@@ -64,6 +64,9 @@
     width: 99.5vw;
     left: calc(-50vw + 50%);
   }
+  .content {
+    @apply px-4
+  }
   .hero-title {
     @apply md:text-5xl font-semibold sm:text-4xl;
   }
