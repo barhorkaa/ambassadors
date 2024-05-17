@@ -10,7 +10,7 @@ export default function EventTable({ events }: { events: EventModel[] }) {
           <tr>
             <th>Název</th>
             <th>Typ</th>
-            <th>Datum</th>
+            <th>Datum akce</th>
             <th>Detail</th>
           </tr>
         </thead>
