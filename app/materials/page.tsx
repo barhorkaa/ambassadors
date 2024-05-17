@@ -13,12 +13,12 @@ export default async function Material() {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row md:justify-between">
+      <div className="flex flex-col md:flex-row md:justify-between content items-end">
         <h1>Materiály</h1>
         {isManager && <CreateMaterialModal />}
       </div>
       <hr className="w-full" />
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 content">
         {allMaterials.map((material) => (
           <MaterialDetail key={material.id} material={material} />
         ))}
