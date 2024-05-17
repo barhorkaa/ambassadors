@@ -28,19 +28,15 @@ export default function UserTable({ users }: { users: UserModel[] }) {
               }}
             >
               <td>
-                <Link href={`ambassadors/${user.id}`}>{user.name}</Link>
+                <Link href={`/ambassadors/${user.id}`} prefetch={false} rel="noopener noreferrer" target="_blank">
+                  {user.name}
+                </Link>
               </td>
+              <td>{user.uco}</td>
+              <td>{user.email}</td>
+              <td>{user.phone_number}</td>
               <td>
-                <Link href={`ambassadors/${user.id}`}>{user.uco}</Link>
-              </td>
-              <td>
-                <Link href={`ambassadors/${user.id}`}>{user.email}</Link>
-              </td>
-              <td>
-                <Link href={`ambassadors/${user.id}`}>{user.phone_number} </Link>
-              </td>
-              <td>
-                <Link href={`ambassadors/${user.id}`}>
+                <Link href={`/ambassadors/${user.id}`} prefetch={false} rel="noopener noreferrer" target="_blank">
                   <ArrowTopRightOnSquareIcon className="h-5" />
                 </Link>
               </td>
