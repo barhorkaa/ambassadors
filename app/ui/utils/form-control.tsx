@@ -1,6 +1,7 @@
 export default function FormControl({
   title,
   id,
+  errorMessage,
   type = 'text',
   defaultValue,
   inputType = 'input',
@@ -9,6 +10,7 @@ export default function FormControl({
 }: {
   title: string;
   id: string;
+  errorMessage?: string;
   type?: 'text' | 'number' | 'password' | 'date' | 'email';
   defaultValue?: string | number;
   inputType?: 'area' | 'input';
@@ -28,6 +30,7 @@ export default function FormControl({
           name={id}
           placeholder={placeholder ?? title}
           required={required}
+          className={`${errorMessage ? 'input-error' : ''}`}
         />
       ) : (
         <textarea
@@ -36,7 +39,13 @@ export default function FormControl({
           name={id}
           placeholder={placeholder ?? title}
           required={required}
+          className={`${errorMessage ? 'input-error' : ''}`}
         />
+      )}
+      {errorMessage && (
+        <div className="label pb-0">
+          <span className="label-text-alt text-error">{errorMessage}</span>
+        </div>
       )}
     </div>
   );
