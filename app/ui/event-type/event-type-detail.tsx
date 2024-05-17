@@ -28,13 +28,11 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
       </div>
       {session?.user.role == 'manager' && (
         <div>
-          <DetailRow label={'Vytvořeno'} value={eventType.createdAt.toLocaleString('cs-CZ', { timeZone: 'CEST' })} />
-          <DetailRow label={'Upraveno'} value={eventType.updatedAt.toLocaleString('cs-CZ', { timeZone: 'CEST' })} />
+          <DetailRow label={'Vytvořeno'} value={eventType.createdAt.toLocaleString('cs-CZ')} />
+          <DetailRow label={'Upraveno'} value={eventType.updatedAt.toLocaleString('cs-CZ')} />
           <DetailRow
             label={'Zmazáno'}
-            value={
-              eventType.deletedAt == null ? 'Ne' : eventType.deletedAt.toLocaleString('cs-CZ', { timeZone: 'CEST' })
-            }
+            value={eventType.deletedAt == null ? 'Ne' : eventType.deletedAt.toLocaleString('cs-CZ')}
           />
         </div>
       )}
