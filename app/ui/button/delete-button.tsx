@@ -5,9 +5,13 @@ export function DeleteButton({ fun, id, modalId }: { fun: any; id: string; modal
     <button
       className="btn"
       onClick={async () => {
-        await fun(id);
-        if (document && modalId) {
-          (document.getElementById(modalId) as HTMLFormElement).close();
+        try {
+          await fun(id);
+          if (document && modalId) {
+            (document.getElementById(modalId) as HTMLFormElement).close();
+          }
+        } catch (e) {
+          return;
         }
       }}
     >
