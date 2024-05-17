@@ -19,7 +19,7 @@ export default async function MaterialDetail({ material }: { material: MaterialD
         )}
       </div>
       <div>
-        <DetailRow label={'Popis'} value={material.description!} />
+        <DetailRow label={''} value={material.description!} />
       </div>
       {session?.user.role == 'manager' && (
         <div>
