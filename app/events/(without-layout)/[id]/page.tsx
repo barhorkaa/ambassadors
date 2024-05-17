@@ -1,3 +1,4 @@
+import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { getEventById } from '@/database/repository/events';
 import { EventDetailModel } from '@/models/event-models';
@@ -10,7 +11,7 @@ export default async function Event({ params }: { params: { id: string } }) {
     redirect('/login');
   }
   const event: EventDetailModel = await getEventById(params.id);
-  if (event.deletedAt !== null && session.user.role !== 'manager') {
+  if (event.deletedAt !== null && session.user.role !== UserRoles.manager) {
     redirect('/denied/role');
   }
 
