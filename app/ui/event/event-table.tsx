@@ -17,7 +17,11 @@ export default function EventTable({ events }: { events: EventModel[] }) {
         <tbody>
           {events.map((event) => (
             <tr className="hover" key={event.id}>
-              <td>{event.name}</td>
+              <td>
+                <Link href={`/events/${event.id}`} prefetch={false} rel="noopener noreferrer" target="_blank">
+                  {event.name}
+                </Link>
+              </td>
               <td>
                 <div className="badge bg-fi-100">{event.eventTypeName}</div>
                 {/*{event.event_type_name}*/}
