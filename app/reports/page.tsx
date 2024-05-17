@@ -5,7 +5,7 @@ export default async function Page() {
   const eventsWithUnapprovedReports = await getAllHistoryEvents(false);
   return (
     <>
-      <h1 className="content">Zprávy z akcí</h1>
+      <h1 className="content">Nové zprávy z akcí</h1>
       <hr className="w-full" />
       <div className="content">
         <EventList
