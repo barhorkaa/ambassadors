@@ -1,4 +1,5 @@
 import BackNavigation from '@/app/ui/layout/back-navigation';
+import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { Metadata } from 'next';
 
@@ -22,7 +23,9 @@ export default async function Layout({
   return (
     <section>
       <div className="align-text-bottom flex flex-row gap-4">
-        {session?.user.role === 'manager' && <BackNavigation href={'/ambassadors'} tooltip={'Zpátky na Uživatele'} />}
+        {session?.user.role === UserRoles.manager && (
+          <BackNavigation href={'/ambassadors'} tooltip={'Zpátky na Uživatele'} />
+        )}
         <h1 className="font-light text-xl">Informace o uživateli</h1>
       </div>
       {children}
@@ -30,7 +33,7 @@ export default async function Layout({
         {user}
         {motivation}
       </div>
-      {session?.user.role === 'manager' && (
+      {session?.user.role === UserRoles.manager && (
         <div className="md:px-6">
           <hr />
           {signups}
