@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Events() {
   return (
     <>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between items-end content">
         <h1>Akce</h1>
         <Link className="btn" href={'/events/new'}>
           <PlusIcon className="h-5" />
