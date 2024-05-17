@@ -14,7 +14,7 @@ export function EventTypeForm({ eventType }: { eventType: EventTypeDetailModel |
         defaultValue={eventType?.description}
       />
       <FormControl
-        title={'Popis typu akce'}
+        title={'Instrukce pro ambasadory'}
         id={'instructions'}
         inputType={'area'}
         defaultValue={eventType?.instructions}
