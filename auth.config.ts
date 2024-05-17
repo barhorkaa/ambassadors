@@ -1,3 +1,4 @@
+import { UserRoles } from '@/app/utils/user-roles';
 import type { NextAuthConfig } from 'next-auth';
 
 export const authConfig = {
@@ -32,7 +33,7 @@ export const authConfig = {
     async authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
 
-      const isManager = auth?.user.role == 'manager';
+      const isManager = auth?.user.role == UserRoles.manager;
       const isApproved = auth?.user.approved!; // TODO maybe remove the !
       const isMotivated = auth?.user.motivated!;
 
