@@ -18,8 +18,12 @@ export default function Layout({
   return (
     <section>
       {children}
-      <Suspense fallback={<TableSkeleton />}>{unapproved}</Suspense>
-      <Suspense fallback={<TableSkeleton />}>{all}</Suspense>
+      <Suspense fallback={<TableSkeleton />}>
+        <div className="content">{unapproved}</div>
+      </Suspense>
+      <Suspense fallback={<TableSkeleton />}>
+        <div className="content">{all}</div>
+      </Suspense>
     </section>
   );
 }
