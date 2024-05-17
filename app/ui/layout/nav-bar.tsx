@@ -13,10 +13,14 @@ export default function NavBar() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link href={'/login'}>Login</Link>
+            <Link href={'/login'} className="text-black">
+              Přihlásit
+            </Link>
           </li>
           <li>
-            <Link href={'/register'}>Register</Link>
+            <Link href={'/register'} className="text-black">
+              Registrovat
+            </Link>
           </li>
         </ul>
       </div>
