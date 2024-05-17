@@ -8,11 +8,13 @@ export default async function EventSignUps() {
 
   return (
     <>
-      <h1>Přihlášení na akce</h1>
+      <h1 className="content">Přihlášení na akce</h1>
       <hr className="w-full" />
-      <SignUpList title={'Nepotvrzená přihlášení'} list={allUnapprovedSignUps} />
-      <hr />
-      <SignUpList title={'Všechna aktuání přihlášení'} list={allSignUps} />
+      <div className="content">
+        <SignUpList title={'Nepotvrzená přihlášení'} list={allUnapprovedSignUps} />
+        <hr />
+        <SignUpList title={'Všechna aktuání přihlášení'} list={allSignUps} />
+      </div>
     </>
   );
 }
