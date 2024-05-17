@@ -23,11 +23,11 @@ export default async function MaterialDetail({ material }: { material: MaterialD
       </div>
       {session?.user.role == 'manager' && (
         <div>
-          <DetailRow label={'Vytvořeno'} value={material.createdAt.toLocaleString()} />
-          <DetailRow label={'Upraveno'} value={material.updatedAt.toLocaleString()} />
+          <DetailRow label={'Vytvořeno'} value={material.createdAt.toLocaleString('cs-CZ')} />
+          <DetailRow label={'Upraveno'} value={material.updatedAt.toLocaleString('cs-CZ')} />
           <DetailRow
             label={'Zmazáno'}
-            value={material.deletedAt == null ? 'Ne' : material.deletedAt.toLocaleString()}
+            value={material.deletedAt == null ? 'Ne' : material.deletedAt.toLocaleString('cs-CZ')}
           />
         </div>
       )}
