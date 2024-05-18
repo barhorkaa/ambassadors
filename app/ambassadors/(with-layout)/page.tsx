@@ -4,9 +4,8 @@ export default function Page() {
   return (
     <div className="content">
       <p>
-        V této sekci aplikace můžete najít informace o uživatelech systému. Po rozkliknutí menu nahoře vpravo se Vám
-        ukáží seznamy uživatelů dané ketegorie. Zpět na tuto stránku se dostanete kliknutím na nápis nebo přes postranní
-        menu.
+        V této sekci aplikace můžete najít informace o uživatelech systému. Po rozkliknutí menu nahoře se Vám ukáží
+        seznamy uživatelů dané ketegorie.
       </p>
       <hr />
       <SectionInfo
