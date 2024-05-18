@@ -3,7 +3,7 @@ import { getAllEventTypes } from '@/database/repository/event-type';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 
 export default async function Page() {
-  const allEventTypes: EventTypeDetailModel[] = await getAllEventTypes();
+  const allEventTypes: EventTypeDetailModel[] = await getAllEventTypes(false);
 
   return (
     <div className="flex flex-col gap-6">
