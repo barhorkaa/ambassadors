@@ -5,7 +5,7 @@ import { auth } from '@/auth';
 import { getAllMaterials } from '@/database/repository/material';
 import { MaterialDetailModel } from '@/models/material-models';
 
-export default async function Material() {
+export default async function Page() {
   const session = await auth();
   const isManager = session?.user.role === UserRoles.manager;
 
