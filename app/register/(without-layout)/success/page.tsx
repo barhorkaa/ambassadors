@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function Success() {
+export default function Page() {
   return (
     <div className="page hero">
       <div className="hero-content text-center">
