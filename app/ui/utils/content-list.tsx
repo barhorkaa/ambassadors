@@ -7,21 +7,21 @@ import { EventModel } from '@/models/event-models';
 import { EventUserBasicModel } from '@/models/event-user-models';
 import { UserModel } from '@/models/user-models';
 
-export function EventList(props: { title: string; list: EventModel[]; emptyMessage: string }) {
+export function EventList({ title, list, emptyMessage }: { title: string; list: EventModel[]; emptyMessage: string }) {
   return (
     <>
-      <h2>{props.title}</h2>
-      {props.list.length === 0 ? (
-        <p className="text-lg py-2">{props.emptyMessage}</p>
+      <h2>{title}</h2>
+      {list.length === 0 ? (
+        <p className="text-lg py-2">{emptyMessage}</p>
       ) : (
         <>
           <div className="flex md:hidden flex-wrap justify-center gap-4 ">
-            {props.list.map((event) => (
+            {list.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>
           <div className="py-2 hidden md:block">
-            <EventTable events={props.list} />
+            <EventTable events={list} />
           </div>
         </>
       )}
