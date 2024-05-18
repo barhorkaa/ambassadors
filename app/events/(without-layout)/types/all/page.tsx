@@ -6,7 +6,7 @@ export default async function Page() {
   const allEventTypes: EventTypeDetailModel[] = await getAllEventTypes();
 
   return (
-    <div className="flex flex-col gap-6 content">
+    <div className="flex flex-col gap-6">
       {allEventTypes.map((eventType) => (
         <EventTypeDetail key={eventType.id} eventType={eventType} />
       ))}
