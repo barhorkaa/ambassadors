@@ -2,7 +2,7 @@ import MotivationForm from '@/app/ui/motivation/motivation-form';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 
-export default async function UserMotivation() {
+export default async function Page() {
   const session = await auth();
   if (!session) {
     redirect('/');
