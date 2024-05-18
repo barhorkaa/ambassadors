@@ -3,8 +3,14 @@
 import { EventTypeMinModel } from '@/models/event-type-models';
 import { useState } from 'react';
 
-export default function EventTypeSelect(props: { eventTypes: EventTypeMinModel[]; selectedEvent: string | undefined }) {
-  const [eventType, setEventType] = useState(props.selectedEvent);
+export default function EventTypeSelect({
+  eventTypes,
+  selectedEvent,
+}: {
+  eventTypes: EventTypeMinModel[];
+  selectedEvent: string | undefined;
+}) {
+  const [eventType, setEventType] = useState(selectedEvent);
 
   const handleEventTypeChange = (event: any) => {
     setEventType(event.target.value);
@@ -24,7 +30,7 @@ export default function EventTypeSelect(props: { eventTypes: EventTypeMinModel[]
         onChange={handleEventTypeChange}
       >
         <option>Vyberte typ akce</option>
-        {props.eventTypes.map((event) => (
+        {eventTypes.map((event) => (
           <option key={event.id} value={event.id}>
             {event.name}
           </option>
