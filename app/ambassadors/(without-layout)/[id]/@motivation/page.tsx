@@ -3,7 +3,7 @@ import { getUserMotivation } from '@/database/repository/motivation';
 import { MotivationModel } from '@/models/motivation-models';
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const userMotivation: MotivationModel = await getUserMotivation(params.id);
+  const userMotivation: MotivationModel | undefined = await getUserMotivation(params.id);
 
   return (
     <div className="card-compact md:card-normal  bg-base-100 shadow-md">
