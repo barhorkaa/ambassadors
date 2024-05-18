@@ -1,6 +1,6 @@
 import DeleteEventTypeModal from '@/app/ui/modals/delete/delete-event-type-modal';
 import EditEventTypeModal from '@/app/ui/modals/edit/edit-event-type-modal';
-import DetailRow from '@/app/ui/utils/detail-row';
+import DetailRowVertical from '@/app/ui/utils/detail-row';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { EventTypeDetailModel } from '@/models/event-type-models';
@@ -24,14 +24,14 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
         )}
       </div>
       <div>
-        <DetailRow label={''} value={eventType.description} />
-        <DetailRow label={'Instrukce pro ambasadory'} value={eventType.instructions} />
+        <DetailRowVertical label={''} value={eventType.description} />
+        <DetailRowVertical label={'Instrukce pro ambasadory'} value={eventType.instructions} />
       </div>
       {session?.user.role == UserRoles.manager && (
         <div>
-          <DetailRow label={'Vytvořeno'} value={eventType.createdAt.toLocaleString('cs-CZ')} />
-          <DetailRow label={'Upraveno'} value={eventType.updatedAt.toLocaleString('cs-CZ')} />
-          <DetailRow
+          <DetailRowVertical label={'Vytvořeno'} value={eventType.createdAt.toLocaleString('cs-CZ')} />
+          <DetailRowVertical label={'Upraveno'} value={eventType.updatedAt.toLocaleString('cs-CZ')} />
+          <DetailRowVertical
             label={'Zmazáno'}
             value={eventType.deletedAt == null ? 'Ne' : eventType.deletedAt.toLocaleString('cs-CZ')}
           />

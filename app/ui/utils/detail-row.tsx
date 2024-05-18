@@ -1,4 +1,4 @@
-export default function DetailRow(detail: { label: string; value: string | number }) {
+export default function DetailRowVertical(detail: { label: string; value: string | number }) {
   return (
     <div>
       <div className="grid grid-rows-[min-content_min-content] items-end">

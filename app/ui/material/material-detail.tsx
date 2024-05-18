@@ -1,6 +1,6 @@
 import DeleteMaterialModal from '@/app/ui/modals/delete/delete-material-modal';
 import EditMaterialModal from '@/app/ui/modals/edit/edit-material-modal';
-import DetailRow from '@/app/ui/utils/detail-row';
+import DetailRowVertical from '@/app/ui/utils/detail-row';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { MaterialDetailModel } from '@/models/material-models';
@@ -20,13 +20,13 @@ export default async function MaterialDetail({ material }: { material: MaterialD
         )}
       </div>
       <div>
-        <DetailRow label={''} value={material.description!} />
+        <DetailRowVertical label={''} value={material.description!} />
       </div>
       {session?.user.role == UserRoles.manager && (
         <div>
-          <DetailRow label={'Vytvořeno'} value={material.createdAt.toLocaleString('cs-CZ')} />
-          <DetailRow label={'Upraveno'} value={material.updatedAt.toLocaleString('cs-CZ')} />
-          <DetailRow
+          <DetailRowVertical label={'Vytvořeno'} value={material.createdAt.toLocaleString('cs-CZ')} />
+          <DetailRowVertical label={'Upraveno'} value={material.updatedAt.toLocaleString('cs-CZ')} />
+          <DetailRowVertical
             label={'Zmazáno'}
             value={material.deletedAt == null ? 'Ne' : material.deletedAt.toLocaleString('cs-CZ')}
           />

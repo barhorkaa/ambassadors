@@ -1,13 +1,13 @@
-import DetailRow from '@/app/ui/utils/detail-row';
+import DetailRowVertical from '@/app/ui/utils/detail-row';
 import { ReportDetailModel } from '@/models/report-models';
 
 export default function ReportDetail({ report }: { report: ReportDetailModel }) {
   const materials = [...report.materials];
   return (
     <div>
-      <DetailRow label={'Kolik bylo na akci lidí?'} value={report.numberOfAttendees} />
-      <DetailRow label={'Co se na akci dělo?'} value={report.notes} />
-      <DetailRow label={'Co do přístě zlepšit?'} value={report.ideas} />
+      <DetailRowVertical label={'Kolik bylo na akci lidí?'} value={report.numberOfAttendees} />
+      <DetailRowVertical label={'Co se na akci dělo?'} value={report.notes} />
+      <DetailRowVertical label={'Co do přístě zlepšit?'} value={report.ideas} />
       <p className="font-light text-sm">Materiály</p>
       {report.materials.map((materialAmount) => (
         <MaterialAmount
