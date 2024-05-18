@@ -1,3 +1,3 @@
-export default async function Ambassadors() {
+export default function Ambassadors() {
   return null;
 }
