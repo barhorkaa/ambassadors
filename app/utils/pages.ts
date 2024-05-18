@@ -17,7 +17,7 @@ export const mePages: PageUrl[] = [
 export const eventsPages: PageUrl[] = [
   {
     name: 'Akce',
-    url: '/events',
+    url: '/events/all',
   },
   {
     name: 'Historie akcí',
@@ -54,7 +54,7 @@ export const otherPages: PageUrl[] = [
 export const managerPages: PageUrl[] = [
   {
     name: 'Uživatelé',
-    url: '/ambassadors',
+    url: '/ambassadors/unapproved',
   },
   {
     name: 'Přihlášení na akce',
