@@ -4,19 +4,19 @@ import { UserModel } from '@/models/user-models';
 export default function UserDetail({ user }: { user: UserModel }) {
   return (
     <div className="flex flex-col">
-      <DetailRow label={'Jméno'} value={user.name} />
-      <DetailRow label={'E-mail'} value={user.email} />
-      <DetailRow label={'Tel. číslo'} value={user.phone_number} />
-      <DetailRow label={'UČO'} value={user.uco} />
-      <DetailRow label={'Role'} value={user.role === UserRoles.manager ? 'Manažér' : 'Ambasador'} />
-      <DetailRow label={'Potvrzen'} value={user.approved ? 'Ano' : 'Ne'} />
-      <DetailRow label={'Registrovaný'} value={user.created_at.toLocaleString('cs-CZ')} />
-      <DetailRow label={'Aktivní'} value={user.deleted_at ? 'Ne' : 'Ano'} />
+      <DetailRowHorizontal label={'Jméno'} value={user.name} />
+      <DetailRowHorizontal label={'E-mail'} value={user.email} />
+      <DetailRowHorizontal label={'Tel. číslo'} value={user.phone_number} />
+      <DetailRowHorizontal label={'UČO'} value={user.uco} />
+      <DetailRowHorizontal label={'Role'} value={user.role === UserRoles.manager ? 'Manažér' : 'Ambasador'} />
+      <DetailRowHorizontal label={'Potvrzen'} value={user.approved ? 'Ano' : 'Ne'} />
+      <DetailRowHorizontal label={'Registrovaný'} value={user.created_at.toLocaleString('cs-CZ')} />
+      <DetailRowHorizontal label={'Aktivní'} value={user.deleted_at ? 'Ne' : 'Ano'} />
     </div>
   );
 }
 
-function DetailRow(detail: { label: string; value: string | number }) {
+function DetailRowHorizontal(detail: { label: string; value: string | number }) {
   return (
     <div className="grid grid-cols-3 items-end">
       <p className="font-light">{detail.label}</p>
