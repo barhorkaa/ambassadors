@@ -14,7 +14,7 @@ export default async function MaterialDetail({ material }: { material: MaterialD
         <div className="flex flex-row justify-between">
           <h2>{material.name}</h2>
           {session?.user.role === UserRoles.manager && (
-            <div className="flex gap-4">
+            <div className="flex gap-2 md:gap-4">
               <DeleteMaterialModal materialId={material.id} />
               <EditMaterialModal material={material} />
             </div>
