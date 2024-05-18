@@ -5,8 +5,8 @@ export default function Ambassadors() {
     <div className="content">
       <p>
         V této sekci aplikace můžete najít informace o uživatelech systému. Po rozkliknutí menu nahoře vpravo se Vám
-        ukáží seznamy uživatelů dané ketegorie. Zpět na tuto stránku se dostanete kliknutím na nápis "Uživatelé" nebo
-        přes postranní menu.
+        ukáží seznamy uživatelů dané ketegorie. Zpět na tuto stránku se dostanete kliknutím na nápis nebo přes postranní
+        menu.
       </p>
       <hr />
       <SectionInfo
