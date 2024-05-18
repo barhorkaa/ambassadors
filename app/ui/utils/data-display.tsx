@@ -19,3 +19,14 @@ export function DetailRowHorizontal({ label, value }: { label: string; value: st
     </div>
   );
 }
+
+export function SectionInfo({ title, contents }: { title: string; contents: string[] }) {
+  return (
+    <div className="flex flex-col gap-2">
+      <h2>{title}</h2>
+      {contents.map((content) => (
+        <p>{content}</p>
+      ))}
+    </div>
+  );
+}

@@ -1,3 +1,5 @@
+import { SectionInfo } from '@/app/ui/utils/data-display';
+
 export default function Ambassadors() {
   return (
     <div className="content">
@@ -37,17 +39,6 @@ export default function Ambassadors() {
           'Manažer má taky za úkol potvrzovat registrace ambasadorů, jejich přihlášení na akce a také návrhy na nové akce.',
         ]}
       />
-    </div>
-  );
-}
-
-function SectionInfo({ title, contents }: { title: string; contents: string[] }) {
-  return (
-    <div className="flex flex-col gap-2">
-      <h2>{title}</h2>
-      {contents.map((content) => (
-        <p>{content}</p>
-      ))}
     </div>
   );
 }
