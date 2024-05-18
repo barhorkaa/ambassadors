@@ -1,6 +1,6 @@
 import { CheckIcon } from '@heroicons/react/24/outline';
 
-export function DeleteButton({ fun, id, modalId }: { fun: any; id: string; modalId: string }) {
+export function ActionModalButton({ fun, id, modalId }: { fun: any; id: string; modalId: string }) {
   return (
     <button
       className="btn"

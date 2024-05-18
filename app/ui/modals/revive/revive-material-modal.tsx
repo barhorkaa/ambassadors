@@ -1,7 +1,7 @@
 'use client';
 
 import { reviveMaterialAction } from '@/app/lib/actions/material';
-import { DeleteButton } from '@/app/ui/button/delete-button';
+import { ActionModalButton } from '@/app/ui/button/action-modal-button';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
 export default function ReviveMaterialModal({ materialId }: { materialId: string }) {
@@ -11,7 +11,7 @@ export default function ReviveMaterialModal({ materialId }: { materialId: string
         <p>Obnovením tohoto materiálu bude moct materiál být opět používan v zprávach z výjezdů.</p>
         <p>Bude taktéž viditelný pro všechny uživatele aplikace.</p>
         <div className="flex justify-end">
-          <DeleteButton fun={reviveMaterialAction} id={materialId} modalId={'revive' + materialId} />
+          <ActionModalButton fun={reviveMaterialAction} id={materialId} modalId={'revive' + materialId} />
         </div>
       </div>
     </ModalLayout>

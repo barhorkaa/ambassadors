@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteMaterialAction } from '@/app/lib/actions/material';
-import { DeleteButton } from '@/app/ui/button/delete-button';
+import { ActionModalButton } from '@/app/ui/button/action-modal-button';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
 export default function DeleteMaterialModal({ materialId }: { materialId: string }) {
@@ -14,7 +14,7 @@ export default function DeleteMaterialModal({ materialId }: { materialId: string
           vyskytuje ale zůstanou nezměneny.
         </p>
         <div className="flex justify-end">
-          <DeleteButton fun={deleteMaterialAction} id={materialId} modalId={'delete' + materialId} />
+          <ActionModalButton fun={deleteMaterialAction} id={materialId} modalId={'delete' + materialId} />
         </div>
       </div>
     </ModalLayout>

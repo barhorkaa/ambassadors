@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteEventTypeAction } from '@/app/lib/actions/event-type';
-import { DeleteButton } from '@/app/ui/button/delete-button';
+import { ActionModalButton } from '@/app/ui/button/action-modal-button';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
 export default function DeleteEventTypeModal({ eventTypeId }: { eventTypeId: string }) {
@@ -14,7 +14,7 @@ export default function DeleteEventTypeModal({ eventTypeId }: { eventTypeId: str
           nezměneny.
         </p>
         <div className="flex justify-end">
-          <DeleteButton fun={deleteEventTypeAction} id={eventTypeId} modalId={'delete' + eventTypeId} />
+          <ActionModalButton fun={deleteEventTypeAction} id={eventTypeId} modalId={'delete' + eventTypeId} />
         </div>
       </div>
     </ModalLayout>
