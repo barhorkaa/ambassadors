@@ -8,13 +8,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <section>
-      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end ">
-        <h1 className="content">
-          <Link href={'/ambassadors'} prefetch={false}>
-            Uživatelé
-          </Link>
-        </h1>
-      </div>
+      <h1 className="content">Uživatelé</h1>
       <hr className="w-full mb-0" />
       <ul className="menu menu-vertical lg:menu-horizontal bg-fi-100 text-black font-semibold w-full mb-4">
         <li>
