@@ -22,14 +22,14 @@ export default async function MaterialDetail({ material }: { material: MaterialD
         </div>
         <DetailRowVertical label={''} value={material.description!} />
         {session?.user.role == UserRoles.manager && (
-          <div>
+          <>
             <DetailRowVertical label={'Vytvořeno'} value={material.createdAt.toLocaleString('cs-CZ')} />
             <DetailRowVertical label={'Upraveno'} value={material.updatedAt.toLocaleString('cs-CZ')} />
             <DetailRowVertical
               label={'Zmazáno'}
               value={material.deletedAt == null ? 'Ne' : material.deletedAt.toLocaleString('cs-CZ')}
             />
-          </div>
+          </>
         )}
       </div>
     </div>
