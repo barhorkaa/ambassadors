@@ -26,9 +26,13 @@ export async function getAllEventTypesBasics() {
   }
 }
 
-export async function getAllEventTypes() {
+export async function getAllEventTypes(deleted: boolean) {
   try {
-    const result = await db.selectFrom('eventType').where('deleted_at', 'is', null).selectAll().execute();
+    const result = await db
+      .selectFrom('eventType')
+      .where('deleted_at', deleted ? 'is not' : 'is', null)
+      .selectAll()
+      .execute();
     return objectToCamel(result);
   } catch (e) {
     console.error(e);
