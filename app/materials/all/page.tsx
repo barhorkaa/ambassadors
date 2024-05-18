@@ -3,7 +3,7 @@ import { getAllMaterials } from '@/database/repository/material';
 import { MaterialDetailModel } from '@/models/material-models';
 
 export default async function Page() {
-  const allMaterials: MaterialDetailModel[] = await getAllMaterials();
+  const allMaterials: MaterialDetailModel[] = await getAllMaterials(false);
 
   return (
     <div className="flex flex-col gap-6">
