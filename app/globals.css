@@ -76,4 +76,7 @@
   .data-display {
     @apply bg-base-100 dark:bg-base-200 shadow-md rounded-none card-compact md:card-normal
   }
+  .page-menu {
+    @apply menu menu-vertical lg:menu-horizontal bg-fi-100 text-black font-semibold w-full mb-4
+  }
 }

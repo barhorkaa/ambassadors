@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </Link>
       </div>
       <hr className="w-full mb-0" />
-      <ul className="menu menu-vertical lg:menu-horizontal bg-fi-100 w-full text-black font-semibold">
+      <ul className="page-menu">
         <li>
           <Link href={'/events'}>Informace</Link>
         </li>

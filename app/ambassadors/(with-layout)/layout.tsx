@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <section>
       <h1 className="content">Uživatelé</h1>
       <hr className="w-full mb-0" />
-      <ul className="menu menu-vertical lg:menu-horizontal bg-fi-100 text-black font-semibold w-full mb-4">
+      <ul className="page-menu">
         <li>
           <Link href={'/ambassadors'}>Informace</Link>
         </li>
