@@ -1,17 +1,17 @@
 import { UserRoles } from '@/app/utils/user-roles';
 import { UserModel } from '@/models/user-models';
 
-export default function UserDetail(params: { user: UserModel }) {
+export default function UserDetail({ user }: { user: UserModel }) {
   return (
     <div className="flex flex-col">
-      <DetailRow label={'Jméno'} value={params.user.name} />
-      <DetailRow label={'E-mail'} value={params.user.email} />
-      <DetailRow label={'Tel. číslo'} value={params.user.phone_number} />
-      <DetailRow label={'UČO'} value={params.user.uco} />
-      <DetailRow label={'Role'} value={params.user.role === UserRoles.manager ? 'Manažér' : 'Ambasador'} />
-      <DetailRow label={'Potvrzen'} value={params.user.approved ? 'Ano' : 'Ne'} />
-      <DetailRow label={'Registrovaný'} value={params.user.created_at.toLocaleString('cs-CZ')} />
-      <DetailRow label={'Aktivní'} value={params.user.deleted_at ? 'Ne' : 'Ano'} />
+      <DetailRow label={'Jméno'} value={user.name} />
+      <DetailRow label={'E-mail'} value={user.email} />
+      <DetailRow label={'Tel. číslo'} value={user.phone_number} />
+      <DetailRow label={'UČO'} value={user.uco} />
+      <DetailRow label={'Role'} value={user.role === UserRoles.manager ? 'Manažér' : 'Ambasador'} />
+      <DetailRow label={'Potvrzen'} value={user.approved ? 'Ano' : 'Ne'} />
+      <DetailRow label={'Registrovaný'} value={user.created_at.toLocaleString('cs-CZ')} />
+      <DetailRow label={'Aktivní'} value={user.deleted_at ? 'Ne' : 'Ano'} />
     </div>
   );
 }
