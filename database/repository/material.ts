@@ -67,3 +67,16 @@ export async function deleteMaterial(id: string) {
     throw new DatabaseError({ name: 'DATABASE_DELETE_ERROR', message: 'Unable to delete material', cause: e });
   }
 }
+
+export async function reviveMaterial(id: string) {
+  try {
+    await db
+      .updateTable('material')
+      .where('id', '=', id)
+      .set({ deleted_at: null, updated_at: new Date() })
+      .executeTakeFirstOrThrow();
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_DELETE_ERROR', message: 'Unable to delete material', cause: e });
+  }
+}
