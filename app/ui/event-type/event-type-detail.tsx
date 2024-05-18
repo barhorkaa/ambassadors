@@ -11,7 +11,7 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
   return (
     <div className="data-display">
       <div className="card-body">
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between items-end">
           <h2>{eventType.name}</h2>
           {session?.user.role === UserRoles.manager && (
             <div className="flex gap-4">
