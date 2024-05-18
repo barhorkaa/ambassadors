@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             Uživatelé
           </Link>
         </h1>
-        <ul className="menu menu-vertical lg:menu-horizontal bg-fi-200">
+        <ul className="menu menu-vertical lg:menu-horizontal bg-fi-200 text-black font-semibold">
           <li>
             <Link href={'/ambassadors/unapproved'}>Nepotvrzení uživatelé</Link>
           </li>
