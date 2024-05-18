@@ -5,12 +5,12 @@ import { useState } from 'react';
 
 export default function MaterialReportSelect({
   materials,
-  selectedEvent,
+  selectedMaterial,
 }: {
   materials: MaterialMinModel[];
-  selectedEvent: string | undefined;
+  selectedMaterial: string | undefined;
 }) {
-  const [material, setMaterial] = useState(selectedEvent);
+  const [material, setMaterial] = useState(selectedMaterial);
 
   const handleMaterialChange = (event: any) => {
     setMaterial(event.target.value);
