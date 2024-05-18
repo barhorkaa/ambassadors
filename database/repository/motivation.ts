@@ -18,11 +18,7 @@ export async function createMotivation(motivation: MotivationModel) {
 
 export async function getUserMotivation(id: string) {
   try {
-    const result = await db
-      .selectFrom('motivationForm')
-      .where('user_id', '=', id)
-      .selectAll()
-      .executeTakeFirstOrThrow();
+    const result = await db.selectFrom('motivationForm').where('user_id', '=', id).selectAll().executeTakeFirst();
     if (result) {
       return objectToCamel(result);
     } else {
