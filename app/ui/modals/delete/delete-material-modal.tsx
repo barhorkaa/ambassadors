@@ -8,11 +8,11 @@ export default function DeleteMaterialModal({ materialId }: { materialId: string
   return (
     <ModalLayout id={'delete' + materialId} title={'Opravdu chcete smazat tento materiál?'} modalType={'delete'}>
       <div className="pt-4 flex flex-col gap-4">
-        <p>Smazáni materiálu se nedá vrátit.</p>
         <p>
           Tento materiál se již nebude moct použít pro vytvoření zpráv z akce. Stávajíci zprávy, ve kterých se materiál
           vyskytuje ale zůstanou nezměneny.
         </p>
+        <p>Smazaný materiál se dá později obnovit.</p>
         <div className="flex justify-end">
           <ActionModalButton fun={deleteMaterialAction} id={materialId} modalId={'delete' + materialId} />
         </div>
