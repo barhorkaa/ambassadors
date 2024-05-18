@@ -5,7 +5,6 @@ import { UserModel } from '@/models/user-models';
 export function UserList({ title, list }: { title: string; list: UserModel[] }) {
   return (
     <>
-      <hr className="w-full" />
       <h2>{title}</h2>
       <div className="hidden md:block">
         <UserTable users={list} />
