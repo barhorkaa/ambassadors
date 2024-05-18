@@ -31,7 +31,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
           </li>
         )}
       </ul>
-      {children}
+      <div className="content">{children}</div>
     </section>
   );
 }
