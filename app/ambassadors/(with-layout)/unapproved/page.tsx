@@ -6,7 +6,7 @@ export default async function Unapproved() {
   const unapprovedAmbassadors: UserModel[] = await getNotApprovedUsers();
 
   return (
-    <div>
+    <div className="content">
       <UserList title={'Nepotvrzení uživatelé'} list={unapprovedAmbassadors} />
     </div>
   );

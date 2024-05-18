@@ -6,7 +6,7 @@ export default async function AmbassadorsSlot() {
   const allAmbassadors: UserModel[] = await getAllAmbassadors();
 
   return (
-    <div>
+    <div className="content">
       <UserList title={'Ambasadoři'} list={allAmbassadors} />
     </div>
   );

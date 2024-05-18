@@ -6,7 +6,7 @@ export default async function Managers() {
   const allManagers: UserModel[] = await getAllManagers();
 
   return (
-    <div>
+    <div className="content">
       <UserList title={'Manažeři'} list={allManagers} />
     </div>
   );
