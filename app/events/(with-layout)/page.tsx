@@ -2,7 +2,7 @@ import { SectionInfo } from '@/app/ui/utils/data-display';
 
 export default function Page() {
   return (
-    <div className="content pt-4">
+    <div className="content">
       <SectionInfo
         title={'Informace o akcích'}
         contents={[
