@@ -17,8 +17,8 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row justify-between content items-end">
-        <h1>{user!.name}</h1>
+      <div className="flex flex-col md:flex-row justify-between content md:items-end">
+        <h1 className="truncate">{user!.name}</h1>
         <div className="flex flex-row gap-2">
           {!user!.approved && <ApproveButton fun={approveUserById} id={user!.id} />}
           {session?.user.role === UserRoles.manager ? (
