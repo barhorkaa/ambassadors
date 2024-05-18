@@ -1,5 +1,6 @@
 import DeleteEventTypeModal from '@/app/ui/modals/delete/delete-event-type-modal';
 import EditEventTypeModal from '@/app/ui/modals/edit/edit-event-type-modal';
+import ReviveEventTypeModal from '@/app/ui/modals/revive/revive-event-type-modal';
 import DetailRowVertical from '@/app/ui/utils/data-display';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
@@ -15,7 +16,11 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
           <h2>{eventType.name}</h2>
           {session?.user.role === UserRoles.manager && (
             <div className="flex gap-2 md:gap-4">
-              <DeleteEventTypeModal eventTypeId={eventType.id} />
+              {eventType.deletedAt === null ? (
+                <DeleteEventTypeModal eventTypeId={eventType.id} />
+              ) : (
+                <ReviveEventTypeModal eventTypeId={eventType.id} />
+              )}
               <EditEventTypeModal eventType={eventType} />
             </div>
           )}
