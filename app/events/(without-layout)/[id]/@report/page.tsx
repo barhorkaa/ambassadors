@@ -6,7 +6,7 @@ import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { userSignUpForEventStatus } from '@/database/repository/event-user';
 import { getEventById } from '@/database/repository/events';
-import { getAllMaterials } from '@/database/repository/material';
+import { getAllMaterialsMin } from '@/database/repository/material';
 import { getEventReport } from '@/database/repository/report';
 import { EventDetailModel } from '@/models/event-models';
 import { MaterialMinModel } from '@/models/material-models';
@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const eventReport = await getEventReport(params.id);
   const event: EventDetailModel = await getEventById(params.id);
 
-  const materials: MaterialMinModel[] = await getAllMaterials();
+  const materials: MaterialMinModel[] = await getAllMaterialsMin();
   const session = await auth();
 
   const userStatus = await userSignUpForEventStatus(event.id, session?.user.id!);
