@@ -14,7 +14,7 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
         <div className="flex flex-row justify-between items-end">
           <h2>{eventType.name}</h2>
           {session?.user.role === UserRoles.manager && (
-            <div className="flex gap-4">
+            <div className="flex gap-2 md:gap-4">
               <DeleteEventTypeModal eventTypeId={eventType.id} />
               <EditEventTypeModal eventType={eventType} />
             </div>
