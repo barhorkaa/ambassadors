@@ -1,7 +1,5 @@
 import { SectionInfo } from '@/app/ui/utils/data-display';
 
-export const maxDuration = 30;
-
 export default function Page() {
   return (
     <div className="content pt-4">
