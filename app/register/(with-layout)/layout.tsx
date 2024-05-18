@@ -1,18 +1,12 @@
 import { CardSkeleton } from '@/app/ui/utils/skeletons';
-import { auth } from '@/auth';
 import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Registrace | AmbassadorsFIMU',
 };
 
-export default async function Layout({ children, form }: { children: React.ReactNode; form: React.ReactNode }) {
-  const session = await auth();
-  if (session) {
-    redirect('/events');
-  }
+export default function Layout({ children, form }: { children: React.ReactNode; form: React.ReactNode }) {
   return (
     <section>
       {children}
