@@ -1,4 +1,4 @@
-import { EventList } from '@/app/ui/utils/event-list';
+import { EventList } from '@/app/ui/utils/content-list';
 import { auth } from '@/auth';
 import { getUserSignUps } from '@/database/repository/event-user';
 import { EventModel } from '@/models/event-models';

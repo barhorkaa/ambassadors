@@ -1,4 +1,4 @@
-import { EventList } from '@/app/ui/utils/event-list';
+import { EventList } from '@/app/ui/utils/content-list';
 import TableSkeleton from '@/app/ui/utils/skeletons';
 import { getAllActiveEvents } from '@/database/repository/events';
 import { EventModel } from '@/models/event-models';

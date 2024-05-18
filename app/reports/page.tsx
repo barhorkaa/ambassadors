@@ -1,4 +1,4 @@
-import { EventList } from '@/app/ui/utils/event-list';
+import { EventList } from '@/app/ui/utils/content-list';
 import { getAllHistoryEvents } from '@/database/repository/events';
 
 export default async function Page() {

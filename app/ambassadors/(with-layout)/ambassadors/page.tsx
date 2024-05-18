@@ -1,4 +1,4 @@
-import { UserList } from '@/app/ui/utils/event-list';
+import { UserList } from '@/app/ui/utils/content-list';
 import { getAllAmbassadors } from '@/database/repository/user';
 import { UserModel } from '@/models/user-models';
 
