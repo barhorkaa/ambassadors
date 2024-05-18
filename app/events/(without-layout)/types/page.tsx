@@ -8,13 +8,12 @@ import { EventTypeDetailModel } from '@/models/event-type-models';
 export default async function Page() {
   const allEventTypes: EventTypeDetailModel[] = await getAllEventTypes();
   const session = await auth();
-  const isManager = session?.user.role === UserRoles.manager;
 
   return (
     <>
       <div className="flex flex-row justify-between content items-end">
         <h1>Druhy akcí</h1>
-        {isManager && <CreateEventTypeModal />}
+        {session?.user.role === UserRoles.manager && <CreateEventTypeModal />}
       </div>
       <hr className="w-full" />
       <div className="flex flex-col gap-6 content">
