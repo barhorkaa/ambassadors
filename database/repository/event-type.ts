@@ -75,3 +75,16 @@ export async function deleteEventType(id: string) {
     throw new DatabaseError({ name: 'DATABASE_DELETE_ERROR', message: 'Unable to delete event type', cause: e });
   }
 }
+
+export async function reviveEventType(id: string) {
+  try {
+    await db
+      .updateTable('eventType')
+      .where('id', '=', id)
+      .set({ updated_at: new Date(), deleted_at: null })
+      .executeTakeFirstOrThrow();
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_DELETE_ERROR', message: 'Unable to delete event type', cause: e });
+  }
+}
