@@ -14,19 +14,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             Uživatelé
           </Link>
         </h1>
-        <ul className="menu menu-vertical lg:menu-horizontal bg-fi-200 text-black font-semibold">
-          <li>
-            <Link href={'/ambassadors/unapproved'}>Nepotvrzení uživatelé</Link>
-          </li>
-          <li>
-            <Link href={'/ambassadors/ambassadors'}>Ambasadoři</Link>
-          </li>
-          <li>
-            <Link href={'/ambassadors/managers'}>Manažeři</Link>
-          </li>
-        </ul>
       </div>
-      <hr className="w-full" />
+      <hr className="w-full mb-0" />
+      <ul className="menu menu-vertical lg:menu-horizontal bg-fi-100 text-black font-semibold w-full mb-4">
+        <li>
+          <Link href={'/ambassadors'}>Informace</Link>
+        </li>
+        <li>
+          <Link href={'/ambassadors/unapproved'}>Nepotvrzení uživatelé</Link>
+        </li>
+        <li>
+          <Link href={'/ambassadors/ambassadors'}>Ambasadoři</Link>
+        </li>
+        <li>
+          <Link href={'/ambassadors/managers'}>Manažeři</Link>
+        </li>
+      </ul>
       {children}
     </section>
   );
