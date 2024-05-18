@@ -20,9 +20,7 @@ export default async function MaterialDetail({ material }: { material: MaterialD
             </div>
           )}
         </div>
-        <div>
-          <DetailRowVertical label={''} value={material.description!} />
-        </div>
+        <DetailRowVertical label={''} value={material.description!} />
         {session?.user.role == UserRoles.manager && (
           <div>
             <DetailRowVertical label={'Vytvořeno'} value={material.createdAt.toLocaleString('cs-CZ')} />
