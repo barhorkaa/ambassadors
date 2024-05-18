@@ -1,6 +1,13 @@
+import { auth } from '@/auth';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-export default function Page() {
+export default async function Page() {
+  const session = await auth();
+  if (session) {
+    redirect('/events/all');
+  }
+
   return (
     <div className="page hero">
       <div className="hero-content text-center">
