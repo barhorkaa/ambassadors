@@ -24,8 +24,8 @@ export function SectionInfo({ title, contents }: { title: string; contents: stri
   return (
     <div className="flex flex-col gap-2">
       <h2>{title}</h2>
-      {contents.map((content) => (
-        <p>{content}</p>
+      {contents.map((content, index) => (
+        <p key={index}>{content}</p>
       ))}
     </div>
   );
