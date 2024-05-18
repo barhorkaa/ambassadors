@@ -1,5 +1,6 @@
 import DeleteMaterialModal from '@/app/ui/modals/delete/delete-material-modal';
 import EditMaterialModal from '@/app/ui/modals/edit/edit-material-modal';
+import ReviveMaterialModal from '@/app/ui/modals/revive/revive-material-modal';
 import DetailRowVertical from '@/app/ui/utils/data-display';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
@@ -15,7 +16,11 @@ export default async function MaterialDetail({ material }: { material: MaterialD
           <h2>{material.name}</h2>
           {session?.user.role === UserRoles.manager && (
             <div className="flex gap-2 md:gap-4">
-              <DeleteMaterialModal materialId={material.id} />
+              {material.deletedAt === null ? (
+                <DeleteMaterialModal materialId={material.id} />
+              ) : (
+                <ReviveMaterialModal materialId={material.id} />
+              )}
               <EditMaterialModal material={material} />
             </div>
           )}
