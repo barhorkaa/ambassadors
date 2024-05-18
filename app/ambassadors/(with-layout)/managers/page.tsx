@@ -3,7 +3,7 @@ import { getAllManagers } from '@/database/repository/user';
 import { UserModel } from '@/models/user-models';
 
 export default async function Managers() {
-  let allManagers: UserModel[] = await getAllManagers();
+  const allManagers: UserModel[] = await getAllManagers();
 
   return (
     <div>

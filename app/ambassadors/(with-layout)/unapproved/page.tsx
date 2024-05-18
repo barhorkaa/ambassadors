@@ -3,7 +3,7 @@ import { getNotApprovedUsers } from '@/database/repository/user';
 import { UserModel } from '@/models/user-models';
 
 export default async function Unapproved() {
-  let unapprovedAmbassadors: UserModel[] = await getNotApprovedUsers();
+  const unapprovedAmbassadors: UserModel[] = await getNotApprovedUsers();
 
   return (
     <div>

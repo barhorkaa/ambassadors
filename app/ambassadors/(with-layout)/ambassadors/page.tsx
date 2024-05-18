@@ -3,7 +3,7 @@ import { getAllAmbassadors } from '@/database/repository/user';
 import { UserModel } from '@/models/user-models';
 
 export default async function AmbassadorsSlot() {
-  let allAmbassadors: UserModel[] = await getAllAmbassadors();
+  const allAmbassadors: UserModel[] = await getAllAmbassadors();
 
   return (
     <div>
