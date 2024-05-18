@@ -1,6 +1,6 @@
 export const maxDuration = 30;
 
-export default function Events() {
+export default function Page() {
   return (
     <>
       {/*<div className="flex flex-row justify-between items-end content">*/}

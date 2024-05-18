@@ -5,7 +5,7 @@ import { auth } from '@/auth';
 import { getAllEventTypes } from '@/database/repository/event-type';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 
-export default async function EventsTypes() {
+export default async function Page() {
   const allEventTypes: EventTypeDetailModel[] = await getAllEventTypes();
   const session = await auth();
   const isManager = session?.user.role === UserRoles.manager;

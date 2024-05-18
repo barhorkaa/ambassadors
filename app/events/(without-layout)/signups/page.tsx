@@ -2,7 +2,7 @@ import EventUserTable from '@/app/ui/event-user/event-user-table';
 import { getAllSignUps } from '@/database/repository/event-user';
 import { EventUserBasicModel } from '@/models/event-user-models';
 
-export default async function EventSignUps() {
+export default async function Page() {
   const allUnapprovedSignUps: EventUserBasicModel[] = await getAllSignUps(false);
   const allSignUps: EventUserBasicModel[] = await getAllSignUps(true);
 

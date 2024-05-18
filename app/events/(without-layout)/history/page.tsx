@@ -1,7 +1,7 @@
 import { EventList } from '@/app/ui/utils/content-list';
 import { getAllHistoryEvents } from '@/database/repository/events';
 
-export default async function EventsHistoryPage() {
+export default async function Page() {
   const eventsWithApprovedReports = await getAllHistoryEvents(true);
 
   return (

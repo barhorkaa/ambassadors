@@ -5,7 +5,7 @@ import { userSignUpForEventStatus } from '@/database/repository/event-user';
 import { getEventById } from '@/database/repository/events';
 import { EventDetailModel } from '@/models/event-models';
 
-export default async function UsersPage({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
   const session = await auth();
   const event: EventDetailModel = await getEventById(params.id);
   const userStatus = await userSignUpForEventStatus(event.id, session?.user.id!);

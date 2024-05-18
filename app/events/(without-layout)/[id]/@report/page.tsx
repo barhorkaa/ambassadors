@@ -11,7 +11,7 @@ import { getEventReport } from '@/database/repository/report';
 import { EventDetailModel } from '@/models/event-models';
 import { MaterialMinModel } from '@/models/material-models';
 
-export default async function ReportPage({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
   const eventReport = await getEventReport(params.id);
   const event: EventDetailModel = await getEventById(params.id);
 

@@ -3,7 +3,7 @@ import { getEventById } from '@/database/repository/events';
 import { EventDetailModel } from '@/models/event-models';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 
-export default async function TypePage({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
   const event: EventDetailModel = await getEventById(params.id);
   const eventType: EventTypeDetailModel = await getEventTypeById(event.eventTypeId);
 
