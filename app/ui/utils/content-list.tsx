@@ -1,8 +1,10 @@
+import EventUserTable from '@/app/ui/event-user/event-user-table';
 import EventCard from '@/app/ui/event/event-card';
 import EventTable from '@/app/ui/event/event-table';
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
 import { EventModel } from '@/models/event-models';
+import { EventUserBasicModel } from '@/models/event-user-models';
 import { UserModel } from '@/models/user-models';
 
 export function EventList(props: { title: string; list: EventModel[]; emptyMessage: string }) {
@@ -41,5 +43,14 @@ export function UserList({ title, list }: { title: string; list: UserModel[] }) 
         ))}
       </div>
     </>
+  );
+}
+
+export function SignUpList(props: { title: string; list: EventUserBasicModel[] }) {
+  return (
+    <div>
+      <h2>{props.title}</h2>
+      <EventUserTable eventUsers={props.list} />
+    </div>
   );
 }
