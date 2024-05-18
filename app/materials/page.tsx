@@ -13,7 +13,7 @@ export default async function Page() {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row md:justify-between content items-end">
+      <div className="flex flex-row justify-between content items-end">
         <h1>Materiály</h1>
         {isManager && <CreateMaterialModal />}
       </div>
