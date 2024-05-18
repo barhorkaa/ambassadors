@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Uživatelé | AmbassadorsFIMU',
@@ -7,18 +8,21 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <section>
-      <h1 className="content">Uživatelé</h1>
-      <hr className="w-full" />
-      <div role="tablist" className="tabs tabs-lifted content">
-        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Nepotvrzeni" />
-        <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6"></div>
-
-        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Ambasadoři" />
-        <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6"></div>
-
-        <input type="radio" name="my_tabs_2" role="tab" className="tab w-fit" aria-label="Manažeři" />
-        <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6"></div>
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end ">
+        <h1 className="content">Uživatelé</h1>
+        <ul className="menu menu-vertical lg:menu-horizontal bg-fi-200">
+          <li>
+            <Link href={'/ambassadors/unapproved'}>Nepotvrzení uživatelé</Link>
+          </li>
+          <li>
+            <Link href={'/ambassadors/ambassadors'}>Ambasadoři</Link>
+          </li>
+          <li>
+            <Link href={'/ambassadors/managers'}>Manažeři</Link>
+          </li>
+        </ul>
       </div>
+      <hr className="w-full" />
       {children}
     </section>
   );
