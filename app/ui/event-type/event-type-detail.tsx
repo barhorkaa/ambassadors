@@ -5,12 +5,8 @@ import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 
-export default async function EventTypeDetail({ eventType }: { eventType: EventTypeDetailModel | undefined }) {
+export default async function EventTypeDetail({ eventType }: { eventType: EventTypeDetailModel }) {
   const session = await auth();
-
-  if (eventType === undefined) {
-    return <p className="text-lg">Nepodařilo se získat infomace o typu akce</p>;
-  }
 
   return (
     <div className="data-display">
@@ -37,7 +33,7 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
               value={eventType.deletedAt == null ? 'Ne' : eventType.deletedAt.toLocaleString('cs-CZ')}
             />
           </div>
-        )}{' '}
+        )}
       </div>
     </div>
   );
