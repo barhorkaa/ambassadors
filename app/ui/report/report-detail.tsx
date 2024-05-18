@@ -1,4 +1,4 @@
-import DetailRowVertical from '@/app/ui/utils/detail-row';
+import DetailRowVertical from '@/app/ui/utils/data-display';
 import { ReportDetailModel } from '@/models/report-models';
 
 export default function ReportDetail({ report }: { report: ReportDetailModel }) {

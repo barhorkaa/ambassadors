@@ -1,6 +1,6 @@
 import DeleteEventTypeModal from '@/app/ui/modals/delete/delete-event-type-modal';
 import EditEventTypeModal from '@/app/ui/modals/edit/edit-event-type-modal';
-import DetailRowVertical from '@/app/ui/utils/detail-row';
+import DetailRowVertical from '@/app/ui/utils/data-display';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { EventTypeDetailModel } from '@/models/event-type-models';

@@ -1,4 +1,4 @@
-import DetailRowVertical from '@/app/ui/utils/detail-row';
+import DetailRowVertical from '@/app/ui/utils/data-display';
 import { MotivationModel } from '@/models/motivation-models';
 
 export default function MotivationDetail(params: { motivation: MotivationModel | undefined }) {
