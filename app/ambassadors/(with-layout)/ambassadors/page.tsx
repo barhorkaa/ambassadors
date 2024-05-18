@@ -2,7 +2,7 @@ import { UserList } from '@/app/ui/utils/content-list';
 import { getAllAmbassadors } from '@/database/repository/user';
 import { UserModel } from '@/models/user-models';
 
-export default async function AmbassadorsSlot() {
+export default async function Page() {
   const allAmbassadors: UserModel[] = await getAllAmbassadors();
 
   return (

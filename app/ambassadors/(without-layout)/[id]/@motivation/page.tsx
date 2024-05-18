@@ -2,7 +2,7 @@ import MotivationDetail from '@/app/ui/motivation/motivation-detail';
 import { getUserMotivation } from '@/database/repository/motivation';
 import { MotivationModel } from '@/models/motivation-models';
 
-export default async function Motivation({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
   const userMotivation: MotivationModel = await getUserMotivation(params.id);
 
   return (

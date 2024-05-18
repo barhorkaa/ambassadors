@@ -2,7 +2,7 @@ import { UserList } from '@/app/ui/utils/content-list';
 import { getNotApprovedUsers } from '@/database/repository/user';
 import { UserModel } from '@/models/user-models';
 
-export default async function Unapproved() {
+export default async function Page() {
   const unapprovedAmbassadors: UserModel[] = await getNotApprovedUsers();
 
   return (

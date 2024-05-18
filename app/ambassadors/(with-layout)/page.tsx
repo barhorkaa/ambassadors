@@ -1,6 +1,6 @@
 import { SectionInfo } from '@/app/ui/utils/data-display';
 
-export default function Ambassadors() {
+export default function Page() {
   return (
     <div className="content">
       <p>
