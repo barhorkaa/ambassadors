@@ -1,7 +1,7 @@
 import { UserModel } from '@/models/user-models';
 import Link from 'next/link';
 
-export default async function UserCard({ user }: { user: UserModel }) {
+export default function UserCard({ user }: { user: UserModel }) {
   console.log('user in card is', user);
   return (
     <div className="card shadow-lg w-5/6">
