@@ -1,29 +1,16 @@
-import EventUserTable from '@/app/ui/event-user/event-user-table';
-import { getAllSignUps } from '@/database/repository/event-user';
-import { EventUserBasicModel } from '@/models/event-user-models';
+import { SectionInfo } from '@/app/ui/utils/data-display';
 
-export default async function Page() {
-  const allUnapprovedSignUps: EventUserBasicModel[] = await getAllSignUps(false);
-  const allSignUps: EventUserBasicModel[] = await getAllSignUps(true);
-
+export default function Page() {
   return (
     <>
-      <h1 className="content">Přihlášení na akce</h1>
-      <hr className="w-full" />
-      <div className="content">
-        <SignUpList title={'Nepotvrzená přihlášení'} list={allUnapprovedSignUps} />
-        <hr />
-        <SignUpList title={'Všechna aktuání přihlášení'} list={allSignUps} />
-      </div>
+      <p className="pb-2">Tato část aplikace slouží na přehled o aktuálních přihláseních na akce.</p>
+      <SectionInfo
+        title={'Nepotvrzená přihlášení na akce'}
+        contents={[
+          'Když se ambasador chce zúčastnit na akci přihlásí se na ní ze svého účtu. Toto přihlášní je potřebné ' +
+            'potvrdit v sekci Nepotvrzená přihlášení. ',
+        ]}
+      />
     </>
-  );
-}
-
-function SignUpList(props: { title: string; list: EventUserBasicModel[] }) {
-  return (
-    <div>
-      <h2>{props.title}</h2>
-      <EventUserTable eventUsers={props.list} />
-    </div>
   );
 }
