@@ -46,11 +46,11 @@ export function UserList({ title, list }: { title: string; list: UserModel[] }) 
   );
 }
 
-export function SignUpList(props: { title: string; list: EventUserBasicModel[] }) {
+export function SignUpList({ title, list }: { title: string; list: EventUserBasicModel[] }) {
   return (
     <div>
-      <h2>{props.title}</h2>
-      <EventUserTable eventUsers={props.list} />
+      <h2>{title}</h2>
+      <EventUserTable eventUsers={list} />
     </div>
   );
 }
