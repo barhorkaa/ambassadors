@@ -5,8 +5,16 @@ import DeleteSignUpModal from '@/app/ui/modals/delete/delete-signup-modal';
 import { ArrowRightEndOnRectangleIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 
-export default function EventSignUpButton(props: { isSignedOnEvent: boolean; event_id: string; user_id: string }) {
-  const [signedOn, setSignedOn] = useState(props.isSignedOnEvent);
+export default function EventSignUpButton({
+  isSignedOnEvent,
+  event_id,
+  user_id,
+}: {
+  isSignedOnEvent: boolean;
+  event_id: string;
+  user_id: string;
+}) {
+  const [signedOn, setSignedOn] = useState(isSignedOnEvent);
 
   function changeState() {
     setSignedOn(!signedOn);
@@ -15,12 +23,12 @@ export default function EventSignUpButton(props: { isSignedOnEvent: boolean; eve
   return (
     <div>
       {signedOn ? (
-        <DeleteSignUpModal event_id={props.event_id} user_id={props.user_id} />
+        <DeleteSignUpModal event_id={event_id} user_id={user_id} />
       ) : (
         <button
           className="btn"
           onClick={async () => {
-            await createSignUpAction(props.event_id, props.user_id);
+            await createSignUpAction(event_id, user_id);
             changeState();
           }}
           disabled={false}
