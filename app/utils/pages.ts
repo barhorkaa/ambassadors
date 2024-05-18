@@ -58,7 +58,7 @@ export const managerPages: PageUrl[] = [
   },
   {
     name: 'Přihlášení na akce',
-    url: '/events/signups',
+    url: '/signups',
   },
   {
     name: 'Nove zprávy z akcí',
