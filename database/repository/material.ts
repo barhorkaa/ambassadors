@@ -12,9 +12,13 @@ export async function getMaterialById(id: string) {
   }
 }
 
-export async function getAllMaterials() {
+export async function getAllMaterials(deleted: boolean) {
   try {
-    const result = await db.selectFrom('material').where('deleted_at', 'is', null).selectAll().execute();
+    const result = await db
+      .selectFrom('material')
+      .where('deleted_at', deleted ? 'is not' : 'is', null)
+      .selectAll()
+      .execute();
     const camel = objectToCamel(result);
     return objectToCamel(result);
   } catch (e) {
