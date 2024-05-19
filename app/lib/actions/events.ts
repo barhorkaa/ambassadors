@@ -6,8 +6,9 @@ import { approveEvent, createEvent, deleteEvent, updateEvent } from '@/database/
 import { eventSchema } from '@/models/event-models';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { z } from 'zod';
 
-export async function createEventAction(formData: FormData) {
+export async function createEventAction(prevState: any, formData: FormData) {
   try {
     const data = {
       name: formData.get('name'),
@@ -22,25 +23,25 @@ export async function createEventAction(formData: FormData) {
     if (session?.user.role === UserRoles.manager) {
       parsedData.approved = true;
     }
-    // console.log('before append: ', formData);
-    // formData.append('approved', String(session?.user.role === UserRoles.manager));
-    // console.log('after append: ', formData);
-    // const p = eventFormModel.parse(formData);
-    // console.log('parse is: ', p);
-
-    // if (p.success) {
-    //   console.log('parse on new is: ', p.data);
-    // }
 
     await createEvent({ event: parsedData });
   } catch (e) {
     console.error(e);
-    return 'Something went wrong';
+    if (e instanceof z.ZodError) {
+      return {
+        errors: e.issues,
+        generic: undefined,
+      };
+    } else
+      return {
+        errors: [],
+        generic: 'Something went wrong',
+      };
   }
   redirect('/events/success');
 }
 
-export async function updateEventAction(formData: FormData) {
+export async function updateEventAction(prevState: any, formData: FormData) {
   try {
     const data = {
       name: formData.get('name'),
@@ -55,9 +56,22 @@ export async function updateEventAction(formData: FormData) {
     await updateEvent(parsedData);
   } catch (e) {
     console.error(e);
-    return 'Something went wrong'; // TODO decide if like this or throw
+    if (e instanceof z.ZodError) {
+      return {
+        errors: e.issues,
+        generic: undefined,
+      };
+    } else
+      return {
+        errors: [],
+        generic: 'Something went wrong',
+      };
   }
   revalidatePath('/events/[id]/page');
+  return {
+    errors: [],
+    generic: undefined,
+  };
 }
 
 export async function approveEventAction(id: string) {
