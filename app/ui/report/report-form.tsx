@@ -1,3 +1,5 @@
+'use client';
+
 import { createReportAction } from '@/app/lib/actions/report';
 import SubmitButton from '@/app/ui/button/submit-button';
 import MaterialAdd from '@/app/ui/material-report/material-add';
