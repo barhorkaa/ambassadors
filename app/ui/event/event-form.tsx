@@ -4,6 +4,7 @@ import { createEventAction, updateEventAction } from '@/app/lib/actions/events';
 import SubmitButton from '@/app/ui/button/submit-button';
 import EventTypeSelect from '@/app/ui/event-type/event-type-select';
 import FormControl, { findErrors } from '@/app/ui/utils/form-control';
+import { formActionInitialState } from '@/app/ui/utils/form-errors';
 import { EventDetailModel } from '@/models/event-models';
 import { EventTypeMinModel } from '@/models/event-type-models';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
@@ -17,10 +18,10 @@ export default function EventForm({
   eventTypes: EventTypeMinModel[];
   event: EventDetailModel | null;
 }) {
-  const [state, dispatch] = useFormState(event === null ? createEventAction : updateEventAction, {
-    errors: [],
-    generic: undefined,
-  });
+  const [state, dispatch] = useFormState(
+    event === null ? createEventAction : updateEventAction,
+    formActionInitialState
+  );
 
   return (
     <form action={dispatch} className="card-body">
