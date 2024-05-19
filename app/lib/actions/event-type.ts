@@ -26,7 +26,6 @@ export async function editEventTypeAction(prevState: any, formData: FormData) {
 
 export async function createEventTypeAction(prevState: any, formData: FormData) {
   try {
-    console.log('called create action');
     const eventTypeForm = {
       name: formData.get('name'),
       description: formData.get('description'),
