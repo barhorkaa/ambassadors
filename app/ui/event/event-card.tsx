@@ -1,13 +1,8 @@
 import { EventModel } from '@/models/event-models';
-import { CalendarDaysIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-export default async function EventCard({ event }: { event: EventModel }) {
-  // let signedUpForEvent = await getSignUpsForEvent(event.id!, false);
-  // if (signedUpForEvent === undefined) {
-  //   signedUpForEvent = [];
-  // }
-
+export default function EventCard({ event }: { event: EventModel }) {
   return (
     <div className="card w-5/6 bg-base-100 shadow-lg">
       <Link href={`/events/${event.id}`} prefetch={false}>
@@ -17,12 +12,6 @@ export default async function EventCard({ event }: { event: EventModel }) {
           <div className="flex flex-row gap-2">
             <CalendarDaysIcon className="h-5" />
             <p className="">{event.date !== null ? event.date.toLocaleDateString() : 'Nezadáno'}</p>
-          </div>
-          <div className="flex flex-row gap-2">
-            <UserGroupIcon className="h-5" />
-            {/*<p>*/}
-            {/*  {signedUpForEvent.length} / {event.limit}*/}
-            {/*</p>*/}
           </div>
         </div>
       </Link>
