@@ -20,7 +20,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const eventTypes: EventTypeMinModel[] = await getAllEventTypesBasics();
 
-  let signedUpForEvent = await getSignUpsForEvent(event.id!, false);
+  const attendees = await getSignUpsForEvent(event.id!, false);
 
   return (
     <div>
@@ -45,7 +45,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             )}
           </div>
           <hr className="w-full" />
-          <EventDetail event={event} signedUpForEvent={signedUpForEvent.length} isManager={isManager} />
+          <EventDetail event={event} signedUpForEvent={attendees.length} isManager={isManager} />
         </div>
       </div>
     </div>
