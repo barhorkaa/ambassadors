@@ -2,10 +2,9 @@
 
 import { createUserAction } from '@/app/lib/actions/register';
 import SubmitButton from '@/app/ui/button/submit-button';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { findErrors } from '@/app/ui/utils/form-control';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import { useFormState } from 'react-dom';
-import { ZodIssue } from 'zod';
 
 export default function RegisterForm() {
   const [state, dispatch] = useFormState(createUserAction, { errors: [], generic: undefined });
@@ -43,11 +42,3 @@ export default function RegisterForm() {
     </form>
   );
 }
-
-const findErrors = (fieldName: string, errors: ZodIssue[]) => {
-  return errors
-    .filter((item) => {
-      return item.path.includes(fieldName);
-    })
-    .map((item) => item.message);
-};
