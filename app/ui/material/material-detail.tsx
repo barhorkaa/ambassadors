@@ -12,7 +12,7 @@ export default async function MaterialDetail({ material }: { material: MaterialD
   return (
     <div className="data-display">
       <div className="card-body">
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between items-end">
           <h2>{material.name}</h2>
           {session?.user.role === UserRoles.manager && (
             <div className="flex gap-2 md:gap-4">
