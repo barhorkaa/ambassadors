@@ -1,5 +1,6 @@
 'use server';
 
+import { handleError } from '@/app/ui/utils/form-errors';
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
 import { userEditSchema } from '@/models/user-models';
 import { revalidatePath } from 'next/cache';
@@ -14,7 +15,7 @@ export async function approveUserById(id: string) {
   revalidatePath('/ambassadors/[id]/page');
 }
 
-export async function editUserAction(formData: FormData) {
+export async function editUserAction(prevState: any, formData: FormData) {
   try {
     console.log('got to edit user action');
     console.log('form data is: ', formData);
@@ -30,12 +31,13 @@ export async function editUserAction(formData: FormData) {
     await editUser(parsedData);
   } catch (e) {
     console.error(e);
-    throw e;
+    handleError(e);
   }
   revalidatePath('/ambassadors/[id]/page');
+  return { success: true, errors: [], generic: undefined };
 }
 
-export async function editUserFullAction(formData: FormData) {
+export async function editUserFullAction(prevState: any, formData: FormData) {
   try {
     console.log('got to edit user action');
     console.log('form data is: ', formData);
@@ -54,7 +56,8 @@ export async function editUserFullAction(formData: FormData) {
     await editFullUser(parsedData);
   } catch (e) {
     console.error(e);
-    throw e;
+    handleError(e);
   }
   revalidatePath('/ambassadors/[id]/page');
+  return { success: true, errors: [], generic: undefined };
 }
