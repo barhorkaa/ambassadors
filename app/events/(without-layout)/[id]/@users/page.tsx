@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <div className="card-body">
         <div className="flex flex-row justify-between items-end">
           <h2 className="card-title font-light text-sm">Přihlášení na akci</h2>
-          {session && event.deletedAt === null && (
+          {session && event.deletedAt === null && (event.date === null || event.date >= new Date()) && (
             <fieldset disabled={!event.approved}>
               <EventSignUpButton
                 isSignedOnEvent={userStatus !== undefined}
