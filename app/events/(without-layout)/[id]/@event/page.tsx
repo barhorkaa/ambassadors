@@ -21,6 +21,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const eventTypes: EventTypeMinModel[] = await getAllEventTypesBasics();
 
   const attendees = await getSignUpsForEvent(event.id!, false);
+  const substitutes = await getSignUpsForEvent(event.id!, true);
 
   return (
     <div>
@@ -45,7 +46,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             )}
           </div>
           <hr className="w-full" />
-          <EventDetail event={event} attendees={attendees.length} isManager={isManager} />
+          <EventDetail event={event} attendees={attendees.length + substitutes.length} isManager={isManager} />
         </div>
       </div>
     </div>
