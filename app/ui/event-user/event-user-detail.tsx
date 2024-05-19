@@ -1,5 +1,5 @@
 import { getSignUpsForEvent } from '@/database/repository/event-user';
-import { CheckIcon, UserIcon } from '@heroicons/react/24/outline';
+import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 export async function EventUserDetail({ event_id }: { event_id: string }) {
@@ -30,7 +30,11 @@ function UserList({
           <h3 className="card-title">{title}</h3>
           {userList.map((user) => (
             <div key={user.user_id} className="flex flex-row gap-4 items-baseline">
-              {user.approved ? <CheckIcon title={'Registrace potvrzena'} className="h-6" /> : <></>}
+              {user.approved ? (
+                <CheckIcon title={'Registrace potvrzena'} className="h-6" />
+              ) : (
+                <ClockIcon title={'Čeká se na potvrzení'} className="h-6" />
+              )}
               <Link href={`/ambassadors/${user.user_id}`} key={user.user_id} className="flex flex-row gap-4 py-2">
                 <UserIcon className="h-6" />
                 <p className="text-lg">{user.user_name}</p>
