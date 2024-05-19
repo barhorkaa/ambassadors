@@ -2,7 +2,7 @@ import { db } from '@/database/database';
 import { adapter } from '@/database/repository/events';
 import { DatabaseError } from '@/errors/database-error';
 
-export async function getUserSignUps(user_id: string, substitute: boolean) {
+export async function getUserSignUps(user_id: string, substitute: boolean, active: boolean) {
   try {
     console.log('user id is: ', user_id);
     const result = await db
@@ -10,6 +10,8 @@ export async function getUserSignUps(user_id: string, substitute: boolean) {
       .where((eb) => eb.and([eb('substitute', '=', substitute), eb('user_id', '=', user_id)]))
       .fullJoin('event', 'eventUser.event_id', 'event.id')
       .where('event.deleted_at', 'is', null)
+      .leftJoin('report', 'report.event_id', 'event.id')
+      .where('report.id', active ? 'is' : 'is not', null)
       .select([
         'event.id as id',
         // "eventUser.approved as event_user_approved",
