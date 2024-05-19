@@ -1,8 +1,8 @@
 'use client';
 
 import { createReportAction } from '@/app/lib/actions/report';
-import SubmitButton from '@/app/ui/button/submit-button';
 import MaterialAdd from '@/app/ui/material-report/material-add';
+import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { formActionInitialState } from '@/app/ui/utils/form-errors';
 import { MaterialMinModel } from '@/models/material-models';
@@ -12,7 +12,7 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
   const [state, dispatch] = useFormState(createReportAction, formActionInitialState);
 
   return (
-    <form action={createReportAction} className="card-body">
+    <FormLayout action={dispatch} state={state} modalId={'create_report_modal'}>
       <FormControl
         title={'Kolik lidí bylo na akci?'}
         id={'numberOfAttendees'}
@@ -33,7 +33,6 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
         placeholder={'Vaše nápady na zlepšení'}
       />
       <input id="id" type="hidden" name="eventId" value={eventId} required />
-      <SubmitButton title={'Odeslat'} modalId={'create_report_modal'} />
-    </form>
+    </FormLayout>
   );
 }
