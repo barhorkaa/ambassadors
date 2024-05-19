@@ -1,3 +1,5 @@
+'use client';
+
 import { createMaterialAction, editMaterialAction } from '@/app/lib/actions/material';
 import SubmitButton from '@/app/ui/button/submit-button';
 import FormControl from '@/app/ui/utils/form-control';
