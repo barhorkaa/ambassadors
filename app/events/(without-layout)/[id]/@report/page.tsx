@@ -37,9 +37,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                   (userStatus !== undefined &&
                     !userStatus.substitute &&
                     userStatus.approved &&
-                    (event.date === null || new Date() <= event.date))) && (
-                  <CreateReportModal eventId={params.id} materials={materials} />
-                )}
+                    event.date !== null &&
+                    new Date() >= event.date)) && <CreateReportModal eventId={params.id} materials={materials} />}
               </div>
             ) : (
               <ReportDetail report={eventReport} />
