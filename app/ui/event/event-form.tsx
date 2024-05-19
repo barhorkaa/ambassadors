@@ -55,14 +55,12 @@ export default function EventForm({
         errorMessage={findErrors('eventTypeId', state.errors)[0]}
       />
       <SubmitButton title={'Odeslat'} modalId={event === null ? undefined : event.id} />
-      <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
-        {state.generic && (
-          <>
-            <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-            <p className="text-sm text-red-500">{state.generic}</p>
-          </>
-        )}
-      </div>
+      {state.generic && (
+        <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
+          <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+          <p className="text-sm text-red-500">{state.generic}</p>
+        </div>
+      )}
     </form>
   );
 }
