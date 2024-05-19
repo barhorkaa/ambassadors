@@ -15,8 +15,7 @@ export default function SubmitButton({ title, modalId }: { title: string; modalI
         }
       }}
     >
-      is pending? {pending ? 'yes' : 'no'}
-      {title}
+      {pending ? 'Odesílám ... ' : title}
     </button>
   );
 }
