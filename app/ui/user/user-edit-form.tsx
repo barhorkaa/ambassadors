@@ -1,3 +1,5 @@
+'use client';
+
 import { editUserAction, editUserFullAction } from '@/app/lib/actions/users';
 import SubmitButton from '@/app/ui/button/submit-button';
 import UserRoleSelect from '@/app/ui/user/user-role-select';
