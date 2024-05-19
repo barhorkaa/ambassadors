@@ -9,7 +9,7 @@ export function FormLayout({
 }: {
   action: any;
   state: any;
-  modalId: string;
+  modalId?: string;
   children: React.ReactNode;
 }) {
   return (
