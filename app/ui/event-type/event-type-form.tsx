@@ -1,7 +1,8 @@
 'use client';
 
 import { createEventTypeAction, editEventTypeAction } from '@/app/lib/actions/event-type';
-import FormControl, { FormLayout } from '@/app/ui/utils/form-control';
+import { FormLayout } from '@/app/ui/utils/component-layouts';
+import FormControl from '@/app/ui/utils/form-control';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 import { useFormState } from 'react-dom';
 
