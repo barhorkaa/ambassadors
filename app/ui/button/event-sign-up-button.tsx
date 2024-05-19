@@ -28,8 +28,12 @@ export default function EventSignUpButton({
         <button
           className="btn"
           onClick={async () => {
-            await createSignUpAction(event_id, user_id);
-            changeState();
+            try {
+              await createSignUpAction(event_id, user_id);
+              changeState();
+            } catch (e) {
+              return;
+            }
           }}
           disabled={false}
         >
