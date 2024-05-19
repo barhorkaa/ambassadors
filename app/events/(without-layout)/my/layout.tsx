@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <h1>Moje akce</h1>
       </div>
       <hr className="w-full" />
-      {children}
+      <div className="content">{children}</div>
     </section>
   );
 }

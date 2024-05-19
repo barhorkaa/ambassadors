@@ -15,7 +15,7 @@ export default async function Page() {
   const userSubstitutes: EventModel[] = await getUserSignUps(session.user.id, true);
 
   return (
-    <div className="content">
+    <>
       {userSubstitutes.length === 0 && userEvents.length === 0 ? (
         <SignUpPrompt />
       ) : (
@@ -32,7 +32,7 @@ export default async function Page() {
           />{' '}
         </>
       )}
-    </div>
+    </>
   );
 }
 
