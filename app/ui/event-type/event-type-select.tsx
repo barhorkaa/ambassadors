@@ -6,9 +6,11 @@ import { useState } from 'react';
 export default function EventTypeSelect({
   eventTypes,
   selectedEvent,
+  errorMessage,
 }: {
   eventTypes: EventTypeMinModel[];
   selectedEvent: string | undefined;
+  errorMessage: string;
 }) {
   const [eventType, setEventType] = useState(selectedEvent);
 
@@ -36,6 +38,11 @@ export default function EventTypeSelect({
           </option>
         ))}
       </select>
+      {errorMessage && (
+        <div className="label pb-0">
+          <span className="label-text-alt text-error">{errorMessage}</span>
+        </div>
+      )}
     </div>
   );
 }
