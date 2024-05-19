@@ -24,30 +24,28 @@ export default async function Page({ params }: { params: { id: string } }) {
   const substitutes = await getSignUpsForEvent(event.id!, true);
 
   return (
-    <div>
-      <div className="data-display">
-        <div className="card-body">
-          <div className="flex flex-col md:flex-row justify-between md:items-end">
-            <h1 className="w-1/2">{event.name}</h1>
-            {event.deletedAt === null && (
-              <div className="flex flex-row gap-4 ">
-                {!event.approved && session?.user.role == UserRoles.manager && (
-                  <ApproveButton fun={approveEventAction} id={event.id} />
-                )}
-                {(isManager ||
-                  (userStatus !== undefined &&
-                    !userStatus.substitute &&
-                    userStatus.approved &&
-                    (event.date === null || new Date() <= event.date))) && (
-                  <EditEventModal event={event} eventTypes={eventTypes} />
-                )}
-                {isManager && <DeleteEventModal eventId={event.id} />}
-              </div>
-            )}
-          </div>
-          <hr className="w-full" />
-          <EventDetail event={event} attendees={attendees.length + substitutes.length} isManager={isManager} />
+    <div className="data-display">
+      <div className="card-body">
+        <div className="flex flex-col md:flex-row justify-between md:items-end">
+          <h1 className="w-1/2">{event.name}</h1>
+          {event.deletedAt === null && (
+            <div className="flex flex-row gap-4 ">
+              {!event.approved && session?.user.role == UserRoles.manager && (
+                <ApproveButton fun={approveEventAction} id={event.id} />
+              )}
+              {(isManager ||
+                (userStatus !== undefined &&
+                  !userStatus.substitute &&
+                  userStatus.approved &&
+                  (event.date === null || new Date() <= event.date))) && (
+                <EditEventModal event={event} eventTypes={eventTypes} />
+              )}
+              {isManager && <DeleteEventModal eventId={event.id} />}
+            </div>
+          )}
         </div>
+        <hr className="w-full" />
+        <EventDetail event={event} attendees={attendees.length + substitutes.length} isManager={isManager} />
       </div>
     </div>
   );
