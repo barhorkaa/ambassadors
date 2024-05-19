@@ -4,7 +4,7 @@ import { createMaterial, deleteMaterial, editMaterial, reviveMaterial } from '@/
 import { materialSchema } from '@/models/material-models';
 import { revalidatePath } from 'next/cache';
 
-export async function createMaterialAction(formData: FormData) {
+export async function createMaterialAction(prevState: any, formData: FormData) {
   try {
     const materialForm = {
       name: formData.get('name'),
@@ -20,7 +20,7 @@ export async function createMaterialAction(formData: FormData) {
   revalidatePath('/materials');
 }
 
-export async function editMaterialAction(formData: FormData) {
+export async function editMaterialAction(prevState: any, formData: FormData) {
   try {
     const materialForm = {
       id: formData.get('id'),
