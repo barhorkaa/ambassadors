@@ -2,7 +2,7 @@
 
 import { useFormState, useFormStatus } from 'react-dom';
 
-export default function SubmitButton({ title, modalId, fun }: { title: string; modalId?: string; fun: any }) {
+export default function SubmitButton({ title, modalId, fun }: { title: string; modalId?: string; fun?: any }) {
   const { pending } = useFormStatus();
 
   const [state, dispatch] = useFormState(fun, {
