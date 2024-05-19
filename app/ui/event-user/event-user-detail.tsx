@@ -2,8 +2,8 @@ import { EventUserList } from '@/app/ui/utils/content-list';
 import { getSignUpsForEvent } from '@/database/repository/event-user';
 
 export async function EventUserDetail({ event_id }: { event_id: string }) {
-  let signedUpForEvent = await getSignUpsForEvent(event_id, false);
-  let substitutesForEvent = await getSignUpsForEvent(event_id, true);
+  const signedUpForEvent = await getSignUpsForEvent(event_id, false);
+  const substitutesForEvent = await getSignUpsForEvent(event_id, true);
 
   return (
     <div className="flex flex-col">
