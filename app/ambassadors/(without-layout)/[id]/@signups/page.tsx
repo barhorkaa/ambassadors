@@ -3,8 +3,8 @@ import { getUserSignUps } from '@/database/repository/event-user';
 import { EventModel } from '@/models/event-models';
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const userEvents: EventModel[] = await getUserSignUps(params.id, false);
-  const userSubstitutes: EventModel[] = await getUserSignUps(params.id, true);
+  const userEvents: EventModel[] = await getUserSignUps(params.id, false, true);
+  const userSubstitutes: EventModel[] = await getUserSignUps(params.id, true, true);
 
   return (
     <div className="data-display">
