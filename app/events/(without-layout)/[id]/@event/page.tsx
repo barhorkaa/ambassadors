@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     <div>
       <div className="data-display">
         <div className="card-body">
-          <div className="flex flex-col md:flex-row justify-between">
+          <div className="flex flex-col md:flex-row justify-between md:items-end">
             <h1 className="w-1/2">{event.name}</h1>
             {event.deletedAt === null && (
               <div className="flex flex-row gap-4 ">
