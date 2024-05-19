@@ -10,7 +10,7 @@ export const mePages: PageUrl[] = [
   },
   {
     name: 'Moje akce',
-    url: '/events/my',
+    url: '/events/my/current',
   },
 ];
 
@@ -43,7 +43,7 @@ export const programPages: PageUrl[] = [
 export const otherPages: PageUrl[] = [
   {
     name: 'Druhy akcí',
-    url: '/events/types',
+    url: '/events/types/all',
   },
   {
     name: 'Materiály',
