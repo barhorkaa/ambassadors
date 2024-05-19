@@ -1,13 +1,12 @@
 'use client';
 
 import { createEventAction, updateEventAction } from '@/app/lib/actions/events';
-import SubmitButton from '@/app/ui/button/submit-button';
 import EventTypeSelect from '@/app/ui/event-type/event-type-select';
+import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl, { findErrors } from '@/app/ui/utils/form-control';
 import { formActionInitialState } from '@/app/ui/utils/form-errors';
 import { EventDetailModel } from '@/models/event-models';
 import { EventTypeMinModel } from '@/models/event-type-models';
-import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
 import { useFormState } from 'react-dom';
 
@@ -24,7 +23,7 @@ export default function EventForm({
   );
 
   return (
-    <form action={dispatch} className="card-body">
+    <FormLayout action={dispatch} state={state} modalId={event === null ? undefined : event.id}>
       <FormControl
         title={'Název akce'}
         id={'name'}
@@ -55,13 +54,6 @@ export default function EventForm({
         eventTypes={eventTypes}
         errorMessage={findErrors('eventTypeId', state.errors)[0]}
       />
-      <SubmitButton title={'Odeslat'} modalId={event === null ? undefined : event.id} />
-      {state.generic && (
-        <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
-          <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-          <p className="text-sm text-red-500">{state.generic}</p>
-        </div>
-      )}
-    </form>
+    </FormLayout>
   );
 }
