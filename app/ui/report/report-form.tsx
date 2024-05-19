@@ -4,9 +4,13 @@ import { createReportAction } from '@/app/lib/actions/report';
 import SubmitButton from '@/app/ui/button/submit-button';
 import MaterialAdd from '@/app/ui/material-report/material-add';
 import FormControl from '@/app/ui/utils/form-control';
+import { formActionInitialState } from '@/app/ui/utils/form-errors';
 import { MaterialMinModel } from '@/models/material-models';
+import { useFormState } from 'react-dom';
 
 export default function ReportForm({ eventId, materials }: { eventId: string; materials: MaterialMinModel[] }) {
+  const [state, dispatch] = useFormState(createReportAction, formActionInitialState);
+
   return (
     <form action={createReportAction} className="card-body">
       <FormControl
