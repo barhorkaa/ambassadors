@@ -1,11 +1,23 @@
+'use client';
+
 import { createEventTypeAction, editEventTypeAction } from '@/app/lib/actions/event-type';
-import SubmitButton from '@/app/ui/button/submit-button';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { FormLayout } from '@/app/ui/utils/form-control';
 import { EventTypeDetailModel } from '@/models/event-type-models';
+import { useFormState } from 'react-dom';
 
 export function EventTypeForm({ eventType }: { eventType: EventTypeDetailModel | null }) {
+  const [state, dispatch] = useFormState(eventType === null ? createEventTypeAction : editEventTypeAction, {
+    success: false,
+    errors: [],
+    generic: undefined,
+  });
+
   return (
-    <form action={eventType === null ? createEventTypeAction : editEventTypeAction} className="card-body">
+    <FormLayout
+      action={dispatch}
+      modalId={eventType === null ? 'create_event_type_modal' : 'edit' + eventType.id}
+      state={state}
+    >
       <FormControl title={'Název typu akce'} id={'name'} defaultValue={eventType?.name} />
       <FormControl
         title={'Popis typu akce'}
@@ -22,10 +34,6 @@ export function EventTypeForm({ eventType }: { eventType: EventTypeDetailModel |
       <div className="form-control">
         <input id="id" value={eventType?.id} type="hidden" name="id" />
       </div>
-      <SubmitButton
-        title={'Odeslat'}
-        modalId={eventType === null ? 'create_event_type_modal' : 'edit' + eventType.id}
-      />
-    </form>
+    </FormLayout>
   );
 }
