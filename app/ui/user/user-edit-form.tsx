@@ -1,8 +1,8 @@
 'use client';
 
 import { editUserAction, editUserFullAction } from '@/app/lib/actions/users';
-import SubmitButton from '@/app/ui/button/submit-button';
 import UserRoleSelect from '@/app/ui/user/user-role-select';
+import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { formActionInitialState } from '@/app/ui/utils/form-errors';
 import { UserModel } from '@/models/user-models';
@@ -12,7 +12,7 @@ export default function UserEditForm({ user, full }: { user: UserModel; full: bo
   const [state, dispatch] = useFormState(full ? editUserFullAction : editUserAction, formActionInitialState);
 
   return (
-    <form action={full ? editUserFullAction : editUserAction} className="card-body">
+    <FormLayout action={dispatch} state={state} modalId={user.id}>
       <FormControl title={'Celé jméno'} id={'name'} defaultValue={user.name} placeholder={'Jméno'} />
       <FormControl title={'Telefonní číslo'} id={'phoneNumber'} type={'text'} defaultValue={user.phone_number} />
       {full && (
@@ -23,7 +23,6 @@ export default function UserEditForm({ user, full }: { user: UserModel; full: bo
         </>
       )}
       <input id="id" type="hidden" name="id" value={user.id} required />
-      <SubmitButton title={'Odeslat'} modalId={user.id} />
-    </form>
+    </FormLayout>
   );
 }
