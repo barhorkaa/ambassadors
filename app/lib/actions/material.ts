@@ -1,5 +1,6 @@
 'use server';
 
+import { handleError } from '@/app/ui/utils/form-errors';
 import { createMaterial, deleteMaterial, editMaterial, reviveMaterial } from '@/database/repository/material';
 import { materialSchema } from '@/models/material-models';
 import { revalidatePath } from 'next/cache';
@@ -15,7 +16,7 @@ export async function createMaterialAction(prevState: any, formData: FormData) {
     await createMaterial(parsedData);
   } catch (e) {
     console.error(e);
-    throw e;
+    handleError(e);
   }
   revalidatePath('/materials');
 }
@@ -32,6 +33,7 @@ export async function editMaterialAction(prevState: any, formData: FormData) {
     await editMaterial(parsedData);
   } catch (e) {
     console.error(e);
+    handleError(e);
     throw e;
   }
   revalidatePath('/materials');
