@@ -10,7 +10,7 @@ export default function EventCard({ event }: { event: EventModel }) {
         <div className="badge bg-fi-100">{event.eventTypeName}</div>
         <div className="flex flex-row gap-2">
           <CalendarDaysIcon className="h-5" />
-          <p className="">{event.date !== null ? event.date.toLocaleDateString() : 'Nezadáno'}</p>
+          <p className="">{event.date !== null ? event.date.toLocaleDateString('cs-CZ') : 'Nezadáno'}</p>
         </div>
       </div>
     </Link>
