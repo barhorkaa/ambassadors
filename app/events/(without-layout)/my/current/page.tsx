@@ -3,16 +3,12 @@ import { auth } from '@/auth';
 import { getUserSignUps } from '@/database/repository/event-user';
 import { EventModel } from '@/models/event-models';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 
 export default async function Page() {
   const session = await auth();
-  if (!session) {
-    redirect('/login');
-  }
 
-  const userEvents: EventModel[] = await getUserSignUps(session.user.id, false);
-  const userSubstitutes: EventModel[] = await getUserSignUps(session.user.id, true);
+  const userEvents: EventModel[] = await getUserSignUps(session!.user.id, false, true);
+  const userSubstitutes: EventModel[] = await getUserSignUps(session!.user.id, true, true);
 
   return (
     <>
