@@ -3,11 +3,11 @@ import { CalendarDaysIcon, CheckCircleIcon, UserGroupIcon, XCircleIcon } from '@
 
 export default function EventDetail({
   event,
-  signedUpForEvent,
+  attendees,
   isManager,
 }: {
   event: EventDetailModel;
-  signedUpForEvent: number;
+  attendees: number;
   isManager: boolean;
 }) {
   return (
@@ -33,7 +33,7 @@ export default function EventDetail({
         <div title="Limit" className="flex flex-row gap-2">
           <UserGroupIcon className="h-7" />
           <p className="text-lg">
-            {signedUpForEvent}/{event.limit}
+            {attendees}/{event.limit}
           </p>
         </div>
         {isManager && (

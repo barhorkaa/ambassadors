@@ -45,7 +45,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             )}
           </div>
           <hr className="w-full" />
-          <EventDetail event={event} signedUpForEvent={attendees.length} isManager={isManager} />
+          <EventDetail event={event} attendees={attendees.length} isManager={isManager} />
         </div>
       </div>
     </div>
