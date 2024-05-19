@@ -4,9 +4,13 @@ import { editUserAction, editUserFullAction } from '@/app/lib/actions/users';
 import SubmitButton from '@/app/ui/button/submit-button';
 import UserRoleSelect from '@/app/ui/user/user-role-select';
 import FormControl from '@/app/ui/utils/form-control';
+import { formActionInitialState } from '@/app/ui/utils/form-errors';
 import { UserModel } from '@/models/user-models';
+import { useFormState } from 'react-dom';
 
 export default function UserEditForm({ user, full }: { user: UserModel; full: boolean }) {
+  const [state, dispatch] = useFormState(full ? editUserFullAction : editUserAction, formActionInitialState);
+
   return (
     <form action={full ? editUserFullAction : editUserAction} className="card-body">
       <FormControl title={'Celé jméno'} id={'name'} defaultValue={user.name} placeholder={'Jméno'} />
