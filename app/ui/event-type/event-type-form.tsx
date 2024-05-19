@@ -3,15 +3,15 @@
 import { createEventTypeAction, editEventTypeAction } from '@/app/lib/actions/event-type';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
+import { formActionInitialState } from '@/app/ui/utils/form-errors';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 import { useFormState } from 'react-dom';
 
 export function EventTypeForm({ eventType }: { eventType: EventTypeDetailModel | null }) {
-  const [state, dispatch] = useFormState(eventType === null ? createEventTypeAction : editEventTypeAction, {
-    success: false,
-    errors: [],
-    generic: undefined,
-  });
+  const [state, dispatch] = useFormState(
+    eventType === null ? createEventTypeAction : editEventTypeAction,
+    formActionInitialState
+  );
 
   return (
     <FormLayout
