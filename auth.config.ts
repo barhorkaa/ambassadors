@@ -47,6 +47,9 @@ export const authConfig = {
         } else if (nextUrl.pathname.startsWith('/ambassadors')) {
           return Response.redirect(new URL('/denied/role', nextUrl));
         }
+        if (nextUrl.pathname.startsWith('/reports')) {
+          return Response.redirect(new URL('/denied/role', nextUrl));
+        }
         if (nextUrl.pathname.startsWith('/events/types/deleted')) {
           return Response.redirect(new URL('/events/types/all', nextUrl));
         }
