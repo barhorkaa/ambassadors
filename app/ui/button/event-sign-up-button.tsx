@@ -21,7 +21,7 @@ export default function EventSignUpButton({
   }
 
   return (
-    <div>
+    <>
       {signedOn ? (
         <DeleteSignUpModal event_id={event_id} user_id={user_id} />
       ) : (
@@ -41,6 +41,6 @@ export default function EventSignUpButton({
           <p className="hidden md:block">Přihlásit se</p>
         </button>
       )}
-    </div>
+    </>
   );
 }
