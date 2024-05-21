@@ -5,47 +5,32 @@ export type FaqQuestion = {
 
 export const faqQuestions: FaqQuestion[] = [
   {
-    question: 'Co je ambasadorský program?',
+    question: 'Je účast v ambasadorském programu bezplatná?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n' +
-      'Sed sollicitudin hendrerit accumsan. Fusce eu ex odio.\n' +
-      'Quisque enim erat, dapibus in turpis nec, iaculis consectetur dui.\n' +
-      'Nunc facilisis mi non ante porttitor, sed eleifend arcu condimentum.\n' +
-      'Maecenas quis volutpat turpis. Sed blandit libero lacinia ex condimentum,\n' +
-      'a aliquam velit pulvinar. Sed eros velit, bibendum sit amet vehicula sed,\n' +
-      'scelerisque vitae dui.',
+      'Ano, účast v ambasadorském programu je bezplatná. Všichni ambasadoři ' +
+      'jsou ale odměňováni za svou činnost, když se zúčastní organizovaných akcí.',
   },
   {
-    question: 'Kam můžu jako ambasador jet?',
+    question: 'Jak a kdy získám odměnu za svou účast v programu?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n' +
-      'Sed sollicitudin hendrerit accumsan. Fusce eu ex odio.\n' +
-      'Quisque enim erat, dapibus in turpis nec, iaculis consectetur dui.\n' +
-      'Nunc facilisis mi non ante porttitor, sed eleifend arcu condimentum.\n' +
-      'Maecenas quis volutpat turpis. Sed blandit libero lacinia ex condimentum,\n' +
-      'a aliquam velit pulvinar. Sed eros velit, bibendum sit amet vehicula sed,\n' +
-      'scelerisque vitae dui.',
+      'Odměna je vyplácena nejčastěji formou stipendií na základě účasti na akcích ' +
+      'a aktivitách, které jsou součástí ambasadorského programu. Vyplacení odměny probíhá ' +
+      'po každé akci nebo v dalším měsíci, podle domluvy a typu akce. Stačí, když dodáš ' +
+      'potřebné údaje (počet hodin) a materiály (zpráva z průběhu akce). ',
   },
   {
-    question: 'A to to jako budu dělat zdarma?',
+    question: 'Jaké kvalifikace jsou požadovány pro účast v ambasadorském programu?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n' +
-      'Sed sollicitudin hendrerit accumsan. Fusce eu ex odio.\n' +
-      'Quisque enim erat, dapibus in turpis nec, iaculis consectetur dui.\n' +
-      'Nunc facilisis mi non ante porttitor, sed eleifend arcu condimentum.\n' +
-      'Maecenas quis volutpat turpis. Sed blandit libero lacinia ex condimentum,\n' +
-      'a aliquam velit pulvinar. Sed eros velit, bibendum sit amet vehicula sed,\n' +
-      'scelerisque vitae dui.',
+      'Očekáváme nadšení pro reprezentaci fakulty, dobré komunikační schopnosti a ' +
+      'zájem o sdílení svých zkušeností s potenciálními studujícími. Vítáme studující ' +
+      'ze všech oborů naší fakulty.',
   },
   {
-    question: 'Koho kotaktovat jestli necomu nechapu?',
+    question: 'Jak se mohu přihlásit do ambasadorského programu?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n' +
-      'Sed sollicitudin hendrerit accumsan. Fusce eu ex odio.\n' +
-      'Quisque enim erat, dapibus in turpis nec, iaculis consectetur dui.\n' +
-      'Nunc facilisis mi non ante porttitor, sed eleifend arcu condimentum.\n' +
-      'Maecenas quis volutpat turpis. Sed blandit libero lacinia ex condimentum,\n' +
-      'a aliquam velit pulvinar. Sed eros velit, bibendum sit amet vehicula sed,\n' +
-      'scelerisque vitae dui.',
+      'Registruj se přímo na těchto stránkách. Po registraci se ihned přihlas ' +
+      'a zobraz si rozhraní pro ambasadory, kde jsou také otázky, které je potřeba ' +
+      'vyplnit. Z této aplikace v tuto chvíli nechodí žádné e-maily, po registraci se ' +
+      'stačí přihlásit.',
   },
 ];
