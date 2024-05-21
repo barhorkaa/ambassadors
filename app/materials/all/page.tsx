@@ -7,9 +7,15 @@ export default async function Page() {
 
   return (
     <div className="flex flex-col gap-6">
-      {allMaterials.map((material) => (
-        <MaterialDetail key={material.id} material={material} />
-      ))}
+      {allMaterials.length === 0 ? (
+        <h2>Aktuálně nejsou k dispoici žádné materiály</h2>
+      ) : (
+        <>
+          {allMaterials.map((material) => (
+            <MaterialDetail key={material.id} material={material} />
+          ))}
+        </>
+      )}
     </div>
   );
 }
