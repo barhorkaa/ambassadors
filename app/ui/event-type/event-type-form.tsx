@@ -1,7 +1,7 @@
 'use client';
 
 import { createEventTypeAction, editEventTypeAction } from '@/app/lib/actions/event-type';
-import { findErrors, formActionInitialState } from '@/app/lib/actions/form-errors';
+import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { EventTypeDetailModel } from '@/models/event-type-models';

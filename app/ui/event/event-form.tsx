@@ -1,7 +1,7 @@
 'use client';
 
 import { createEventAction, updateEventAction } from '@/app/lib/actions/events';
-import { findErrors, formActionInitialState } from '@/app/lib/actions/form-errors';
+import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import EventTypeSelect from '@/app/ui/event-type/event-type-select';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';

@@ -1,6 +1,6 @@
 'use server';
 
-import { handleError } from '@/app/lib/actions/form-errors';
+import { handleError } from '@/app/lib/actions/utils';
 import { createEventType, deleteEventType, editEventType, reviveEventType } from '@/database/repository/event-type';
 import { eventTypeSchema } from '@/models/event-type-models';
 import { revalidatePath } from 'next/cache';

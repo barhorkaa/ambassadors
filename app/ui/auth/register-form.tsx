@@ -1,7 +1,7 @@
 'use client';
 
-import { findErrors, formActionInitialState } from '@/app/lib/actions/form-errors';
 import { createUserAction } from '@/app/lib/actions/register';
+import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { useFormState } from 'react-dom';

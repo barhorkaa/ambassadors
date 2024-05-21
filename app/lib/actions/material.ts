@@ -1,6 +1,6 @@
 'use server';
 
-import { handleError } from '@/app/lib/actions/form-errors';
+import { handleError } from '@/app/lib/actions/utils';
 import { createMaterial, deleteMaterial, editMaterial, reviveMaterial } from '@/database/repository/material';
 import { materialSchema } from '@/models/material-models';
 import { revalidatePath } from 'next/cache';
