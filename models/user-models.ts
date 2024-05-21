@@ -4,7 +4,6 @@ export const userEditSchema = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string({ required_error: 'Email je povinný údaj' }).email('Email nemá validní formát').optional(),
-  // password: z.string().optional(),
   uco: z
     .string({ required_error: 'UČO je povinný údaj' })
     .max(6, { message: 'UČO může obsahovat nejvíce 6 znaků' })
