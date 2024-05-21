@@ -16,7 +16,6 @@ export default function EventTypeSelect({
 
   const handleEventTypeChange = (event: any) => {
     setEventType(event.target.value);
-    console.log('\n\n\n\n', event.target.value);
   };
 
   return (
