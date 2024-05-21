@@ -1,17 +1,16 @@
 'use client';
 
 import { createUserAction } from '@/app/lib/actions/register';
-import SubmitButton from '@/app/ui/button/submit-button';
+import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl, { findErrors } from '@/app/ui/utils/form-control';
 import { formActionInitialState } from '@/app/ui/utils/form-errors';
-import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import { useFormState } from 'react-dom';
 
 export default function RegisterForm() {
   const [state, dispatch] = useFormState(createUserAction, formActionInitialState);
 
   return (
-    <form action={dispatch} className="card-body">
+    <FormLayout action={dispatch} state={state}>
       <FormControl
         title={'Celé jméno'}
         id={'name'}
@@ -31,15 +30,6 @@ export default function RegisterForm() {
         id={'phoneNumber'}
         errorMessage={findErrors('phone_number', state.errors)[0]}
       />
-      <SubmitButton title={'Registrovat se'} />
-      <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
-        {state.generic && (
-          <>
-            <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-            <p className="text-sm text-red-500">{state.generic}</p>
-          </>
-        )}
-      </div>
-    </form>
+    </FormLayout>
   );
 }
