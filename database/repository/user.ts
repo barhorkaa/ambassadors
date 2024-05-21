@@ -111,15 +111,6 @@ export async function getAllAmbassadors(): Promise<Selectable<User>[]> {
   }
 }
 
-// TODO implement deduplication function
-// export async function getUsersWithRole(role: string): Promise<Selectable<User>[] | undefined> {
-//   try {
-//     return db.selectFrom("user").where("role", "=", role).selectAll().execute()
-//   } catch (e) {
-//     console.log(e)
-//   }
-// }
-
 export async function getNotApprovedUsers(): Promise<Selectable<User>[]> {
   try {
     return db.selectFrom('user').where('approved', '=', false).selectAll().execute();
