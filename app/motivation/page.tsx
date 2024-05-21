@@ -11,7 +11,6 @@ export default async function Page() {
   if (session.user.motivated) {
     redirect('/events');
   }
-  const userId = session.user.id;
 
   return (
     <div className="hero">
@@ -28,7 +27,7 @@ export default async function Page() {
           </p>
         </div>
         <div className="card">
-          <MotivationForm userId={userId} />
+          <MotivationForm userId={session.user.id} />
         </div>
       </div>
     </div>
