@@ -2,7 +2,7 @@ import { SectionInfo } from '@/app/ui/utils/data-display';
 
 export default function Page() {
   return (
-    <div className="content">
+    <>
       <SectionInfo
         title={'Informace o akcích'}
         contents={[
@@ -24,6 +24,6 @@ export default function Page() {
             'přesune do sekce Aktivbí akce a budeš se na ní moc přihlásit.',
         ]}
       />
-    </div>
+    </>
   );
 }
