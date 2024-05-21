@@ -4,7 +4,7 @@ import { createMotivation } from '@/database/repository/motivation';
 import { motivationSchema } from '@/models/motivation-models';
 import { redirect } from 'next/navigation';
 
-export async function createMotivationAction(formData: FormData) {
+export async function createMotivationAction(prevState: any, formData: FormData) {
   try {
     const motivationForm = {
       why: formData.get('why'),
