@@ -15,10 +15,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Link href={'/signups'}>Informace</Link>
         </li>
         <li>
-          <Link href={'/signups/all'}>Všechna aktuání přihlášení</Link>
+          <Link href={'/signups/all'}>Všechna aktuální přihlášení</Link>
         </li>
         <li>
-          <Link href={'/signups/unapproved'}>Nepotvrzené přihlášení</Link>
+          <Link href={'/signups/unapproved'}>Nepotvrzená přihlášení</Link>
         </li>
       </ul>
       <div className="content">{children}</div>
