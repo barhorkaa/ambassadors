@@ -59,7 +59,7 @@
   .hero {
     @apply bg-white dark:bg-base-100 min-h-max;
   }
-  .custom-carousel {
+  .banner {
     position: relative;
     width: 99.5vw;
     left: calc(-50vw + 50%);

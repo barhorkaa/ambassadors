@@ -1,6 +1,6 @@
 export default function Banner() {
   return (
-    <div className="custom-carousel">
+    <div className="banner">
       <div
         className="hero h-fit "
         style={{
