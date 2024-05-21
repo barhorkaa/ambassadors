@@ -21,6 +21,7 @@ export function handleError(error: unknown) {
     };
 }
 
+// source: https://www.codingzeal.com/post/how-to-use-zod-for-form-validation-with-react-server-actions-in-next-js
 export const findErrors = (fieldName: string, errors: ZodIssue[]) => {
   return errors
     .filter((item) => {
