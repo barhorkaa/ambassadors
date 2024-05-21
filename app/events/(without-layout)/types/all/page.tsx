@@ -7,9 +7,15 @@ export default async function Page() {
 
   return (
     <div className="flex flex-col gap-6">
-      {allEventTypes.map((eventType) => (
-        <EventTypeDetail key={eventType.id} eventType={eventType} />
-      ))}
+      {allEventTypes.length === 0 ? (
+        <h2>Aktuálně nejsou k dispoici žádné druhy akcí</h2>
+      ) : (
+        <>
+          {allEventTypes.map((eventType) => (
+            <EventTypeDetail key={eventType.id} eventType={eventType} />
+          ))}
+        </>
+      )}
     </div>
   );
 }
