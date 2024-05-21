@@ -3,15 +3,6 @@ import { DatabaseError } from '@/errors/database-error';
 import { MaterialManipulationModel } from '@/models/material-models';
 import { objectToCamel } from 'ts-case-convert';
 
-export async function getMaterialById(id: string) {
-  try {
-    return await db.selectFrom('material').where('id', '=', id).selectAll().executeTakeFirst();
-  } catch (e) {
-    console.error(e);
-    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get material', cause: e });
-  }
-}
-
 export async function getAllMaterials(deleted: boolean) {
   try {
     const result = await db
