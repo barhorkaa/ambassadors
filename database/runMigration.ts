@@ -7,6 +7,7 @@ import * as dotenv from 'dotenv';
 import { DB } from 'kysely-codegen';
 dotenv.config({ path: '.env.local' });
 
+// source: https://kysely.dev/docs/migrations#running-migrations
 async function migrateToLatest() {
   const db = new Kysely<DB>({
     dialect: new PostgresDialect({

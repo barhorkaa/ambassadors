@@ -7,6 +7,7 @@ import { DB } from 'kysely-codegen';
 import { Pool } from 'pg';
 dotenv.config({ path: '.env.local' });
 
+// source: https://kysely.dev/docs/migrations#running-migrations
 async function migrateToPrevious() {
   const db = new Kysely<DB>({
     dialect: new PostgresDialect({
