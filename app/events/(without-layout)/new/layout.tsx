@@ -1,4 +1,6 @@
+import { CardSkeleton } from '@/app/ui/utils/skeletons';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Nová akce | AmbassadorsFIMU',
@@ -16,7 +18,7 @@ export default function Layout({ children, form }: { children: React.ReactNode; 
               přihlásit v rubrice &quot;Akce&quot;
             </p>
           </div>
-          {form}
+          <Suspense fallback={<CardSkeleton />}>{form}</Suspense>
         </div>
       </div>
       {children}
