@@ -4,7 +4,6 @@ import { DatabaseError } from '@/errors/database-error';
 
 export async function getUserSignUps(user_id: string, substitute: boolean, active: boolean) {
   try {
-    console.log('user id is: ', user_id);
     const result = await db
       .selectFrom('eventUser')
       .where((eb) => eb.and([eb('substitute', '=', substitute), eb('user_id', '=', user_id)]))
@@ -14,7 +13,6 @@ export async function getUserSignUps(user_id: string, substitute: boolean, activ
       .where('report.id', active ? 'is' : 'is not', null)
       .select([
         'event.id as id',
-        // "eventUser.approved as event_user_approved",
         'event.name as name',
         'event.event_type_id as event_type_id',
         'event.date as date',
@@ -66,7 +64,6 @@ export async function deleteSignUp(event_id: string, user_id: string) {
         .select(['user_id'])
         .executeTakeFirst();
 
-      console.log(firstSubstitute);
       if (firstSubstitute) {
         await makeSignUpNotSubstitute(event_id, firstSubstitute!.user_id);
       }
