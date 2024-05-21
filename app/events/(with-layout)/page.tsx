@@ -14,7 +14,7 @@ export default function Page() {
       <SectionInfo
         title={'Jak se na akci přihlásit?'}
         contents={[
-          'V sekci Aktivní akce si nájdi akci, které byses se chtěl/a zúčastnit a rozklikni si její detail. Na ' +
+          'V sekci Aktivní akce si najdi akci, které byses se chtěl/a zúčastnit a rozklikni si její detail. Na ' +
             'stránce detailu uvidíš tlačítko Přihlásit se, kterým se přihlásíš na danou akci. Tvoje přihlášení poté ' +
             'musí zchválit manažer, po schválení se u tvojeho jména objeví ikonka Check. To znamená, že oddělení o tvém ' +
             'zájmu ví a počíta s tebou.',
