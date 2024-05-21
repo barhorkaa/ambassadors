@@ -18,8 +18,8 @@ export default async function Page() {
             registraci schválí náš manažer, a ty si můžeš začít organizovat čas, výjezdy či akce, na kterých nám chceš
             pomáhat. Děkujeme. Těšíme se na tebe!
           </p>
-          <Link href={'/login'}>
-            <button className="btn">Přihlásit se</button>
+          <Link href={'/login'} className="btn">
+            Přihlásit se
           </Link>
         </div>
       </div>
