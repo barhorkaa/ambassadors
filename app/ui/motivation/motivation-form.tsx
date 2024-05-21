@@ -1,3 +1,5 @@
+'use client';
+
 import { createMotivationAction } from '@/app/lib/actions/motivation';
 import SubmitButton from '@/app/ui/button/submit-button';
 import FormControl from '@/app/ui/utils/form-control';
