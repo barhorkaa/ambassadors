@@ -9,7 +9,7 @@ export default async function Page() {
     <>
       <SectionInfo
         title={''}
-        contents={['V této části aplikace jsou informace o různých druzích ckí, kterých se můžes zúčastnit.']}
+        contents={['V této části aplikace jsou informace o různých druzích akcí, kterých se můžes zúčastnit.']}
       />
       <hr />
       <SectionInfo
@@ -35,15 +35,16 @@ export default async function Page() {
             title={'Co můžu s druhy akcí dělat?'}
             contents={[
               'Jakožto manažer můžete libovolně přidávat, upravovat a manazat všechny typy akcí.',
-              'Ambasadoři můťou videt pouze ty druhy akcí, které nejsou vymyzány.',
+              'Ambasadoři můžou vidět pouze ty druhy akcí, které nejsou vymyzány.',
             ]}
           />
           <hr />
           <SectionInfo
             title={'Mazánií a obnovování druhů akcí'}
             contents={[
+              'Druh akce vymažete tak, že stisknete tlačítko Smazat u daného typu.',
               'Když se vymaže nejaký druh akce tak se již nebude moct používat jako typ akce při vytváření nových akcí.',
-              'Pro obnovení nejakého druhu akce stčí přejíť na Vymazané druhy akcí a stistknout tlačítko obnovit. ' +
+              'Pro obnovení nejakého druhu akce stačí přejít na Vymazané druhy akcí a stistknout tlačítko obnovit. ' +
                 'Poté bude typ znova viditelný pro všechny.',
             ]}
           />
