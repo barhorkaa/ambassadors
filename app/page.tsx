@@ -84,7 +84,9 @@ export default function Home() {
           V případě dalších dotazů či nejasností neváhej kontaktovat Oddělení vnějších vztahů a spolupráce s partnery FI
           MU na e-mailu:
         </p>
-        <p>propagace@fi.muni.cz</p>
+        <p className="underline">
+          <a href="mailto:someone@example.com">propagace@fi.muni.cz</a>
+        </p>
       </div>
       <hr />
       <div className="w-full text-center py-6">
