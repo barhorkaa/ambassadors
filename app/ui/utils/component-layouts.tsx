@@ -1,5 +1,6 @@
 import SubmitButton from '@/app/ui/button/submit-button';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 export function FormLayout({
   action,
@@ -23,5 +24,33 @@ export function FormLayout({
         </div>
       )}
     </form>
+  );
+}
+
+export function HeroCenterLayout({
+  title,
+  children,
+  url,
+  buttonTitle,
+}: {
+  title: string;
+  children: React.ReactNode;
+  url?: string;
+  buttonTitle?: string;
+}) {
+  return (
+    <div className="hero h-full">
+      <div className="hero-content text-center">
+        <div className="max-w-md">
+          <h1 className="hero-title py-6">{title}</h1>
+          {children}
+          {url && (
+            <Link href={url} className="btn">
+              {buttonTitle}
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
