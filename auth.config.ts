@@ -54,7 +54,7 @@ export const authConfig = {
           return Response.redirect(new URL('/events/types/all', nextUrl));
         }
         if (nextUrl.pathname.startsWith('/materials/deleted')) {
-          return Response.redirect(new URL('/events/types/all', nextUrl));
+          return Response.redirect(new URL('/materials/all', nextUrl));
         }
       }
       return true;
