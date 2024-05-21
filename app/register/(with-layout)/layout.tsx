@@ -13,10 +13,14 @@ export default function Layout({ children, form }: { children: React.ReactNode; 
       <div className="hero">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left p-4">
-            <h1>Přidejte se k nám a dělejte FI dobré jméno!</h1>
+            <h1>Registruj se a staň se ambasadorem FI MU.</h1>
             <p className="py-6">
-              Po přihlášení budete míť přístup ke všem akcím a možnost se na přihlásit. Pojďte s námi představit Fakultu
-              informatiky Masarykovy Univerzity světu!
+              Být ambasadorem je poslání. Díky své účasti nám můžeš pomoci šířit dobré jméno naší fakulty. Děkujeme.
+            </p>
+            <p>
+              Registrací získáš přehled o chystaných akcích či projektech pro ambasadory a budeš si moci organizovat
+              svou účast na jednotlivých událostech. Navíc můžeš naplánovat svou akci, týkající se prezentace fakulty
+              (typicky výjezdy na ZŠ/SŠ).
             </p>
           </div>
           <Suspense fallback={<CardSkeleton />}>{form}</Suspense>
