@@ -7,13 +7,13 @@ import { revalidatePath } from 'next/cache';
 
 export async function createReportAction(prevState: any, formData: FormData) {
   try {
-    const materials_amounts = {
+    const materialsAmounts = {
       materialIds: formData.getAll('materialId'),
       materialAmounts: formData.getAll('amount'),
     };
 
-    const materials = materials_amounts.materialIds.map((mat, i) => {
-      return { materialId: mat, amount: materials_amounts.materialAmounts[i] };
+    const materials = materialsAmounts.materialIds.map((material, index) => {
+      return { materialId: material, amount: materialsAmounts.materialAmounts[index] };
     });
 
     const reportForm = {
@@ -25,7 +25,6 @@ export async function createReportAction(prevState: any, formData: FormData) {
     };
 
     const parsedData = reportSchema.parse(reportForm);
-
     await createReport(parsedData);
   } catch (e) {
     console.error(e);
