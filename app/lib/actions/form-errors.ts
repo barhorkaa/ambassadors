@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z, ZodIssue } from 'zod';
 
 export const formActionInitialState = {
   success: false,
@@ -20,3 +20,11 @@ export function handleError(error: unknown) {
       generic: 'Something went wrong',
     };
 }
+
+export const findErrors = (fieldName: string, errors: ZodIssue[]) => {
+  return errors
+    .filter((item) => {
+      return item.path.includes(fieldName);
+    })
+    .map((item) => item.message);
+};
