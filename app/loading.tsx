@@ -3,7 +3,7 @@ export default function Loading() {
     <div className="hero h-full">
       <div className="hero-content text-center">
         <div className="max-w-md">
-          <h1 className="hero-title">Načitávam...</h1>
+          <h1 className="hero-title">Načítám...</h1>
           <p className="pb-6">Prosím čekejte</p>
           <span className="loading loading-spinner loading-xl"></span>
         </div>
