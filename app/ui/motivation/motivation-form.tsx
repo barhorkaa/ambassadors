@@ -1,7 +1,7 @@
 'use client';
 
 import { createMotivationAction } from '@/app/lib/actions/motivation';
-import SubmitButton from '@/app/ui/button/submit-button';
+import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { formActionInitialState } from '@/app/ui/utils/form-errors';
 import { useFormState } from 'react-dom';
@@ -10,7 +10,7 @@ export default function MotivationForm({ userId }: { userId: string }) {
   const [state, dispatch] = useFormState(createMotivationAction, formActionInitialState);
 
   return (
-    <form action={createMotivationAction} className="card-body">
+    <FormLayout action={dispatch} state={state}>
       <FormControl
         title={'Proč jste se rozhodli k nám přidat?'}
         id={'why'}
@@ -42,7 +42,6 @@ export default function MotivationForm({ userId }: { userId: string }) {
         placeholder={'Na kolik akcí zhruba za rok byste chtěli jít?'}
       />
       <input id="id" type="hidden" name="userId" value={userId} required />
-      <SubmitButton title={'Odeslat'} />
-    </form>
+    </FormLayout>
   );
 }
