@@ -3,11 +3,12 @@
 import { createUserAction } from '@/app/lib/actions/register';
 import SubmitButton from '@/app/ui/button/submit-button';
 import FormControl, { findErrors } from '@/app/ui/utils/form-control';
+import { formActionInitialState } from '@/app/ui/utils/form-errors';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import { useFormState } from 'react-dom';
 
 export default function RegisterForm() {
-  const [state, dispatch] = useFormState(createUserAction, { errors: [], generic: undefined });
+  const [state, dispatch] = useFormState(createUserAction, formActionInitialState);
 
   return (
     <form action={dispatch} className="card-body">
