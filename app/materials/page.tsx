@@ -40,7 +40,7 @@ export default async function Page() {
           <SectionInfo
             title={'Co můžu s materiály dělat jako manažer?'}
             contents={[
-              'Materiály můžete libovolně přidávat, upravovat a manazat podle aktuálních stavů zásob.',
+              'Materiály můžete libovolně přidávat, upravovat a mazat podle aktuálních stavů zásob.',
               'Ambasadoři můžou vidět pouze ty materiály, které nejsou vymyzány.',
             ]}
           />
@@ -50,7 +50,7 @@ export default async function Page() {
             contents={[
               'Manteriály vymažete tak, že stisknete tlačítko Smazat u daného materiálu.',
               'Když se vymaže nejaký materiál tak se již nebude moct používat při vyplňování zrpáv z akce.',
-              'Pro obnovení nejakého materiálu stačí přejít na Vymazané materiály a stistknout tlačítko obnovit. ' +
+              'Pro obnovení nejakého materiálu stačí přejít na Vymazané materiály a stistknout tlačítko Obnovit. ' +
                 'Poté bude typ znova viditelný pro všechny.',
             ]}
           />
