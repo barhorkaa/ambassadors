@@ -8,7 +8,6 @@ import { redirect } from 'next/navigation';
 
 export async function createUserAction(prevState: any, formData: FormData) {
   try {
-    console.log('form data is: ', formData);
     const newUserForm = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -17,13 +16,12 @@ export async function createUserAction(prevState: any, formData: FormData) {
       phone_number: formData.get('phoneNumber'),
     };
 
-    const newUser = userCreateSchema.parse(newUserForm);
+    const parsedData = userCreateSchema.parse(newUserForm);
 
     const salt = await bcrypt.genSalt(10);
-    newUser.password = await bcrypt.hash(newUser.password, salt);
+    parsedData.password = await bcrypt.hash(parsedData.password, salt);
 
-    console.log('new user post hash is: ', newUser);
-    await createUser(newUser);
+    await createUser(parsedData);
   } catch (error) {
     console.log(error);
     return handleError(error);
