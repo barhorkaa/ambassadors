@@ -1,7 +1,7 @@
 import Banner from '@/app/ui/main-page/banner';
 import FAQ from '@/app/ui/main-page/faq';
+import { HeroCenterLayout } from '@/app/ui/utils/component-layouts';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -51,17 +51,10 @@ export default function Home() {
         </div>
       </div>
       <hr />
-      <div className="hero">
-        <div className="hero-content text-center">
-          <div className="">
-            <h2 className="">Zaujal tě Ambasadorský program?</h2>
-            <p className="py-6">Staň se součástí našeho týmu a pomoz nám představit fakultu široké veřejnosti.</p>
-            <button className="btn">
-              <Link href={'/register'}>Registrovat se</Link>
-            </button>
-          </div>
-        </div>
-      </div>
+      <HeroCenterLayout title={''} url={'/register'} buttonTitle={'Registrovat se'}>
+        <h2>Zaujal tě Ambasadorský program?</h2>
+        <p className="py-6">Staň se součástí našeho týmu a pomoz nám představit fakultu široké veřejnosti.</p>
+      </HeroCenterLayout>
       <hr />
       <div className="hero" id={'faq'}>
         <div className="hero-content flex-col lg:flex-row-reverse gap-10">

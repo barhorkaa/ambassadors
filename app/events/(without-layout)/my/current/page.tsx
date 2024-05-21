@@ -1,8 +1,8 @@
+import { HeroCenterLayout } from '@/app/ui/utils/component-layouts';
 import { EventList } from '@/app/ui/utils/content-list';
 import { auth } from '@/auth';
 import { getUserSignUps } from '@/database/repository/event-user';
 import { EventModel } from '@/models/event-models';
-import Link from 'next/link';
 
 export default async function Page() {
   const session = await auth();
@@ -34,16 +34,12 @@ export default async function Page() {
 
 function SignUpPrompt() {
   return (
-    <div className="hero">
-      <div className="hero-content text-center">
-        <div>
-          <h1 className="hero-title">Zatím nejsi přihlášen/a na žádnou akci</h1>
-          <p className="py-6">Najdi tu správnou pro tebe a přihlaš se!</p>
-          <Link className="btn" href={'/events'}>
-            Podívat se na akce
-          </Link>
-        </div>
-      </div>
-    </div>
+    <HeroCenterLayout
+      title={'Zatím nejsi přihlášen/a na žádnou akci'}
+      url={'/events/all'}
+      buttonTitle={'Podívat se na akce'}
+    >
+      <p className="py-6">Najdi tu správnou pro tebe a přihlaš se!</p>
+    </HeroCenterLayout>
   );
 }
