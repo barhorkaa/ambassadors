@@ -14,7 +14,6 @@ export default function Banner() {
             <p className="mb-5">
               Zapoj se do ambasadorského programu FI MU a pomoz nám představit FI široké veřejnosti
             </p>
-            {/*<button className="btn btn-primary">Get Started</button>*/}
           </div>
         </div>
       </div>
