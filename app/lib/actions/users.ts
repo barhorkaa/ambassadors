@@ -18,17 +18,13 @@ export async function approveUserById(id: string) {
 
 export async function editUserAction(prevState: any, formData: FormData) {
   try {
-    console.log('got to edit user action');
-    console.log('form data is: ', formData);
-    const user = {
+    const userForm = {
       id: formData.get('id'),
       name: formData.get('name'),
       phone_number: formData.get('phoneNumber'),
     };
 
-    const parsedData = userEditSchema.parse(user);
-    console.log('parsedData is: ', parsedData);
-
+    const parsedData = userEditSchema.parse(userForm);
     await editUser(parsedData);
   } catch (e) {
     console.error(e);
@@ -40,9 +36,7 @@ export async function editUserAction(prevState: any, formData: FormData) {
 
 export async function editUserFullAction(prevState: any, formData: FormData) {
   try {
-    console.log('got to edit user action');
-    console.log('form data is: ', formData);
-    const user = {
+    const userForm = {
       id: formData.get('id'),
       name: formData.get('name'),
       phone_number: formData.get('phoneNumber'),
@@ -51,11 +45,10 @@ export async function editUserFullAction(prevState: any, formData: FormData) {
       role: formData.get('role'),
     };
 
-    const parsedData = userEditSchema.parse(user);
-    console.log('parsedData is: ', parsedData);
+    const parsedData = userEditSchema.parse(userForm);
 
     const session = await auth();
-    if (session?.user.id === user.id && session.user.role !== user.role) {
+    if (session?.user.id === userForm.id && session.user.role !== userForm.role) {
       return { success: false, errors: [], generic: 'Nemůžete změnit vlastní roli' };
     }
 
