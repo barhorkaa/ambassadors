@@ -1,6 +1,6 @@
 'use server';
 
-import { handleError } from '@/app/ui/utils/form-errors';
+import { handleError } from '@/app/lib/actions/form-errors';
 import { auth } from '@/auth';
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
 import { userEditSchema } from '@/models/user-models';

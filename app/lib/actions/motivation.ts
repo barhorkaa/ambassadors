@@ -1,6 +1,6 @@
 'use server';
 
-import { handleError } from '@/app/ui/utils/form-errors';
+import { handleError } from '@/app/lib/actions/form-errors';
 import { createMotivation } from '@/database/repository/motivation';
 import { motivationSchema } from '@/models/motivation-models';
 import { redirect } from 'next/navigation';

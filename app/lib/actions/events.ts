@@ -1,6 +1,6 @@
 'use server';
 
-import { handleError } from '@/app/ui/utils/form-errors';
+import { handleError } from '@/app/lib/actions/form-errors';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { approveEvent, createEvent, deleteEvent, updateEvent } from '@/database/repository/event';

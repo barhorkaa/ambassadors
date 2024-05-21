@@ -1,6 +1,6 @@
 'use server';
 
-import { handleError } from '@/app/ui/utils/form-errors';
+import { handleError } from '@/app/lib/actions/form-errors';
 import { createUser } from '@/database/repository/user';
 import { userCreateSchema } from '@/models/user-models';
 import bcrypt from 'bcryptjs';

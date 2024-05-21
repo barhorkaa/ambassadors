@@ -2,21 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --text-color: #3c3c3c;
-  --base-background-color: #ffffff;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: #000000;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 @layer base {
   body {
     @apply bg-white dark:bg-base-100 min-h-screen grid grid-rows-[min-content_1fr_min-content] grid-cols-1;
