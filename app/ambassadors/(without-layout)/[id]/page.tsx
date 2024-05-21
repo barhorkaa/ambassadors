@@ -1,4 +1,4 @@
-import { approveUserById } from '@/app/lib/actions/users';
+import { approveUserById } from '@/app/lib/actions/user';
 import ApproveButton from '@/app/ui/button/approve-button';
 import EditUserModal from '@/app/ui/modals/edit/edit-user-modal';
 import { UserRoles } from '@/app/utils/user-roles';

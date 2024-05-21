@@ -1,6 +1,6 @@
 'use client';
 
-import { editUserAction, editUserFullAction } from '@/app/lib/actions/users';
+import { editUserAction, editUserFullAction } from '@/app/lib/actions/user';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import UserRoleSelect from '@/app/ui/user/user-role-select';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
