@@ -18,7 +18,7 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
         id={'numberOfAttendees'}
         type={'number'}
         placeholder={'Počet zúčastněných'}
-        errorMessage={findErrors('number', state.errors)[0]}
+        errorMessage={findErrors('numberOfAttendees', state.errors)[0]}
       />
       <MaterialAdd materials={materials} />
       <FormControl
