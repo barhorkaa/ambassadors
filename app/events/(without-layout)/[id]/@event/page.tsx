@@ -1,4 +1,4 @@
-import { approveEventAction } from '@/app/lib/actions/events';
+import { approveEventAction } from '@/app/lib/actions/event';
 import ApproveButton from '@/app/ui/button/approve-button';
 import EventDetail from '@/app/ui/event/event-detail';
 import DeleteEventModal from '@/app/ui/modals/delete/delete-event-modal';

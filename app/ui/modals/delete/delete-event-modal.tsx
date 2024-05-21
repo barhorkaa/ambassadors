@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteEventAction } from '@/app/lib/actions/events';
+import { deleteEventAction } from '@/app/lib/actions/event';
 import { ActionModalButton } from '@/app/ui/button/action-modal-button';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
