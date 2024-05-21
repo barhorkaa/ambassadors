@@ -1,10 +1,8 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/errors/database-error';
 import { UserCreateModel, UserEditModel } from '@/models/user-models';
-import { Selectable } from 'kysely';
-import { User } from 'kysely-codegen';
 
-export async function getUserByEmail(email: string): Promise<Selectable<User> | undefined> {
+export async function getUserByEmail(email: string) {
   try {
     return await db.selectFrom('user').where('email', '=', email).selectAll().executeTakeFirst();
   } catch (e) {
@@ -17,7 +15,7 @@ export async function getUserByEmail(email: string): Promise<Selectable<User> | 
   }
 }
 
-export async function getUserById(id: string): Promise<Selectable<User>> {
+export async function getUserById(id: string) {
   try {
     return await db.selectFrom('user').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
   } catch (e) {
@@ -28,21 +26,9 @@ export async function getUserById(id: string): Promise<Selectable<User>> {
 
 export async function createUser(newUser: UserCreateModel) {
   try {
-    console.log('got to repository');
-    console.log('new user on repo is: ', newUser);
-
     await db.insertInto('user').values(newUser).returning('id').executeTakeFirst();
-    console.log('sucessfully created user');
   } catch (e) {
     console.error(e);
-    // if (e instanceof DatabaseError) {
-    //   switch (e.code) {
-    //     case '23505':
-    //       throw e;
-    //   }
-    // }
-    // console.log('Typ erroru je: ', typeof e);
-    // console.log('error name is: ', e.name);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create User', cause: e });
   }
 }
@@ -93,7 +79,7 @@ export async function motivateUser(id: string) {
   }
 }
 
-export async function getAllManagers(): Promise<Selectable<User>[]> {
+export async function getAllManagers() {
   try {
     return db.selectFrom('user').where('role', '=', 'manager').selectAll().execute();
   } catch (e) {
@@ -102,7 +88,7 @@ export async function getAllManagers(): Promise<Selectable<User>[]> {
   }
 }
 
-export async function getAllAmbassadors(): Promise<Selectable<User>[]> {
+export async function getAllAmbassadors() {
   try {
     return db.selectFrom('user').where('role', '=', 'ambassador').selectAll().execute();
   } catch (e) {
@@ -111,7 +97,7 @@ export async function getAllAmbassadors(): Promise<Selectable<User>[]> {
   }
 }
 
-export async function getNotApprovedUsers(): Promise<Selectable<User>[]> {
+export async function getNotApprovedUsers() {
   try {
     return db.selectFrom('user').where('approved', '=', false).selectAll().execute();
   } catch (e) {
@@ -126,7 +112,6 @@ export async function getNotApprovedUsers(): Promise<Selectable<User>[]> {
 
 export async function approveUser(id: string) {
   try {
-    console.log('got to repository, user id is: ', id);
     await db.updateTable('user').set({ approved: true }).where('id', '=', id).executeTakeFirstOrThrow();
   } catch (e) {
     console.error(e);
