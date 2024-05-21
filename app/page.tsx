@@ -63,7 +63,7 @@ export default function Home() {
         </div>
       </div>
       <hr />
-      <div className="hero">
+      <div className="hero" id={'faq'}>
         <div className="hero-content flex-col lg:flex-row-reverse gap-10">
           <Image
             src={'https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300319.027.cust.jpg'}
@@ -77,6 +77,14 @@ export default function Home() {
             <FAQ />
           </div>
         </div>
+      </div>
+      <hr />
+      <div className="w-full text-center py-6" id={'contacts'}>
+        <p>
+          V případě dalších dotazů či nejasností neváhej kontaktovat Oddělení vnějších vztahů a spolupráce s partnery FI
+          MU na e-mailu:
+        </p>
+        <p>propagace@fi.muni.cz</p>
       </div>
       <hr />
       <div className="w-full text-center py-6">
