@@ -13,7 +13,7 @@ export async function approveUserById(id: string) {
     console.error(e);
     throw e;
   }
-  revalidatePath('/ambassadors/[id]/page');
+  revalidatePath('/ambassadors/[id]/page', 'layout');
 }
 
 export async function editUserAction(prevState: any, formData: FormData) {
@@ -34,7 +34,7 @@ export async function editUserAction(prevState: any, formData: FormData) {
     console.error(e);
     return handleError(e);
   }
-  revalidatePath('/ambassadors/[id]/page');
+  revalidatePath('/ambassadors/[id]/page', 'layout');
   return { success: true, errors: [], generic: undefined };
 }
 
@@ -64,6 +64,6 @@ export async function editUserFullAction(prevState: any, formData: FormData) {
     console.error(e);
     return handleError(e);
   }
-  revalidatePath('/ambassadors/[id]/page');
+  revalidatePath('/ambassadors/[id]/page', 'layout');
   return { success: true, errors: [], generic: undefined };
 }
