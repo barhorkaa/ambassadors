@@ -25,10 +25,8 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
             </div>
           )}
         </div>
-        <div>
-          <DetailRowVertical label={''} value={eventType.description} />
-          <DetailRowVertical label={'Instrukce pro ambasadory'} value={eventType.instructions} />
-        </div>
+        <DetailRowVertical label={''} value={eventType.description} />
+        <DetailRowVertical label={'Instrukce pro ambasadory'} value={eventType.instructions} />
         {session?.user.role == UserRoles.manager && (
           <div className="flex flex-col md:flex-row md:gap-8">
             <DetailRowVertical label={'Vytvořeno'} value={eventType.createdAt.toLocaleString('cs-CZ')} />
