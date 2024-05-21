@@ -14,7 +14,7 @@ export default async function Page() {
           title={'Aktivní akce'}
           list={allEvents}
           emptyMessage={
-            'Momentálně nejsou k dispozici žádné akce. Jestli chcete někam jet, vtvořte návrh na novou akci.'
+            'Momentálně nejsou k dispozici žádné akce. Jestli chceš někam jet, vytvoř návrh na novou akci stlačením tlačítka Přidat.'
           }
         />
       </div>
