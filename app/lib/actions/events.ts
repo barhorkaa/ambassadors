@@ -49,7 +49,7 @@ export async function updateEventAction(prevState: any, formData: FormData) {
     console.error(e);
     return handleError(e);
   }
-  revalidatePath('/events/[id]/page');
+  revalidatePath('/events/[id]/page', 'page');
   return {
     errors: [],
     generic: undefined,
@@ -63,7 +63,7 @@ export async function approveEventAction(id: string) {
     console.error(e);
     throw e;
   }
-  revalidatePath('/events/[id]/page');
+  revalidatePath('/events/[id]/page', 'page');
 }
 
 export async function deleteEventAction(id: string) {
@@ -73,5 +73,5 @@ export async function deleteEventAction(id: string) {
     console.error(e);
     throw e;
   }
-  revalidatePath('/events/[id]/page');
+  revalidatePath('/events/[id]/page', 'layout');
 }
