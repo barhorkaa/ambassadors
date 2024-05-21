@@ -24,7 +24,7 @@ export async function createEventAction(prevState: any, formData: FormData) {
       parsedData.approved = true;
     }
 
-    await createEvent({ event: parsedData });
+    await createEvent(parsedData);
   } catch (e) {
     console.error(e);
     return handleError(e);
