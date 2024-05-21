@@ -21,7 +21,6 @@ export default function DeleteSignUpModal({ event_id, user_id }: { event_id: str
           >
             Ohlásit se z akce
           </button>
-          {/*<DeleteButton fun={deleteMaterialAction} id={materialId} modalId={"delete_signup"} />*/}
         </div>
       </div>
     </ModalLayout>
