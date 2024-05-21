@@ -5,9 +5,7 @@ import { EventModel } from '@/models/event-models';
 import { Suspense } from 'react';
 
 export default async function Page() {
-  console.log('calling get all events at: ', new Date());
   const allEvents: EventModel[] = await getAllActiveEvents(true);
-  console.log('got result in component from get all events at: ', new Date());
 
   return (
     <Suspense fallback={<TableSkeleton />}>
