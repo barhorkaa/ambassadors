@@ -37,16 +37,15 @@ export default function Home() {
             height={500}
           />
           <div>
-            <h2>Jako ambasador se dostaneš na různá místa</h2>
+            <h2>Ambasadorům se otevírá mnoho možností</h2>
             <p className="text-lg py-6">
-              Ambasadoři mají možnost se přihlásit na akce organizované jak FI MU tak i rektoríátem samotným. Na těchto
-              akcích nebude žádná tíha organizace na jejich bedrech. Stačí se ukázat a splnit si poviinosti, které jsou
-              zadány.
+              Ambasadoři se mohou přihlásit na akce organizované FI MU nebo přímo rektorátem. Nemusí se starat o
+              organizaci – stačí přijít a splnit stanovené úkoly.
             </p>
             <p className="text-lg">
-              Ktom těchto akcí ale ambasador může také jít na svou (nebo jinou) střední školu! Tato iniciativa ale musí
-              přijít od samotného ambasadora. Nebudete v tom ale sami, my vám pomůžeme, vybavíme vás předměty a
-              materiály a odpovíme na všechny případné dotazy.
+              Kromě toho se mohou ambasadoři podívat na svou (nebo jinou) střední školu a prezentovat FI MU sami. Tato
+              iniciativa ale musí vzejít přímo od ambasadora a vyžaduje vlastní organizaci. Od nás dostanou všechny
+              potřebné materiály, tiskoviny, merch a také plnou podporu pro zodpovězení jakýchkoli dotazů.
             </p>
           </div>
         </div>
