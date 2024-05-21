@@ -5,9 +5,9 @@ import DeleteEventModal from '@/app/ui/modals/delete/delete-event-modal';
 import EditEventModal from '@/app/ui/modals/edit/edit-event-modal';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
+import { getEventById } from '@/database/repository/event';
 import { getAllEventTypesBasics } from '@/database/repository/event-type';
 import { getSignUpsForEvent, userSignUpForEventStatus } from '@/database/repository/event-user';
-import { getEventById } from '@/database/repository/events';
 import { EventDetailModel } from '@/models/event-models';
 import { EventTypeMinModel } from '@/models/event-type-models';
 

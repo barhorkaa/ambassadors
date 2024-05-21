@@ -1,8 +1,8 @@
 import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
 import { EventUserDetail } from '@/app/ui/event-user/event-user-detail';
 import { auth } from '@/auth';
+import { getEventById } from '@/database/repository/event';
 import { userSignUpForEventStatus } from '@/database/repository/event-user';
-import { getEventById } from '@/database/repository/events';
 import { EventDetailModel } from '@/models/event-models';
 
 export default async function Page({ params }: { params: { id: string } }) {

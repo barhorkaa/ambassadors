@@ -3,7 +3,7 @@
 import { handleError } from '@/app/ui/utils/form-errors';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
-import { approveEvent, createEvent, deleteEvent, updateEvent } from '@/database/repository/events';
+import { approveEvent, createEvent, deleteEvent, updateEvent } from '@/database/repository/event';
 import { eventSchema } from '@/models/event-models';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';

@@ -1,5 +1,5 @@
 import { EventList } from '@/app/ui/utils/content-list';
-import { getAllHistoryEvents } from '@/database/repository/events';
+import { getAllHistoryEvents } from '@/database/repository/event';
 
 export default async function Page() {
   const eventsWithUnapprovedReports = await getAllHistoryEvents(false);

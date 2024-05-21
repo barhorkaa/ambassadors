@@ -1,5 +1,5 @@
+import { getEventById } from '@/database/repository/event';
 import { getEventTypeById } from '@/database/repository/event-type';
-import { getEventById } from '@/database/repository/events';
 import { EventDetailModel } from '@/models/event-models';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 

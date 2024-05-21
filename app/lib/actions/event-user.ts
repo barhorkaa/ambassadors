@@ -1,7 +1,7 @@
 'use server';
 
+import { getEventById } from '@/database/repository/event';
 import { approveSignUp, createSignUp, deleteSignUp, getSignUpsForEvent } from '@/database/repository/event-user';
-import { getEventById } from '@/database/repository/events';
 import { revalidatePath } from 'next/cache';
 
 export async function approveSignUpAction(id: string) {

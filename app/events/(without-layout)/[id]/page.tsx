@@ -1,6 +1,6 @@
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
-import { getEventById } from '@/database/repository/events';
+import { getEventById } from '@/database/repository/event';
 import { EventDetailModel } from '@/models/event-models';
 import { redirect } from 'next/navigation';
 
