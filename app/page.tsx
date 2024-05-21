@@ -55,9 +55,9 @@ export default function Home() {
         <div className="hero-content text-center">
           <div className="">
             <h2 className="">Zaujal tě Ambasadorský program?</h2>
-            <p className="py-6">Staň se i ty ambasadorem FI a pomoz nám představit fakultu široké veřejnosti!</p>
+            <p className="py-6">Staň se součástí našeho týmu a pomoz nám představit fakultu široké veřejnosti.</p>
             <button className="btn">
-              <Link href={'/register'}>Registovat</Link>
+              <Link href={'/register'}>Registrovat se</Link>
             </button>
           </div>
         </div>
