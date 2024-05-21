@@ -1,10 +1,12 @@
 import EventUserTable from '@/app/ui/event-user/event-user-table';
 import EventCard from '@/app/ui/event/event-card';
 import EventTable from '@/app/ui/event/event-table';
+import MaterialDetail from '@/app/ui/material/material-detail';
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
 import { EventModel } from '@/models/event-models';
 import { EventUserBasicModel } from '@/models/event-user-models';
+import { MaterialDetailModel } from '@/models/material-models';
 import { UserModel } from '@/models/user-models';
 import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
@@ -87,6 +89,22 @@ export function EventUserList({
         </>
       ) : (
         <p>{emptyMessage}</p>
+      )}
+    </>
+  );
+}
+
+export function MaterialList({ materials, emptyMessage }: { materials: MaterialDetailModel[]; emptyMessage: string }) {
+  return (
+    <>
+      {materials.length === 0 ? (
+        <h2>{emptyMessage}</h2>
+      ) : (
+        <div className="flex flex-col gap-6">
+          {materials.map((material) => (
+            <MaterialDetail key={material.id} material={material} />
+          ))}
+        </div>
       )}
     </>
   );
