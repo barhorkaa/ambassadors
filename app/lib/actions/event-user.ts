@@ -11,7 +11,7 @@ export async function approveSignUpAction(id: string) {
     console.error(e);
     throw e;
   }
-  revalidatePath('/events/[id]/page');
+  revalidatePath('/events/[id]/page', 'page');
 }
 
 export async function createSignUpAction(event_id: string, user_id: string) {
@@ -26,7 +26,7 @@ export async function createSignUpAction(event_id: string, user_id: string) {
     console.error(e);
     throw e;
   }
-  revalidatePath('/events/[id]/page');
+  revalidatePath('/events/[id]/page', 'page');
 }
 
 export async function deleteSignUpAction(event_id: string, user_id: string) {
@@ -36,5 +36,5 @@ export async function deleteSignUpAction(event_id: string, user_id: string) {
     console.error(e);
     throw e;
   }
-  revalidatePath('/events/[id]/page');
+  revalidatePath('/events/[id]/page', 'page');
 }
