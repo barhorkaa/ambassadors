@@ -1,5 +1,6 @@
 'use server';
 
+import { handleError } from '@/app/ui/utils/form-errors';
 import { createMotivation } from '@/database/repository/motivation';
 import { motivationSchema } from '@/models/motivation-models';
 import { redirect } from 'next/navigation';
@@ -18,7 +19,8 @@ export async function createMotivationAction(prevState: any, formData: FormData)
     const parsedData = motivationSchema.parse(motivationForm);
     await createMotivation(parsedData);
   } catch (error) {
-    return 'Something went wrong';
+    console.error(error);
+    return handleError(error);
   }
   redirect('/motivation/success');
 }
