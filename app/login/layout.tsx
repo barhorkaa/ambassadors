@@ -13,10 +13,9 @@ export default function Layout({ children, form }: { children: React.ReactNode; 
       <div className="hero">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left p-4">
-            <h1 className="hero-title">Přihlašte se a naplánujte svou akci!</h1>
+            <h1 className="hero-title">Přihlaš se a buď aktivním ambasadorem. Těšíme se na spolupráci s tebou.</h1>
             <p className="py-6 sm:py-2">
-              Po přihlášení budete míť přístup ke všem akcím a možnost se na přihlásit. Pojďte s námi představit Fakultu
-              informatiky Masarykovy Univerzity světu!
+              Po přihlášení si můžeš vybrat akce, na kterých nám chceš pomáhat. Pojď s námi představit FI MU světu!
             </p>
           </div>
           <Suspense fallback={<CardSkeleton />}>{form}</Suspense>
