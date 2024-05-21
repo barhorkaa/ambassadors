@@ -11,9 +11,7 @@ export default async function Page() {
 
   return (
     <Suspense fallback={<TableSkeleton />}>
-      <div className="content">
-        <EventList title={'Nepotvrzené akce'} list={allUnapprovedEvents} emptyMessage={'Všechny akce jsou potvrzeny'} />
-      </div>
+      <EventList title={'Nepotvrzené akce'} list={allUnapprovedEvents} emptyMessage={'Všechny akce jsou potvrzeny'} />
     </Suspense>
   );
 }

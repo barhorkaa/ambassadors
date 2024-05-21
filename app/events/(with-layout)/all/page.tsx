@@ -9,15 +9,13 @@ export default async function Page() {
 
   return (
     <Suspense fallback={<TableSkeleton />}>
-      <div className="content">
-        <EventList
-          title={'Aktivní akce'}
-          list={allEvents}
-          emptyMessage={
-            'Momentálně nejsou k dispozici žádné akce. Jestli chceš někam jet, vytvoř návrh na novou akci stlačením tlačítka Přidat.'
-          }
-        />
-      </div>
+      <EventList
+        title={'Aktivní akce'}
+        list={allEvents}
+        emptyMessage={
+          'Momentálně nejsou k dispozici žádné akce. Jestli chceš někam jet, vytvoř návrh na novou akci stlačením tlačítka Přidat.'
+        }
+      />
     </Suspense>
   );
 }

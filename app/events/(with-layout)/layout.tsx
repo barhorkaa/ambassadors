@@ -28,7 +28,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Link href={'/events/unapproved'}>Nepotvrzené akce</Link>
         </li>
       </ul>
-      {children}
+      <div className="content">{children}</div>
     </section>
   );
 }
