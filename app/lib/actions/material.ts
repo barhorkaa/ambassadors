@@ -16,7 +16,7 @@ export async function createMaterialAction(prevState: any, formData: FormData) {
     await createMaterial(parsedData);
   } catch (e) {
     console.error(e);
-    handleError(e);
+    return handleError(e);
   }
   revalidatePath('/materials');
   return { success: true, errors: [], generic: undefined };
@@ -34,8 +34,7 @@ export async function editMaterialAction(prevState: any, formData: FormData) {
     await editMaterial(parsedData);
   } catch (e) {
     console.error(e);
-    handleError(e);
-    throw e;
+    return handleError(e);
   }
   revalidatePath('/materials');
   return { success: true, errors: [], generic: undefined };

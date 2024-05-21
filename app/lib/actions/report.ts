@@ -29,7 +29,7 @@ export async function createReportAction(prevState: any, formData: FormData) {
     await createReport(parsedData);
   } catch (e) {
     console.error(e);
-    handleError(e);
+    return handleError(e);
   }
   revalidatePath('/events/[id]/page');
   return { success: true, errors: [], generic: undefined };

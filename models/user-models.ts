@@ -3,10 +3,16 @@ import { z } from 'zod';
 export const userEditSchema = z.object({
   id: z.string(),
   name: z.string(),
-  email: z.string().email().optional(),
-  password: z.string().optional(),
-  uco: z.string().min(6).max(6).pipe(z.coerce.number()).optional(),
-  phone_number: z.string().min(9).max(16),
+  email: z.string({ required_error: 'Email je povinný údaj' }).email('Email nemá validní formát').optional(),
+  // password: z.string().optional(),
+  uco: z
+    .string({ required_error: 'UČO je povinný údaj' })
+    .max(6, { message: 'UČO může obsahovat nejvíce 6 znaků' })
+    .pipe(z.coerce.number()),
+  phone_number: z
+    .string({ required_error: 'Telefónní číslo je povinný údaj' })
+    .min(9, { message: 'Telefńní číslo musí obsahovat alespoň 9 cifer' })
+    .max(16, { message: 'Telefńní číslo může obsahovat nejvíc 16 znaků' }),
   role: z.union([z.literal('ambassador'), z.literal('manager')]).optional(),
 });
 export type UserEditModel = z.infer<typeof userEditSchema>;

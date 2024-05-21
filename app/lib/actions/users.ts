@@ -32,7 +32,7 @@ export async function editUserAction(prevState: any, formData: FormData) {
     await editUser(parsedData);
   } catch (e) {
     console.error(e);
-    handleError(e);
+    return handleError(e);
   }
   revalidatePath('/ambassadors/[id]/page');
   return { success: true, errors: [], generic: undefined };
@@ -62,7 +62,7 @@ export async function editUserFullAction(prevState: any, formData: FormData) {
     await editFullUser(parsedData);
   } catch (e) {
     console.error(e);
-    handleError(e);
+    return handleError(e);
   }
   revalidatePath('/ambassadors/[id]/page');
   return { success: true, errors: [], generic: undefined };

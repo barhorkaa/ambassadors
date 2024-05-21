@@ -18,7 +18,7 @@ export async function editEventTypeAction(prevState: any, formData: FormData) {
     await editEventType(parsedData);
   } catch (e) {
     console.error(e);
-    handleError(e);
+    return handleError(e);
   }
   revalidatePath('/events/types');
   return { success: true, errors: [], generic: undefined };
@@ -36,7 +36,7 @@ export async function createEventTypeAction(prevState: any, formData: FormData) 
     await createEventType(parsedData);
   } catch (e) {
     console.error(e);
-    handleError(e);
+    return handleError(e);
   }
   revalidatePath('/events/types');
   return { success: true, errors: [], generic: undefined };
