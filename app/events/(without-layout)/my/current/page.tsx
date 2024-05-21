@@ -17,14 +17,14 @@ export default async function Page() {
       ) : (
         <>
           <EventList
-            title={'Akce, kde jsem přihlášen'}
+            title={'Akce, kde jsem přihlášen/a'}
             list={userEvents}
-            emptyMessage={'Zatím nejste přihlášen na žádnou akci. Přihlásit se můžete v sekci Akce ve vaší aplikaci.'}
+            emptyMessage={'Zatím nejsi přihlášen/a na žádnou akci.'}
           />
           <EventList
-            title={'Akce, kde jsem náhradník'}
+            title={'Akce, kde jsem náhradník/nice'}
             list={userSubstitutes}
-            emptyMessage={'Nejste nahraníkem na žádné akci.'}
+            emptyMessage={'Nejsi nahraníkem na žádné akci.'}
           />{' '}
         </>
       )}
@@ -37,8 +37,8 @@ function SignUpPrompt() {
     <div className="hero">
       <div className="hero-content text-center">
         <div>
-          <h1 className="hero-title">Zatím nejste přihlášen na žádnou akci</h1>
-          <p className="py-6">Najděte tu správnou pro sebe a přihlašte se!</p>
+          <h1 className="hero-title">Zatím nejsi přihlášen/a na žádnou akci</h1>
+          <p className="py-6">Najdi tu správnou pro tebe a přihlaš se!</p>
           <Link className="btn" href={'/events'}>
             Podívat se na akce
           </Link>
