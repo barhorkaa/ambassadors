@@ -17,13 +17,14 @@ export default async function Page() {
     <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left p-4">
-          <h1 className="hero-title">Řekněte nám proč jsete se rozhodli propagovat FI</h1>
+          <h1 className="hero-title">Proč ses rozhodl/a propagovat FI?</h1>
           <p className="py-6">
-            Tento dotazník slouží pro nás jako ukazatel, proč se studenti FI rozhodnou jít propagovat svojí fakultu.
-            Zároveň vaše ochota vyplnit něco na víc dokazuje, že to chcete brát vážně :)
+            Tento dotazník nám pomáhá zjistit, proč se studenti FI rozhodnou propagovat svou fakultu. Tvou ochotu
+            vyplnit tento formulář vnímáme jako důkaz, že to myslíš vážně.
           </p>
           <p className="py-6">
-            Zároveň je jej potrebné vyplnit, abyste se programu mohli zúčastnit a přihlašovat se na akce.
+            Vyplnění dotazníku je nutné pro účast v programu a tvé přihlašování na jednotlivé akce. Děkujeme za
+            spolupráci!
           </p>
         </div>
         <div className="card">
