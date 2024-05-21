@@ -7,7 +7,7 @@ export default function Home() {
     <div className="flex space-y-4 min-h-screen flex-col items-start">
       <Banner />
       <div className="hero">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero-content flex-col lg:flex-row-reverse gap-10">
           <img
             src="https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300314.032.cust.jpg"
             className="lg:max-w-sm rounded-lg shadow-xl"
@@ -25,7 +25,7 @@ export default function Home() {
         </div>
       </div>
       <div className="hero">
-        <div className="hero-content flex-col lg:flex-row">
+        <div className="hero-content flex-col lg:flex-row gap-10">
           <img
             src="https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300315.008.cust.jpg"
             className="lg:max-w-sm rounded-lg shadow-xl"
@@ -58,14 +58,16 @@ export default function Home() {
         </div>
       </div>
       <hr />
-      <div className="py-6">
-        <h2 className="pb-4">Časté otázky</h2>
-        <div id="faq" className="flex flex-col lg:flex-row gap-6 justify-between ">
-          <FAQ />
+      <div className="hero">
+        <div className="hero-content flex-col lg:flex-row-reverse gap-10">
           <img
             src="https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300319.027.cust.jpg"
             className="h-fit lg:max-w-md rounded-lg shadow-xl"
           />
+          <div>
+            <h2 className="pb-4">Časté otázky</h2>
+            <FAQ />
+          </div>
         </div>
       </div>
       <hr />
