@@ -1,12 +1,12 @@
 'use server';
 
+import { handleError } from '@/app/ui/utils/form-errors';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { approveEvent, createEvent, deleteEvent, updateEvent } from '@/database/repository/events';
 import { eventSchema } from '@/models/event-models';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { z } from 'zod';
 
 export async function createEventAction(prevState: any, formData: FormData) {
   try {
@@ -27,16 +27,7 @@ export async function createEventAction(prevState: any, formData: FormData) {
     await createEvent({ event: parsedData });
   } catch (e) {
     console.error(e);
-    if (e instanceof z.ZodError) {
-      return {
-        errors: e.issues,
-        generic: undefined,
-      };
-    } else
-      return {
-        errors: [],
-        generic: 'Something went wrong',
-      };
+    return handleError(e);
   }
   redirect('/events/success');
 }
@@ -56,16 +47,7 @@ export async function updateEventAction(prevState: any, formData: FormData) {
     await updateEvent(parsedData);
   } catch (e) {
     console.error(e);
-    if (e instanceof z.ZodError) {
-      return {
-        errors: e.issues,
-        generic: undefined,
-      };
-    } else
-      return {
-        errors: [],
-        generic: 'Something went wrong',
-      };
+    return handleError(e);
   }
   revalidatePath('/events/[id]/page');
   return {
