@@ -1,3 +1,5 @@
+'use client';
+
 import { ArrowPathIcon, PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 type ModalType = 'create' | 'edit' | 'delete' | 'revive';
