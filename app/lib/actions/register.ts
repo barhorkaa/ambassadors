@@ -18,7 +18,9 @@ export async function createUserAction(prevState: any, formData: FormData) {
     };
 
     const newUser = userCreateSchema.parse(newUserForm);
-    newUser.password = await bcrypt.hash(newUser.password, 10); // TODO change salt to random
+
+    const salt = await bcrypt.genSalt(10);
+    newUser.password = await bcrypt.hash(newUser.password, salt);
 
     console.log('new user post hash is: ', newUser);
     await createUser(newUser);
