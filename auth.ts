@@ -1,5 +1,5 @@
 import { getUserByEmail } from '@/database/repository/user';
-import { LoginModel } from '@/models/login-model';
+import { loginSchema } from '@/models/login-model';
 import bcrypt from 'bcryptjs';
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
@@ -10,7 +10,7 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        const parsedCredentials = LoginModel.safeParse(credentials);
+        const parsedCredentials = loginSchema.safeParse(credentials);
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;

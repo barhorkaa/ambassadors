@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const LoginModel = z.object({
+export const loginSchema = z.object({
   email: z.string({ required_error: 'Email je povinný údaj' }).email('Email nemá validní formát'),
   password: z
     .string({ required_error: 'Heslo je povinný údaj' })
