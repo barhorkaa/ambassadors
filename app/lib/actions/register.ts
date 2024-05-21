@@ -1,10 +1,10 @@
 'use server';
 
+import { handleError } from '@/app/ui/utils/form-errors';
 import { createUser } from '@/database/repository/user';
 import { userCreateSchema } from '@/models/user-models';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
-import { z } from 'zod';
 
 export async function createUserAction(prevState: any, formData: FormData) {
   try {
@@ -24,16 +24,7 @@ export async function createUserAction(prevState: any, formData: FormData) {
     await createUser(newUser);
   } catch (error) {
     console.log(error);
-    if (error instanceof z.ZodError) {
-      return {
-        errors: error.issues,
-        generic: undefined,
-      };
-    } else
-      return {
-        errors: [],
-        generic: 'Something went wrong',
-      };
+    return handleError(error);
   }
   redirect(`/register/success`);
 }
