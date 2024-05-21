@@ -53,9 +53,9 @@ export async function getEventReport(eventId: string) {
       .select(['material_id', 'amount', 'material.name as material_name'])
       .execute();
 
-    const bla = objectToCamel(report);
+    const camel = objectToCamel(report);
     return {
-      ...bla,
+      ...camel,
       ideas: report.ideas!,
       notes: report.notes!,
       materials: materials.map((mat) => {
