@@ -1,6 +1,7 @@
 'use server';
 
 import { handleError } from '@/app/ui/utils/form-errors';
+import { auth } from '@/auth';
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
 import { userEditSchema } from '@/models/user-models';
 import { revalidatePath } from 'next/cache';
@@ -52,6 +53,11 @@ export async function editUserFullAction(prevState: any, formData: FormData) {
 
     const parsedData = userEditSchema.parse(user);
     console.log('parsedData is: ', parsedData);
+
+    const session = await auth();
+    if (session?.user.id === user.id && session.user.role !== user.role) {
+      return { success: false, errors: [], generic: 'Nemůžete změnit vlastní roli' };
+    }
 
     await editFullUser(parsedData);
   } catch (e) {
