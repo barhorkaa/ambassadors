@@ -88,9 +88,8 @@ export async function getEventById(id: string) {
   }
 }
 
-export async function createEvent({ event }: { event: EventManipulationModel }) {
+export async function createEvent(event: EventManipulationModel) {
   try {
-    console.log('new event is: ', event);
     await db.insertInto('event').values(objectToSnake(event)).execute();
   } catch (e) {
     console.error(e);
