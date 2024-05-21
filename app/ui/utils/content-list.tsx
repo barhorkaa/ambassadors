@@ -67,9 +67,9 @@ export function EventUserList({
   emptyMessage: string;
 }) {
   return (
-    <div>
+    <>
       {userList.length !== 0 ? (
-        <div>
+        <>
           <h3 className="card-title">{title}</h3>
           {userList.map((user) => (
             <div key={user.user_id} className="flex flex-row gap-4 items-baseline">
@@ -84,10 +84,10 @@ export function EventUserList({
               </Link>
             </div>
           ))}
-        </div>
+        </>
       ) : (
-        <div>{emptyMessage}</div>
+        <p>{emptyMessage}</p>
       )}
-    </div>
+    </>
   );
 }
