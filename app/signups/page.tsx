@@ -9,6 +9,7 @@ export default function Page() {
         contents={[
           'Když se ambasador chce zúčastnit na akci přihlásí se na ní ze svého účtu. Toto přihlášní je potřebné ' +
             'potvrdit v sekci Nepotvrzená přihlášení. ',
+          'Potvzením přihlášení vyjadřuje oddělení propagace souhlas s ambasadorovou účastí na akci.',
         ]}
       />
     </>
