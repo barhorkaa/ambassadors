@@ -12,14 +12,14 @@ export default async function Page() {
   return (
     <>
       <EventList
-        title={'Akce, kde jsem byl přihlášen'}
+        title={'Akce, kde jsem byl/a přihlášen/a'}
         list={userEvents}
-        emptyMessage={'Zatím jste nebyli na žádné akci.'}
+        emptyMessage={'Zatím jsi nebyl/a na žádné akci.'}
       />
       <EventList
-        title={'Akce, kde jsem byl náhradník'}
+        title={'Akce, kde jsem byl/a náhradník'}
         list={userSubstitutes}
-        emptyMessage={'Zatím jste nebyli nahraníkem na žádné akci.'}
+        emptyMessage={'Zatím jsi nebyl/a nahraníkem na žádné akci.'}
       />
     </>
   );
