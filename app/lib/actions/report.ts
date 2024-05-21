@@ -30,7 +30,7 @@ export async function createReportAction(prevState: any, formData: FormData) {
     console.error(e);
     return handleError(e);
   }
-  revalidatePath('/events/[id]/page');
+  revalidatePath('/events/[id]/page', 'page');
   return { success: true, errors: [], generic: undefined };
 }
 
@@ -41,5 +41,5 @@ export async function approveReportAction(id: string) {
     console.error(e);
     throw e;
   }
-  revalidatePath('/events/[id]/page');
+  revalidatePath('/events/[id]/page', 'layout');
 }
