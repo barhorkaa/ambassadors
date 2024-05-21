@@ -85,7 +85,7 @@ export default function Home() {
           MU na e-mailu:
         </p>
         <p className="underline">
-          <a href="mailto:someone@example.com">propagace@fi.muni.cz</a>
+          <a href="mailto:propagace@fi.muni.cz">propagace@fi.muni.cz</a>
         </p>
       </div>
       <hr />
