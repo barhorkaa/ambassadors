@@ -3,7 +3,7 @@ import { DatabaseError } from '@/errors/database-error';
 import { EventManipulationModel } from '@/models/event-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
 
-export async function adapter(
+export function adapter(
   toAdapt: {
     event_type_id: string;
     date: Date | null;
@@ -38,7 +38,7 @@ export async function getAllActiveEvents(approved: boolean) {
         'event.limit as limit',
       ])
       .execute();
-    return await adapter(result);
+    return adapter(result);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all events', cause: e });
