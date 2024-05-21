@@ -6,7 +6,7 @@ export default function Loading() {
           <h1 className="hero-title">Načítám...</h1>
           <p className="pb-6">Prosím čekejte</p>
           <p className="pb-6">Trpělivost je ctnost, i servery potřebují čas.</p>
-          <span className="loading loading-spinner loading-xl"></span>
+          <span className="loading loading-spinner loading-xl" />
         </div>
       </div>
     </div>
