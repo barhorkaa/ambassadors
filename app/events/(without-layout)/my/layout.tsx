@@ -1,9 +1,16 @@
+import PageNavigation from '@/app/ui/layout/page-navigation';
+import { PageUrl } from '@/app/utils/pages';
 import { Metadata } from 'next';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Moje akce | AmbassadorsFIMU',
 };
+
+const myEventsPages: PageUrl[] = [
+  { name: 'Informace', url: '/events/my' },
+  { name: 'Aktuální přihlášení', url: '/events/my/current' },
+  { name: 'Historie přihlášení', url: '/events/my/history' },
+];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,17 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <h1>Moje akce</h1>
       </div>
       <hr className="w-full mb-0" />
-      <ul className="page-menu">
-        <li>
-          <Link href={'/events/my'}>Informace</Link>
-        </li>
-        <li>
-          <Link href={'/events/my/current'}>Aktuální přihlášení</Link>
-        </li>
-        <li>
-          <Link href={'/events/my/history'}>Historie přihlášení</Link>
-        </li>
-      </ul>
+      <PageNavigation pages={myEventsPages} />
       <div className="content">{children}</div>
     </section>
   );
