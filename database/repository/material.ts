@@ -10,7 +10,6 @@ export async function getAllMaterials(deleted: boolean) {
       .where('deleted_at', deleted ? 'is not' : 'is', null)
       .selectAll()
       .execute();
-    const camel = objectToCamel(result);
     return objectToCamel(result);
   } catch (e) {
     console.error(e);
