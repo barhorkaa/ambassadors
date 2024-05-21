@@ -10,14 +10,14 @@ import { redirect } from 'next/navigation';
 
 export async function createEventAction(prevState: any, formData: FormData) {
   try {
-    const data = {
+    const eventForm = {
       name: formData.get('name'),
       date: formData.get('date') == '' ? null : formData.get('date'),
       eventTypeId: formData.get('eventTypeId'),
       limit: formData.get('limit'),
     };
 
-    const parsedData = eventSchema.parse(data);
+    const parsedData = eventSchema.parse(eventForm);
 
     const session = await auth();
     if (session?.user.role === UserRoles.manager) {
@@ -34,7 +34,7 @@ export async function createEventAction(prevState: any, formData: FormData) {
 
 export async function updateEventAction(prevState: any, formData: FormData) {
   try {
-    const data = {
+    const eventForm = {
       name: formData.get('name'),
       date: formData.get('date') == '' ? null : formData.get('date'),
       eventTypeId: formData.get('eventTypeId'),
@@ -42,8 +42,7 @@ export async function updateEventAction(prevState: any, formData: FormData) {
       limit: formData.get('limit'),
     };
 
-    const parsedData = eventSchema.parse(data);
-
+    const parsedData = eventSchema.parse(eventForm);
     await updateEvent(parsedData);
   } catch (e) {
     console.error(e);
