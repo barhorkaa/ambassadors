@@ -5,6 +5,7 @@ import * as dotenv from 'dotenv';
 import { DB } from 'kysely-codegen';
 dotenv.config({ path: '.env.local' });
 
+// source: https://kysely.dev/docs/getting-started#instantiation
 const dialect = new PostgresDialect({
   pool: new Pool({
     host: process.env['POSTGRES_HOST'],
