@@ -44,10 +44,11 @@ export const authConfig = {
       if (!isManager) {
         if (nextUrl.pathname.startsWith('/ambassadors/')) {
           return true;
-        } else if (nextUrl.pathname.startsWith('/ambassadors')) {
-          return Response.redirect(new URL('/denied/role', nextUrl));
-        }
-        if (nextUrl.pathname.startsWith('/reports') || nextUrl.pathname.startsWith('/signups')) {
+        } else if (
+          nextUrl.pathname.startsWith('/ambassadors') ||
+          nextUrl.pathname.startsWith('/reports') ||
+          nextUrl.pathname.startsWith('/signups')
+        ) {
           return Response.redirect(new URL('/denied/role', nextUrl));
         }
         if (nextUrl.pathname.startsWith('/events/types/deleted')) {
