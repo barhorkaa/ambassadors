@@ -1,5 +1,6 @@
 import Banner from '@/app/ui/main-page/banner';
 import FAQ from '@/app/ui/main-page/faq';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
@@ -8,9 +9,12 @@ export default function Home() {
       <Banner />
       <div className="hero">
         <div className="hero-content flex-col lg:flex-row-reverse gap-10">
-          <img
-            src="https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300314.032.cust.jpg"
+          <Image
+            src={'https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300314.032.cust.jpg'}
             className="lg:max-w-sm rounded-lg shadow-xl"
+            alt="Ambassador at AI 4 Talents"
+            width={500}
+            height={500}
           />
           <div>
             <h2 className="">Ambasadorský program Fakulty&nbsp;Informatiky&nbsp;MU</h2>
@@ -26,9 +30,12 @@ export default function Home() {
       </div>
       <div className="hero">
         <div className="hero-content flex-col lg:flex-row gap-10">
-          <img
-            src="https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300315.008.cust.jpg"
+          <Image
+            src={'https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300315.008.cust.jpg'}
             className="lg:max-w-sm rounded-lg shadow-xl"
+            alt={'Ambassador at Gaudeamus'}
+            width={500}
+            height={500}
           />
           <div>
             <h2>Jako ambasador se dostaneš na různá místa</h2>
@@ -60,9 +67,12 @@ export default function Home() {
       <hr />
       <div className="hero">
         <div className="hero-content flex-col lg:flex-row-reverse gap-10">
-          <img
-            src="https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300319.027.cust.jpg"
+          <Image
+            src={'https://fadmin.fi.muni.cz/noauth/gallery_data/fi_udalosti/01300319.027.cust.jpg'}
             className="h-fit lg:max-w-md rounded-lg shadow-xl"
+            alt={'Ambassadors at Open Day panel discussion'}
+            width={500}
+            height={500}
           />
           <div>
             <h2 className="pb-4">Časté otázky</h2>
