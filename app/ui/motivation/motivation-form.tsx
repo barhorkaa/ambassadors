@@ -3,8 +3,12 @@
 import { createMotivationAction } from '@/app/lib/actions/motivation';
 import SubmitButton from '@/app/ui/button/submit-button';
 import FormControl from '@/app/ui/utils/form-control';
+import { formActionInitialState } from '@/app/ui/utils/form-errors';
+import { useFormState } from 'react-dom';
 
 export default function MotivationForm({ userId }: { userId: string }) {
+  const [state, dispatch] = useFormState(createMotivationAction, formActionInitialState);
+
   return (
     <form action={createMotivationAction} className="card-body">
       <FormControl
