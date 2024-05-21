@@ -12,10 +12,11 @@ export default async function Page() {
     <div className="page hero">
       <div className="hero-content text-center">
         <div className="max-w-md">
-          <h1 className="hero-title">Vaše registrace se zdařila!</h1>
+          <h1 className="hero-title">Skvělé! Teď jsi úspěšně zaregistrován/a!</h1>
           <p className="py-6">
-            Nyní se přihlaste a v aplikaci vyplňte motivační dotazník. Poté vaši registraci zchválí někdo z našich
-            manažerů a budete se moct začín plně věnovat svým ambasadorským povinnostem.
+            Nyní se prosím přihlaš a v aplikaci vyplň motivační dotazník. Po vyplnění jednoduchých otázek tvou
+            registraci schválí náš manažer, a ty si můžeš začít organizovat čas, výjezdy či akce, na kterých nám chceš
+            pomáhat. Děkujeme. Těšíme se na tebe!
           </p>
           <Link href={'/login'}>
             <button className="btn">Přihlásit se</button>
