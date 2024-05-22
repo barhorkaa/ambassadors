@@ -12,10 +12,10 @@ export default async function Page({ params }: { params: { id: string } }) {
       <div className="card-body">
         <h2 className="card-title font-light text-sm">Typ akce</h2>
         <h3 className="text-xl">{eventType.name}</h3>
-        <div>
+        <>
           <p className="text-sm font-light">Instrukce</p>
           <p className="text-lg">{eventType.instructions}</p>
-        </div>
+        </>
       </div>
     </div>
   );

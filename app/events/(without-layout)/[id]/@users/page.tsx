@@ -25,7 +25,6 @@ export default async function Page({ params }: { params: { id: string } }) {
             </fieldset>
           )}
         </div>
-
         <EventUserDetail event_id={params.id} />
       </div>
     </div>
