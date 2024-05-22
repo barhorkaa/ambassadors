@@ -41,7 +41,7 @@ export default async function Page() {
             title={'Co můžu s materiály dělat jako manažer?'}
             contents={[
               'Materiály můžete libovolně přidávat, upravovat a mazat podle aktuálních stavů zásob.',
-              'Ambasadoři můžou vidět pouze ty materiály, které nejsou vymyzány.',
+              'Ambasadoři můžou vidět pouze ty materiály, které nejsou smazány.',
             ]}
           />
           <hr />
