@@ -51,6 +51,14 @@ In order for the containerized database to contain tables, we need to run migrat
 Run the following command to execute migrations.
 
 ```bash
+npm run migrate
+# or
+yarn run migrate
+# or
+pnpm run migrate
+# or
+bun run migrate
+# or
 npx tsx database/runMigration.ts
 ```
 If the migration was successful the terminal should print out the list of migrations that were executed successfully.  
@@ -69,6 +77,14 @@ For the application to function there needs to be at least one user with the man
 we need to run the following command:
 
 ```bash
+npm run seed
+# or
+yarn run seed
+# or
+pnpm run seed
+# or
+bun run seed
+# or
 node scripts/seed.js
 ```
 
