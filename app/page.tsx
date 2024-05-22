@@ -17,7 +17,7 @@ export default function Home() {
             height={500}
           />
           <div>
-            <h2 className="">Ambasadorský program Fakulty&nbsp;informatiky&nbsp;MU</h2>
+            <h2>Ambasadorský program Fakulty&nbsp;informatiky&nbsp;MU</h2>
             <p className="text-lg py-6">
               Ambasadorský program již po léta zviditelňuje Fakultu informatiky prostřednictvím návštěv na středních
               školách, organizace Dnů otevřených dveří a účasti na veletrzích, jako jsou Gaudeamus nebo Kam na vysokú
