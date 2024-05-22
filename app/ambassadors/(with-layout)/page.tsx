@@ -24,7 +24,7 @@ export default function Page() {
         contents={[
           'Tato sekce obsahuje seznam uživatelů, který jsou v systému vedení jako ambasadoři.',
           'Ambasadoři nemají právo přístupu k celému systému, ale jenom k jeho částím.',
-          'Chování ambasadora v aplikaci je motivorováno a některé jeho činnosti músí být z potvrzované manažerem. Aby se ' +
+          'Chování ambasadora v aplikaci je monitorováno a některé jeho činnosti músí být z potvrzované manažerem. Aby se ' +
             'ambasador přihlásil na akci, musí být jeho přihlášení schváleno.',
         ]}
       />
