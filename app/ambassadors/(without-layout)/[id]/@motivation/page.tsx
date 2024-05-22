@@ -6,7 +6,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const userMotivation: MotivationModel | undefined = await getUserMotivation(params.id);
 
   return (
-    <div className="card-compact md:card-normal  bg-base-100 shadow-md">
+    <div className="data-display">
       <div className="card-body">
         <h2 className="card-title">Motivační formulář</h2>
         <MotivationDetail motivation={userMotivation} />
