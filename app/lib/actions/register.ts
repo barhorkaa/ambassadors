@@ -23,7 +23,7 @@ export async function createUserAction(prevState: any, formData: FormData) {
 
     await createUser(parsedData);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return handleError(error);
   }
   redirect(`/register/success`);
