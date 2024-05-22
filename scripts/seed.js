@@ -18,28 +18,8 @@ async function main() {
     dialect: dialect,
   });
 
-  // await seedUsers(db)
-  await seedEvents(db);
-  // await seedEventTypes(db)
-}
-
-async function seedEvents(db) {
-  const events = [
-    {
-      name: 'Výjezd na Gympabu',
-      event_type_id: '21e13253-1f8d-48b5-95ea-0284d21125ac',
-      // date: "1710408352",
-      approved: true,
-    },
-    {
-      name: 'DOD 1',
-      event_type_id: 'f89c4126-c4b2-4d6b-b155-1ab1c19b2955',
-      // date: "1710408352",
-      approved: false,
-    },
-  ];
-
-  await db.insertInto('event').values(events).execute();
+  await seedUsers(db);
+  await seedEventTypes(db);
 }
 
 async function seedEventTypes(db) {
@@ -69,6 +49,7 @@ async function seedUsers(db) {
       password: await bcrypt.hash('123456', 10),
       role: 'manager',
       approved: true,
+      motivated: true,
     },
     {
       name: 'Agatha Christie',
