@@ -18,12 +18,8 @@ export const { auth, signIn, signOut } = NextAuth({
           if (!user) return null;
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
-          console.log('user is:', user);
-          console.log('user role is:', user.role);
 
           if (passwordsMatch) {
-            // const hasMotivation = await isUserMotivated(user.id);
-            // return {...user, password: null, motivated: hasMotivation};
             return { ...user, password: null };
           }
         }
