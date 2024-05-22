@@ -1,3 +1,4 @@
+import EventTypeDetail from '@/app/ui/event-type/event-type-detail';
 import EventUserTable from '@/app/ui/event-user/event-user-table';
 import EventCard from '@/app/ui/event/event-card';
 import EventTable from '@/app/ui/event/event-table';
@@ -5,6 +6,7 @@ import MaterialDetail from '@/app/ui/material/material-detail';
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
 import { EventModel } from '@/models/event-models';
+import { EventTypeDetailModel } from '@/models/event-type-models';
 import { EventUserBasicModel } from '@/models/event-user-models';
 import { MaterialDetailModel } from '@/models/material-models';
 import { UserModel } from '@/models/user-models';
@@ -103,6 +105,28 @@ export function MaterialList({ materials, emptyMessage }: { materials: MaterialD
         <div className="flex flex-col gap-6">
           {materials.map((material) => (
             <MaterialDetail key={material.id} material={material} />
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
+
+export function EventTypeList({
+  eventTypes,
+  emptyMessage,
+}: {
+  eventTypes: EventTypeDetailModel[];
+  emptyMessage: string;
+}) {
+  return (
+    <>
+      {eventTypes.length === 0 ? (
+        <h2>{emptyMessage}</h2>
+      ) : (
+        <div className="flex flex-col gap-6">
+          {eventTypes.map((eventType) => (
+            <EventTypeDetail key={eventType.id} eventType={eventType} />
           ))}
         </div>
       )}
