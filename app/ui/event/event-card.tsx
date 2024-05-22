@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function EventCard({ event }: { event: EventModel }) {
   return (
-    <Link href={`/events/${event.id}`} prefetch={false} className="card bg-base-100 shadow-lg">
+    <Link href={`/events/${event.id}`} className="card bg-base-100 shadow-lg">
       <div className="card-body">
         <h2 className="card-title">{event.name}</h2>
         <div className="badge bg-fi-100">{event.eventTypeName}</div>

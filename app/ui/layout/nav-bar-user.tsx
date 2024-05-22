@@ -14,13 +14,13 @@ export default async function NavBarUser() {
         </div>
       </div>
       <div className="navbar-center">
-        <Link className="btn btn-ghost text-xl" href={'/'} prefetch={false}>
+        <Link className="btn btn-ghost text-xl" href={'/'}>
           <Image src="/logo_transparent.svg" alt="logo" width={40} height={40} />
           <p className="hidden md:block">AmbassadorsFIMU</p>
         </Link>
       </div>
       <div className="navbar-end">
-        <Link className="hidden md:flex flex-row gap-4 text-black" href={'/me'} prefetch={false}>
+        <Link className="hidden md:flex flex-row gap-4 text-black" href={'/me'}>
           <h3>{session?.user.name}</h3>
         </Link>
       </div>

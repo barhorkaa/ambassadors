@@ -21,17 +21,12 @@ export default async function EventUserTable({ eventUsers }: { eventUsers: Event
           {eventUsers.map((eventUser) => (
             <tr className="hover" key={eventUser.id}>
               <td>
-                <Link
-                  href={`/ambassadors/${eventUser.userId}`}
-                  prefetch={false}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
+                <Link href={`/ambassadors/${eventUser.userId}`} rel="noopener noreferrer" target="_blank">
                   {eventUser.userName}
                 </Link>
               </td>
               <td>
-                <Link href={`/events/${eventUser.eventId}`} prefetch={false} rel="noopener noreferrer" target="_blank">
+                <Link href={`/events/${eventUser.eventId}`} rel="noopener noreferrer" target="_blank">
                   {eventUser.eventName}
                 </Link>
               </td>

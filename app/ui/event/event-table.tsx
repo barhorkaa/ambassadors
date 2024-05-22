@@ -18,7 +18,7 @@ export default function EventTable({ events }: { events: EventModel[] }) {
           {events.map((event) => (
             <tr className="hover" key={event.id}>
               <td>
-                <Link href={`/events/${event.id}`} prefetch={false} rel="noopener noreferrer" target="_blank">
+                <Link href={`/events/${event.id}`} rel="noopener noreferrer" target="_blank">
                   {event.name}
                 </Link>
               </td>
@@ -27,7 +27,7 @@ export default function EventTable({ events }: { events: EventModel[] }) {
               </td>
               <td>{event.date !== null ? event.date.toLocaleDateString('cs-CZ') : 'Nezadáno'}</td>
               <td>
-                <Link href={`/events/${event.id}`} prefetch={false} rel="noopener noreferrer" target="_blank">
+                <Link href={`/events/${event.id}`} rel="noopener noreferrer" target="_blank">
                   <ArrowTopRightOnSquareIcon className="h-5" />
                 </Link>
               </td>

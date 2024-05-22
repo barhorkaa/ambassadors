@@ -36,7 +36,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content py-8">
           {mePages.map((page, index) => (
             <li key={index}>
-              <Link prefetch={false} onClick={() => setIsOpen(false)} href={page.url}>
+              <Link onClick={() => setIsOpen(false)} href={page.url}>
                 {page.name}
               </Link>
             </li>
@@ -46,7 +46,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
             <>
               {managerPages.map((page, index) => (
                 <li key={index}>
-                  <Link prefetch={false} onClick={() => setIsOpen(false)} href={page.url}>
+                  <Link onClick={() => setIsOpen(false)} href={page.url}>
                     {page.name}
                   </Link>
                 </li>
@@ -56,7 +56,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
           )}
           {eventsPages.map((page, index) => (
             <li key={index}>
-              <Link prefetch={false} onClick={() => setIsOpen(false)} href={page.url}>
+              <Link onClick={() => setIsOpen(false)} href={page.url}>
                 {page.name}
               </Link>
             </li>
@@ -64,7 +64,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
           <hr className="w-full mx-0" />
           {otherPages.map((page, index) => (
             <li key={index}>
-              <Link prefetch={false} onClick={() => setIsOpen(false)} href={page.url}>
+              <Link onClick={() => setIsOpen(false)} href={page.url}>
                 {page.name}
               </Link>
             </li>
@@ -72,7 +72,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
           <hr className="w-full mx-0" />
           {programPages.map((page, index) => (
             <li key={index}>
-              <Link prefetch={false} onClick={() => setIsOpen(false)} href={page.url}>
+              <Link onClick={() => setIsOpen(false)} href={page.url}>
                 {page.name}
               </Link>
             </li>

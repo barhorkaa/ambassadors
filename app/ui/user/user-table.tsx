@@ -19,7 +19,7 @@ export default function UserTable({ users }: { users: UserModel[] }) {
           {users.map((user) => (
             <tr className="hover" key={user.id}>
               <td>
-                <Link href={`/ambassadors/${user.id}`} prefetch={false} rel="noopener noreferrer" target="_blank">
+                <Link href={`/ambassadors/${user.id}`} rel="noopener noreferrer" target="_blank">
                   {user.name}
                 </Link>
               </td>
@@ -27,7 +27,7 @@ export default function UserTable({ users }: { users: UserModel[] }) {
               <td>{user.email}</td>
               <td>{user.phone_number}</td>
               <td>
-                <Link href={`/ambassadors/${user.id}`} prefetch={false} rel="noopener noreferrer" target="_blank">
+                <Link href={`/ambassadors/${user.id}`} rel="noopener noreferrer" target="_blank">
                   <ArrowTopRightOnSquareIcon className="h-5" />
                 </Link>
               </td>

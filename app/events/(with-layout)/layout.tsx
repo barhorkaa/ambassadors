@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <section>
       <div className="flex flex-row justify-between items-end content">
         <h1>Akce</h1>
-        <Link className="btn" href={'/events/new'} prefetch={false}>
+        <Link className="btn" href={'/events/new'}>
           <PlusIcon className="h-5" />
           <p className="hidden md:block">Přidat akci</p>
         </Link>
