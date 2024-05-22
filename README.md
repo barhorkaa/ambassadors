@@ -38,10 +38,10 @@ Next there is the '.env.example' file, this file contains the database URL for s
 
 ### Running the Container
 
-This project contains a docker-compose.yml file that will run the Docker container. Simply run the following command and the database should be ready for connections in a bit.
+This project contains a docker-compose.yml file that will run the Docker container. Simply run the following command and the database should be ready for connections.
 
 ```bash
-docker compose up
+docker-compose up
 ```
 
 ### Running the Migrations
