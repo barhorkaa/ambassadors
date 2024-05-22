@@ -43,7 +43,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
           ))}
           <hr className="w-full mx-0" />
           {userRole === UserRoles.manager && (
-            <div>
+            <>
               {managerPages.map((page, index) => (
                 <li key={index}>
                   <Link prefetch={false} onClick={() => setIsOpen(false)} href={page.url}>
@@ -52,7 +52,7 @@ export default function SideBar({ userRole }: { userRole: string }) {
                 </li>
               ))}
               <hr className="w-full mx-0" />
-            </div>
+            </>
           )}
           {eventsPages.map((page, index) => (
             <li key={index}>

@@ -15,10 +15,10 @@ export default async function UserDetail({ user }: { user: UserModel }) {
       <DetailRowHorizontal label={'Role'} value={user.role === UserRoles.manager ? 'Manažér' : 'Ambasador'} />
       <DetailRowHorizontal label={'Potvrzen'} value={user.approved ? 'Ano' : 'Ne'} />
       {session?.user.role === UserRoles.manager && (
-        <div>
+        <>
           <DetailRowHorizontal label={'Registrovaný'} value={user.created_at.toLocaleString('cs-CZ')} />
           <DetailRowHorizontal label={'Aktivní'} value={user.deleted_at ? 'Ne' : 'Ano'} />
-        </div>
+        </>
       )}
     </div>
   );

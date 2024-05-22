@@ -3,7 +3,7 @@ import { ReportDetailModel } from '@/models/report-models';
 
 export default function ReportDetail({ report }: { report: ReportDetailModel }) {
   return (
-    <div>
+    <>
       <DetailRowVertical label={'Kolik bylo na akci lidí?'} value={report.numberOfAttendees} />
       <p className="font-light text-sm">Materiály použité na akci</p>
       {report.materials.map((materialAmount) => (
@@ -16,7 +16,7 @@ export default function ReportDetail({ report }: { report: ReportDetailModel }) 
       <hr className="w-full h-0.5 my-1 bg-base-300" />
       <DetailRowVertical label={'Co se na akci dělo?'} value={report.notes} />
       <DetailRowVertical label={'Co do přístě zlepšit?'} value={report.ideas} />
-    </div>
+    </>
   );
 }
 
