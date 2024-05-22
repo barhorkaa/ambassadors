@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <h1 className="w-1/2">{event.name}</h1>
           {event.deletedAt === null && (
             <div className="flex flex-row gap-4 ">
-              {!event.approved && session?.user.role == UserRoles.manager && (
+              {!event.approved && session?.user.role === UserRoles.manager && (
                 <ApproveButton fun={approveEventAction} id={event.id} />
               )}
               {(isManager ||

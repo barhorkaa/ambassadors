@@ -12,7 +12,7 @@ export async function createEventAction(prevState: any, formData: FormData) {
   try {
     const eventForm = {
       name: formData.get('name'),
-      date: formData.get('date') == '' ? null : formData.get('date'),
+      date: formData.get('date') === '' ? null : formData.get('date'),
       eventTypeId: formData.get('eventTypeId'),
       limit: formData.get('limit'),
     };
@@ -36,7 +36,7 @@ export async function updateEventAction(prevState: any, formData: FormData) {
   try {
     const eventForm = {
       name: formData.get('name'),
-      date: formData.get('date') == '' ? null : formData.get('date'),
+      date: formData.get('date') === '' ? null : formData.get('date'),
       eventTypeId: formData.get('eventTypeId'),
       id: formData.get('id'),
       limit: formData.get('limit'),

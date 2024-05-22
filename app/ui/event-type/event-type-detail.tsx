@@ -27,13 +27,13 @@ export default async function EventTypeDetail({ eventType }: { eventType: EventT
         </div>
         <DetailRowVertical label={''} value={eventType.description} />
         <DetailRowVertical label={'Instrukce pro ambasadory'} value={eventType.instructions} />
-        {session?.user.role == UserRoles.manager && (
+        {session?.user.role === UserRoles.manager && (
           <div className="flex flex-col md:flex-row md:gap-8">
             <DetailRowVertical label={'Vytvořeno'} value={eventType.createdAt.toLocaleString('cs-CZ')} />
             <DetailRowVertical label={'Upraveno'} value={eventType.updatedAt.toLocaleString('cs-CZ')} />
             <DetailRowVertical
               label={'Zmazáno'}
-              value={eventType.deletedAt == null ? 'Ne' : eventType.deletedAt.toLocaleString('cs-CZ')}
+              value={eventType.deletedAt === null ? 'Ne' : eventType.deletedAt.toLocaleString('cs-CZ')}
             />
           </div>
         )}
