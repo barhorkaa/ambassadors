@@ -1,5 +1,5 @@
 import { db } from '@/database/database';
-import { DatabaseError } from '@/errors/database-error';
+import { DatabaseError } from '@/database/errors/database-error';
 import { MaterialAmountModel, ReportModel } from '@/models/report-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
 

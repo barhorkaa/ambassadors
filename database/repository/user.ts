@@ -1,5 +1,5 @@
 import { db } from '@/database/database';
-import { DatabaseError } from '@/errors/database-error';
+import { DatabaseError } from '@/database/errors/database-error';
 import { UserCreateModel, UserEditModel } from '@/models/user-models';
 
 export async function getUserByEmail(email: string) {

@@ -1,6 +1,6 @@
 import { db } from '@/database/database';
+import { DatabaseError } from '@/database/errors/database-error';
 import { adapter } from '@/database/repository/event';
-import { DatabaseError } from '@/errors/database-error';
 
 export async function getUserSignUps(user_id: string, substitute: boolean, active: boolean) {
   try {

@@ -1,5 +1,5 @@
 import { db } from '@/database/database';
-import { DatabaseError } from '@/errors/database-error';
+import { DatabaseError } from '@/database/errors/database-error';
 import { EventManipulationModel } from '@/models/event-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
 

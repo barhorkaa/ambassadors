@@ -1,6 +1,6 @@
 import { db } from '@/database/database';
+import { DatabaseError } from '@/database/errors/database-error';
 import { motivateUser } from '@/database/repository/user';
-import { DatabaseError } from '@/errors/database-error';
 import { MotivationModel } from '@/models/motivation-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
 
