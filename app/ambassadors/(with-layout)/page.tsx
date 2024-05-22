@@ -2,7 +2,7 @@ import { SectionInfo } from '@/app/ui/utils/data-display';
 
 export default function Page() {
   return (
-    <div className="content">
+    <>
       <p>
         V této sekci aplikace můžete najít informace o uživatelech systému. Po rozkliknutí menu nahoře se Vám ukáží
         seznamy uživatelů dané ketegorie.
@@ -38,6 +38,6 @@ export default function Page() {
           'Manažer má taky za úkol potvrzovat registrace ambasadorů, jejich přihlášení na akce a také návrhy na nové akce.',
         ]}
       />
-    </div>
+    </>
   );
 }

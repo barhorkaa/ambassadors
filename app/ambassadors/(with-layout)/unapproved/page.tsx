@@ -5,9 +5,5 @@ import { UserModel } from '@/models/user-models';
 export default async function Page() {
   const unapprovedAmbassadors: UserModel[] = await getNotApprovedUsers();
 
-  return (
-    <div className="content">
-      <UserList title={'Nepotvrzení uživatelé'} list={unapprovedAmbassadors} />
-    </div>
-  );
+  return <UserList title={'Nepotvrzení uživatelé'} list={unapprovedAmbassadors} />;
 }

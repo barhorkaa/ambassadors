@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <h1 className="content">Uživatelé</h1>
       <hr className="w-full mb-0" />
       <PageNavigation pages={ambassadorPages} />
-      {children}
+      <div className="content">{children}</div>
     </section>
   );
 }
