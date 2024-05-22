@@ -88,7 +88,11 @@ bun run seed
 node scripts/seed.js
 ```
 
-This will seed the database with an initial manager user and the application can be run.
+This will seed the database with an initial manager user and the application can run.
+The seeding will also produce an additional ambassador user so that the application can be tested with both roles.
+The credentials of these users can be found in the 'seed.js' file. If you wish to change them after seeding, either selete the existing instances and un the seed command again or you must change the email and UCO due to a unique constraint on these two attributes.
+
+Also, two types of events are seeded to ensure that you can immediately ry adding events. 
 
 ### Running the Application 
 
