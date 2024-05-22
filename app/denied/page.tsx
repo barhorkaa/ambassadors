@@ -18,7 +18,8 @@ export default async function Page() {
         K této části aplikace nemáte přistup jelikož váš účet ješte nebyl potvrzen zaměstnancem OVVSP.
       </p>
       <p className="pb-6">
-        Zkuste se vrátit později. Kdyby váš účet i po týdnu nebyl potvrzen, napište email na propagace@fi.muni.cz
+        Zkuste se vrátit později. Kdyby váš účet i po týdnu nebyl potvrzen, napište email na{' '}
+        <a href="mailto:propagace@fi.muni.cz">propagace@fi.muni.cz</a>
       </p>
     </HeroCenterLayout>
   );
