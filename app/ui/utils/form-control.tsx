@@ -31,7 +31,7 @@ export default function FormControl({
         name={id}
         placeholder={placeholder ?? title}
         required={required}
-        className={`${errorMessage ? 'input-error' : ''}`}
+        className={`${errorMessage ? 'input-error' : ''} input-bor`}
       />
       {errorMessage && (
         <div className="label pb-0">
