@@ -36,7 +36,9 @@ export default async function Page({ params }: { params: { id: string } }) {
           ) : (
             session?.user.id === params.id && <EditUserModal user={user!} full={false} />
           )}
-          <EditNotificationsModal managerNotifications={managerNotifications} notifications={userNotifications} />
+          {params.id === session?.user.id && (
+            <EditNotificationsModal managerNotifications={managerNotifications} notifications={userNotifications} />
+          )}
         </div>
       </div>
       <hr className="w-full" />
