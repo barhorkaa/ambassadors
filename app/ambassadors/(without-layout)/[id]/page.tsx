@@ -4,7 +4,9 @@ import EditNotificationsModal from '@/app/ui/modals/edit/edit-notifications-moda
 import EditUserModal from '@/app/ui/modals/edit/edit-user-modal';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
+import { getUserNotifications, getUserNotificationsManager } from '@/database/repository/notifications';
 import { getUserById } from '@/database/repository/user';
+import { ManagerNotifications, UserNotifications } from '@/models/notifications-models';
 import { UserModel } from '@/models/user-models';
 import { redirect } from 'next/navigation';
 
@@ -14,6 +16,14 @@ export default async function Page({ params }: { params: { id: string } }) {
   const session = await auth();
   if (session?.user.role !== UserRoles.manager && params.id !== session?.user.id) {
     redirect('/denied/role');
+  }
+
+  const userNotifications: UserNotifications = await getUserNotifications(user.id);
+
+  let managerNotifications: ManagerNotifications | undefined = undefined;
+  if (user.role === UserRoles.manager) {
+    managerNotifications = await getUserNotificationsManager(user.id);
+    console.log(managerNotifications);
   }
 
   return (
@@ -27,7 +37,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           ) : (
             session?.user.id === params.id && <EditUserModal user={user!} full={false} />
           )}
-          <EditNotificationsModal user={user!} />
+          <EditNotificationsModal managerNotifications={managerNotifications} notifications={userNotifications} />
         </div>
       </div>
       <hr className="w-full" />
