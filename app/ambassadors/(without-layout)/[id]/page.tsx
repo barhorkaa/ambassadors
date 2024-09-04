@@ -1,5 +1,6 @@
 import { approveUserById } from '@/app/lib/actions/user';
 import ApproveButton from '@/app/ui/button/approve-button';
+import EditNotificationsModal from '@/app/ui/modals/edit/edit-notifications-modal';
 import EditUserModal from '@/app/ui/modals/edit/edit-user-modal';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
@@ -26,6 +27,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           ) : (
             session?.user.id === params.id && <EditUserModal user={user!} full={false} />
           )}
+          <EditNotificationsModal user={user!} />
         </div>
       </div>
       <hr className="w-full" />
