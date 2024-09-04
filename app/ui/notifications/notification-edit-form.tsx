@@ -20,7 +20,14 @@ export default function NotificationsEditForm({
     <FormLayout action={dispatch} state={state} modalId={'notifications' + notifications.userId}>
       {managerNotifications && <ManagerNotifications managerNotifications={managerNotifications} />}
       <UserNotifications userNotifications={notifications} />
-      <input id="id" type="hidden" name="id" value={notifications.userId} required />
+      <input id="userId" type="hidden" name="userId" value={notifications.userId} required />
+      <input
+        id="isManager"
+        type="hidden"
+        name="isManager"
+        value={managerNotifications !== undefined ? 'yes' : 'no'}
+        required
+      />
     </FormLayout>
   );
 }
