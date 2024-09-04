@@ -1,8 +1,8 @@
 'use client';
 
-import { ArrowPathIcon, PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { ArrowPathIcon, BellIcon, PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 
-type ModalType = 'create' | 'edit' | 'delete' | 'revive';
+type ModalType = 'create' | 'edit' | 'delete' | 'revive' | 'notifications';
 
 export default function ModalLayout({
   children,
@@ -71,6 +71,13 @@ function ButtonContent({ modalType }: { modalType: ModalType }) {
         <>
           <ArrowPathIcon className="h-5" />
           <p className="hidden md:block">Odnovit</p>
+        </>
+      );
+    case 'notifications':
+      return (
+        <>
+          <BellIcon className="h-5" />
+          <p className="hidden md:block">Notifikace</p>
         </>
       );
   }
