@@ -1,5 +1,11 @@
+import { UserRoles } from '@/app/utils/user-roles';
 import { db } from '@/database/database';
 import { DatabaseError } from '@/database/errors/database-error';
+import {
+  createManagerNotifications,
+  createNotifications,
+  deleteManagerNotifications,
+} from '@/database/repository/notifications';
 import { UserCreateModel, UserEditModel } from '@/models/user-models';
 
 export async function getUserByEmail(email: string) {
@@ -26,7 +32,8 @@ export async function getUserById(id: string) {
 
 export async function createUser(newUser: UserCreateModel) {
   try {
-    await db.insertInto('user').values(newUser).returning('id').executeTakeFirst();
+    const id = await db.insertInto('user').values(newUser).returning('id').executeTakeFirstOrThrow();
+    await createNotifications(id.id);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create User', cause: e });
@@ -52,6 +59,12 @@ export async function editUser(user: UserEditModel) {
 
 export async function editFullUser(user: UserEditModel) {
   try {
+    const userFormerRole = await db
+      .selectFrom('user')
+      .where('id', '=', user.id)
+      .select('role')
+      .executeTakeFirstOrThrow();
+
     await db
       .updateTable('user')
       .where('id', '=', user.id)
@@ -64,6 +77,15 @@ export async function editFullUser(user: UserEditModel) {
         updated_at: new Date(),
       })
       .execute();
+
+    if (userFormerRole.role != user.role) {
+      if (userFormerRole.role === UserRoles.manager) {
+        await deleteManagerNotifications(user.id);
+      }
+      if (user.role === UserRoles.manager) {
+        await createManagerNotifications(user.id);
+      }
+    }
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Could not update user, full', cause: e });
