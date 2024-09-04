@@ -24,9 +24,6 @@
   hr {
     @apply w-52 md:w-96 h-1 mx-auto my-3 bg-fi-300 border-0 rounded
   }
-  input {
-    @apply input input-bordered
-  }
   textarea {
     @apply textarea textarea-bordered
   }
@@ -63,5 +60,8 @@
   }
   .page-menu {
     @apply menu menu-vertical lg:menu-horizontal bg-fi-100 text-black font-semibold w-full mb-4
+  }
+  .input-bor {
+    @apply input input-bordered
   }
 }
