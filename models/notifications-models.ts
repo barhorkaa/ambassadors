@@ -1,5 +1,5 @@
 type NotificationBase = {
-  id: string;
+  id?: string;
   userId: string;
 };
 
