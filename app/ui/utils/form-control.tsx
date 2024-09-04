@@ -17,31 +17,22 @@ export default function FormControl({
   placeholder?: string;
   required?: boolean;
 }) {
+  const Tag = inputType;
+
   return (
     <div className="form-control">
       <label className="label" htmlFor={title}>
         <span className="label-text">{title}</span>
       </label>
-      {inputType === 'input' ? (
-        <input
-          id={id}
-          defaultValue={defaultValue}
-          type={type}
-          name={id}
-          placeholder={placeholder ?? title}
-          required={required}
-          className={`${errorMessage ? 'input-error' : ''}`}
-        />
-      ) : (
-        <textarea
-          id={id}
-          defaultValue={defaultValue}
-          name={id}
-          placeholder={placeholder ?? title}
-          required={required}
-          className={`${errorMessage ? 'input-error' : ''}`}
-        />
-      )}
+      <Tag
+        id={id}
+        defaultValue={defaultValue}
+        type={type}
+        name={id}
+        placeholder={placeholder ?? title}
+        required={required}
+        className={`${errorMessage ? 'input-error' : ''}`}
+      />
       {errorMessage && (
         <div className="label pb-0">
           <span className="label-text-alt text-error">{errorMessage}</span>
