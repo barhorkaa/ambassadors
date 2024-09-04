@@ -1,20 +1,38 @@
+'use server';
+
 import { handleError } from '@/app/lib/actions/utils';
-import { userEditSchema } from '@/models/user-models';
+import { editManagerNotifications, editNotifications } from '@/database/repository/notifications';
 import { revalidatePath } from 'next/cache';
 
 export async function editNotificationsAction(prevState: any, formData: FormData) {
   try {
     const notificationsForm = {
-      id: formData.get('id'),
-      name: formData.get('name'),
-      phone_number: formData.get('phoneNumber'),
-      uco: formData.get('uco'),
-      email: formData.get('email'),
-      role: formData.get('role'),
+      userId: formData.get('userId') as string,
+      registrationApprove: formData.get('registrationApprove') === 'on',
+      signupApprove: formData.get('signupApprove') === 'on',
+      eventApprove: formData.get('eventApprove') === 'on',
+      reportApprove: formData.get('reportApprove') === 'on',
+      personalInfoChange: formData.get('personalInfoChange') === 'on',
+      eventChange: formData.get('eventChange') === 'on',
+      newEvent: formData.get('newEvent') === 'on',
     };
 
-    const parsedData = userEditSchema.parse(notificationsForm);
-    // await editNotifications(parsedData);
+    await editNotifications(notificationsForm);
+
+    if (formData.get('isManager') === 'yes') {
+      const managerNotificationsForm = {
+        userId: formData.get('userId') as string,
+        newEventSuggestion: formData.get('newEventSuggestion') === 'on',
+        newRegistration: formData.get('newRegistration') === 'on',
+        newReport: formData.get('newReport') === 'on',
+        newSignup: formData.get('newSignup') === 'on',
+      };
+
+      console.log('notifications form is: ');
+      console.log(managerNotificationsForm);
+
+      await editManagerNotifications(managerNotificationsForm);
+    }
   } catch (e) {
     console.error(e);
     return handleError(e);
