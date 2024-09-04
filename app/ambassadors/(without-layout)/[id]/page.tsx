@@ -23,7 +23,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   let managerNotifications: ManagerNotifications | undefined = undefined;
   if (user.role === UserRoles.manager) {
     managerNotifications = await getUserNotificationsManager(user.id);
-    console.log(managerNotifications);
   }
 
   return (
