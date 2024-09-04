@@ -28,14 +28,14 @@ export function EventTypeForm({ eventType }: { eventType: EventTypeDetailModel |
       <FormControl
         title={'Popis typu akce'}
         id={'description'}
-        inputType={'area'}
+        inputType={'textarea'}
         defaultValue={eventType?.description}
         errorMessage={findErrors('description', state.errors)[0]}
       />
       <FormControl
         title={'Instrukce pro ambasadory'}
         id={'instructions'}
-        inputType={'area'}
+        inputType={'textarea'}
         defaultValue={eventType?.instructions}
         errorMessage={findErrors('instructions', state.errors)[0]}
       />

@@ -14,31 +14,31 @@ export default function MotivationForm({ userId }: { userId: string }) {
       <FormControl
         title={'Proč jste se rozhodli k nám přidat?'}
         id={'why'}
-        inputType={'area'}
+        inputType={'textarea'}
         placeholder={'Chci zvýšit povědomí o fakultě, přividělat si ...'}
       />
       <FormControl
         title={'Doporučil vám někto přidat se k programu? Pokud ano, kto?'}
         id={'who'}
-        inputType={'area'}
+        inputType={'textarea'}
         placeholder={'Ne / Ano + kto'}
       />
       <FormControl
         title={'Co byste chtěli jako ambasador dosáhnout?'}
         id={'goals'}
-        inputType={'area'}
+        inputType={'textarea'}
         placeholder={'Chci se podílet na propagaci, dostat merch...'}
       />
       <FormControl
         title={'Jakých akcí byste se chtěli převážně zúčastňovat?'}
         id={'preferredEvents'}
-        inputType={'area'}
+        inputType={'textarea'}
         placeholder={'Výjezdy, Dny otevřených dveří, Veltrhy ...'}
       />
       <FormControl
         title={'Kolik času budete mít na ambasadorskou činnost?'}
         id={'time'}
-        inputType={'area'}
+        inputType={'textarea'}
         placeholder={'Na kolik akcí zhruba za rok byste chtěli jít?'}
       />
       <input id="id" type="hidden" name="userId" value={userId} required />

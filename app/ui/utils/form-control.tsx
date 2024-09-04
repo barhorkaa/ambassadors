@@ -13,7 +13,7 @@ export default function FormControl({
   errorMessage?: string;
   type?: 'text' | 'number' | 'password' | 'date' | 'email';
   defaultValue?: string | number;
-  inputType?: 'area' | 'input';
+  inputType?: 'textarea' | 'input';
   placeholder?: string;
   required?: boolean;
 }) {

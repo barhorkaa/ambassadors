@@ -29,7 +29,7 @@ export function MaterialForm({ material }: { material: MaterialManipulationModel
         title={'Popis materiálu'}
         id={'description'}
         defaultValue={material?.description}
-        inputType={'area'}
+        inputType={'textarea'}
         errorMessage={findErrors('description', state.errors)[0]}
       />
       <div className="form-control">

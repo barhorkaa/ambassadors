@@ -24,14 +24,14 @@ export default function ReportForm({ eventId, materials }: { eventId: string; ma
       <FormControl
         title={'Co se na akci dělo?'}
         id={'notes'}
-        inputType={'area'}
+        inputType={'textarea'}
         placeholder={'Poznámky k dění na akci'}
         errorMessage={findErrors('notes', state.errors)[0]}
       />
       <FormControl
         title={'Co do budoucna zlepšit?'}
         id={'ideas'}
-        inputType={'area'}
+        inputType={'textarea'}
         placeholder={'Vaše nápady na zlepšení'}
         errorMessage={findErrors('ideas', state.errors)[0]}
       />
