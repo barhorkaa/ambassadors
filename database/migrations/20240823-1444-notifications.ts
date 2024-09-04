@@ -11,12 +11,8 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('event_approve', 'boolean', (col) => col.notNull().defaultTo(false))
     .addColumn('report_approve', 'boolean', (col) => col.notNull().defaultTo(false))
     .addColumn('personal_info_change', 'boolean', (col) => col.notNull().defaultTo(false))
-    .addColumn('event-change', 'boolean', (col) => col.notNull().defaultTo(false))
+    .addColumn('event_change', 'boolean', (col) => col.notNull().defaultTo(false))
     .addColumn('new_event', 'boolean', (col) => col.notNull().defaultTo(false))
-    .addColumn('new_event_suggestion_manager', 'boolean', (col) => col.notNull().defaultTo(false))
-    .addColumn('new_registration_manager', 'boolean', (col) => col.notNull().defaultTo(false))
-    .addColumn('new_signup_manager', 'boolean', (col) => col.notNull().defaultTo(false))
-    .addColumn('new_report_manager', 'boolean', (col) => col.notNull().defaultTo(false))
     .execute();
 
   await db.schema
