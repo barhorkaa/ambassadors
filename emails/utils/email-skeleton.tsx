@@ -16,9 +16,10 @@ import {
 interface EmailSkeletonProps {
   children: React.ReactNode;
   title: string;
+  preview: string;
 }
 
-const EmailSkeleton = ({ children, title }: EmailSkeletonProps) => (
+const EmailSkeleton = ({ children, title, preview }: EmailSkeletonProps) => (
   <Html>
     <Head>
       <Font
@@ -32,7 +33,7 @@ const EmailSkeleton = ({ children, title }: EmailSkeletonProps) => (
         fontStyle="normal"
       />
     </Head>
-    <Preview>[Ambasadorský program] Vítejte mezi námi</Preview>
+    <Preview>{preview}</Preview>
     <Tailwind
       config={{
         theme: {
