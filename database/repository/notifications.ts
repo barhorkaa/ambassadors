@@ -153,3 +153,26 @@ export async function getRecipients(notification: NotificationName) {
     });
   }
 }
+
+type ManagerNotificationName = 'new_event_suggestion' | 'new_registration' | 'new_report' | 'new_signup';
+
+export async function getManagerRecipients(notification: ManagerNotificationName) {
+  try {
+    const emails = await db
+      .selectFrom('notifications_manager')
+      .where(notification, '=', true)
+      .innerJoin('user', 'user.id', 'user_id')
+      .select('user.email')
+      .execute();
+    return emails.map((bla) => {
+      return bla.email;
+    });
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({
+      name: 'DATABASE_GET_ERROR',
+      message: 'Could not get recipients of' + 'b' + ' notifications',
+      cause: e,
+    });
+  }
+}
