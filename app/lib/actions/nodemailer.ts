@@ -1,6 +1,6 @@
 'use server';
 
-import { getAllActiveEvents, getEventById } from '@/database/repository/event';
+import { getEventById } from '@/database/repository/event';
 import NewEventTemplate from '@/emails/new-event-template';
 import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
@@ -13,24 +13,30 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmailNode = async () => {
-  const allEvents = await getAllActiveEvents(true);
-  // console.log("allEvents are: ", allEvents)
-  const event = await getEventById(allEvents[0].id);
+type MailOptions = { from: string; replyTo: string; bcc: string; subject: string; html: string };
 
-  const mailOptions = {
-    from: process.env['EMAIL'],
-    bcc: ['barculka1.3@gmail.com'],
-    subject: 'pokus new event ',
-    html: render(NewEventTemplate({ event: event })),
-  };
-
+async function sendEmailNode(mailOptions: MailOptions) {
   try {
     const info = await transporter.sendMail(mailOptions);
     console.log('Email sent:', info.response);
   } catch (error) {
     console.error('Error sending email:', error);
   }
-};
+}
 
-export default sendEmailNode;
+export async function emailNewEventAction(id: string) {
+  const event = await getEventById(id);
+
+  // const recipients = await getRecipients('new_event');
+  const recipients = 'barculka1.3@gmail.com';
+
+  const mailOptions = {
+    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
+    replyTo: 'propagace@fi.muni.cz',
+    bcc: recipients,
+    subject: '[Ambasadorský program] Nová akce',
+    html: render(NewEventTemplate({ event: event })),
+  };
+
+  await sendEmailNode(mailOptions);
+}
