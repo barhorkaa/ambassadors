@@ -1,5 +1,6 @@
 'use server';
 
+import { emailNewEventAction } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
@@ -24,7 +25,11 @@ export async function createEventAction(prevState: any, formData: FormData) {
       parsedData.approved = true;
     }
 
-    await createEvent(parsedData);
+    const newEventId = await createEvent(parsedData);
+    if (parsedData.approved) {
+      await emailNewEventAction(newEventId.id);
+    } else {
+    }
   } catch (e) {
     console.error(e);
     return handleError(e);
