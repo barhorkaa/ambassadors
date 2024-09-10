@@ -90,7 +90,7 @@ export async function getEventById(id: string) {
 
 export async function createEvent(event: EventManipulationModel) {
   try {
-    await db.insertInto('event').values(objectToSnake(event)).execute();
+    return await db.insertInto('event').values(objectToSnake(event)).returning('id').executeTakeFirstOrThrow();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create a new event', cause: e });
