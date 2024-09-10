@@ -1,6 +1,7 @@
 'use server';
 
 import { getEventById } from '@/database/repository/event';
+import NewSuggestionTemplate from '@/emails/manager/new-suggestion-template';
 import NewEventTemplate from '@/emails/new-event-template';
 import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
@@ -36,6 +37,23 @@ export async function emailNewEventAction(id: string) {
     bcc: recipients,
     subject: '[Ambasadorský program] Nová akce',
     html: render(NewEventTemplate({ event: event })),
+  };
+
+  await sendEmailNode(mailOptions);
+}
+
+export async function emailManagerNewSuggestionAction(id: string) {
+  const event = await getEventById(id);
+
+  // const recipients = await getManagerRecipients('new_event_suggestion');
+  const recipients = 'barculka1.3@gmail.com';
+
+  const mailOptions = {
+    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
+    replyTo: 'propagace@fi.muni.cz',
+    bcc: recipients,
+    subject: '[Ambasadorský program] Nový návrh na akci',
+    html: render(NewSuggestionTemplate({ event: event })),
   };
 
   await sendEmailNode(mailOptions);
