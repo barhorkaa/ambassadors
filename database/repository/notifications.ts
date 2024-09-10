@@ -123,3 +123,33 @@ export async function deleteManagerNotifications(userId: string) {
     });
   }
 }
+
+type NotificationName =
+  | 'registration_approve'
+  | 'signup_approve'
+  | 'event_approve'
+  | 'report_approve'
+  | 'personal_info_change'
+  | 'event_change'
+  | 'new_event';
+
+export async function getRecipients(notification: NotificationName) {
+  try {
+    const emails = await db
+      .selectFrom('notifications')
+      .where(notification, '=', true)
+      .innerJoin('user', 'user.id', 'user_id')
+      .select('user.email')
+      .execute();
+    return emails.map((bla) => {
+      return bla.email;
+    });
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({
+      name: 'DATABASE_GET_ERROR',
+      message: 'Could not get recipients of' + 'b' + ' notifications',
+      cause: e,
+    });
+  }
+}
