@@ -63,6 +63,7 @@ export async function updateEventAction(prevState: any, formData: FormData) {
 export async function approveEventAction(id: string) {
   try {
     await approveEvent(id);
+    await emailNewEventAction(id);
   } catch (e) {
     console.error(e);
     throw e;
