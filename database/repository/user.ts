@@ -34,6 +34,7 @@ export async function createUser(newUser: UserCreateModel) {
   try {
     const id = await db.insertInto('user').values(newUser).returning('id').executeTakeFirstOrThrow();
     await createNotifications(id.id);
+    return id.id;
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_CREATE_ERROR', message: 'Unable to create User', cause: e });
