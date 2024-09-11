@@ -153,7 +153,12 @@ export async function getSignUpsForEvent(event_id: string, substitute: boolean) 
 
 export async function approveSignUp(id: string) {
   try {
-    await db.updateTable('eventUser').where('id', '=', id).set({ approved: true, updated_at: new Date() }).execute();
+    return await db
+      .updateTable('eventUser')
+      .where('id', '=', id)
+      .set({ approved: true, updated_at: new Date() })
+      .returning(['user_id', 'event_id', 'substitute'])
+      .executeTakeFirstOrThrow();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to approve signup', cause: e });
