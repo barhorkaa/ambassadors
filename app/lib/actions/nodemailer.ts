@@ -8,6 +8,7 @@ import NewReportTemplate from '@/emails/manager/new-report-template';
 import NewSignupTemplate from '@/emails/manager/new-signup-template';
 import NewSuggestionTemplate from '@/emails/manager/new-suggestion-template';
 import NewEventTemplate from '@/emails/new-event-template';
+import RegistrationApproveTemplate from '@/emails/registration-approve-template';
 import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
 
@@ -42,6 +43,23 @@ export async function emailNewEventAction(id: string) {
     bcc: recipients,
     subject: '[Ambasadorský program] Nová akce',
     html: render(NewEventTemplate({ event: event })),
+  };
+
+  await sendEmailNode(mailOptions);
+}
+
+export async function emailRegistrationApprove(userId: string) {
+  const user = await getUserById(userId);
+
+  // const recipients = user.email;
+  const recipients = 'barculka1.3@gmail.com';
+
+  const mailOptions = {
+    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
+    replyTo: 'propagace@fi.muni.cz',
+    bcc: recipients,
+    subject: '[Ambasadorský program] Potvrzení registrace',
+    html: render(RegistrationApproveTemplate()),
   };
 
   await sendEmailNode(mailOptions);
