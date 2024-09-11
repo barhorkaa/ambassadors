@@ -1,5 +1,6 @@
 'use server';
 
+import { emailRegistrationApprove } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
 import { auth } from '@/auth';
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
@@ -9,6 +10,7 @@ import { revalidatePath } from 'next/cache';
 export async function approveUserById(id: string) {
   try {
     await approveUser(id);
+    await emailRegistrationApprove(id);
   } catch (e) {
     console.error(e);
     throw e;
