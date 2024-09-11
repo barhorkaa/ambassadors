@@ -1,5 +1,6 @@
 'use server';
 
+import { emailManagerNewReportAction } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
 import { approveReport, createReport } from '@/database/repository/report';
 import { reportSchema } from '@/models/report-models';
@@ -26,6 +27,7 @@ export async function createReportAction(prevState: any, formData: FormData) {
 
     const parsedData = reportSchema.parse(reportForm);
     await createReport(parsedData);
+    await emailManagerNewReportAction(parsedData.eventId);
   } catch (e) {
     console.error(e);
     return handleError(e);
