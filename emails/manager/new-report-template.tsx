@@ -1,10 +1,10 @@
 import EmailSkeleton from '@/emails/utils/email-skeleton';
 import { EventDetailModel } from '@/models/event-models';
-import { ReportModel } from '@/models/report-models';
+import { ReportDetailModel } from '@/models/report-models';
 import { Heading, Hr, Link, Text } from '@react-email/components';
 
 interface NewReportProps {
-  report: ReportModel;
+  report: ReportDetailModel;
   event: EventDetailModel;
 }
 
