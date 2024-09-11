@@ -1,5 +1,6 @@
 'use server';
 
+import { emailManagerNewSignupAction } from '@/app/lib/actions/nodemailer';
 import { getEventById } from '@/database/repository/event';
 import { approveSignUp, createSignUp, deleteSignUp, getSignUpsForEvent } from '@/database/repository/event-user';
 import { revalidatePath } from 'next/cache';
@@ -20,8 +21,10 @@ export async function createSignUpAction(event_id: string, user_id: string) {
     const eventLimit = Number(event.limit!);
 
     const signedForEvent = await getSignUpsForEvent(event_id, false);
+    const isSubstitute = !(eventLimit > signedForEvent.length);
 
-    await createSignUp(event_id, user_id, !(eventLimit > signedForEvent.length));
+    await createSignUp(event_id, user_id, isSubstitute);
+    await emailManagerNewSignupAction(event_id, user_id, isSubstitute);
   } catch (e) {
     console.error(e);
     throw e;
