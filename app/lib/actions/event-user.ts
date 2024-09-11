@@ -1,13 +1,14 @@
 'use server';
 
-import { emailManagerNewSignupAction } from '@/app/lib/actions/nodemailer';
+import { emailManagerNewSignupAction, emailSignupApprove } from '@/app/lib/actions/nodemailer';
 import { getEventById } from '@/database/repository/event';
 import { approveSignUp, createSignUp, deleteSignUp, getSignUpsForEvent } from '@/database/repository/event-user';
 import { revalidatePath } from 'next/cache';
 
 export async function approveSignUpAction(id: string) {
   try {
-    await approveSignUp(id);
+    const signup = await approveSignUp(id);
+    await emailSignupApprove(signup.user_id, signup.event_id, signup.substitute);
   } catch (e) {
     console.error(e);
     throw e;
