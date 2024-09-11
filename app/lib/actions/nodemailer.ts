@@ -1,6 +1,8 @@
 'use server';
 
 import { getEventById } from '@/database/repository/event';
+import { getUserById } from '@/database/repository/user';
+import NewRegistrationTemplate from '@/emails/manager/new-registration-template';
 import NewSuggestionTemplate from '@/emails/manager/new-suggestion-template';
 import NewEventTemplate from '@/emails/new-event-template';
 import { render } from '@react-email/render';
@@ -54,6 +56,23 @@ export async function emailManagerNewSuggestionAction(id: string) {
     bcc: recipients,
     subject: '[Ambasadorský program] Nový návrh na akci',
     html: render(NewSuggestionTemplate({ event: event })),
+  };
+
+  await sendEmailNode(mailOptions);
+}
+
+export async function emailManagerNewRegistrationAction(id: string) {
+  const user = await getUserById(id);
+
+  // const recipients = await getManagerRecipients('new_registration');
+  const recipients = 'barculka1.3@gmail.com';
+
+  const mailOptions = {
+    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
+    replyTo: 'propagace@fi.muni.cz',
+    bcc: recipients,
+    subject: '[Ambasadorský program] Nová registrace',
+    html: render(NewRegistrationTemplate({ user: user })),
   };
 
   await sendEmailNode(mailOptions);
