@@ -9,6 +9,7 @@ import NewSignupTemplate from '@/emails/manager/new-signup-template';
 import NewSuggestionTemplate from '@/emails/manager/new-suggestion-template';
 import NewEventTemplate from '@/emails/new-event-template';
 import RegistrationApproveTemplate from '@/emails/registration-approve-template';
+import SignupApproveTemplate from '@/emails/signup-approve-template';
 import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
 
@@ -58,8 +59,26 @@ export async function emailRegistrationApprove(userId: string) {
     from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
     replyTo: 'propagace@fi.muni.cz',
     bcc: recipients,
-    subject: '[Ambasadorský program] Potvrzení registrace',
+    subject: '[Ambasadorský program] Potvrzení přihlášení na akci',
     html: render(RegistrationApproveTemplate()),
+  };
+
+  await sendEmailNode(mailOptions);
+}
+
+export async function emailSignupApprove(userId: string, eventId: string, substitute: boolean) {
+  const event = await getEventById(eventId);
+  const user = await getUserById(userId);
+
+  // const recipients = user.email;
+  const recipients = 'barculka1.3@gmail.com';
+
+  const mailOptions = {
+    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
+    replyTo: 'propagace@fi.muni.cz',
+    bcc: recipients,
+    subject: '[Ambasadorský program] Potvrzení přihlášení na akci',
+    html: render(SignupApproveTemplate({ event: event, substitute: substitute })),
   };
 
   await sendEmailNode(mailOptions);
