@@ -3,6 +3,7 @@
 import { getEventById } from '@/database/repository/event';
 import { getEventReport } from '@/database/repository/report';
 import { getUserById } from '@/database/repository/user';
+import EventChangeTemplate from '@/emails/event-change-template';
 import NewRegistrationTemplate from '@/emails/manager/new-registration-template';
 import NewReportTemplate from '@/emails/manager/new-report-template';
 import NewSignupTemplate from '@/emails/manager/new-signup-template';
@@ -10,6 +11,7 @@ import NewSuggestionTemplate from '@/emails/manager/new-suggestion-template';
 import NewEventTemplate from '@/emails/new-event-template';
 import RegistrationApproveTemplate from '@/emails/registration-approve-template';
 import SignupApproveTemplate from '@/emails/signup-approve-template';
+import { EventDetailModel } from '@/models/event-models';
 import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
 
@@ -79,6 +81,23 @@ export async function emailSignupApprove(userId: string, eventId: string, substi
     bcc: recipients,
     subject: '[Ambasadorský program] Potvrzení přihlášení na akci',
     html: render(SignupApproveTemplate({ event: event, substitute: substitute })),
+  };
+
+  await sendEmailNode(mailOptions);
+}
+
+export async function emailEventChange(oldEvent: EventDetailModel, eventId: string) {
+  const event = await getEventById(eventId);
+
+  // const recipients = await getRecipientsForEventChange(eventId);
+  const recipients = 'barculka1.3@gmail.com';
+
+  const mailOptions = {
+    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
+    replyTo: 'propagace@fi.muni.cz',
+    bcc: recipients,
+    subject: '[Ambasadorský program] Změna akce',
+    html: render(EventChangeTemplate({ newEvent: event, oldEvent: oldEvent })),
   };
 
   await sendEmailNode(mailOptions);
