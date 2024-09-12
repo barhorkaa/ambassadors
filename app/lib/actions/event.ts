@@ -1,6 +1,6 @@
 'use server';
 
-import { emailManagerNewSuggestionAction, emailNewEventAction } from '@/app/lib/actions/nodemailer';
+import { emailEventChange, emailManagerNewSuggestionAction, emailNewEventAction } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
@@ -49,7 +49,8 @@ export async function updateEventAction(prevState: any, formData: FormData) {
     };
 
     const parsedData = eventSchema.parse(eventForm);
-    await updateEvent(parsedData);
+    const oldEvent = await updateEvent(parsedData);
+    await emailEventChange(oldEvent, parsedData.id!);
   } catch (e) {
     console.error(e);
     return handleError(e);
