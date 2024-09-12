@@ -1,3 +1,4 @@
+import { UserRoles } from '@/app/utils/user-roles';
 import { db } from '@/database/database';
 import { DatabaseError } from '@/database/errors/database-error';
 import { ManagerNotifications, UserNotifications } from '@/models/notifications-models';
@@ -148,7 +149,7 @@ export async function getRecipients(notification: NotificationName) {
     console.error(e);
     throw new DatabaseError({
       name: 'DATABASE_GET_ERROR',
-      message: 'Could not get recipients of' + 'b' + ' notifications',
+      message: 'Could not get recipients of ' + notification + ' notifications',
       cause: e,
     });
   }
@@ -171,7 +172,57 @@ export async function getManagerRecipients(notification: ManagerNotificationName
     console.error(e);
     throw new DatabaseError({
       name: 'DATABASE_GET_ERROR',
-      message: 'Could not get recipients of' + 'b' + ' notifications',
+      message: 'Could not get recipients of ' + notification + ' notifications',
+      cause: e,
+    });
+  }
+}
+
+export async function getRecipientsForEventChange(eventId: string) {
+  try {
+    // const userEmails = await db
+    //   .selectFrom('eventUser')
+    //   .where('event_id', '=', eventId)
+    //   .innerJoin('notifications', 'notifications.user_id', 'eventUser.user_id')
+    //   .where('event_change', '=', true)
+    //   .innerJoin('user', 'user.id', 'notifications.user_id')
+    //   .select('email')
+    //   .execute();
+    //
+    // const managers = await db
+    //   .selectFrom('user')
+    //   .where('role', '=', UserRoles.manager)
+    //   .innerJoin('notifications', 'user_id', 'user.id')
+    //   .select('email')
+    //   .execute();
+
+    // TODO check if produces valid output
+    const emails = await db
+      .selectFrom('user')
+      .select('email')
+      .innerJoin('notifications', 'notifications.user_id', 'user.id')
+      .leftJoin('eventUser', 'eventUser.user_id', 'user.id') // Left join with eventUser
+      .where((eb) =>
+        eb.or([
+          // First condition: Event users with event_change = true and specific event_id
+          eb.and([
+            eb('eventUser.event_id', '=', eventId), // Event-specific condition
+            eb('notifications.event_change', '=', true), // Check event_change flag
+          ]),
+          // Second condition: Users with the role of manager
+          eb('user.role', '=', UserRoles.manager),
+        ])
+      )
+      .execute();
+
+    return emails.map((email) => {
+      return email.email;
+    });
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({
+      name: 'DATABASE_GET_ERROR',
+      message: 'Could not get recipients of event change notifications',
       cause: e,
     });
   }
