@@ -99,6 +99,8 @@ export async function createEvent(event: EventManipulationModel) {
 
 export async function updateEvent(event: EventManipulationModel) {
   try {
+    const oldEvent = await getEventById(event.id!);
+
     await db
       .updateTable('event')
       .set({
@@ -110,6 +112,7 @@ export async function updateEvent(event: EventManipulationModel) {
       })
       .where('id', '=', event.id!)
       .execute();
+    return oldEvent;
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to update an event', cause: e });
