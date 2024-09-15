@@ -115,7 +115,7 @@ export async function emailPersonalInfoChangeAction(oldInfo: UserModel) {
     from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
     replyTo: 'propagace@fi.muni.cz',
     bcc: recipients,
-    subject: '[Ambasadorský program] Změna akce',
+    subject: '[Ambasadorský program] Změna osobních údajů',
     html: render(PersonalInfoChangeTemplate({ newInfo: newInfo, oldInfo: oldInfo })),
   };
 
