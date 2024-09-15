@@ -9,9 +9,11 @@ import NewReportTemplate from '@/emails/manager/new-report-template';
 import NewSignupTemplate from '@/emails/manager/new-signup-template';
 import NewSuggestionTemplate from '@/emails/manager/new-suggestion-template';
 import NewEventTemplate from '@/emails/new-event-template';
+import PersonalInfoChangeTemplate from '@/emails/personal-info-change-template';
 import RegistrationApproveTemplate from '@/emails/registration-approve-template';
 import SignupApproveTemplate from '@/emails/signup-approve-template';
 import { EventDetailModel } from '@/models/event-models';
+import { UserModel } from '@/models/user-models';
 import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
 
@@ -98,6 +100,23 @@ export async function emailEventChange(oldEvent: EventDetailModel, eventId: stri
     bcc: recipients,
     subject: '[Ambasadorský program] Změna akce',
     html: render(EventChangeTemplate({ newEvent: event, oldEvent: oldEvent })),
+  };
+
+  await sendEmailNode(mailOptions);
+}
+
+export async function emailPersonalInfoChangeAction(oldInfo: UserModel) {
+  const newInfo = await getUserById(oldInfo.id);
+
+  // const recipients = newInfo.email;
+  const recipients = 'barculka1.3@gmail.com';
+
+  const mailOptions = {
+    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
+    replyTo: 'propagace@fi.muni.cz',
+    bcc: recipients,
+    subject: '[Ambasadorský program] Změna akce',
+    html: render(PersonalInfoChangeTemplate({ newInfo: newInfo, oldInfo: oldInfo })),
   };
 
   await sendEmailNode(mailOptions);
