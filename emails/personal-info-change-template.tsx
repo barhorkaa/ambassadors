@@ -9,7 +9,7 @@ interface PersonalInfoChangeProps {
 }
 
 const PersonalInfoChangeTemplate = ({ oldInfo, newInfo }: PersonalInfoChangeProps) => (
-  <EmailSkeleton title={'Došlo ke změně vašich osobních údajů'} preview={''}>
+  <EmailSkeleton title={'Došlo ke změně vašich osobních údajů'} preview={'Vaše osobní údaje byli změněny'}>
     <Text>Vaše osobní informace byli změněny.</Text>
     <Heading as="h3">Informace po změně: </Heading>
     <EmailUserDisplay user={newInfo} compareUser={oldInfo} />
