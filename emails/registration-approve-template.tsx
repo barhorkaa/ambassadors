@@ -2,7 +2,7 @@ import EmailSkeleton from '@/emails/utils/email-skeleton';
 import { Heading, Hr, Link, Text } from '@react-email/components';
 
 const RegistrationApproveTemplate = () => (
-  <EmailSkeleton title={'Vaše registrace byla potvrzena'} preview={''}>
+  <EmailSkeleton title={'Vaše registrace byla potvrzena'} preview={'Potvrdili jsme vaši registraci'}>
     <Text>Váš účet byl potvrzen. Nyní můžete aplikaci využívat naplno.</Text>
     <Heading as="h2">Přihlaste se na akci</Heading>
     <Text>
