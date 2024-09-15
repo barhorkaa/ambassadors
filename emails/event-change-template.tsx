@@ -9,12 +9,12 @@ interface EventChangeProps {
 }
 
 const EventChangeTemplate = ({ newEvent, oldEvent }: EventChangeProps) => (
-  <EmailSkeleton title={'Došlo ke změne akce'} preview={''}>
+  <EmailSkeleton title={'Došlo ke změne akce'} preview={'Akce byla změněna'}>
     <Text>Akce, na kterou jste přihlášeni, byla změněná</Text>
     <Heading as="h3">Starý detail</Heading>
-    <EmailEventDisplay event={oldEvent} />
+    <EmailEventDisplay event={oldEvent} eventCompare={newEvent} />
     <Heading as="h3">Nový detail</Heading>
-    <EmailEventDisplay event={newEvent} />
+    <EmailEventDisplay event={newEvent} eventCompare={oldEvent} />
   </EmailSkeleton>
 );
 
