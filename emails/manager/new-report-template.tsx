@@ -9,10 +9,10 @@ interface NewReportProps {
 }
 
 const NewReportTemplate = ({ report, event }: NewReportProps) => (
-  <EmailSkeleton title={'Byla přidána nová zpráva z akce '} preview={''}>
+  <EmailSkeleton title={'Byla přidána nová zpráva z akce '} preview={'K akci ' + event.name + ' byla přidaná zpráva'}>
     <Text>
       Do aplikace byla nahrána zpráva k akci
-      <Link href={process.env['HOSTING'] + '/events/' + event.id}> {event.name}</Link>
+      <Link href={process.env['HOSTING'] + '/events/' + event.id}> {event.name}.</Link>
     </Text>
     <Text>Před potvrzením si zprávu detailně přečtěte a oboznamte se s jejím obsahem.</Text>
     <Hr />
