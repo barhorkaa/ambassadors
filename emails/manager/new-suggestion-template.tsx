@@ -8,7 +8,7 @@ interface NewSuggestionProps {
 }
 
 const NewSuggestionTemplate = ({ event }: NewSuggestionProps) => (
-  <EmailSkeleton title={'Byl přidaný nový návrh na akci'} preview={''}>
+  <EmailSkeleton title={'Byl přidaný nový návrh na akci'} preview={'V aplikaci je nový návrh na akci'}>
     <Text>Do aplikace byl přidaný nový návrh na akci.</Text>
     <EmailEventDisplay event={event} />
     <Text>
