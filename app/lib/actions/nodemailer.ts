@@ -27,6 +27,11 @@ const transporter = nodemailer.createTransport({
 
 type MailOptions = { from: string; replyTo: string; bcc: string; subject: string; html: string };
 
+const BaseOptions = {
+  from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
+  replyTo: 'propagace@fi.muni.cz',
+};
+
 async function sendEmailNode(mailOptions: MailOptions) {
   try {
     const info = await transporter.sendMail(mailOptions);
@@ -43,8 +48,7 @@ export async function emailNewEventAction(id: string) {
   const recipients = 'barculka1.3@gmail.com';
 
   const mailOptions = {
-    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
-    replyTo: 'propagace@fi.muni.cz',
+    ...BaseOptions,
     bcc: recipients,
     subject: '[Ambasadorský program] Nová akce',
     html: render(NewEventTemplate({ event: event })),
@@ -60,8 +64,7 @@ export async function emailRegistrationApprove(userId: string) {
   const recipients = 'barculka1.3@gmail.com';
 
   const mailOptions = {
-    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
-    replyTo: 'propagace@fi.muni.cz',
+    ...BaseOptions,
     bcc: recipients,
     subject: '[Ambasadorský program] Registrace potvrzena',
     html: render(RegistrationApproveTemplate()),
@@ -78,8 +81,7 @@ export async function emailSignupApprove(userId: string, eventId: string, substi
   const recipients = 'barculka1.3@gmail.com';
 
   const mailOptions = {
-    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
-    replyTo: 'propagace@fi.muni.cz',
+    ...BaseOptions,
     bcc: recipients,
     subject: '[Ambasadorský program] Potvrzení přihlášení na akci',
     html: render(SignupApproveTemplate({ event: event, substitute: substitute })),
@@ -95,8 +97,7 @@ export async function emailEventChange(oldEvent: EventDetailModel, eventId: stri
   const recipients = 'barculka1.3@gmail.com';
 
   const mailOptions = {
-    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
-    replyTo: 'propagace@fi.muni.cz',
+    ...BaseOptions,
     bcc: recipients,
     subject: '[Ambasadorský program] Změna akce',
     html: render(EventChangeTemplate({ newEvent: event, oldEvent: oldEvent })),
@@ -112,8 +113,7 @@ export async function emailPersonalInfoChangeAction(oldInfo: UserModel) {
   const recipients = 'barculka1.3@gmail.com';
 
   const mailOptions = {
-    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
-    replyTo: 'propagace@fi.muni.cz',
+    ...BaseOptions,
     bcc: recipients,
     subject: '[Ambasadorský program] Změna osobních údajů',
     html: render(PersonalInfoChangeTemplate({ newInfo: newInfo, oldInfo: oldInfo })),
@@ -129,8 +129,7 @@ export async function emailManagerNewSuggestionAction(id: string) {
   const recipients = 'barculka1.3@gmail.com';
 
   const mailOptions = {
-    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
-    replyTo: 'propagace@fi.muni.cz',
+    ...BaseOptions,
     bcc: recipients,
     subject: '[Ambasadorský program] Nový návrh na akci',
     html: render(NewSuggestionTemplate({ event: event })),
@@ -146,8 +145,7 @@ export async function emailManagerNewRegistrationAction(id: string) {
   const recipients = 'barculka1.3@gmail.com';
 
   const mailOptions = {
-    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
-    replyTo: 'propagace@fi.muni.cz',
+    ...BaseOptions,
     bcc: recipients,
     subject: '[Ambasadorský program] Nová registrace',
     html: render(NewRegistrationTemplate({ user: user })),
@@ -164,8 +162,7 @@ export async function emailManagerNewReportAction(eventId: string) {
   const recipients = 'barculka1.3@gmail.com';
 
   const mailOptions = {
-    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
-    replyTo: 'propagace@fi.muni.cz',
+    ...BaseOptions,
     bcc: recipients,
     subject: '[Ambasadorský program] Nová zpáva z akce',
     html: render(NewReportTemplate({ event: event, report: report! })),
@@ -182,8 +179,7 @@ export async function emailManagerNewSignupAction(eventId: string, userId: strin
   const recipients = 'barculka1.3@gmail.com';
 
   const mailOptions = {
-    from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
-    replyTo: 'propagace@fi.muni.cz',
+    ...BaseOptions,
     bcc: recipients,
     subject: '[Ambasadorský program] Nové přihlášení na akci',
     html: render(NewSignupTemplate({ event: event, user: user, substitute: isSubstitute })),
