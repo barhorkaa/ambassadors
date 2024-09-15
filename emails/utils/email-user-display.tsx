@@ -29,7 +29,7 @@ interface DisplayRowProps {
   value?: string | number;
 }
 
-const DisplayRow = ({ tag, property, propertyComp, value = property }: DisplayRowProps) => (
+export const DisplayRow = ({ tag, property, propertyComp, value = property }: DisplayRowProps) => (
   <Section>
     <Row>
       <Column>
