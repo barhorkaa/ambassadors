@@ -1,6 +1,6 @@
 'use server';
 
-import { emailRegistrationApprove } from '@/app/lib/actions/nodemailer';
+import { emailPersonalInfoChangeAction, emailRegistrationApprove } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
 import { auth } from '@/auth';
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
@@ -27,7 +27,9 @@ export async function editUserAction(prevState: any, formData: FormData) {
     };
 
     const parsedData = userEditSchema.parse(userForm);
-    await editUser(parsedData);
+
+    const oldUser = await editUser(parsedData);
+    await emailPersonalInfoChangeAction(oldUser);
   } catch (e) {
     console.error(e);
     return handleError(e);
@@ -54,7 +56,8 @@ export async function editUserFullAction(prevState: any, formData: FormData) {
       return { success: false, errors: [], generic: 'Nemůžete změnit vlastní roli' };
     }
 
-    await editFullUser(parsedData);
+    const oldUser = await editFullUser(parsedData);
+    await emailPersonalInfoChangeAction(oldUser);
   } catch (e) {
     console.error(e);
     return handleError(e);
