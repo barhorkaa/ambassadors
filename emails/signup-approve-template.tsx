@@ -9,7 +9,10 @@ interface SignupApproveProps {
 }
 
 const SignupApproveTemplate = ({ event, substitute }: SignupApproveProps) => (
-  <EmailSkeleton title={'Vaše prihlášení na akci bylo potvrzeno'} preview={''}>
+  <EmailSkeleton
+    title={'Vaše prihlášení na akci bylo potvrzeno'}
+    preview={'Vaše přihlášení na ' + event.name + ' bylo potvrzeno'}
+  >
     <Text>Právě jsme potvrdili vaše přihlášení na akci:</Text>
     <EmailEventDisplay event={event} />
     {substitute ?? (
