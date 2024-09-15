@@ -4,7 +4,7 @@ import { EventDetailModel } from '@/models/event-models';
 import { Link, Text } from '@react-email/components';
 
 const NewEventTemplate = ({ event }: { event: EventDetailModel }) => (
-  <EmailSkeleton title={'Byla přidaná nová akce'} preview={'[Ambasadorský program] Přidali jsme novou akci'}>
+  <EmailSkeleton title={'Byla přidaná nová akce'} preview={'Přidali jsme novou akci'}>
     <Text>Přidali jsme novou akci!</Text>
     <EmailEventDisplay event={event} />
     <Text>
