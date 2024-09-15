@@ -1,6 +1,6 @@
 import { UserRoles } from '@/app/utils/user-roles';
 import { UserModel } from '@/models/user-models';
-import { Container, Text } from '@react-email/components';
+import { Column, Container, Row, Section, Text } from '@react-email/components';
 
 interface UserDisplayProps {
   user: UserModel;
@@ -9,31 +9,39 @@ interface UserDisplayProps {
 
 const EmailUserDisplay = ({ user, compareUser }: UserDisplayProps) => (
   <Container className="shadow-xl px-4 py-2 ">
-    <Text>
-      <strong>Jméno: </strong>
-      <Text className={user.name !== compareUser.name ? 'text-[#FF0000]' : ''}>{user.name}</Text>
-    </Text>
-    <Text>
-      <strong>E-mail: </strong>
-      <Text className={user.email !== compareUser.email ? 'text-[#FF0000]' : ''}>{user.email}</Text>
-    </Text>
-    <Text>
-      <strong>Číslo: </strong>
-      <Text className={user.phone_number !== compareUser.phone_number ? 'text-[#FF0000]' : ''}>
-        {user.phone_number}
-      </Text>
-    </Text>
-    <Text>
-      <strong>UČO: </strong>
-      <Text className={user.uco !== compareUser.uco ? 'text-[#FF0000]' : ''}>{user.uco}</Text>
-    </Text>
-    <Text>
-      <strong>Role v aplikaci: </strong>
-      <Text className={user.role !== compareUser.role ? 'text-[#FF0000]' : ''}>
-        {user.role === UserRoles.manager ? 'Manažer' : 'Ambasador'}
-      </Text>
-    </Text>
+    <DisplayRow tag={'Jméno'} property={user.name} propertyComp={compareUser.name} />
+    <DisplayRow tag={'E-mail'} property={user.email} propertyComp={compareUser.email} />
+    <DisplayRow tag={'Tel. číslo'} property={user.phone_number} propertyComp={compareUser.phone_number} />
+    <DisplayRow tag={'UČO'} property={user.uco} propertyComp={compareUser.uco} />
+    <DisplayRow
+      tag={'Role v aplikaci'}
+      property={user.role}
+      propertyComp={compareUser.role}
+      value={user.role === UserRoles.manager ? 'Manažer' : 'Ambasador'}
+    />
   </Container>
+);
+
+interface DisplayRowProps {
+  tag: string;
+  property: string | number;
+  propertyComp: string | number;
+  value?: string | number;
+}
+
+const DisplayRow = ({ tag, property, propertyComp, value = property }: DisplayRowProps) => (
+  <Section>
+    <Row>
+      <Column>
+        <Text className="w-1/2">
+          <strong>{tag}: </strong>
+        </Text>
+      </Column>
+      <Column className="w-1/2">
+        <Text className={property !== propertyComp ? 'text-[#FF0000]' : ''}>{value}</Text>
+      </Column>
+    </Row>
+  </Section>
 );
 
 export default EmailUserDisplay;
