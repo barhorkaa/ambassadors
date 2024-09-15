@@ -10,7 +10,7 @@ interface NewSignupProps {
 }
 
 const NewSignupTemplate = ({ event, user, substitute }: NewSignupProps) => (
-  <EmailSkeleton title={'Nové přihlášení na akci'} preview={''}>
+  <EmailSkeleton title={'Nové přihlášení na akci'} preview={'Někto by rád vyjel na akci'}>
     <Text>V aplikaci přibylo noé přihlášení na akci.</Text>
     <Container>
       <Text>
