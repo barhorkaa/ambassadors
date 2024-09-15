@@ -43,11 +43,13 @@ export async function createUser(newUser: UserCreateModel) {
 
 export async function editUser(user: UserEditModel) {
   try {
+    const oldUser = getUserById(user.id);
     await db
       .updateTable('user')
       .where('id', '=', user.id)
       .set({ name: user.name, phone_number: user.phone_number, updated_at: new Date() })
       .execute();
+    return oldUser;
   } catch (e) {
     console.error(e);
     throw new DatabaseError({
@@ -60,6 +62,8 @@ export async function editUser(user: UserEditModel) {
 
 export async function editFullUser(user: UserEditModel) {
   try {
+    const oldUser = getUserById(user.id);
+
     const userFormerRole = await db
       .selectFrom('user')
       .where('id', '=', user.id)
@@ -87,6 +91,7 @@ export async function editFullUser(user: UserEditModel) {
         await createManagerNotifications(user.id);
       }
     }
+    return oldUser;
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Could not update user, full', cause: e });
