@@ -63,7 +63,7 @@ export async function emailRegistrationApprove(userId: string) {
     from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
     replyTo: 'propagace@fi.muni.cz',
     bcc: recipients,
-    subject: '[Ambasadorský program] Potvrzení přihlášení na akci',
+    subject: '[Ambasadorský program] Registrace potvrzena',
     html: render(RegistrationApproveTemplate()),
   };
 
