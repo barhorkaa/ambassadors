@@ -7,7 +7,7 @@ interface NewRegistrationProps {
 }
 
 const NewRegistrationTemplate = ({ user }: NewRegistrationProps) => (
-  <EmailSkeleton title={'Noý ambasador'} preview={''}>
+  <EmailSkeleton title={'Noý ambasador'} preview={'Do aplikace se zaregistroval nový ambasador'}>
     <Text>
       Do aplikace se právě zaregistroval nový ambasador. Registraci můžete potvrdit{' '}
       <Link href={process.env['HOSTING' + '/ambassadors/' + user.id]}>zde</Link> kliknutím na "Potvrdit".
