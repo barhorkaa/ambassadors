@@ -14,6 +14,7 @@ import NewEventTemplate from '@/emails/new-event-template';
 import PersonalInfoChangeTemplate from '@/emails/personal-info-change-template';
 import RegistrationApproveTemplate from '@/emails/registration-approve-template';
 import SignupApproveTemplate from '@/emails/signup-approve-template';
+import SignupPromotionTemplate from '@/emails/signup-promotion-template';
 import { EventDetailModel } from '@/models/event-models';
 import { UserModel } from '@/models/user-models';
 import { render } from '@react-email/render';
@@ -99,6 +100,28 @@ export async function emailSignupApprove(userId: string, eventId: string, substi
       bcc: recipients,
       subject: '[Ambasadorský program] Potvrzení přihlášení na akci',
       html: render(SignupApproveTemplate({ event: event, substitute: substitute })),
+    };
+
+    await sendEmailNode(mailOptions);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
+export async function emailSignupPromotionAction(userId: string, eventId: string) {
+  try {
+    const event = await getEventById(eventId);
+    const user = await getUserById(userId);
+
+    // const recipients = user.email;
+    const recipients = 'barculka1.3@gmail.com';
+
+    const mailOptions = {
+      ...BaseOptions,
+      bcc: recipients,
+      subject: '[Ambasadorský program] Povýšení z náhradníka',
+      html: render(SignupPromotionTemplate({ event: event })),
     };
 
     await sendEmailNode(mailOptions);
