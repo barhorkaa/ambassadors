@@ -8,8 +8,6 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('user_id', 'char(36)', (col) => col.references('user.id').notNull())
     .addColumn('registration_approve', 'boolean', (col) => col.notNull().defaultTo(false))
     .addColumn('signup_approve', 'boolean', (col) => col.notNull().defaultTo(false))
-    .addColumn('event_approve', 'boolean', (col) => col.notNull().defaultTo(false))
-    .addColumn('report_approve', 'boolean', (col) => col.notNull().defaultTo(false))
     .addColumn('personal_info_change', 'boolean', (col) => col.notNull().defaultTo(false))
     .addColumn('event_change', 'boolean', (col) => col.notNull().defaultTo(false))
     .addColumn('new_event', 'boolean', (col) => col.notNull().defaultTo(false))
