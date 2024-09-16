@@ -126,8 +126,6 @@ export async function deleteManagerNotifications(userId: string) {
 type NotificationName =
   | 'registration_approve'
   | 'signup_approve'
-  | 'event_approve'
-  | 'report_approve'
   | 'personal_info_change'
   | 'event_change'
   | 'new_event';
