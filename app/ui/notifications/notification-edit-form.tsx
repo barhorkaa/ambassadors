@@ -72,13 +72,6 @@ function UserNotifications({ userNotifications }: { userNotifications: UserNotif
   return (
     <>
       <ToggleButton
-        defaultState={userNotifications.eventApprove}
-        title={'Potvzení návrhu na akci'}
-        detail={'Když byl váš podaný návrh schválen'}
-        id={'eventApprove'}
-        name={'eventApprove'}
-      />
-      <ToggleButton
         defaultState={userNotifications.eventChange}
         title={'Změna akce'}
         detail={'Když se něco změní na akci, na kterou jdete'}
@@ -104,12 +97,6 @@ function UserNotifications({ userNotifications }: { userNotifications: UserNotif
         title={'Potvrzení registrace'}
         id={'registrationApprove'}
         name={'registrationApprove'}
-      />
-      <ToggleButton
-        defaultState={userNotifications.reportApprove}
-        title={'Potvrzení podané zprávy'}
-        id={'reportApprove'}
-        name={'reportApprove'}
       />
       <ToggleButton
         defaultState={userNotifications.signupApprove}
