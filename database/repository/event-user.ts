@@ -50,6 +50,8 @@ export async function createSignUp(event_id: string, user_id: string, substitute
 
 export async function deleteSignUp(event_id: string, user_id: string) {
   try {
+    let promotedSubstituteId = undefined;
+
     const wasSubstitute = await db
       .deleteFrom('eventUser')
       .where((eb) => eb.and([eb('event_id', '=', event_id), eb('user_id', '=', user_id)]))
@@ -65,9 +67,12 @@ export async function deleteSignUp(event_id: string, user_id: string) {
         .executeTakeFirst();
 
       if (firstSubstitute) {
-        await makeSignUpNotSubstitute(event_id, firstSubstitute!.user_id);
+        await makeSignUpNotSubstitute(event_id, firstSubstitute.user_id);
+        promotedSubstituteId = firstSubstitute.user_id;
       }
     }
+
+    return promotedSubstituteId;
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_DELETE_ERROR', message: 'Unable to delete user signup', cause: e });
