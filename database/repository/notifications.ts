@@ -72,11 +72,9 @@ export async function editNotifications(notifications: UserNotifications) {
       .updateTable('notifications')
       .where('user_id', '=', notifications.userId)
       .set({
-        event_approve: notifications.eventApprove,
         event_change: notifications.eventChange,
         new_event: notifications.newEvent,
         registration_approve: notifications.registrationApprove,
-        report_approve: notifications.reportApprove,
         signup_approve: notifications.signupApprove,
         personal_info_change: notifications.personalInfoChange,
       })
