@@ -4,6 +4,8 @@ import { getEventById } from '@/database/repository/event';
 import { getEventReport } from '@/database/repository/report';
 import { getUserById } from '@/database/repository/user';
 import EventChangeTemplate from '@/emails/event-change-template';
+import ManagerDemotionTemplate from '@/emails/manager/manager-demotion-template';
+import ManagerPromotionTemplate from '@/emails/manager/manager-promotion-template';
 import NewRegistrationTemplate from '@/emails/manager/new-registration-template';
 import NewReportTemplate from '@/emails/manager/new-report-template';
 import NewSignupTemplate from '@/emails/manager/new-signup-template';
@@ -225,6 +227,48 @@ export async function emailManagerNewSignupAction(eventId: string, userId: strin
       bcc: recipients,
       subject: '[Ambasadorský program] Nové přihlášení na akci',
       html: render(NewSignupTemplate({ event: event, user: user, substitute: isSubstitute })),
+    };
+
+    await sendEmailNode(mailOptions);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
+export async function emailManagerPromotionAction(userId: string) {
+  try {
+    const user = await getUserById(userId);
+
+    // const recipients = user.email;
+    const recipients = 'barculka1.3@gmail.com';
+
+    const mailOptions = {
+      ...BaseOptions,
+      bcc: recipients,
+      subject: '[Ambasadorský program] Byli jste povýšeni na manažera',
+      html: render(ManagerPromotionTemplate()),
+    };
+
+    await sendEmailNode(mailOptions);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
+export async function emailManagerDemotionAction(userId: string) {
+  try {
+    const user = await getUserById(userId);
+
+    // const recipients = user.email;
+    const recipients = 'barculka1.3@gmail.com';
+
+    const mailOptions = {
+      ...BaseOptions,
+      bcc: recipients,
+      subject: '[Ambasadorský program] Role manažera vám byla odebrána',
+      html: render(ManagerDemotionTemplate()),
     };
 
     await sendEmailNode(mailOptions);
