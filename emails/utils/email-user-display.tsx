@@ -25,7 +25,7 @@ const EmailUserDisplay = ({ user, compareUser }: UserDisplayProps) => (
 interface DisplayRowProps {
   tag: string;
   property: string | number;
-  propertyComp: string | number;
+  propertyComp?: string | number;
   value?: string | number;
 }
 
@@ -38,7 +38,7 @@ export const DisplayRow = ({ tag, property, propertyComp, value = property }: Di
         </Text>
       </Column>
       <Column className="w-1/2">
-        <Text className={property !== propertyComp ? 'text-[#FF0000]' : ''}>{value}</Text>
+        <Text className={propertyComp && property !== propertyComp ? 'text-[#FF0000]' : ''}>{value}</Text>
       </Column>
     </Row>
   </Section>
