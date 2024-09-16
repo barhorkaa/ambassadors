@@ -1,6 +1,10 @@
 'use server';
 
-import { emailManagerNewSignupAction, emailSignupApprove } from '@/app/lib/actions/nodemailer';
+import {
+  emailManagerNewSignupAction,
+  emailSignupApprove,
+  emailSignupPromotionAction,
+} from '@/app/lib/actions/nodemailer';
 import { getEventById } from '@/database/repository/event';
 import { approveSignUp, createSignUp, deleteSignUp, getSignUpsForEvent } from '@/database/repository/event-user';
 import { revalidatePath } from 'next/cache';
@@ -35,7 +39,8 @@ export async function createSignUpAction(event_id: string, user_id: string) {
 
 export async function deleteSignUpAction(event_id: string, user_id: string) {
   try {
-    await deleteSignUp(event_id, user_id);
+    const promotedSubstituteId = await deleteSignUp(event_id, user_id);
+    if (promotedSubstituteId) await emailSignupPromotionAction(promotedSubstituteId, event_id);
   } catch (e) {
     console.error(e);
     throw e;
