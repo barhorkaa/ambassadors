@@ -1,7 +1,13 @@
 'use server';
 
-import { emailPersonalInfoChangeAction, emailRegistrationApprove } from '@/app/lib/actions/nodemailer';
+import {
+  emailManagerDemotionAction,
+  emailManagerPromotionAction,
+  emailPersonalInfoChangeAction,
+  emailRegistrationApprove,
+} from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
+import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { approveUser, editFullUser, editUser } from '@/database/repository/user';
 import { userEditSchema } from '@/models/user-models';
@@ -58,6 +64,14 @@ export async function editUserFullAction(prevState: any, formData: FormData) {
 
     const oldUser = await editFullUser(parsedData);
     await emailPersonalInfoChangeAction(oldUser);
+
+    if (oldUser.role !== parsedData.role) {
+      if (parsedData.role === UserRoles.manager) {
+        await emailManagerPromotionAction(parsedData.id);
+      } else {
+        await emailManagerDemotionAction(parsedData.id);
+      }
+    }
   } catch (e) {
     console.error(e);
     return handleError(e);
