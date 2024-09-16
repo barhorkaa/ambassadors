@@ -10,8 +10,6 @@ export async function editNotificationsAction(prevState: any, formData: FormData
       userId: formData.get('userId') as string,
       registrationApprove: formData.get('registrationApprove') === 'on',
       signupApprove: formData.get('signupApprove') === 'on',
-      eventApprove: formData.get('eventApprove') === 'on',
-      reportApprove: formData.get('reportApprove') === 'on',
       personalInfoChange: formData.get('personalInfoChange') === 'on',
       eventChange: formData.get('eventChange') === 'on',
       newEvent: formData.get('newEvent') === 'on',
