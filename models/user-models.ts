@@ -43,6 +43,8 @@ export type UserModel = {
   role: 'ambassador' | 'manager';
   approved: boolean;
   motivated: boolean;
+  verification_token: string | null;
+  email_verified: boolean;
   created_at: Date;
   updated_at: Date;
   deleted_at: Date | null;
