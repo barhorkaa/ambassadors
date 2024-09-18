@@ -5,6 +5,7 @@ import {
   emailManagerPromotionAction,
   emailPersonalInfoChangeAction,
   emailRegistrationApprove,
+  emailVerifyEmail,
 } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
 import { UserRoles } from '@/app/utils/user-roles';
@@ -71,6 +72,10 @@ export async function editUserFullAction(prevState: any, formData: FormData) {
       } else {
         await emailManagerDemotionAction(parsedData.id);
       }
+    }
+
+    if (oldUser.email !== parsedData.email) {
+      await emailVerifyEmail(parsedData.id);
     }
   } catch (e) {
     console.error(e);
