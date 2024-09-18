@@ -74,7 +74,6 @@ export async function editNotifications(notifications: UserNotifications) {
       .set({
         event_change: notifications.eventChange,
         new_event: notifications.newEvent,
-        registration_approve: notifications.registrationApprove,
         signup_approve: notifications.signupApprove,
         personal_info_change: notifications.personalInfoChange,
       })
@@ -123,12 +122,7 @@ export async function deleteManagerNotifications(userId: string) {
   }
 }
 
-type NotificationName =
-  | 'registration_approve'
-  | 'signup_approve'
-  | 'personal_info_change'
-  | 'event_change'
-  | 'new_event';
+type NotificationName = 'signup_approve' | 'personal_info_change' | 'event_change' | 'new_event';
 
 export async function getRecipients(notification: NotificationName) {
   try {
