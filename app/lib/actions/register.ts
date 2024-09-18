@@ -1,6 +1,6 @@
 'use server';
 
-import { emailManagerNewRegistrationAction } from '@/app/lib/actions/nodemailer';
+import { emailVerifyEmail } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
 import { createUser } from '@/database/repository/user';
 import { userCreateSchema } from '@/models/user-models';
@@ -23,7 +23,7 @@ export async function createUserAction(prevState: any, formData: FormData) {
     parsedData.password = await bcrypt.hash(parsedData.password, salt);
 
     const userId = await createUser(parsedData);
-    await emailManagerNewRegistrationAction(userId);
+    await emailVerifyEmail(userId);
   } catch (error) {
     console.error(error);
     return handleError(error);
