@@ -4,7 +4,6 @@ type NotificationBase = {
 };
 
 export type UserNotifications = NotificationBase & {
-  registrationApprove: boolean;
   signupApprove: boolean;
   personalInfoChange: boolean;
   eventChange: boolean;
