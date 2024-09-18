@@ -15,6 +15,7 @@ import PersonalInfoChangeTemplate from '@/emails/personal-info-change-template';
 import RegistrationApproveTemplate from '@/emails/registration-approve-template';
 import SignupApproveTemplate from '@/emails/signup-approve-template';
 import SignupPromotionTemplate from '@/emails/signup-promotion-template';
+import VerifyEmailTemplate from '@/emails/verify-email-template';
 import { EventDetailModel } from '@/models/event-models';
 import { UserModel } from '@/models/user-models';
 import { render } from '@react-email/render';
@@ -42,6 +43,30 @@ async function sendEmailNode(mailOptions: MailOptions) {
   } catch (error) {
     console.error('Error sending email:', error);
     throw error;
+  }
+}
+
+export async function emailVerifyEmail(id: string) {
+  try {
+    const user = await getUserById(id);
+
+    const token = user.verification_token;
+    if (token) {
+      // const recipients = user.email;
+      const recipients = 'barculka1.3@gmail.com';
+
+      const mailOptions = {
+        ...BaseOptions,
+        bcc: recipients,
+        subject: '[Ambasadorský program] Nová akce',
+        html: render(VerifyEmailTemplate({ token: token })),
+      };
+
+      await sendEmailNode(mailOptions);
+    }
+  } catch (e) {
+    console.error(e);
+    throw e;
   }
 }
 
