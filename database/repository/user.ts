@@ -41,6 +41,19 @@ export async function createUser(newUser: UserCreateModel) {
   }
 }
 
+export async function editUserPassword(id: string, newPassword: string) {
+  try {
+    await db
+      .updateTable('user')
+      .where('id', '=', id)
+      .set({ password: newPassword, updated_at: new Date() })
+      .executeTakeFirstOrThrow();
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_UPDATE_ERROR', message: 'Unable to change user password', cause: e });
+  }
+}
+
 export async function editUser(user: UserEditModel) {
   try {
     const oldUser = getUserById(user.id);
