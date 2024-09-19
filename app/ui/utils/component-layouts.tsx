@@ -1,6 +1,7 @@
 import SubmitButton from '@/app/ui/button/submit-button';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { ZodIssue } from 'zod';
 
 export function FormLayout({
   action,
@@ -9,7 +10,9 @@ export function FormLayout({
   children,
 }: {
   action: any;
-  state: any;
+  state:
+    | { success: boolean; errors: ZodIssue[]; generic: undefined }
+    | { success: boolean; errors: never[]; generic: string };
   modalId?: string;
   children: React.ReactNode;
 }) {
