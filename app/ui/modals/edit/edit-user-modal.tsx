@@ -4,7 +4,12 @@ import ModalLayout from '@/app/ui/modals/modal-layout';
 import UserEditForm from '@/app/ui/user/user-edit-form';
 import { UserModel } from '@/models/user-models';
 
-export default function EditUserModal({ user, full }: { user: UserModel; full: boolean }) {
+interface EditUserModalProps {
+  user: UserModel;
+  full: boolean;
+}
+
+export default function EditUserModal({ user, full }: EditUserModalProps) {
   return (
     <ModalLayout id={user.id} title={'Upravit informace o uživateli'} modalType={'edit'}>
       {!full && (
