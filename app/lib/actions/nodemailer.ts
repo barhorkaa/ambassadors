@@ -13,6 +13,7 @@ import NewSuggestionTemplate from '@/emails/manager/new-suggestion-template';
 import NewEventTemplate from '@/emails/new-event-template';
 import PersonalInfoChangeTemplate from '@/emails/personal-info-change-template';
 import RegistrationApproveTemplate from '@/emails/registration-approve-template';
+import ResetPasswordTemplate from '@/emails/reset-password-template';
 import SignupApproveTemplate from '@/emails/signup-approve-template';
 import SignupPromotionTemplate from '@/emails/signup-promotion-template';
 import VerifyEmailTemplate from '@/emails/verify-email-template';
@@ -317,6 +318,25 @@ export async function emailManagerDemotionAction(userId: string) {
       bcc: recipients,
       subject: '[Ambasadorský program] Role manažera vám byla odebrána',
       html: render(ManagerDemotionTemplate()),
+    };
+
+    await sendEmailNode(mailOptions);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
+export async function emailResetPassword(email: string, token: string) {
+  try {
+    // const recipients = email;
+    const recipients = 'barculka1.3@gmail.com';
+
+    const mailOptions = {
+      ...BaseOptions,
+      bcc: recipients,
+      subject: '[Ambasadorský program] Resetování hesla',
+      html: render(ResetPasswordTemplate({ token, email })),
     };
 
     await sendEmailNode(mailOptions);
