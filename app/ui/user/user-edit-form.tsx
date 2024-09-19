@@ -8,7 +8,12 @@ import FormControl from '@/app/ui/utils/form-control';
 import { UserModel } from '@/models/user-models';
 import { useFormState } from 'react-dom';
 
-export default function UserEditForm({ user, full }: { user: UserModel; full: boolean }) {
+interface UserEditFormProps {
+  user: UserModel;
+  full: boolean;
+}
+
+export default function UserEditForm({ user, full }: UserEditFormProps) {
   const [state, dispatch] = useFormState(full ? editUserFullAction : editUserAction, formActionInitialState);
 
   return (
