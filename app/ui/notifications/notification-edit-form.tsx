@@ -93,12 +93,6 @@ function UserNotifications({ userNotifications }: { userNotifications: UserNotif
         name={'personalInfoChange'}
       />
       <ToggleButton
-        defaultState={userNotifications.registrationApprove}
-        title={'Potvrzení registrace'}
-        id={'registrationApprove'}
-        name={'registrationApprove'}
-      />
-      <ToggleButton
         defaultState={userNotifications.signupApprove}
         title={'Potvrzení přihlášení na akci'}
         id={'signupApprove'}
