@@ -32,9 +32,9 @@ export default async function Page({ params }: { params: { id: string } }) {
         <div className="flex flex-row gap-2">
           {!user!.approved && <ApproveButton fun={approveUserById} id={user!.id} />}
           {session?.user.role === UserRoles.manager ? (
-            <EditUserModal user={user!} full={true} />
+            <EditUserModal user={user!} full={true} canEditPassword={session?.user.id === params.id} />
           ) : (
-            session?.user.id === params.id && <EditUserModal user={user!} full={false} />
+            session?.user.id === params.id && <EditUserModal user={user!} full={false} canEditPassword={true} />
           )}
           {params.id === session?.user.id && (
             <EditNotificationsModal managerNotifications={managerNotifications} notifications={userNotifications} />
