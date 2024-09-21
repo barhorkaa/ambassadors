@@ -1,10 +1,14 @@
 'use server';
 
 import { signOutAction } from '@/app/lib/actions/authentication';
+import { emailResetPassword } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
-import { editUserPassword, getUserById } from '@/database/repository/user';
-import { passwordSchema } from '@/models/password-models';
+import { auth } from '@/auth';
+import { editUserPassword, getUserByEmail, getUserById } from '@/database/repository/user';
+import { emailResetSchema, emailSchema, passwordSchema } from '@/models/password-models';
 import bcrypt from 'bcryptjs';
+import jwt, { Secret } from 'jsonwebtoken';
+import { redirect } from 'next/navigation';
 
 export async function changePassword(prevState: any, formData: FormData) {
   try {
@@ -30,6 +34,30 @@ export async function changePassword(prevState: any, formData: FormData) {
     return handleError(e);
   }
   await signOutAction();
+  return { success: true, errors: [], generic: undefined };
+}
+
+export async function resetPasswordAction(prevState: any, formData: FormData) {
+  try {
+    const resetForm = {
+      email: formData.get('email'),
+      newPassword: formData.get('newPassword'),
+    };
+
+    const parsedData = emailResetSchema.parse(resetForm);
+
+    const user = await getUserByEmail(parsedData.email);
+    const session = await auth();
+
+    if (user === undefined) return { success: false, errors: [], generic: 'Uživatel s tímto emailem neexistuje' };
+    if (user.id !== session?.user.id) return { success: false, errors: [], generic: 'Na tuto akci nemáte oprávnění' };
+
+    await editUserPassword(user.id, parsedData.newPassword);
+  } catch (e) {
+    console.error(e);
+    return handleError(e);
+  }
+  redirect('/password/reset/success');
   return { success: true, errors: [], generic: undefined };
 }
 
