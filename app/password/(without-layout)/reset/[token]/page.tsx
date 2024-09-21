@@ -7,7 +7,13 @@ export default function Page({ params }: { params: { token: string } }) {
   const secret = process.env['RESET_TOKEN_SECRET'];
   if (secret === undefined) redirect('/');
 
-  const decoded = jwt.verify(params.token, secret);
+  try {
+    console.log('token is: ', params.token);
+    const decoded = jwt.verify(params.token, secret);
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
 
   return (
     <HeroCenterLayout title={'Zadejte nové heslo'}>
