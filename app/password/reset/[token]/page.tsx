@@ -1,21 +1,19 @@
-'use client';
+// 'use client';
 
 import PasswordResetForm from '@/app/ui/password/password-reset-form';
 import { HeroCenterLayout } from '@/app/ui/utils/component-layouts';
-import jwt, { Secret } from 'jsonwebtoken';
-import { redirect, useSearchParams } from 'next/navigation';
+import jwt from 'jsonwebtoken';
+import { redirect } from 'next/navigation';
 
 export default function Page({ params }: { params: { token: string } }) {
-  const tokenValid = jwt.verify(params.token, process.env['RESET_TOKEN_SECRET'] as Secret);
+  const secret = process.env['RESET_TOKEN_SECRET'];
+  if (secret === undefined) redirect('/');
 
-  const searchParams = useSearchParams();
-  const email = searchParams.get('email');
-
-  if (!tokenValid || !email) redirect('');
+  const decoded = jwt.verify(params.token, secret);
 
   return (
     <HeroCenterLayout title={'Zadejte nové heslo'}>
-      <PasswordResetForm email={email} />
+      <PasswordResetForm email={'barculka1.3@gmail.com'} />
     </HeroCenterLayout>
   );
 }
