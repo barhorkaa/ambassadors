@@ -3,7 +3,6 @@
 import { signOutAction } from '@/app/lib/actions/authentication';
 import { emailResetPassword } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
-import { auth } from '@/auth';
 import { editUserPassword, getUserByEmail, getUserById } from '@/database/repository/user';
 import { emailResetSchema, emailSchema, passwordSchema } from '@/models/password-models';
 import bcrypt from 'bcryptjs';
@@ -47,10 +46,11 @@ export async function resetPasswordAction(prevState: any, formData: FormData) {
     const parsedData = emailResetSchema.parse(resetForm);
 
     const user = await getUserByEmail(parsedData.email);
-    const session = await auth();
 
     if (user === undefined) return { success: false, errors: [], generic: 'Uživatel s tímto emailem neexistuje' };
-    if (user.id !== session?.user.id) return { success: false, errors: [], generic: 'Na tuto akci nemáte oprávnění' };
+
+    const salt = await bcrypt.genSalt(10);
+    parsedData.newPassword = await bcrypt.hash(parsedData.newPassword, salt);
 
     await editUserPassword(user.id, parsedData.newPassword);
   } catch (e) {
