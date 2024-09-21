@@ -54,7 +54,6 @@ export async function resetPasswordAction(prevState: any, formData: FormData) {
     return handleError(e);
   }
   redirect('/password/success');
-  return { success: true, errors: [], generic: undefined };
 }
 
 export async function getEmailAction(prevState: any, formData: FormData) {
