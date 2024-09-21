@@ -57,7 +57,7 @@ export async function resetPasswordAction(prevState: any, formData: FormData) {
     console.error(e);
     return handleError(e);
   }
-  redirect('/password/reset/success');
+  redirect('/password/success');
   return { success: true, errors: [], generic: undefined };
 }
 
