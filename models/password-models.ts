@@ -15,7 +15,7 @@ export const emailSchema = z.object({
 });
 
 export const emailResetSchema = z.object({
-  email: z.string().email(),
+  userId: z.string(),
   newPassword: z
     .string({ required_error: 'Nové heslo je povinný údaj' })
     .min(6, { message: 'Heslo musí obsahovat alespoň 6 znaků' }),
