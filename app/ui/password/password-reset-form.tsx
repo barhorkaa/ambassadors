@@ -1,13 +1,13 @@
 'use client';
 
-import { changePassword } from '@/app/lib/actions/password';
+import { resetPasswordAction } from '@/app/lib/actions/password';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { useFormState } from 'react-dom';
 
 export default function PasswordResetForm({ email }: { email: string }) {
-  const [state, dispatch] = useFormState(changePassword, formActionInitialState);
+  const [state, dispatch] = useFormState(resetPasswordAction, formActionInitialState);
 
   return (
     <FormLayout action={dispatch} state={state}>
