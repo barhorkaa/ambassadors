@@ -9,7 +9,7 @@ interface ResetPasswordProps {
 const ResetPasswordTemplate = ({ token, email }: ResetPasswordProps) => (
   <EmailSkeleton title={'Obnovení hesla'} preview={'Obnovte své heslo'}>
     <Text>Heslo obnovíte na stránce, na kterou se dostanete kliknutím na následujíci link.</Text>
-    <Link href={process.env['HOSTING'] + '/password/reset/' + token + '?email=' + email}>Resetovat heslo</Link>
+    <Link href={process.env['HOSTING'] + '/password/reset/' + token}>Resetovat heslo</Link>
   </EmailSkeleton>
 );
 
