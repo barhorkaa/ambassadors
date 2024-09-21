@@ -81,5 +81,5 @@ export async function getEmailAction(prevState: any, formData: FormData) {
     console.error(e);
     return handleError(e);
   }
-  return { success: true, errors: [], generic: undefined };
+  redirect('/password/sent');
 }
