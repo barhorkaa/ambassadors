@@ -6,7 +6,7 @@ import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { useFormState } from 'react-dom';
 
-export default function PasswordResetForm({ email }: { email: string }) {
+export default function PasswordResetForm({ userId }: { userId: string }) {
   const [state, dispatch] = useFormState(resetPasswordAction, formActionInitialState);
 
   return (
@@ -17,7 +17,7 @@ export default function PasswordResetForm({ email }: { email: string }) {
         type={'password'}
         errorMessage={findErrors('newPassword', state.errors)[0]}
       />
-      <input id="email" type="hidden" name="email" value={email} required />
+      <input id="id" type="hidden" name="userId" value={userId} required />
     </FormLayout>
   );
 }
