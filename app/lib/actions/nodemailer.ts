@@ -336,7 +336,7 @@ export async function emailResetPassword(email: string, token: string) {
       ...BaseOptions,
       bcc: recipients,
       subject: '[Ambasadorský program] Resetování hesla',
-      html: render(ResetPasswordTemplate({ token, email })),
+      html: render(ResetPasswordTemplate({ token })),
     };
 
     await sendEmailNode(mailOptions);
