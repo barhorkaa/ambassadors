@@ -57,6 +57,7 @@ export async function updateEventAction(prevState: any, formData: FormData) {
   }
   revalidatePath('/events/[id]/page', 'page');
   return {
+    success: true,
     errors: [],
     generic: undefined,
   };
