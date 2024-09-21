@@ -39,20 +39,16 @@ export async function changePassword(prevState: any, formData: FormData) {
 export async function resetPasswordAction(prevState: any, formData: FormData) {
   try {
     const resetForm = {
-      email: formData.get('email'),
+      userId: formData.get('userId'),
       newPassword: formData.get('newPassword'),
     };
 
     const parsedData = emailResetSchema.parse(resetForm);
 
-    const user = await getUserByEmail(parsedData.email);
-
-    if (user === undefined) return { success: false, errors: [], generic: 'Uživatel s tímto emailem neexistuje' };
-
     const salt = await bcrypt.genSalt(10);
     parsedData.newPassword = await bcrypt.hash(parsedData.newPassword, salt);
 
-    await editUserPassword(user.id, parsedData.newPassword);
+    await editUserPassword(parsedData.userId, parsedData.newPassword);
   } catch (e) {
     console.error(e);
     return handleError(e);
