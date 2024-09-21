@@ -1,5 +1,3 @@
-// 'use client';
-
 import PasswordResetForm from '@/app/ui/password/password-reset-form';
 import { HeroCenterLayout } from '@/app/ui/utils/component-layouts';
 import jwt from 'jsonwebtoken';
