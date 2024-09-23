@@ -1,4 +1,5 @@
 import { CardSkeleton } from '@/app/ui/utils/skeletons';
+import { FormLayoutProps } from '@/app/utils/interface-props';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Registrace | AmbassadorsFIMU',
 };
 
-export default function Layout({ children, form }: { children: React.ReactNode; form: React.ReactNode }) {
+export default function Layout({ children, form }: FormLayoutProps) {
   return (
     <section>
       {children}
