@@ -2,7 +2,11 @@ import { EventModel } from '@/models/event-models';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-export default function EventTable({ events }: { events: EventModel[] }) {
+interface EventTableProps {
+  events: EventModel[];
+}
+
+export default function EventTable({ events }: EventTableProps) {
   return (
     <div className="overflow-x-auto">
       <table className="table table-fixed">
