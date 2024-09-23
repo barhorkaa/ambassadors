@@ -4,7 +4,11 @@ import { deleteMaterialAction } from '@/app/lib/actions/material';
 import { ActionModalButton } from '@/app/ui/button/action-modal-button';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
-export default function DeleteMaterialModal({ materialId }: { materialId: string }) {
+interface DeleteMaterialModalProps {
+  materialId: string;
+}
+
+export default function DeleteMaterialModal({ materialId }: DeleteMaterialModalProps) {
   return (
     <ModalLayout id={'delete' + materialId} title={'Opravdu chcete smazat tento materiál?'} modalType={'delete'}>
       <div className="pt-4 flex flex-col gap-4">
