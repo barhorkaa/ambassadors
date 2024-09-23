@@ -61,14 +61,12 @@ export function UserList({ title, list, emptyMessage }: ComponentListProps) {
   );
 }
 
-export function SignUpList({ title, list, emptyMessage }: ComponentListProps) {
-  return (
-    <>
-      <h2>{title}</h2>
-      {list.length === 0 ? <EmptyMessage message={emptyMessage} /> : <EventUserTable eventUsers={list} />}
-    </>
-  );
-}
+export const SignUpList = ({ title, list, emptyMessage }: ComponentListProps) => (
+  <>
+    <h2>{title}</h2>
+    {list.length === 0 ? <EmptyMessage message={emptyMessage} /> : <EventUserTable eventUsers={list} />}
+  </>
+);
 
 export function EventUserList({ title, list, emptyMessage }: ComponentListProps) {
   return (
