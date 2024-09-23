@@ -1,4 +1,5 @@
 import PageNavigation from '@/app/ui/layout/page-navigation';
+import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { PageUrl } from '@/app/utils/pages';
 import { Metadata } from 'next';
 
@@ -12,7 +13,7 @@ const signupsPages: PageUrl[] = [
   { name: 'Nepotvrzená přihlášení', url: '/signups/unapproved' },
 ];
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: BaseLayoutProps) {
   return (
     <section>
       <h1 className="content">Přihlášení na akce</h1>
