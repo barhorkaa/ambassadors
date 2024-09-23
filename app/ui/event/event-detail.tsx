@@ -1,15 +1,13 @@
 import { EventDetailModel } from '@/models/event-models';
 import { CalendarDaysIcon, CheckCircleIcon, UserGroupIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
-export default function EventDetail({
-  event,
-  attendees,
-  isManager,
-}: {
+interface EventDetailProps {
   event: EventDetailModel;
   attendees: number;
   isManager: boolean;
-}) {
+}
+
+export default function EventDetail({ event, attendees, isManager }: EventDetailProps) {
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row gap-4 md:gap-10">
