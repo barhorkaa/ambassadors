@@ -1,7 +1,7 @@
 import DeleteMaterialModal from '@/app/ui/modals/delete/delete-material-modal';
 import EditMaterialModal from '@/app/ui/modals/edit/edit-material-modal';
 import ReviveMaterialModal from '@/app/ui/modals/revive/revive-material-modal';
-import DetailRowVertical from '@/app/ui/utils/data-display';
+import { DetailRowVertical } from '@/app/ui/utils/data-display';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { MaterialDetailModel } from '@/models/material-models';

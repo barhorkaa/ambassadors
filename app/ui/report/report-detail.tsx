@@ -1,4 +1,4 @@
-import DetailRowVertical from '@/app/ui/utils/data-display';
+import { DetailRowVertical } from '@/app/ui/utils/data-display';
 import { ReportDetailModel } from '@/models/report-models';
 
 interface ReportDetailProps {

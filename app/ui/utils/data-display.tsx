@@ -3,7 +3,7 @@ interface DetailRowProps {
   value: string | number;
 }
 
-export default function DetailRowVertical({ label, value }: DetailRowProps) {
+export function DetailRowVertical({ label, value }: DetailRowProps) {
   return (
     <div>
       <div className="grid grid-rows-[min-content_min-content] items-end">
