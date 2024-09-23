@@ -2,19 +2,15 @@
 
 import { useState } from 'react';
 
-export function ToggleButton({
-  id,
-  name,
-  defaultState,
-  title,
-  detail,
-}: {
+interface ToggleButtonProps {
   id: string;
   name: string;
   defaultState: boolean;
   title: string;
   detail?: string;
-}) {
+}
+
+export function ToggleButton({ id, name, defaultState, title, detail }: ToggleButtonProps) {
   const [isChecked, setIsChecked] = useState(defaultState);
 
   function changeState() {
