@@ -5,7 +5,6 @@ import EventTable from '@/app/ui/event/event-table';
 import MaterialDetail from '@/app/ui/material/material-detail';
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
-import { EventTypeDetailModel } from '@/models/event-type-models';
 import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
@@ -121,20 +120,14 @@ export function MaterialList({ title, list, emptyMessage }: ComponentListProps) 
   );
 }
 
-export function EventTypeList({
-  eventTypes,
-  emptyMessage,
-}: {
-  eventTypes: EventTypeDetailModel[];
-  emptyMessage: string;
-}) {
+export function EventTypeList({ title, list, emptyMessage }: ComponentListProps) {
   return (
     <>
-      {eventTypes.length === 0 ? (
+      {list.length === 0 ? (
         <EmptyMessage message={emptyMessage} />
       ) : (
         <div className="flex flex-col gap-6">
-          {eventTypes.map((eventType) => (
+          {list.map((eventType) => (
             <EventTypeDetail key={eventType.id} eventType={eventType} />
           ))}
         </div>
