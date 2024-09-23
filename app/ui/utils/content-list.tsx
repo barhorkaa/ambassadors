@@ -19,7 +19,7 @@ export function EventList({ title, list, emptyMessage }: { title: string; list: 
     <>
       <h2>{title}</h2>
       {list.length === 0 ? (
-        <p className="text-lg py-2">{emptyMessage}</p>
+        <EmptyMessage message={emptyMessage} />
       ) : (
         <>
           <div className="flex md:hidden flex-wrap justify-center gap-4 ">
@@ -91,7 +91,7 @@ export function EventUserList({
           ))}
         </>
       ) : (
-        <p>{emptyMessage}</p>
+        <EmptyMessage message={emptyMessage} />
       )}
     </>
   );
@@ -101,7 +101,7 @@ export function MaterialList({ materials, emptyMessage }: { materials: MaterialD
   return (
     <>
       {materials.length === 0 ? (
-        <h2>{emptyMessage}</h2>
+        <EmptyMessage message={emptyMessage} />
       ) : (
         <div className="flex flex-col gap-6">
           {materials.map((material) => (
@@ -123,7 +123,7 @@ export function EventTypeList({
   return (
     <>
       {eventTypes.length === 0 ? (
-        <h2>{emptyMessage}</h2>
+        <EmptyMessage message={emptyMessage} />
       ) : (
         <div className="flex flex-col gap-6">
           {eventTypes.map((eventType) => (
