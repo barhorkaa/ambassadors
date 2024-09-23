@@ -30,20 +30,18 @@ interface HeroCenterLayoutProps {
   buttonTitle?: string;
 }
 
-export function HeroCenterLayout({ title, children, url, buttonTitle }: HeroCenterLayoutProps) {
-  return (
-    <div className="hero h-full">
-      <div className="hero-content text-center">
-        <div className="max-w-md">
-          <h1 className="hero-title py-6">{title}</h1>
-          {children}
-          {url && (
-            <Link href={url} className="btn">
-              {buttonTitle}
-            </Link>
-          )}
-        </div>
+export const HeroCenterLayout = ({ title, children, url, buttonTitle }: HeroCenterLayoutProps) => (
+  <div className="hero h-full">
+    <div className="hero-content text-center">
+      <div className="max-w-md">
+        <h1 className="hero-title py-6">{title}</h1>
+        {children}
+        {url && (
+          <Link href={url} className="btn">
+            {buttonTitle}
+          </Link>
+        )}
       </div>
     </div>
-  );
-}
+  </div>
+);
