@@ -3,7 +3,11 @@ import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { UserModel } from '@/models/user-models';
 
-export default async function UserDetail({ user }: { user: UserModel }) {
+interface UserDetailProps {
+  user: UserModel;
+}
+
+export default async function UserDetail({ user }: UserDetailProps) {
   const session = await auth();
 
   return (
