@@ -2,7 +2,11 @@
 
 import { useState } from 'react';
 
-export default function UserRoleSelect({ currentRole }: { currentRole: 'ambassador' | 'manager' }) {
+interface UserRoleSelectProps {
+  currentRole: 'ambassador' | 'manager';
+}
+
+export default function UserRoleSelect({ currentRole }: UserRoleSelectProps) {
   const [userRole, setUserRole] = useState(currentRole);
 
   const handleEventTypeChange = (event: any) => {
