@@ -4,7 +4,11 @@ import { reviveEventTypeAction } from '@/app/lib/actions/event-type';
 import { ActionModalButton } from '@/app/ui/button/action-modal-button';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
-export default function ReviveEventTypeModal({ eventTypeId }: { eventTypeId: string }) {
+interface ReviveEventTypeModalProps {
+  eventTypeId: string;
+}
+
+export default function ReviveEventTypeModal({ eventTypeId }: ReviveEventTypeModalProps) {
   return (
     <ModalLayout id={'revive' + eventTypeId} title={'Opravdu chcete obnovit tento materiál?'} modalType={'revive'}>
       <div className="pt-4 flex flex-col gap-4">
