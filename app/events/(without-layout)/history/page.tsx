@@ -1,5 +1,5 @@
 import { EventList } from '@/app/ui/utils/content-list';
-import TableSkeleton from '@/app/ui/utils/skeletons';
+import { TableSkeleton } from '@/app/ui/utils/skeletons';
 import { getAllHistoryEvents } from '@/database/repository/event';
 import { Suspense } from 'react';
 
