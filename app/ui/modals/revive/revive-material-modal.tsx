@@ -4,7 +4,11 @@ import { reviveMaterialAction } from '@/app/lib/actions/material';
 import { ActionModalButton } from '@/app/ui/button/action-modal-button';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
-export default function ReviveMaterialModal({ materialId }: { materialId: string }) {
+interface ReviveMaterialModalProps {
+  materialId: string;
+}
+
+export default function ReviveMaterialModal({ materialId }: ReviveMaterialModalProps) {
   return (
     <ModalLayout id={'revive' + materialId} title={'Opravdu chcete obnovit tento materiál?'} modalType={'revive'}>
       <div className="pt-4 flex flex-col gap-4">
