@@ -6,7 +6,6 @@ import MaterialDetail from '@/app/ui/material/material-detail';
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
 import { EventTypeDetailModel } from '@/models/event-type-models';
-import { EventUserBaseModel } from '@/models/event-user-models';
 import { MaterialDetailModel } from '@/models/material-models';
 import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
@@ -79,21 +78,13 @@ export function SignUpList({ title, list, emptyMessage }: ComponentListProps) {
   );
 }
 
-export function EventUserList({
-  title,
-  userList,
-  emptyMessage,
-}: {
-  title: string;
-  userList: EventUserBaseModel[];
-  emptyMessage: string;
-}) {
+export function EventUserList({ title, list, emptyMessage }: ComponentListProps) {
   return (
     <>
-      {userList.length !== 0 ? (
+      {list.length !== 0 ? (
         <>
           <h3 className="card-title">{title}</h3>
-          {userList.map((user) => (
+          {list.map((user) => (
             <div key={user.userId} className="flex flex-row gap-4 items-baseline">
               {user.approved ? (
                 <CheckIcon title={'Registrace potvrzena'} className="h-6" />
