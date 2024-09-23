@@ -3,9 +3,13 @@ import { MaterialMinModel } from '@/models/material-models';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { ChangeEvent, useState } from 'react';
 
+interface MaterialAddProps {
+  materials: MaterialMinModel[];
+}
+
 // source: https://www.freecodecamp.org/news/build-dynamic-forms-in-react/
 // source: https://borstch.com/snippet/dynamic-form-fields-with-nextjs
-export default function MaterialAdd({ materials }: { materials: MaterialMinModel[] }) {
+export default function MaterialAdd({ materials }: MaterialAddProps) {
   const [inputs, setInputs] = useState([{ amount: '' }]);
 
   const handleAddClick = () => {
