@@ -12,6 +12,7 @@ import { MaterialDetailModel } from '@/models/material-models';
 import { UserModel } from '@/models/user-models';
 import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+const EmptyMessage = ({ message }: { message: string }) => <p className="text-lg py-2">{message}</p>;
 
 export function EventList({ title, list, emptyMessage }: { title: string; list: EventModel[]; emptyMessage: string }) {
   return (
