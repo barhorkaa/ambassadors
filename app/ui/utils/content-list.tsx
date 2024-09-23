@@ -6,6 +6,7 @@ import MaterialDetail from '@/app/ui/material/material-detail';
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
 import { EventTypeDetailModel } from '@/models/event-type-models';
+import { EventUserBaseModel } from '@/models/event-user-models';
 import { MaterialDetailModel } from '@/models/material-models';
 import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
@@ -84,7 +85,7 @@ export function EventUserList({
   emptyMessage,
 }: {
   title: string;
-  userList: { user_id: string; user_name: string | null; approved: boolean }[];
+  userList: EventUserBaseModel[];
   emptyMessage: string;
 }) {
   return (
@@ -93,15 +94,15 @@ export function EventUserList({
         <>
           <h3 className="card-title">{title}</h3>
           {userList.map((user) => (
-            <div key={user.user_id} className="flex flex-row gap-4 items-baseline">
+            <div key={user.userId} className="flex flex-row gap-4 items-baseline">
               {user.approved ? (
                 <CheckIcon title={'Registrace potvrzena'} className="h-6" />
               ) : (
                 <ClockIcon title={'Čeká se na potvrzení'} className="h-6" />
               )}
-              <Link href={`/ambassadors/${user.user_id}`} key={user.user_id} className="flex flex-row gap-4 py-2">
+              <Link href={`/ambassadors/${user.userId}`} key={user.userId} className="flex flex-row gap-4 py-2">
                 <UserIcon className="h-6" />
-                <p className="text-lg">{user.user_name}</p>
+                <p className="text-lg">{user.userName}</p>
               </Link>
             </div>
           ))}
