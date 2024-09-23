@@ -1,13 +1,11 @@
 import SubmitButton from '@/app/ui/button/submit-button';
+import { StateModel } from '@/models/error-models';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { ZodIssue } from 'zod';
 
 interface FormLayoutProps {
   action: any;
-  state:
-    | { success: boolean; errors: ZodIssue[]; generic: undefined }
-    | { success: boolean; errors: never[]; generic: string };
+  state: StateModel;
   modalId?: string;
   children: React.ReactNode;
 }
