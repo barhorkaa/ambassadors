@@ -1,10 +1,11 @@
+import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Zprávy z akcí | AmbassadorsFIMU',
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: BaseLayoutProps) {
   return (
     <section>
       <h1 className="content">Nové zprávy z akcí</h1>
