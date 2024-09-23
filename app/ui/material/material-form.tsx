@@ -7,7 +7,11 @@ import FormControl from '@/app/ui/utils/form-control';
 import { MaterialManipulationModel } from '@/models/material-models';
 import { useFormState } from 'react-dom';
 
-export function MaterialForm({ material }: { material: MaterialManipulationModel | null }) {
+interface MaterialFormProps {
+  material: MaterialManipulationModel | null;
+}
+
+export function MaterialForm({ material }: MaterialFormProps) {
   const [state, dispatch] = useFormState(
     material === null ? createMaterialAction : editMaterialAction,
     formActionInitialState
