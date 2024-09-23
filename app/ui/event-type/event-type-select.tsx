@@ -3,15 +3,13 @@
 import { EventTypeMinModel } from '@/models/event-type-models';
 import { useState } from 'react';
 
-export default function EventTypeSelect({
-  eventTypes,
-  selectedEvent,
-  errorMessage,
-}: {
+interface EventTypeSelectProps {
   eventTypes: EventTypeMinModel[];
   selectedEvent: string | undefined;
   errorMessage: string;
-}) {
+}
+
+export default function EventTypeSelect({ eventTypes, selectedEvent, errorMessage }: EventTypeSelectProps) {
   const [eventType, setEventType] = useState(selectedEvent);
 
   const handleEventTypeChange = (event: any) => {
