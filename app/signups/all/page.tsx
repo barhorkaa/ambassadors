@@ -5,5 +5,11 @@ import { EventUserBasicModel } from '@/models/event-user-models';
 export default async function Page() {
   const allSignUps: EventUserBasicModel[] = await getAllSignUps(true);
 
-  return <SignUpList title={'Všechna aktuání přihlášení'} list={allSignUps} />;
+  return (
+    <SignUpList
+      title={'Všechna aktuání přihlášení'}
+      list={allSignUps}
+      emptyMessage={'V součastné době nejsou v aplikaci žádné akivní přihlášení na akce.'}
+    />
+  );
 }
