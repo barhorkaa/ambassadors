@@ -1,6 +1,8 @@
 'use client';
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+import { ErrorProps } from '@/app/utils/error-props-interface';
+
+export default function Error({ error, reset }: ErrorProps) {
   return (
     <div className="page flex flex-col gap-6 items-center">
       <h1>Nepodařilo se seznam ambasadorů</h1>
