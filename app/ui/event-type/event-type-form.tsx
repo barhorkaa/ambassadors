@@ -7,7 +7,11 @@ import FormControl from '@/app/ui/utils/form-control';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 import { useFormState } from 'react-dom';
 
-export function EventTypeForm({ eventType }: { eventType: EventTypeDetailModel | null }) {
+interface EventTypeFormProps {
+  eventType: EventTypeDetailModel | null;
+}
+
+export function EventTypeForm({ eventType }: EventTypeFormProps) {
   const [state, dispatch] = useFormState(
     eventType === null ? createEventTypeAction : editEventTypeAction,
     formActionInitialState
