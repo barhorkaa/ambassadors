@@ -5,5 +5,11 @@ import { MaterialDetailModel } from '@/models/material-models';
 export default async function Page() {
   const deletedMaterials: MaterialDetailModel[] = await getAllMaterials(true);
 
-  return <MaterialList materials={deletedMaterials} emptyMessage={'Aktuálně jsou všechny materiály používány'} />;
+  return (
+    <MaterialList
+      title={'Vymazané materiály'}
+      list={deletedMaterials}
+      emptyMessage={'Aktuálně jsou všechny materiály používány'}
+    />
+  );
 }

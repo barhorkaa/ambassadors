@@ -5,5 +5,11 @@ import { MaterialDetailModel } from '@/models/material-models';
 export default async function Page() {
   const allMaterials: MaterialDetailModel[] = await getAllMaterials(false);
 
-  return <MaterialList materials={allMaterials} emptyMessage={'Aktuálně nejsou k dispoici žádné materiály'} />;
+  return (
+    <MaterialList
+      title={'Dostupné materiály'}
+      list={allMaterials}
+      emptyMessage={'Aktuálně nejsou k dispoici žádné materiály'}
+    />
+  );
 }
