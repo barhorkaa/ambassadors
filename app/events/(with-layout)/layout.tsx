@@ -1,4 +1,5 @@
 import PageNavigation from '@/app/ui/layout/page-navigation';
+import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { PageUrl } from '@/app/utils/pages';
 import { PlusIcon } from '@heroicons/react/24/outline';
 import { Metadata } from 'next';
@@ -14,7 +15,7 @@ const eventPages: PageUrl[] = [
   { name: 'Nepotvrzené akce', url: '/events/unapproved' },
 ];
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: BaseLayoutProps) {
   return (
     <section>
       <div className="flex flex-row justify-between items-end content">
