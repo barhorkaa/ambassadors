@@ -1,6 +1,12 @@
 import { CheckIcon } from '@heroicons/react/24/outline';
 
-export function ActionModalButton({ fun, id, modalId }: { fun: any; id: string; modalId: string }) {
+interface ActionModalButtonProps {
+  fun: any;
+  id: string;
+  modalId: string;
+}
+
+export function ActionModalButton({ fun, id, modalId }: ActionModalButtonProps) {
   return (
     <button
       className="btn"
