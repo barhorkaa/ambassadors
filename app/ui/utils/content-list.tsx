@@ -16,9 +16,11 @@ interface ComponentListProps {
 
 const EmptyMessage = ({ message }: { message: string }) => <p className="text-lg py-2">{message}</p>;
 
+const ListTitle = ({ title }: { title: string }) => <h2 className="pb-2">{title}</h2>;
+
 export const EventList = ({ title, list, emptyMessage }: ComponentListProps) => (
   <>
-    <h2>{title}</h2>
+    <ListTitle title={title} />
     {list.length === 0 ? (
       <EmptyMessage message={emptyMessage} />
     ) : (
@@ -38,7 +40,7 @@ export const EventList = ({ title, list, emptyMessage }: ComponentListProps) => 
 
 export const UserList = ({ title, list, emptyMessage }: ComponentListProps) => (
   <>
-    <h2>{title}</h2>
+    <ListTitle title={title} />
     {list.length === 0 ? (
       <EmptyMessage message={emptyMessage} />
     ) : (
@@ -58,7 +60,7 @@ export const UserList = ({ title, list, emptyMessage }: ComponentListProps) => (
 
 export const SignUpList = ({ title, list, emptyMessage }: ComponentListProps) => (
   <>
-    <h2>{title}</h2>
+    <ListTitle title={title} />
     {list.length === 0 ? <EmptyMessage message={emptyMessage} /> : <EventUserTable eventUsers={list} />}
   </>
 );
@@ -90,7 +92,7 @@ export const EventUserList = ({ title, list, emptyMessage }: ComponentListProps)
 
 export const MaterialList = ({ title, list, emptyMessage }: ComponentListProps) => (
   <>
-    <h2>{title}</h2>
+    <ListTitle title={title} />
     {list.length === 0 ? (
       <EmptyMessage message={emptyMessage} />
     ) : (
@@ -105,7 +107,7 @@ export const MaterialList = ({ title, list, emptyMessage }: ComponentListProps) 
 
 export const EventTypeList = ({ title, list, emptyMessage }: ComponentListProps) => (
   <>
-    <h2>{title}</h2>
+    <ListTitle title={title} />
     {list.length === 0 ? (
       <EmptyMessage message={emptyMessage} />
     ) : (
