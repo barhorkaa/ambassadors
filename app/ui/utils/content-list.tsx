@@ -33,7 +33,6 @@ export const EventList = ({ title, list, emptyMessage }: ComponentListProps) => 
         </div>
       </>
     )}
-    <hr />
   </>
 );
 
