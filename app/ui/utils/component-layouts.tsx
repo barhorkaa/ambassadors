@@ -10,20 +10,18 @@ interface FormLayoutProps {
   children: React.ReactNode;
 }
 
-export function FormLayout({ action, state, modalId, children }: FormLayoutProps) {
-  return (
-    <form action={action} className="card-body">
-      {children}
-      <SubmitButton title={'Odeslat'} modalId={modalId} fun={action} />
-      {state.generic !== undefined && (
-        <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
-          <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-          <p className="text-sm text-red-500">{state.generic}</p>
-        </div>
-      )}
-    </form>
-  );
-}
+export const FormLayout = ({ action, state, modalId, children }: FormLayoutProps) => (
+  <form action={action} className="card-body">
+    {children}
+    <SubmitButton title={'Odeslat'} modalId={modalId} fun={action} />
+    {state.generic !== undefined && (
+      <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
+        <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+        <p className="text-sm text-red-500">{state.generic}</p>
+      </div>
+    )}
+  </form>
+);
 
 interface HeroCenterLayoutProps {
   title: string;
