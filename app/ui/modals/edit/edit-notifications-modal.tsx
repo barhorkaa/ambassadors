@@ -4,13 +4,12 @@ import ModalLayout from '@/app/ui/modals/modal-layout';
 import NotificationsEditForm from '@/app/ui/notifications/notification-edit-form';
 import { ManagerNotifications, UserNotifications } from '@/models/notifications-models';
 
-export default function EditNotificationsModal({
-  notifications,
-  managerNotifications,
-}: {
+interface EditNotificationsModalProps {
   notifications: UserNotifications;
   managerNotifications: ManagerNotifications | undefined;
-}) {
+}
+
+export default function EditNotificationsModal({ notifications, managerNotifications }: EditNotificationsModalProps) {
   return (
     <ModalLayout
       id={'notifications_' + notifications!.userId}
