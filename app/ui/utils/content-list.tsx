@@ -8,7 +8,6 @@ import UserTable from '@/app/ui/user/user-table';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 import { EventUserBasicModel } from '@/models/event-user-models';
 import { MaterialDetailModel } from '@/models/material-models';
-import { UserModel } from '@/models/user-models';
 import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
@@ -43,18 +42,24 @@ export function EventList({ title, list, emptyMessage }: ComponentListProps) {
   );
 }
 
-export function UserList({ title, list }: { title: string; list: UserModel[] }) {
+export function UserList({ title, list, emptyMessage }: ComponentListProps) {
   return (
     <>
       <h2>{title}</h2>
-      <div className="hidden md:block">
-        <UserTable users={list} />
-      </div>
-      <div className="flex md:hidden flex-wrap justify-center gap-4">
-        {list.map((user) => (
-          <UserCard key={user.id} user={user} />
-        ))}
-      </div>
+      {list.length === 0 ? (
+        <EmptyMessage message={emptyMessage} />
+      ) : (
+        <>
+          <div className="hidden md:block">
+            <UserTable users={list} />
+          </div>
+          <div className="flex md:hidden flex-wrap justify-center gap-4">
+            {list.map((user) => (
+              <UserCard key={user.id} user={user} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 }
