@@ -1,4 +1,5 @@
 import CreateEventTypeModal from '@/app/ui/modals/create/create-event-type-modal';
+import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { Metadata } from 'next';
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Druhy akcí | AmbassadorsFIMU',
 };
 
-export default async function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: BaseLayoutProps) {
   const session = await auth();
 
   return (
