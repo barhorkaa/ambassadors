@@ -4,7 +4,11 @@ import { deleteEventTypeAction } from '@/app/lib/actions/event-type';
 import { ActionModalButton } from '@/app/ui/button/action-modal-button';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
-export default function DeleteEventTypeModal({ eventTypeId }: { eventTypeId: string }) {
+interface DeleteEventTypeModalProps {
+  eventTypeId: string;
+}
+
+export default function DeleteEventTypeModal({ eventTypeId }: DeleteEventTypeModalProps) {
   return (
     <ModalLayout id={'delete' + eventTypeId} title={'Opravdu chcete smazat tento typ akce?'} modalType={'delete'}>
       <div className="pt-4 flex flex-col gap-4">
