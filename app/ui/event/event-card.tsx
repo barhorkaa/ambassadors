@@ -2,7 +2,11 @@ import { EventModel } from '@/models/event-models';
 import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-export default function EventCard({ event }: { event: EventModel }) {
+interface EventCardProps {
+  event: EventModel;
+}
+
+export default function EventCard({ event }: EventCardProps) {
   return (
     <Link href={`/events/${event.id}`} className="card bg-base-100 shadow-lg">
       <div className="card-body">
