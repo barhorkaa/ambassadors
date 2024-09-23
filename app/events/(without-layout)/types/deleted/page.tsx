@@ -5,5 +5,11 @@ import { EventTypeDetailModel } from '@/models/event-type-models';
 export default async function Page() {
   const deletedEventTypes: EventTypeDetailModel[] = await getAllEventTypes(true);
 
-  return <EventTypeList eventTypes={deletedEventTypes} emptyMessage={'Aktuálně jsou všechny typy akcí používány'} />;
+  return (
+    <EventTypeList
+      title={'Vymazané druhy akcí'}
+      list={deletedEventTypes}
+      emptyMessage={'Aktuálně jsou všechny typy akcí používány'}
+    />
+  );
 }
