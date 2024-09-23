@@ -3,7 +3,12 @@
 import { deleteSignUpAction } from '@/app/lib/actions/event-user';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
-export default function DeleteSignUpModal({ event_id, user_id }: { event_id: string; user_id: string }) {
+interface DeleteSignUpModalProps {
+  event_id: string;
+  user_id: string;
+}
+
+export default function DeleteSignUpModal({ event_id, user_id }: DeleteSignUpModalProps) {
   return (
     <ModalLayout id={'delete_signup'} title={'Opravdu se chcete odhlásit z akce?'} modalType={'delete'}>
       <div className="pt-4 flex flex-col gap-4">
