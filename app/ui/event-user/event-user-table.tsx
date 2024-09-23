@@ -4,7 +4,11 @@ import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
 import { EventUserBasicModel } from '@/models/event-user-models';
 import Link from 'next/link';
 
-export default async function EventUserTable({ eventUsers }: { eventUsers: EventUserBasicModel[] }) {
+interface EventUserTableProps {
+  eventUsers: EventUserBasicModel[];
+}
+
+export default async function EventUserTable({ eventUsers }: EventUserTableProps) {
   return (
     <div className="overflow-x-auto">
       <table className="table table-fixed">
