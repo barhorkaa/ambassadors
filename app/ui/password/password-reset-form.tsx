@@ -6,7 +6,11 @@ import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { useFormState } from 'react-dom';
 
-export default function PasswordResetForm({ userId }: { userId: string }) {
+interface PasswordResetFormProps {
+  userId: string;
+}
+
+export default function PasswordResetForm({ userId }: PasswordResetFormProps) {
   const [state, dispatch] = useFormState(resetPasswordAction, formActionInitialState);
 
   return (
