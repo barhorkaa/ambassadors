@@ -1,7 +1,11 @@
 import { PageUrl } from '@/app/utils/pages';
 import Link from 'next/link';
 
-export default function PageNavigation({ pages }: { pages: PageUrl[] }) {
+interface PageNavigationProps {
+  pages: PageUrl[];
+}
+
+export default function PageNavigation({ pages }: PageNavigationProps) {
   return (
     <ul className="page-menu">
       {pages.map((page, index) => (
