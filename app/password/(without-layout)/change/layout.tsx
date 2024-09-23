@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Přihlášení | AmbassadorsFIMU',
+  title: 'Změna hesla | AmbassadorsFIMU',
 };
 
 export default function Layout({ children, form }: FormLayoutProps) {
