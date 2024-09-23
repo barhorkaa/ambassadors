@@ -6,7 +6,6 @@ import MaterialDetail from '@/app/ui/material/material-detail';
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
 import { EventTypeDetailModel } from '@/models/event-type-models';
-import { EventUserBasicModel } from '@/models/event-user-models';
 import { MaterialDetailModel } from '@/models/material-models';
 import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
@@ -64,11 +63,17 @@ export function UserList({ title, list, emptyMessage }: ComponentListProps) {
   );
 }
 
-export function SignUpList({ title, list }: { title: string; list: EventUserBasicModel[] }) {
+export function SignUpList({ title, list, emptyMessage }: ComponentListProps) {
   return (
     <>
-      <h2>{title}</h2>
-      <EventUserTable eventUsers={list} />
+      {list.length === 0 ? (
+        <EmptyMessage message={emptyMessage} />
+      ) : (
+        <>
+          <h2>{title}</h2>
+          <EventUserTable eventUsers={list} />
+        </>
+      )}
     </>
   );
 }
