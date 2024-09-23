@@ -1,4 +1,5 @@
 import PageNavigation from '@/app/ui/layout/page-navigation';
+import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { PageUrl } from '@/app/utils/pages';
 import { Metadata } from 'next';
 
@@ -12,7 +13,7 @@ const myEventsPages: PageUrl[] = [
   { name: 'Historie přihlášení', url: '/events/my/history' },
 ];
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: BaseLayoutProps) {
   return (
     <section>
       <div className="content flex items-end">
