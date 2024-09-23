@@ -10,13 +10,12 @@ import { EventTypeMinModel } from '@/models/event-type-models';
 import { format } from 'date-fns';
 import { useFormState } from 'react-dom';
 
-export default function EventForm({
-  eventTypes,
-  event,
-}: {
+interface EventFormProps {
   eventTypes: EventTypeMinModel[];
   event: EventDetailModel | null;
-}) {
+}
+
+export default function EventForm({ eventTypes, event }: EventFormProps) {
   const [state, dispatch] = useFormState(
     event === null ? createEventAction : updateEventAction,
     formActionInitialState
