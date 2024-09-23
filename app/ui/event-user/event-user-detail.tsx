@@ -11,8 +11,8 @@ export async function EventUserDetail({ event_id }: EventUserDetailProps) {
 
   return (
     <div className="flex flex-col">
-      <EventUserList title={'Přihlášení'} userList={signedUpForEvent} emptyMessage={'Na akci není přihlášen nikto'} />
-      <EventUserList title={'Záskok'} userList={substitutesForEvent} emptyMessage={''} />
+      <EventUserList title={'Přihlášení'} list={signedUpForEvent} emptyMessage={'Na akci není přihlášen nikto'} />
+      <EventUserList title={'Záskok'} list={substitutesForEvent} emptyMessage={''} />
     </div>
   );
 }
