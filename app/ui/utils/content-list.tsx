@@ -93,22 +93,20 @@ export const EventUserList = ({ title, list, emptyMessage }: ComponentListProps)
   </>
 );
 
-export function MaterialList({ title, list, emptyMessage }: ComponentListProps) {
-  return (
-    <>
-      <h2>{title}</h2>
-      {list.length === 0 ? (
-        <EmptyMessage message={emptyMessage} />
-      ) : (
-        <div className="flex flex-col gap-6">
-          {list.map((material) => (
-            <MaterialDetail key={material.id} material={material} />
-          ))}
-        </div>
-      )}
-    </>
-  );
-}
+export const MaterialList = ({ title, list, emptyMessage }: ComponentListProps) => (
+  <>
+    <h2>{title}</h2>
+    {list.length === 0 ? (
+      <EmptyMessage message={emptyMessage} />
+    ) : (
+      <div className="flex flex-col gap-6">
+        {list.map((material) => (
+          <MaterialDetail key={material.id} material={material} />
+        ))}
+      </div>
+    )}
+  </>
+);
 
 export function EventTypeList({ title, list, emptyMessage }: ComponentListProps) {
   return (
