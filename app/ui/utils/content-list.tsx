@@ -123,6 +123,7 @@ export function MaterialList({ title, list, emptyMessage }: ComponentListProps) 
 export function EventTypeList({ title, list, emptyMessage }: ComponentListProps) {
   return (
     <>
+      <h2>{title}</h2>
       {list.length === 0 ? (
         <EmptyMessage message={emptyMessage} />
       ) : (
