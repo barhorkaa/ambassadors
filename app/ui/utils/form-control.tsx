@@ -1,3 +1,14 @@
+interface FormControlProps {
+  title: string;
+  id: string;
+  errorMessage?: string;
+  type?: 'text' | 'number' | 'password' | 'date' | 'email';
+  defaultValue?: string | number;
+  inputType?: 'textarea' | 'input';
+  placeholder?: string;
+  required?: boolean;
+}
+
 export default function FormControl({
   title,
   id,
@@ -7,16 +18,7 @@ export default function FormControl({
   inputType = 'input',
   placeholder,
   required = true,
-}: {
-  title: string;
-  id: string;
-  errorMessage?: string;
-  type?: 'text' | 'number' | 'password' | 'date' | 'email';
-  defaultValue?: string | number;
-  inputType?: 'textarea' | 'input';
-  placeholder?: string;
-  required?: boolean;
-}) {
+}: FormControlProps) {
   const Tag = inputType;
 
   return (
