@@ -3,19 +3,16 @@ import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { ZodIssue } from 'zod';
 
-export function FormLayout({
-  action,
-  state,
-  modalId,
-  children,
-}: {
+interface FormLayoutProps {
   action: any;
   state:
     | { success: boolean; errors: ZodIssue[]; generic: undefined }
     | { success: boolean; errors: never[]; generic: string };
   modalId?: string;
   children: React.ReactNode;
-}) {
+}
+
+export function FormLayout({ action, state, modalId, children }: FormLayoutProps) {
   return (
     <form action={action} className="card-body">
       {children}
@@ -30,17 +27,14 @@ export function FormLayout({
   );
 }
 
-export function HeroCenterLayout({
-  title,
-  children,
-  url,
-  buttonTitle,
-}: {
+interface HeroCenterLayoutProps {
   title: string;
   children: React.ReactNode;
   url?: string;
   buttonTitle?: string;
-}) {
+}
+
+export function HeroCenterLayout({ title, children, url, buttonTitle }: HeroCenterLayoutProps) {
   return (
     <div className="hero h-full">
       <div className="hero-content text-center">
