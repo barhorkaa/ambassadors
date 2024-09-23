@@ -1,23 +1,19 @@
 import BackNavigation from '@/app/ui/layout/back-navigation';
+import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Detail akce | AmbassadorsFIMU',
 };
 
-export default function Layout({
-  children,
-  event,
-  type,
-  users,
-  report,
-}: {
-  children: React.ReactNode;
+interface LayoutProps {
   event: React.ReactNode;
   type: React.ReactNode;
   users: React.ReactNode;
   report: React.ReactNode;
-}) {
+}
+
+export default function Layout({ children, event, type, users, report }: BaseLayoutProps & LayoutProps) {
   return (
     <section>
       <div className="align-text-base flex flex-row gap-4">
