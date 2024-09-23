@@ -1,4 +1,5 @@
 import BackNavigation from '@/app/ui/layout/back-navigation';
+import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { Metadata } from 'next';
@@ -7,17 +8,13 @@ export const metadata: Metadata = {
   title: 'Informace o uživateli | AmbassadorsFIMU',
 };
 
-export default async function Layout({
-  children,
-  motivation,
-  user,
-  signups,
-}: {
-  children: React.ReactNode;
+interface LayoutProps {
   motivation: React.ReactNode;
   user: React.ReactNode;
   signups: React.ReactNode;
-}) {
+}
+
+export default async function Layout({ children, motivation, user, signups }: BaseLayoutProps & LayoutProps) {
   const session = await auth();
 
   return (
