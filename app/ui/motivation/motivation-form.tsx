@@ -6,7 +6,11 @@ import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { useFormState } from 'react-dom';
 
-export default function MotivationForm({ userId }: { userId: string }) {
+interface MotivationFormProps {
+  userId: string;
+}
+
+export default function MotivationForm({ userId }: MotivationFormProps) {
   const [state, dispatch] = useFormState(createMotivationAction, formActionInitialState);
 
   return (
