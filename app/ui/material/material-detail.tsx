@@ -6,7 +6,11 @@ import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { MaterialDetailModel } from '@/models/material-models';
 
-export default async function MaterialDetail({ material }: { material: MaterialDetailModel }) {
+interface MaterialDetailProps {
+  material: MaterialDetailModel;
+}
+
+export default async function MaterialDetail({ material }: MaterialDetailProps) {
   const session = await auth();
 
   return (
