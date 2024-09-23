@@ -26,13 +26,11 @@ interface SectionInfoProps {
   contents: string[];
 }
 
-export function SectionInfo({ title, contents }: SectionInfoProps) {
-  return (
-    <div className="flex flex-col gap-2">
-      <h2>{title}</h2>
-      {contents.map((content, index) => (
-        <p key={index}>{content}</p>
-      ))}
-    </div>
-  );
-}
+export const SectionInfo = ({ title, contents }: SectionInfoProps) => (
+  <div className="flex flex-col gap-2">
+    <h2>{title}</h2>
+    {contents.map((content, index) => (
+      <p key={index}>{content}</p>
+    ))}
+  </div>
+);
