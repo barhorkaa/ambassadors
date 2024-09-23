@@ -6,7 +6,6 @@ import MaterialDetail from '@/app/ui/material/material-detail';
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
 import { EventTypeDetailModel } from '@/models/event-type-models';
-import { MaterialDetailModel } from '@/models/material-models';
 import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
@@ -105,14 +104,15 @@ export function EventUserList({ title, list, emptyMessage }: ComponentListProps)
   );
 }
 
-export function MaterialList({ materials, emptyMessage }: { materials: MaterialDetailModel[]; emptyMessage: string }) {
+export function MaterialList({ title, list, emptyMessage }: ComponentListProps) {
   return (
     <>
-      {materials.length === 0 ? (
+      <h2>{title}</h2>
+      {list.length === 0 ? (
         <EmptyMessage message={emptyMessage} />
       ) : (
         <div className="flex flex-col gap-6">
-          {materials.map((material) => (
+          {list.map((material) => (
             <MaterialDetail key={material.id} material={material} />
           ))}
         </div>
