@@ -73,7 +73,9 @@ export function SignUpList({ title, list, emptyMessage }: ComponentListProps) {
 export function EventUserList({ title, list, emptyMessage }: ComponentListProps) {
   return (
     <>
-      {list.length !== 0 ? (
+      {list.length === 0 ? (
+        <EmptyMessage message={emptyMessage} />
+      ) : (
         <>
           <h3 className="card-title">{title}</h3>
           {list.map((user) => (
@@ -90,8 +92,6 @@ export function EventUserList({ title, list, emptyMessage }: ComponentListProps)
             </div>
           ))}
         </>
-      ) : (
-        <EmptyMessage message={emptyMessage} />
       )}
     </>
   );
