@@ -1,7 +1,11 @@
 import { EventUserList } from '@/app/ui/utils/content-list';
 import { getSignUpsForEvent } from '@/database/repository/event-user';
 
-export async function EventUserDetail({ event_id }: { event_id: string }) {
+interface EventUserDetailProps {
+  event_id: string;
+}
+
+export async function EventUserDetail({ event_id }: EventUserDetailProps) {
   const signedUpForEvent = await getSignUpsForEvent(event_id, false);
   const substitutesForEvent = await getSignUpsForEvent(event_id, true);
 
