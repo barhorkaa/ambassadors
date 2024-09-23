@@ -64,6 +64,13 @@ export const SignUpList = ({ title, list, emptyMessage }: ComponentListProps) =>
   </>
 );
 
+const EventUserIcon = ({ approved }: { approved: boolean }) =>
+  approved ? (
+    <CheckIcon title={'Registrace potvrzena'} className="h-6" />
+  ) : (
+    <ClockIcon title={'Čeká se na potvrzení'} className="h-6" />
+  );
+
 export const EventUserList = ({ title, list, emptyMessage }: ComponentListProps) => (
   <>
     {list.length === 0 ? (
@@ -73,11 +80,7 @@ export const EventUserList = ({ title, list, emptyMessage }: ComponentListProps)
         <h3 className="card-title">{title}</h3>
         {list.map((user) => (
           <div key={user.userId} className="flex flex-row gap-4 items-baseline">
-            {user.approved ? (
-              <CheckIcon title={'Registrace potvrzena'} className="h-6" />
-            ) : (
-              <ClockIcon title={'Čeká se na potvrzení'} className="h-6" />
-            )}
+            <EventUserIcon approved={user.approved} />
             <Link href={`/ambassadors/${user.userId}`} key={user.userId} className="flex flex-row gap-4 py-2">
               <UserIcon className="h-6" />
               <p className="text-lg">{user.userName}</p>
