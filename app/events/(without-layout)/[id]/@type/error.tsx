@@ -1,6 +1,8 @@
 'use client';
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+import { ErrorProps } from '@/app/utils/interface-props';
+
+export default function Error({ error, reset }: ErrorProps) {
   return (
     <div className="page flex flex-col gap-6 items-center">
       <h1>Nepodařilo se získat informace o typu akce</h1>
