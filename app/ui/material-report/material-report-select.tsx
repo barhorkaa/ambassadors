@@ -3,13 +3,12 @@
 import { MaterialMinModel } from '@/models/material-models';
 import { useState } from 'react';
 
-export default function MaterialReportSelect({
-  materials,
-  selectedMaterial,
-}: {
+interface MaterialReportSelectProps {
   materials: MaterialMinModel[];
   selectedMaterial: string | undefined;
-}) {
+}
+
+export default function MaterialReportSelect({ materials, selectedMaterial }: MaterialReportSelectProps) {
   const [material, setMaterial] = useState(selectedMaterial);
 
   const handleMaterialChange = (event: any) => {
