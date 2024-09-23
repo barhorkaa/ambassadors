@@ -3,7 +3,12 @@
 import { CheckIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 
-export default function ApproveButton({ fun, id }: { fun: any; id: string }) {
+interface ApproveButtonProps {
+  fun: any;
+  id: string;
+}
+
+export default function ApproveButton({ fun, id }: ApproveButtonProps) {
   const [show, setShow] = useState(true);
 
   function changeState() {
