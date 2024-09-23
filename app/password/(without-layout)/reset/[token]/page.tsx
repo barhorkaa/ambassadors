@@ -1,4 +1,4 @@
-import PasswordResetForm from '@/app/ui/password/password-reset-form';
+import PasswordEditForm from '@/app/ui/password/password-edit-form';
 import { HeroCenterLayout } from '@/app/ui/utils/component-layouts';
 import jwt from 'jsonwebtoken';
 import { redirect } from 'next/navigation';
@@ -26,7 +26,7 @@ export default function Page({ params }: { params: { token: string } }) {
 
   return (
     <HeroCenterLayout title={'Zadejte nové heslo'}>
-      <PasswordResetForm userId={userId!.id} />
+      <PasswordEditForm reset={true} userId={userId!.id} />
     </HeroCenterLayout>
   );
 }

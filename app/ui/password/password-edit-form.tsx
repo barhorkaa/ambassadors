@@ -1,6 +1,6 @@
 'use client';
 
-import { changePassword } from '@/app/lib/actions/password';
+import { changePassword, resetPasswordAction } from '@/app/lib/actions/password';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
@@ -8,19 +8,22 @@ import { useFormState } from 'react-dom';
 
 interface PasswordEditFormProps {
   userId: string;
+  reset: boolean;
 }
 
-export default function PasswordEditForm({ userId }: PasswordEditFormProps) {
-  const [state, dispatch] = useFormState(changePassword, formActionInitialState);
+export default function PasswordEditForm({ userId, reset }: PasswordEditFormProps) {
+  const [state, dispatch] = useFormState(reset ? resetPasswordAction : changePassword, formActionInitialState);
 
   return (
     <FormLayout action={dispatch} state={state}>
-      <FormControl
-        title={'Původní heslo'}
-        id={'oldPassword'}
-        type={'password'}
-        errorMessage={findErrors('oldPassword', state.errors)[0]}
-      />
+      {!reset && (
+        <FormControl
+          title={'Původní heslo'}
+          id={'oldPassword'}
+          type={'password'}
+          errorMessage={findErrors('oldPassword', state.errors)[0]}
+        />
+      )}
       <FormControl
         title={'Nové heslo'}
         id={'newPassword'}

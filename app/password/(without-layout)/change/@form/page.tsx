@@ -8,7 +8,7 @@ export default async function Form() {
 
   return (
     <div className="card">
-      <PasswordEditForm userId={session.user.id} />
+      <PasswordEditForm reset={false} userId={session.user.id} />
     </div>
   );
 }
