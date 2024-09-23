@@ -1,4 +1,9 @@
-export default function DetailRowVertical({ label, value }: { label: string; value: string | number }) {
+interface DetailRowProps {
+  label: string;
+  value: string | number;
+}
+
+export default function DetailRowVertical({ label, value }: DetailRowProps) {
   return (
     <div>
       <div className="grid grid-rows-[min-content_min-content] items-end">
@@ -10,7 +15,7 @@ export default function DetailRowVertical({ label, value }: { label: string; val
   );
 }
 
-export function DetailRowHorizontal({ label, value }: { label: string; value: string | number }) {
+export function DetailRowHorizontal({ label, value }: DetailRowProps) {
   return (
     <div className="grid grid-cols-3 items-end">
       <p className="font-light">{label}</p>
