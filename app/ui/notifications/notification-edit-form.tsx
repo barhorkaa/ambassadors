@@ -7,13 +7,12 @@ import { ToggleButton } from '@/app/ui/utils/toggle-button';
 import { ManagerNotifications, UserNotifications } from '@/models/notifications-models';
 import { useFormState } from 'react-dom';
 
-export default function NotificationsEditForm({
-  notifications,
-  managerNotifications,
-}: {
+interface NotificationEditFormProps {
   notifications: UserNotifications;
   managerNotifications: ManagerNotifications | undefined;
-}) {
+}
+
+export default function NotificationsEditForm({ notifications, managerNotifications }: NotificationEditFormProps) {
   const [state, dispatch] = useFormState(editNotificationsAction, formActionInitialState);
 
   return (
