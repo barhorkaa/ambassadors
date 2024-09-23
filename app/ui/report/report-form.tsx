@@ -8,7 +8,12 @@ import FormControl from '@/app/ui/utils/form-control';
 import { MaterialMinModel } from '@/models/material-models';
 import { useFormState } from 'react-dom';
 
-export default function ReportForm({ eventId, materials }: { eventId: string; materials: MaterialMinModel[] }) {
+interface ReportFormProps {
+  eventId: string;
+  materials: MaterialMinModel[];
+}
+
+export default function ReportForm({ eventId, materials }: ReportFormProps) {
   const [state, dispatch] = useFormState(createReportAction, formActionInitialState);
 
   return (
