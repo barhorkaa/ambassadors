@@ -1,7 +1,11 @@
 import DetailRowVertical from '@/app/ui/utils/data-display';
 import { MotivationModel } from '@/models/motivation-models';
 
-export default function MotivationDetail({ motivation }: { motivation: MotivationModel | undefined }) {
+interface MotivationDetailProps {
+  motivation: MotivationModel | undefined;
+}
+
+export default function MotivationDetail({ motivation }: MotivationDetailProps) {
   if (motivation === undefined) {
     return <p className="text-lg">Užiatel zatím nevyplnil motivační formulář</p>;
   }
