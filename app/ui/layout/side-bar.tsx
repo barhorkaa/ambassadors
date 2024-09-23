@@ -6,7 +6,11 @@ import { UserRoles } from '@/app/utils/user-roles';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function SideBar({ userRole }: { userRole: string }) {
+interface SideBarProps {
+  userRole: string;
+}
+
+export default function SideBar({ userRole }: SideBarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
