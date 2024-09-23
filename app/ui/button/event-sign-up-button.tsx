@@ -5,15 +5,13 @@ import DeleteSignUpModal from '@/app/ui/modals/delete/delete-signup-modal';
 import { ArrowRightEndOnRectangleIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 
-export default function EventSignUpButton({
-  isSignedOnEvent,
-  event_id,
-  user_id,
-}: {
+interface EventSignUpButtonProps {
   isSignedOnEvent: boolean;
   event_id: string;
   user_id: string;
-}) {
+}
+
+export default function EventSignUpButton({ isSignedOnEvent, event_id, user_id }: EventSignUpButtonProps) {
   const [signedOn, setSignedOn] = useState(isSignedOnEvent);
 
   function changeState() {
