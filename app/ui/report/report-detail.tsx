@@ -1,7 +1,11 @@
 import DetailRowVertical from '@/app/ui/utils/data-display';
 import { ReportDetailModel } from '@/models/report-models';
 
-export default function ReportDetail({ report }: { report: ReportDetailModel }) {
+interface ReportDetailProps {
+  report: ReportDetailModel;
+}
+
+export default function ReportDetail({ report }: ReportDetailProps) {
   return (
     <>
       <DetailRowVertical label={'Kolik bylo na akci lidí?'} value={report.numberOfAttendees} />
