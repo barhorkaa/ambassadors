@@ -68,32 +68,30 @@ export const SignUpList = ({ title, list, emptyMessage }: ComponentListProps) =>
   </>
 );
 
-export function EventUserList({ title, list, emptyMessage }: ComponentListProps) {
-  return (
-    <>
-      {list.length === 0 ? (
-        <EmptyMessage message={emptyMessage} />
-      ) : (
-        <>
-          <h3 className="card-title">{title}</h3>
-          {list.map((user) => (
-            <div key={user.userId} className="flex flex-row gap-4 items-baseline">
-              {user.approved ? (
-                <CheckIcon title={'Registrace potvrzena'} className="h-6" />
-              ) : (
-                <ClockIcon title={'Čeká se na potvrzení'} className="h-6" />
-              )}
-              <Link href={`/ambassadors/${user.userId}`} key={user.userId} className="flex flex-row gap-4 py-2">
-                <UserIcon className="h-6" />
-                <p className="text-lg">{user.userName}</p>
-              </Link>
-            </div>
-          ))}
-        </>
-      )}
-    </>
-  );
-}
+export const EventUserList = ({ title, list, emptyMessage }: ComponentListProps) => (
+  <>
+    {list.length === 0 ? (
+      <EmptyMessage message={emptyMessage} />
+    ) : (
+      <>
+        <h3 className="card-title">{title}</h3>
+        {list.map((user) => (
+          <div key={user.userId} className="flex flex-row gap-4 items-baseline">
+            {user.approved ? (
+              <CheckIcon title={'Registrace potvrzena'} className="h-6" />
+            ) : (
+              <ClockIcon title={'Čeká se na potvrzení'} className="h-6" />
+            )}
+            <Link href={`/ambassadors/${user.userId}`} key={user.userId} className="flex flex-row gap-4 py-2">
+              <UserIcon className="h-6" />
+              <p className="text-lg">{user.userName}</p>
+            </Link>
+          </div>
+        ))}
+      </>
+    )}
+  </>
+);
 
 export function MaterialList({ title, list, emptyMessage }: ComponentListProps) {
   return (
