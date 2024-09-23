@@ -4,7 +4,11 @@ import { deleteEventAction } from '@/app/lib/actions/event';
 import { ActionModalButton } from '@/app/ui/button/action-modal-button';
 import ModalLayout from '@/app/ui/modals/modal-layout';
 
-export default function DeleteEventModal({ eventId }: { eventId: string }) {
+interface DeleteEventModalProps {
+  eventId: string;
+}
+
+export default function DeleteEventModal({ eventId }: DeleteEventModalProps) {
   return (
     <ModalLayout id={'delete_event_modal'} title={'Opravdu chcete smazat tuto akci?'} modalType={'delete'}>
       <p>
