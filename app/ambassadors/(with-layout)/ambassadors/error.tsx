@@ -1,6 +1,6 @@
 'use client';
 
-import { ErrorProps } from '@/app/utils/error-props-interface';
+import { ErrorProps } from '@/app/utils/interface-props';
 
 export default function Error({ error, reset }: ErrorProps) {
   return (
