@@ -2,7 +2,11 @@ import { UserModel } from '@/models/user-models';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-export default function UserTable({ users }: { users: UserModel[] }) {
+interface UserTableProps {
+  users: UserModel[];
+}
+
+export default function UserTable({ users }: UserTableProps) {
   return (
     <div className="overflow-x-auto">
       <table className="table table-fixed">
