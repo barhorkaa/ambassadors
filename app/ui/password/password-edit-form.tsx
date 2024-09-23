@@ -6,7 +6,11 @@ import { FormLayout } from '@/app/ui/utils/component-layouts';
 import FormControl from '@/app/ui/utils/form-control';
 import { useFormState } from 'react-dom';
 
-export default function PasswordEditForm({ userId }: { userId: string }) {
+interface PasswordEditFormProps {
+  userId: string;
+}
+
+export default function PasswordEditForm({ userId }: PasswordEditFormProps) {
   const [state, dispatch] = useFormState(changePassword, formActionInitialState);
 
   return (
