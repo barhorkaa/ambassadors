@@ -5,7 +5,6 @@ import EventTable from '@/app/ui/event/event-table';
 import MaterialDetail from '@/app/ui/material/material-detail';
 import UserCard from '@/app/ui/user/user-card';
 import UserTable from '@/app/ui/user/user-table';
-import { EventModel } from '@/models/event-models';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 import { EventUserBasicModel } from '@/models/event-user-models';
 import { MaterialDetailModel } from '@/models/material-models';
@@ -13,14 +12,15 @@ import { UserModel } from '@/models/user-models';
 import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-interface BaseListProps {
+interface ComponentListProps {
   title: string;
+  list: any[];
   emptyMessage: string;
 }
 
 const EmptyMessage = ({ message }: { message: string }) => <p className="text-lg py-2">{message}</p>;
 
-export function EventList({ title, list, emptyMessage }: { title: string; list: EventModel[]; emptyMessage: string }) {
+export function EventList({ title, list, emptyMessage }: ComponentListProps) {
   return (
     <>
       <h2>{title}</h2>
