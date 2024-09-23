@@ -6,7 +6,11 @@ import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 
-export default async function EventTypeDetail({ eventType }: { eventType: EventTypeDetailModel }) {
+interface EventTypeDetailProps {
+  eventType: EventTypeDetailModel;
+}
+
+export default async function EventTypeDetail({ eventType }: EventTypeDetailProps) {
   const session = await auth();
 
   return (
