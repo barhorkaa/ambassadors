@@ -25,7 +25,12 @@ export function DetailRowHorizontal({ label, value }: DetailRowProps) {
   );
 }
 
-export function SectionInfo({ title, contents }: { title: string; contents: string[] }) {
+interface SectionInfoProps {
+  title: string;
+  contents: string[];
+}
+
+export function SectionInfo({ title, contents }: SectionInfoProps) {
   return (
     <div className="flex flex-col gap-2">
       <h2>{title}</h2>
