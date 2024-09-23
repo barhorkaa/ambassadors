@@ -3,17 +3,15 @@ interface DetailRowProps {
   value: string | number;
 }
 
-export function DetailRowVertical({ label, value }: DetailRowProps) {
-  return (
-    <div>
-      <div className="grid grid-rows-[min-content_min-content] items-end">
-        <p className="font-light text-sm">{label}</p>
-        <p className="text-lg">{value}</p>
-      </div>
-      <hr className="w-full h-0.5 my-1 bg-base-300" />
+export const DetailRowVertical = ({ label, value }: DetailRowProps) => (
+  <div>
+    <div className="grid grid-rows-[min-content_min-content] items-end">
+      <p className="font-light text-sm">{label}</p>
+      <p className="text-lg">{value}</p>
     </div>
-  );
-}
+    <hr className="w-full h-0.5 my-1 bg-base-300" />
+  </div>
+);
 
 export const DetailRowHorizontal = ({ label, value }: DetailRowProps) => (
   <div className="grid grid-cols-3 items-end">
