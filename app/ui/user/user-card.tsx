@@ -1,7 +1,11 @@
 import { UserModel } from '@/models/user-models';
 import Link from 'next/link';
 
-export default function UserCard({ user }: { user: UserModel }) {
+interface UserCardProps {
+  user: UserModel;
+}
+
+export default function UserCard({ user }: UserCardProps) {
   return (
     <Link href={`/ambassadors/${user.id}`} className="card shadow-lg">
       <div className="card-body">
