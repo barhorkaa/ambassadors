@@ -12,7 +12,12 @@ export async function Footer() {
           <p>
             V případě, že najdete v aplikaci nějaký bug, nesrovnalost, nebo vám napadne nějaká feature, která by do
             aplikace mohla přidat vyplňte prosím{' '}
-            <Link href={''} className="link">
+            <Link
+              href={'https://forms.gle/FPap6vfQHVPzo6xD6'}
+              rel="noopener noreferrer"
+              target="_blank"
+              className="link"
+            >
               Google formulář
             </Link>{' '}
             a co nejdříve se tomu budeme věnovat.
