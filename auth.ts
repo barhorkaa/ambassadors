@@ -1,3 +1,4 @@
+import { VerificationError } from '@/app/ui/auth/erorrs';
 import { getUserByEmail } from '@/database/repository/user';
 import { loginSchema } from '@/models/login-model';
 import bcrypt from 'bcryptjs';
@@ -16,6 +17,13 @@ export const { auth, signIn, signOut } = NextAuth({
           const { email, password } = parsedCredentials.data;
           const user = await getUserByEmail(email);
           if (!user) return null;
+          if (!user.email_verified) {
+            throw new VerificationError({
+              name: 'EMAIL_NOT_VERIFIED',
+              message: 'The em-mail you are trying to use has not yet been verified',
+              cause: this,
+            });
+          }
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
 
