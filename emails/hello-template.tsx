@@ -2,7 +2,7 @@ import EmailSkeleton from '@/emails/utils/email-skeleton';
 import { Heading, Link, Text } from '@react-email/components';
 
 const HelloTemplate = () => (
-  <EmailSkeleton title={'Vítejte v ambasadorském programu FI MU!'} preview={'[Ambasadorský program] Vítejte mezi námi'}>
+  <EmailSkeleton title={'Vítejte v ambasadorském programu FI MU!'} preview={'Vítejte mezi námi'}>
     <Text>
       Tento e-mail jste obrdželi jelikož jste se registrovali v aplikaci AmbassadorsFIMU a váš účet byl úspěsně
       potvzren. Nyní můžete aplikaci využívat v jejím plném rozsahu. Jsme rádi že jste se k nám přidali a těšíme se na
@@ -16,18 +16,21 @@ const HelloTemplate = () => (
       zaměstnancům propagace.
     </Text>
     <Text>
-      Na aplikaci pořád pracujeme a oceníme vaší zpětnou vazbu nebo bug reporty pomocí <Link href={''}>formuláře</Link>.
-      Zde můžete popsat svoje problémy s aplikací a my se je pokusíme co nejdřiv vyřešit.
+      Na aplikaci pořád pracujeme a oceníme vaší zpětnou vazbu nebo bug reporty pomocí{' '}
+      <Link href={'https://forms.gle/FPap6vfQHVPzo6xD6'}>formuláře</Link>. Zde můžete popsat svoje problémy s aplikací a
+      my se je pokusíme co nejdřiv vyřešit.
     </Text>
     <Heading as="h2">Co v aplikaci najdu?</Heading>
     <Heading as="h3">Akce</Heading>
-    <Text>Různé akce kterých se můžete zúčastnit.</Text>
+    <Text>Různé akce kterých se můžete zúčastnit. ...</Text>
     <Heading as="h3">Materiály / Propagační předměty</Heading>
-    <Text>Různé akce kterých se můžete zúčastnit.</Text>
+    <Text>Materiály, které ssebou můžete vzít na akci. ...</Text>
     <Heading as="h3">Druhy akcí</Heading>
-    <Text>Různé akce kterých se můžete zúčastnit.</Text>
+    <Text>Různé druhy akcí kterých se můžete zúčastnit. ...</Text>
     <Heading as="h3">Osobni informace a notifikační preference</Heading>
-    <Text>Různé akce kterých se můžete zúčastnit.</Text>
+    <Text>
+      Můžete spravovat svoje osobní údaje a nastavit si prefence o jakém dění v aplikaci chcete být informováni. ...
+    </Text>
     <Heading as="h2">Jak začít?</Heading>
     <Text>
       V aplikaci najdete akce na ktré se můžete přihlásit a pomáhat. Nevidíte akci, na kterou byste chtěli jet? Nevadí,
