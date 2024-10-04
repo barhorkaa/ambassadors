@@ -4,6 +4,7 @@ import { getEventById } from '@/database/repository/event';
 import { getEventReport } from '@/database/repository/report';
 import { getUserById } from '@/database/repository/user';
 import EventChangeTemplate from '@/emails/event-change-template';
+import HelloTemplate from '@/emails/hello-template';
 import ManagerDemotionTemplate from '@/emails/manager/manager-demotion-template';
 import ManagerPromotionTemplate from '@/emails/manager/manager-promotion-template';
 import NewRegistrationTemplate from '@/emails/manager/new-registration-template';
@@ -104,6 +105,27 @@ export async function emailRegistrationApprove(userId: string) {
       bcc: recipients,
       subject: '[Ambasadorský program] Registrace potvrzena',
       html: render(RegistrationApproveTemplate()),
+    };
+
+    await sendEmailNode(mailOptions);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
+export async function emailHello(userId: string) {
+  try {
+    const user = await getUserById(userId);
+
+    // const recipients = user.email;
+    const recipients = ['radka.grace@icloud.com'];
+
+    const mailOptions = {
+      ...BaseOptions,
+      bcc: recipients,
+      subject: '[Ambasadorský program] Vítejte v ambasadorském programu',
+      html: render(HelloTemplate()),
     };
 
     await sendEmailNode(mailOptions);
