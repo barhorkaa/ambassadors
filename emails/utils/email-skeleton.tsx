@@ -17,9 +17,10 @@ interface EmailSkeletonProps {
   children: React.ReactNode;
   title: string;
   preview: string;
+  includeFooter?: boolean;
 }
 
-const EmailSkeleton = ({ children, title, preview }: EmailSkeletonProps) => (
+const EmailSkeleton = ({ children, title, preview, includeFooter = true }: EmailSkeletonProps) => (
   <Html>
     <Head>
       <Font
@@ -52,10 +53,12 @@ const EmailSkeleton = ({ children, title, preview }: EmailSkeletonProps) => (
           </Heading>
           <Section className="px-4">{children}</Section>
           <Hr />
-          <Text className="p-4">
-            Pokud si nepřejete dostávat e-maily s těmito informacemi, můžete si nastavit preference notifikací na{' '}
-            <Link href={process.env['HOSTING'] + '/me'}>své osobní stránce</Link> v sekci Notifikace.
-          </Text>
+          {includeFooter && (
+            <Text className="p-4">
+              Pokud si nepřejete dostávat e-maily s těmito informacemi, můžete si nastavit preference notifikací na{' '}
+              <Link href={process.env['HOSTING'] + '/me'}>své osobní stránce</Link> v sekci Notifikace.
+            </Text>
+          )}
         </Container>
       </Body>
     </Tailwind>
