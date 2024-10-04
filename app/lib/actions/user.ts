@@ -1,6 +1,7 @@
 'use server';
 
 import {
+  emailHello,
   emailManagerDemotionAction,
   emailManagerPromotionAction,
   emailPersonalInfoChangeAction,
@@ -18,6 +19,7 @@ export async function approveUserById(id: string) {
   try {
     await approveUser(id);
     await emailRegistrationApprove(id);
+    await emailHello(id);
   } catch (e) {
     console.error(e);
     throw e;
