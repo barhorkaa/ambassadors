@@ -5,6 +5,7 @@ const ManagerDemotionTemplate = () => (
   <EmailSkeleton
     title={'Byla vám odebrána role manažera aplikace'}
     preview={'Vaše role byla změněna a přišli jste o manažerská privilégia'}
+    includeFooter={false}
   >
     <Text>
       A aplikaci nyní už nejste manažerem. S odebráním vyší role přicházíte o privilegia na spravování aplikace. Pokud

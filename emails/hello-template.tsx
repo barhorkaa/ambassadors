@@ -2,7 +2,7 @@ import EmailSkeleton from '@/emails/utils/email-skeleton';
 import { Heading, Link, Text } from '@react-email/components';
 
 const HelloTemplate = () => (
-  <EmailSkeleton title={'Vítejte v ambasadorském programu FI MU!'} preview={'Vítejte mezi námi'}>
+  <EmailSkeleton title={'Vítejte v ambasadorském programu FI MU!'} preview={'Vítejte mezi námi'} includeFooter={false}>
     <Text>
       Tento e-mail jste obrdželi jelikož jste se registrovali v aplikaci AmbassadorsFIMU a váš účet byl úspěsně
       potvzren. Nyní můžete aplikaci využívat v jejím plném rozsahu. Jsme rádi že jste se k nám přidali a těšíme se na

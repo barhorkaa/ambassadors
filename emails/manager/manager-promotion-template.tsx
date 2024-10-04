@@ -2,7 +2,11 @@ import EmailSkeleton from '@/emails/utils/email-skeleton';
 import { Heading, Hr, Text } from '@react-email/components';
 
 const ManagerPromotionTemplate = () => (
-  <EmailSkeleton title={'Byli jste povýšeni na manažera'} preview={'Vaše role byla změněna a stal jste se manažerem'}>
+  <EmailSkeleton
+    title={'Byli jste povýšeni na manažera'}
+    preview={'Vaše role byla změněna a stal jste se manažerem'}
+    includeFooter={false}
+  >
     <Text>Gratulujeme! Byli jste povýšení na manažera v aplikaci AmbassadorsFIMU!</Text>
     <Text>
       Jakožto manažer máte v aplikaci věčší privilegia a můžete v ní využívat všechny funkce bez kontroly nebo potřeby
