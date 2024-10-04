@@ -31,7 +31,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-type MailOptions = { from: string; replyTo: string; bcc: string; subject: string; html: string };
+type MailOptions = { from: string; replyTo: string; bcc: string[]; subject: string; html: string };
 
 const BaseOptions = {
   from: 'Ambassadors FI MU <' + process.env['EMAIL'] + '>',
@@ -55,12 +55,12 @@ export async function emailVerifyEmail(id: string) {
     const token = user.verification_token;
     if (token) {
       // const recipients = user.email;
-      const recipients = 'barculka1.3@gmail.com';
+      const recipients = ['radka.grace@icloud.com'];
 
       const mailOptions = {
         ...BaseOptions,
         bcc: recipients,
-        subject: '[Ambasadorský program] Nová akce',
+        subject: '[Ambasadorský program] Potvrďte svůj e-mail',
         html: render(VerifyEmailTemplate({ token: token })),
       };
 
@@ -77,7 +77,7 @@ export async function emailNewEventAction(id: string) {
     const event = await getEventById(id);
 
     // const recipients = await getRecipients('new_event');
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -98,7 +98,7 @@ export async function emailRegistrationApprove(userId: string) {
     const user = await getUserById(userId);
 
     // const recipients = user.email;
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -141,7 +141,7 @@ export async function emailSignupApprove(userId: string, eventId: string, substi
     const user = await getUserById(userId);
 
     // const recipients = user.email;
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -163,7 +163,7 @@ export async function emailSignupPromotionAction(userId: string, eventId: string
     const user = await getUserById(userId);
 
     // const recipients = user.email;
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -184,7 +184,7 @@ export async function emailEventChange(oldEvent: EventDetailModel, eventId: stri
     const event = await getEventById(eventId);
 
     // const recipients = await getRecipientsForEventChange(eventId);
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -205,7 +205,7 @@ export async function emailPersonalInfoChangeAction(oldInfo: UserModel) {
     const newInfo = await getUserById(oldInfo.id);
 
     // const recipients = newInfo.email;
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -226,7 +226,7 @@ export async function emailManagerNewSuggestionAction(id: string) {
     const event = await getEventById(id);
 
     // const recipients = await getManagerRecipients('new_event_suggestion');
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -247,7 +247,7 @@ export async function emailManagerNewRegistrationAction(id: string) {
     const user = await getUserById(id);
 
     // const recipients = await getManagerRecipients('new_registration');
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -269,7 +269,7 @@ export async function emailManagerNewReportAction(eventId: string) {
     const report = await getEventReport(eventId);
 
     // const recipients = await getManagerRecipients('new_report');
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -291,7 +291,7 @@ export async function emailManagerNewSignupAction(eventId: string, userId: strin
     const user = await getUserById(userId);
 
     // const recipients = await getManagerRecipients('new_signup');
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -312,7 +312,7 @@ export async function emailManagerPromotionAction(userId: string) {
     const user = await getUserById(userId);
 
     // const recipients = user.email;
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -333,7 +333,7 @@ export async function emailManagerDemotionAction(userId: string) {
     const user = await getUserById(userId);
 
     // const recipients = user.email;
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
@@ -352,7 +352,7 @@ export async function emailManagerDemotionAction(userId: string) {
 export async function emailResetPassword(email: string, token: string) {
   try {
     // const recipients = email;
-    const recipients = 'barculka1.3@gmail.com';
+    const recipients = ['radka.grace@icloud.com'];
 
     const mailOptions = {
       ...BaseOptions,
