@@ -5,10 +5,10 @@ import { Link, Text } from '@react-email/components';
 
 const NewEventTemplate = ({ event }: { event: EventDetailModel }) => (
   <EmailSkeleton title={'Byla přidaná nová akce'} preview={'Přidali jsme novou akci'}>
-    <Text>Přidali jsme novou akci!</Text>
+    <Text>Skvělá zpráva – přidali jsme novou akci!</Text>
     <EmailEventDisplay event={event} />
     <Text>
-      Jestli máte zájem zúčastnit se na akci můžete se přihlásit na{' '}
+      Máte-li zájem se akce zúčastnit, můžete se přihlásit na{' '}
       <Link href={process.env['HOSTING'] + '/events/' + event.id}>stránce akce</Link>.
     </Text>
   </EmailSkeleton>
