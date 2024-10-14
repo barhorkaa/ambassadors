@@ -15,19 +15,7 @@ export default function EventDetail({ event, attendees, isManager }: EventDetail
           <CalendarDaysIcon className="h-7" />
           <p className="text-lg">{event.date === null ? 'Nezadáno' : event.date.toLocaleDateString('cs-CZ')}</p>
         </div>
-        <div className="flex flex-row justify-between">
-          {event.approved ? (
-            <div className="flex flex-row gap-2">
-              <CheckCircleIcon className="h-7" />
-              <p className="text-lg">Potvrzeno</p>
-            </div>
-          ) : (
-            <div className="flex flex-row gap-2">
-              <XCircleIcon className="h-7" />
-              <p className="text-lg">Nepotvrzeno</p>
-            </div>
-          )}
-        </div>
+        <ApprovalStatus approved={event.approved} />
         <div title="Limit" className="flex flex-row gap-2">
           <UserGroupIcon className="h-7" />
           <p className="text-lg">
@@ -45,3 +33,19 @@ export default function EventDetail({ event, attendees, isManager }: EventDetail
     </div>
   );
 }
+
+const ApprovalStatus = ({ approved }: { approved: boolean }) => (
+  <div className="flex flex-row justify-between">
+    {approved ? (
+      <div className="flex flex-row gap-2">
+        <CheckCircleIcon className="h-7" />
+        <p className="text-lg">Potvrzeno</p>
+      </div>
+    ) : (
+      <div className="flex flex-row gap-2">
+        <XCircleIcon className="h-7" />
+        <p className="text-lg">Nepotvrzeno</p>
+      </div>
+    )}
+  </div>
+);
