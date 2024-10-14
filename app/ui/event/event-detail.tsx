@@ -22,14 +22,14 @@ export default function EventDetail({ event, attendees, isManager }: EventDetail
             {attendees}/{event.limit}
           </p>
         </div>
-        {isManager && (
-          <div className="flex flex-col md:flex-row gap-4 md:gap-10">
-            <p className="text-lg">Vytvořeno: {event.createdAt.toLocaleDateString()}</p>
-            <p className="text-lg">Upraveno: {event.updatedAt.toLocaleDateString()}</p>
-            <p className="text-lg">Smazáno: {event.deletedAt === null ? 'Ne' : event.deletedAt.toLocaleDateString()}</p>
-          </div>
-        )}
       </div>
+      {isManager && (
+        <div className="flex flex-col md:flex-row gap-4 md:gap-10">
+          <p className="text-lg">Vytvořeno: {event.createdAt.toLocaleDateString()}</p>
+          <p className="text-lg">Upraveno: {event.updatedAt.toLocaleDateString()}</p>
+          <p className="text-lg">Smazáno: {event.deletedAt === null ? 'Ne' : event.deletedAt.toLocaleDateString()}</p>
+        </div>
+      )}
     </div>
   );
 }
