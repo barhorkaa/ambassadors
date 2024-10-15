@@ -23,16 +23,23 @@ export default async function Page({ params }: { params: { id: string } }) {
   const attendees = await getSignUpsForEvent(event.id!, false);
   const substitutes = await getSignUpsForEvent(event.id!, true);
 
+  const buttonsShown =
+    isManager ||
+    (userStatus !== undefined &&
+      !userStatus.substitute &&
+      userStatus.approved &&
+      (event.date === null || new Date() <= event.date));
+
+  console.log('are there buttons?: ', buttonsShown);
+
   return (
     <div className="data-display">
       <div className="card-body">
-        <div className="flex flex-col md:flex-row justify-between md:items-end">
-          <h1 className="w-1/2">{event.name}</h1>
+        <div className={'flex flex-col' + buttonsShown ? ' gap-4' : ''}>
+          <h1 className="w-full">{event.name}</h1>
           {event.deletedAt === null && (
-            <div className="flex flex-row gap-4 ">
-              {!event.approved && session?.user.role === UserRoles.manager && (
-                <ApproveButton fun={approveEventAction} id={event.id} />
-              )}
+            <div className="flex flex-row gap-4">
+              {isManager && !event.approved && <ApproveButton fun={approveEventAction} id={event.id} />}
               {(isManager ||
                 (userStatus !== undefined &&
                   !userStatus.substitute &&
