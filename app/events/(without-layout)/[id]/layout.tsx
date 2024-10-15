@@ -15,7 +15,7 @@ interface LayoutProps {
 export default function Layout({ children, event, users, info }: BaseLayoutProps & LayoutProps) {
   return (
     <section>
-      <div className="align-text-base flex flex-row gap-4">
+      <div className="align-text-base flex flex-row gap-4 pb-2">
         <BackNavigation href={'/events/all'} tooltip={'Zpátky na akce'} />
         <h1 className="font-light text-xl">Detail akce</h1>
       </div>
