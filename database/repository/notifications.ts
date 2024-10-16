@@ -217,3 +217,25 @@ export async function getRecipientsForEventChange(eventId: string) {
     });
   }
 }
+
+export async function getEventGroupEmailRecipients(eventId: string) {
+  try {
+    const emails = await db
+      .selectFrom('eventUser')
+      .where('event_id', '=', eventId)
+      .rightJoin('user', 'user.id', 'eventUser.user_id')
+      .select('email')
+      .execute();
+
+    return emails.map((email) => {
+      return email.email;
+    });
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({
+      name: 'DATABASE_GET_ERROR',
+      message: 'Could not get recipients for group email',
+      cause: e,
+    });
+  }
+}
