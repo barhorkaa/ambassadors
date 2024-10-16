@@ -1,8 +1,8 @@
 export type EventGroupEmailModel = {
-  id: string;
+  id?: string;
   eventId: string;
   contents: string;
-  createdAt: Date;
+  createdAt?: Date;
 };
 
 export type EventGroupEmailSendingModel = EventGroupEmailModel & {
