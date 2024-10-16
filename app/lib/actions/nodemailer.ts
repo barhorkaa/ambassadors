@@ -3,6 +3,7 @@
 import { getEventById } from '@/database/repository/event';
 import { getEventReport } from '@/database/repository/report';
 import { getUserById } from '@/database/repository/user';
+import CustomEmailTemplate from '@/emails/custom-email-template';
 import EventChangeTemplate from '@/emails/event-change-template';
 import HelloTemplate from '@/emails/hello-template';
 import ManagerDemotionTemplate from '@/emails/manager/manager-demotion-template';
@@ -359,6 +360,32 @@ export async function emailResetPassword(email: string, token: string) {
       bcc: recipients,
       subject: '[Ambasadorský program] Resetování hesla',
       html: render(ResetPasswordTemplate({ token })),
+    };
+
+    await sendEmailNode(mailOptions);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
+export async function emailCustomEmailAction(
+  contents: string,
+  title: string,
+  recipients: string[],
+  preview?: string,
+  subject?: string
+) {
+  try {
+    const recipients_ = ['barculka1.3@gmail.com'];
+
+    const customSubject = subject ?? `[Ambasadorský program] ${title}`;
+
+    const mailOptions = {
+      ...BaseOptions,
+      bcc: recipients_,
+      subject: customSubject,
+      html: render(CustomEmailTemplate({ title: title, contents: contents, preview: preview ?? title })),
     };
 
     await sendEmailNode(mailOptions);
