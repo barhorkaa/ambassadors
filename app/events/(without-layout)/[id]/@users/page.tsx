@@ -1,5 +1,7 @@
 import EventSignUpButton from '@/app/ui/button/event-sign-up-button';
 import { EventUserDetail } from '@/app/ui/event-user/event-user-detail';
+import CreateGroupEmailModal from '@/app/ui/modals/create/create-group-email-modal';
+import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { getEventById } from '@/database/repository/event';
 import { userSignUpForEventStatus } from '@/database/repository/event-user';
@@ -26,6 +28,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           )}
         </div>
         <EventUserDetail event_id={params.id} />
+        {session?.user.role === UserRoles.manager && <CreateGroupEmailModal eventId={params.id} />}
       </div>
     </div>
   );
