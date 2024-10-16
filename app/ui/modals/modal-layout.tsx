@@ -23,7 +23,7 @@ export default function ModalLayout({ children, id, title, modalType, buttonTitl
           }
         }}
       >
-        <ButtonContent modalType={modalType} />
+        <ButtonContent modalType={modalType} buttonTitle={buttonTitle} />
       </button>
       <dialog id={id} className="modal">
         <div className="modal-box">
@@ -41,34 +41,34 @@ export default function ModalLayout({ children, id, title, modalType, buttonTitl
   );
 }
 
-function ButtonContent({ modalType }: { modalType: ModalType }) {
+function ButtonContent({ modalType, buttonTitle }: { modalType: ModalType; buttonTitle?: string }) {
   switch (modalType) {
     case 'create':
       return (
         <>
           <PlusIcon className="h-5" />
-          <p className="hidden md:block">Přidat</p>
+          <p className="hidden md:block">{buttonTitle ?? 'Přidat'}</p>
         </>
       );
     case 'edit':
       return (
         <>
           <PencilIcon className="h-5" />
-          <p className="hidden md:block">Upravit</p>
+          <p className="hidden md:block">{buttonTitle ?? 'Upravit'}</p>
         </>
       );
     case 'delete':
       return (
         <>
           <TrashIcon className="h-5" />
-          <p className="hidden md:block">Smazat</p>
+          <p className="hidden md:block">{buttonTitle ?? 'Smazat'}</p>
         </>
       );
     case 'revive':
       return (
         <>
           <ArrowPathIcon className="h-5" />
-          <p className="hidden md:block">Odnovit</p>
+          <p className="hidden md:block">{buttonTitle ?? 'Odnovit'}</p>
         </>
       );
     case 'notifications':
