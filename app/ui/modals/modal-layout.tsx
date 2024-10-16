@@ -4,17 +4,15 @@ import { ArrowPathIcon, BellIcon, PencilIcon, PlusIcon, TrashIcon } from '@heroi
 
 type ModalType = 'create' | 'edit' | 'delete' | 'revive' | 'notifications';
 
-export default function ModalLayout({
-  children,
-  id,
-  title,
-  modalType,
-}: {
+interface ModalLayoutProps {
   children: any;
   id: string;
   title: string;
   modalType: ModalType;
-}) {
+  buttonTitle?: string;
+}
+
+export default function ModalLayout({ children, id, title, modalType, buttonTitle }: ModalLayoutProps) {
   return (
     <>
       <button
