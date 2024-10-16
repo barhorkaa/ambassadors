@@ -19,8 +19,8 @@ export default function GroupEmailForm({ eventId }: { eventId: string }) {
         errorMessage={findErrors('subject', state.errors)[0]}
         required={false}
       />
-      <input id="eventId" value={eventId} type="hidden" name="id" />
       <TextEditor />
+      <input id="eventId" value={eventId} type="hidden" name="eventId" />
     </FormLayout>
   );
 }
