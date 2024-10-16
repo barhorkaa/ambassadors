@@ -18,7 +18,7 @@ export async function createEventGroupEmail(groupEmail: EventGroupEmailModel) {
 
 export async function getEventGroupEmails(eventId: string) {
   try {
-    await db
+    return await db
       .selectFrom('eventGroupEmails')
       .where('event_id', '=', eventId)
       .select(['id', 'created_at as createdAt', 'event_id as eventId', 'contents'])
