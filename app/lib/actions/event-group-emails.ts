@@ -28,5 +28,3 @@ export async function creteGroupEmailAction(prevState: any, formData: FormData) 
     generic: undefined,
   };
 }
-
-export async function getEventGroupEmailsAction(eventId: string) {}
