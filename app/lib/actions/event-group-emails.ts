@@ -1,22 +1,29 @@
 'use server';
 
-import { emailEventChange } from '@/app/lib/actions/nodemailer';
+import { emailCustomEmailAction } from '@/app/lib/actions/nodemailer';
 import { handleError } from '@/app/lib/actions/utils';
-import { updateEvent } from '@/database/repository/event';
-import { eventSchema } from '@/models/event-models';
+import { createEventGroupEmail } from '@/database/repository/event-group-emails';
+import { getEventGroupEmailRecipients } from '@/database/repository/notifications';
 import { revalidatePath } from 'next/cache';
 
 export async function creteGroupEmailAction(prevState: any, formData: FormData) {
   try {
     const eventGroupEmailForm = {
+      eventId: formData.get('eventId') as string,
       title: formData.get('title') as string,
-      date: formData.get('date') === '' ? null : formData.get('date'),
-      contents: formData.get('contents') as string,
+      subject: formData.get('subject') === '' ? null : formData.get('subject'),
+      quill: formData.get('content-quill') as string,
     };
 
-    const parsedData = eventSchema.parse(eventGroupEmailForm);
-    const oldEvent = await updateEvent(parsedData);
-    await emailEventChange(oldEvent, parsedData.id!);
+    const emailToArchive = {
+      eventId: eventGroupEmailForm.eventId,
+      contents: eventGroupEmailForm.quill,
+    };
+
+    const recipients = await getEventGroupEmailRecipients(eventGroupEmailForm.eventId);
+    await emailCustomEmailAction(eventGroupEmailForm.quill, eventGroupEmailForm.title, recipients);
+
+    await createEventGroupEmail(emailToArchive);
   } catch (e) {
     console.error(e);
     return handleError(e);
