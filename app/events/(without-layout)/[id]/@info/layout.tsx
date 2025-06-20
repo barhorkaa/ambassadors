@@ -1,12 +1,6 @@
 import PageNavigation from '@/app/ui/layout/page-navigation';
 import { PageUrl } from '@/app/utils/pages';
 
-interface LayoutProps {
-  type: React.ReactNode;
-  report: React.ReactNode;
-  emails: React.ReactNode;
-}
-
 export default function Layout({ params, children }: { params: { id: string }; children: React.ReactNode }) {
   const eventPages: PageUrl[] = [
     { name: 'Typ akce', url: `/events/${params.id}` },
