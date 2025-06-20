@@ -14,7 +14,7 @@ export default function GroupEmailForm({ eventId }: { eventId: string }) {
     <FormLayout action={dispatch} state={state} modalId={'create_group_email'}>
       <FormControl title={'Titulek emailu'} id={'title'} errorMessage={findErrors('title', state.errors)[0]} />
       <FormControl
-        title={'Předmět e-mali (nepovinné)'}
+        title={'Předmět e-mailu (nepovinné)'}
         id={'subject'}
         errorMessage={findErrors('subject', state.errors)[0]}
         required={false}
