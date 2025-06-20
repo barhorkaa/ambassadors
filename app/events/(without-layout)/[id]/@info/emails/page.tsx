@@ -6,8 +6,8 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      {eventEmails.map((email) => (
-        <GroupEmailDetail email={email} />
+      {eventEmails.map((email, index) => (
+        <GroupEmailDetail key={index} email={email} />
       ))}
     </>
   );
