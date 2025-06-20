@@ -20,7 +20,7 @@ export default function GroupEmailForm({ eventId }: { eventId: string }) {
         required={false}
       />
       <TextEditor />
-      <input id="eventId" value={eventId} type="hidden" name="eventId" />
+      <input id="eventId" defaultValue={eventId} type="hidden" name="eventId" />
     </FormLayout>
   );
 }
