@@ -52,7 +52,7 @@ export default function TextEditor() {
         formats={quillFormats}
         className="w-full h-[70%] mt-0 bg-white"
       />
-      <input name="content-quill" value={content} />
+      <input name="content-quill" value={content} type="hidden" />
     </div>
   );
 }
