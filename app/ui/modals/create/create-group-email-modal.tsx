@@ -14,7 +14,7 @@ export default function CreateGroupEmailModal({ eventId }: { eventId: string }) 
       <GroupEmailForm eventId={eventId} />
       <p className="text-sm">
         E-mail se pošle všem uživatelům, kteří jsou přihlášeni na akci i náhradníkům. Správa se také uloží do sekce
-        stránky "Doplňující informace" a bude dostupná všem ambasadorům, kteří se na akci podívají.
+        stránky `&quot;`Doplňující informace`&quot;` a bude dostupná všem ambasadorům, kteří se na akci podívají.
       </p>
     </ModalLayout>
   );
