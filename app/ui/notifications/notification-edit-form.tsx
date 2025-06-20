@@ -17,8 +17,8 @@ export default function NotificationsEditForm({ notifications, managerNotificati
 
   return (
     <FormLayout action={dispatch} state={state} modalId={'notifications' + notifications.userId}>
-      {managerNotifications && <ManagerNotifications managerNotifications={managerNotifications} />}
-      <UserNotifications userNotifications={notifications} />
+      {managerNotifications && <ManagerNotificationsSettings managerNotifications={managerNotifications} />}
+      <UserNotificationsSettings userNotifications={notifications} />
       <input id="userId" type="hidden" name="userId" value={notifications.userId} required />
       <input
         id="isManager"
@@ -31,7 +31,7 @@ export default function NotificationsEditForm({ notifications, managerNotificati
   );
 }
 
-function ManagerNotifications({ managerNotifications }: { managerNotifications: ManagerNotifications }) {
+function ManagerNotificationsSettings({ managerNotifications }: { managerNotifications: ManagerNotifications }) {
   return (
     <>
       <ToggleButton
@@ -67,7 +67,7 @@ function ManagerNotifications({ managerNotifications }: { managerNotifications: 
   );
 }
 
-function UserNotifications({ userNotifications }: { userNotifications: UserNotifications }) {
+function UserNotificationsSettings({ userNotifications }: { userNotifications: UserNotifications }) {
   return (
     <>
       <ToggleButton
