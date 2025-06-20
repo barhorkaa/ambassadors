@@ -43,14 +43,14 @@ export default function TextEditor() {
   return (
     <div className="form-control">
       <label className="label" htmlFor="event_type">
-        <span className="label-text">Obsah e-mailu quill</span>
+        <span className="label-text">Obsah e-mailu</span>
       </label>
       <QuillEditor
         value={content}
         onChange={handleEditorChange}
         modules={quillModules}
         formats={quillFormats}
-        className="w-full h-[70%] mt-10 bg-white"
+        className="w-full h-[70%] mt-0 bg-white"
       />
       <input name="content-quill" value={content} />
     </div>
