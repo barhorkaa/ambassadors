@@ -1,6 +1,5 @@
-'use client';
-
-import { useState } from 'react';
+import PageNavigation from '@/app/ui/layout/page-navigation';
+import { PageUrl } from '@/app/utils/pages';
 
 interface LayoutProps {
   type: React.ReactNode;
@@ -8,27 +7,17 @@ interface LayoutProps {
   emails: React.ReactNode;
 }
 
-export default function Layout({ type, report, emails }: LayoutProps) {
-  const [state, setState] = useState('type');
-
-  const changeState = (newState: 'type' | 'report' | 'emails') => {
-    setState(newState);
-  };
+export default function Layout({ params, children }: { params: { id: string }; children: React.ReactNode }) {
+  const eventPages: PageUrl[] = [
+    { name: 'Typ akce', url: `/events/${params.id}` },
+    { name: 'Zpráva z akce', url: `/events/${params.id}/report` },
+    { name: 'Doplňující informace', url: `/events/${params.id}/emails` },
+  ];
 
   return (
-    <>
-      <ul className="page-menu">
-        <li key={'type'}>
-          <button onClick={() => changeState('type')}>Typ akce</button>
-        </li>
-        <li key={'report'}>
-          <button onClick={() => changeState('report')}>Zpráva z akce</button>
-        </li>
-        <li key={'emails'}>
-          <button onClick={() => changeState('emails')}>Doplňující informace</button>
-        </li>
-      </ul>
-      {state === 'type' ? <>{type}</> : state === 'report' ? <>{report}</> : <>{emails}</>}
-    </>
+    <div>
+      <PageNavigation pages={eventPages} />
+      {children}
+    </div>
   );
 }
