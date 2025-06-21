@@ -8,7 +8,7 @@ interface UserTableProps {
 
 export default function UserTable({ users }: UserTableProps) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto data-display p-4">
       <table className="table">
         <thead>
           <tr>
