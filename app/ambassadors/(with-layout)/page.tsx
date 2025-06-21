@@ -1,43 +1,15 @@
-import { SectionInfo } from '@/app/ui/utils/data-display';
+import { UserList } from '@/app/ui/utils/content-list';
+import { getAllAmbassadors } from '@/database/repository/user';
+import { UserModel } from '@/models/user-models';
 
-export default function Page() {
+export default async function Page() {
+  const allAmbassadors: UserModel[] = await getAllAmbassadors();
+
   return (
-    <>
-      <p>
-        V této sekci aplikace můžete najít informace o uživatelech systému. Po rozkliknutí menu nahoře se Vám ukáží
-        seznamy uživatelů dané ketegorie.
-      </p>
-      <hr />
-      <SectionInfo
-        title={'Nepotrvzení uživatelé'}
-        contents={[
-          'Tato sekce obsahuje seznam nových uživatelů, kterých účty ještě nebyli potvrzeny.',
-          'Bez potvrzení účtu se uživatel nemůže dostat k hlavním častím aplikace jako jsou: seznamy akcí, infomace o akcích a pod.',
-          'Pro potvrzení registrace je nutné přejít na detail uživatele kliknutím na jeho jméno nebo odkaz při jeho jméně. Poté budte ' +
-            'mít možnost si prohlédnout motivační formulář uživatele a na základě něho se rozhodnout, zda je vhodným adeptem do programu.',
-          'Jestli budete spokojení s uživatelem, můžete registraci potvrdit stisknutím tlačitka "Potvrdit".',
-        ]}
-      />
-      <hr />
-      <SectionInfo
-        title={'Ambasadoři'}
-        contents={[
-          'Tato sekce obsahuje seznam uživatelů, který jsou v systému vedení jako ambasadoři.',
-          'Ambasadoři nemají právo přístupu k celému systému, ale jenom k jeho částím.',
-          'Chování ambasadora v aplikaci je monitorováno a některé jeho činnosti músí být z potvrzované manažerem. Aby se ' +
-            'ambasador přihlásil na akci, musí být jeho přihlášení schváleno.',
-        ]}
-      />
-      <hr />
-      <SectionInfo
-        title={'Manažeři'}
-        contents={[
-          'Tato sekce obsahuje seznam uživatelů, který jsou v systému vedení jako manažeři.',
-          'Manažer má v aplikaci vyšší práva a umí se dostat k všem jejích částím.',
-          'Může zejména spravovat obsah aplikace, volně přidávat a odebírat akce, typy akcí a materiály.',
-          'Manažer má taky za úkol potvrzovat registrace ambasadorů, jejich přihlášení na akce a také návrhy na nové akce.',
-        ]}
-      />
-    </>
+    <UserList
+      title={'Ambasadoři'}
+      list={allAmbassadors}
+      emptyMessage={'V aplikaci zatím nejsou registrovaní žádní ambasadoři.'}
+    />
   );
 }
