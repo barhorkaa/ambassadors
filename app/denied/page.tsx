@@ -9,7 +9,7 @@ export default async function Page() {
   }
 
   if (session.user.approved) {
-    redirect('/events/all');
+    redirect('/events');
   }
 
   return (

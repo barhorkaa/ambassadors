@@ -6,8 +6,8 @@ const RegistrationApproveTemplate = () => (
     <Text>Váš účet byl potvrzen. Nyní můžete aplikaci využívat naplno.</Text>
     <Heading as="h2">Přihlaste se na akci</Heading>
     <Text>
-      <Link href={process.env['HOSTING'] + '/events/all'}>Zde</Link> se můžete podívat na akce, které organizujeme. Líbí
-      se vám nějaká, přihlaste se! Nevidíte akci, ne ktreou chcete jet? Vytvořže nový návrh!
+      <Link href={process.env['HOSTING'] + '/events'}>Zde</Link> se můžete podívat na akce, které organizujeme. Líbí se
+      vám nějaká, přihlaste se! Nevidíte akci, ne ktreou chcete jet? Vytvořže nový návrh!
     </Text>
     <Heading as="h2">Seznamte se s programem</Heading>
     <Text>

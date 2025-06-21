@@ -17,7 +17,7 @@ export const mePages: PageUrl[] = [
 export const eventsPages: PageUrl[] = [
   {
     name: 'Akce',
-    url: '/events/all',
+    url: '/events',
   },
   {
     name: 'Historie akcí',

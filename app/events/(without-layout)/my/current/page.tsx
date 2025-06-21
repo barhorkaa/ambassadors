@@ -36,7 +36,7 @@ function SignUpPrompt() {
   return (
     <HeroCenterLayout
       title={'Zatím nejsi přihlášen/a na žádnou akci'}
-      url={'/events/all'}
+      url={'/events'}
       buttonTitle={'Podívat se na akce'}
     >
       <p className="py-6">Najdi tu správnou pro tebe a přihlaš se!</p>
