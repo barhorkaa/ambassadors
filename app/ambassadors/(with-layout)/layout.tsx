@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const ambassadorPages: PageUrl[] = [
-  { name: 'Informace', url: '/ambassadors' },
+  { name: 'Informace', url: '/ambassadors/info' },
   { name: 'Nepotvrzení uživatelé', url: '/ambassadors/unapproved' },
-  { name: 'Ambasadoři', url: '/ambassadors/ambassadors' },
+  { name: 'Ambasadoři', url: '/ambassadors' },
   { name: 'Manažeři', url: '/ambassadors/managers' },
 ];
 
