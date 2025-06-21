@@ -9,7 +9,7 @@ interface UserTableProps {
 export default function UserTable({ users }: UserTableProps) {
   return (
     <div className="overflow-x-auto">
-      <table className="table table-fixed">
+      <table className="table">
         <thead>
           <tr>
             <th>Jméno</th>
