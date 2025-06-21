@@ -8,7 +8,7 @@ interface EventTableProps {
 
 export default function EventTable({ events }: EventTableProps) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto data-display p-4">
       <table className="table">
         <thead>
           <tr>
