@@ -9,7 +9,7 @@ interface EventTableProps {
 export default function EventTable({ events }: EventTableProps) {
   return (
     <div className="overflow-x-auto">
-      <table className="table table-fixed">
+      <table className="table">
         <thead>
           <tr>
             <th>Název</th>
