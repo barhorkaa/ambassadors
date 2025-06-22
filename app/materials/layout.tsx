@@ -1,37 +1,36 @@
+import PageNavigation from '@/app/ui/layout/page-navigation';
 import CreateMaterialModal from '@/app/ui/modals/create/create-material-modal';
 import { BaseLayoutProps } from '@/app/utils/interface-props';
+import { PageUrl } from '@/app/utils/pages';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { Metadata } from 'next';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Materiály | AmbassadorsFIMU',
 };
 
+const materialsPages: PageUrl[] = [
+  { name: 'Informace', url: '/materials/info' },
+  { name: 'Dostupné materiály', url: '/materials' },
+];
+
 export default async function Layout({ children }: BaseLayoutProps) {
   const session = await auth();
+  const isManager = session?.user.role === UserRoles.manager;
+
+  if (isManager) {
+    materialsPages.push({ name: 'Vymazané materiály', url: '/materials/deleted' });
+  }
 
   return (
     <section>
       <div className="flex flex-row justify-between content items-end">
         <h1>Materiály</h1>
-        {session?.user.role === UserRoles.manager && <CreateMaterialModal />}
+        {isManager && <CreateMaterialModal />}
       </div>
       <hr className="w-full mb-0" />
-      <ul className="page-menu">
-        <li>
-          <Link href={'/materials'}>Informace</Link>
-        </li>
-        <li>
-          <Link href={'/materials/all'}>Dostupné materiály</Link>
-        </li>
-        {session?.user.role === UserRoles.manager && (
-          <li>
-            <Link href={'/materials/deleted'}>Vymazané materiály</Link>
-          </li>
-        )}
-      </ul>
+      <PageNavigation pages={materialsPages} />
       <div className="content">{children}</div>
     </section>
   );
