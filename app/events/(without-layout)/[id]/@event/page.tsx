@@ -30,8 +30,6 @@ export default async function Page({ params }: { params: { id: string } }) {
       userStatus.approved &&
       (event.date === null || new Date() <= event.date));
 
-  console.log('are there buttons?: ', buttonsShown);
-
   return (
     <div className="data-display">
       <div className="card-body">
