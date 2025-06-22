@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 };
 
 const signupsPages: PageUrl[] = [
-  { name: 'Informace', url: '/signups' },
-  { name: 'Všechna aktuální přihlášení', url: '/signups/all' },
+  { name: 'Informace', url: '/signups/info' },
+  { name: 'Všechna aktuální přihlášení', url: '/signups' },
   { name: 'Nepotvrzená přihlášení', url: '/signups/unapproved' },
 ];
 
