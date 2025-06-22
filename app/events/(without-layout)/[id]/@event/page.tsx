@@ -33,8 +33,8 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div className="data-display">
       <div className="card-body">
-        <div className={'flex flex-col' + buttonsShown ? ' gap-4' : ''}>
-          <h1 className="w-full pb-4">{event.name}</h1>
+        <div className={'flex flex-col' + (buttonsShown ? ' gap-4' : '')}>
+          <h1 className="w-full">{event.name}</h1>
           {event.deletedAt === null && (
             <div className="flex flex-row gap-4">
               {isManager && !event.approved && <ApproveButton fun={approveEventAction} id={event.id} />}
