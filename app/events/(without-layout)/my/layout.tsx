@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 };
 
 const myEventsPages: PageUrl[] = [
-  { name: 'Informace', url: '/events/my' },
-  { name: 'Aktuální přihlášení', url: '/events/my/current' },
+  { name: 'Informace', url: '/events/my/info' },
+  { name: 'Aktuální přihlášení', url: '/events/my' },
   { name: 'Historie přihlášení', url: '/events/my/history' },
 ];
 
