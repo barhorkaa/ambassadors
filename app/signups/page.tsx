@@ -1,17 +1,15 @@
-import { SectionInfo } from '@/app/ui/utils/data-display';
+import { SignUpList } from '@/app/ui/utils/content-list';
+import { getAllSignUps } from '@/database/repository/event-user';
+import { EventUserBasicModel } from '@/models/event-user-models';
 
-export default function Page() {
+export default async function Page() {
+  const allSignUps: EventUserBasicModel[] = await getAllSignUps(true);
+
   return (
-    <>
-      <p className="pb-2">Tato část aplikace slouží na přehled o aktuálních přihláseních na akce.</p>
-      <SectionInfo
-        title={'Nepotvrzená přihlášení na akce'}
-        contents={[
-          'Když se ambasador chce zúčastnit na akci, přihlásí se na ní ze svého účtu. Toto přihlášní je potřebné ' +
-            'potvrdit v sekci Nepotvrzená přihlášení. ',
-          'Potvzením přihlášení vyjadřuje oddělení propagace souhlas s ambasadorovou účastí na akci.',
-        ]}
-      />
-    </>
+    <SignUpList
+      title={'Všechna aktuání přihlášení'}
+      list={allSignUps}
+      emptyMessage={'V součastné době nejsou v aplikaci žádné akivní přihlášení na akce.'}
+    />
   );
 }
