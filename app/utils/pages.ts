@@ -10,7 +10,7 @@ export const mePages: PageUrl[] = [
   },
   {
     name: 'Moje akce',
-    url: '/events/my/current',
+    url: '/events/my',
   },
 ];
 
