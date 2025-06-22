@@ -43,7 +43,7 @@ export const programPages: PageUrl[] = [
 export const otherPages: PageUrl[] = [
   {
     name: 'Druhy akcí',
-    url: '/events/types/all',
+    url: '/events/types',
   },
   {
     name: 'Materiály',

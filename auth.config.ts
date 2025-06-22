@@ -52,7 +52,7 @@ export const authConfig = {
           return Response.redirect(new URL('/denied/role', nextUrl));
         }
         if (nextUrl.pathname.startsWith('/events/types/deleted')) {
-          return Response.redirect(new URL('/events/types/all', nextUrl));
+          return Response.redirect(new URL('/events/types', nextUrl));
         }
         if (nextUrl.pathname.startsWith('/materials/deleted')) {
           return Response.redirect(new URL('/materials/all', nextUrl));

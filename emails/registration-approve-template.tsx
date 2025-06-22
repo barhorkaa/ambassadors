@@ -11,7 +11,7 @@ const RegistrationApproveTemplate = () => (
     </Text>
     <Heading as="h2">Seznamte se s programem</Heading>
     <Text>
-      Podívejte se na různé <Link href={process.env['HOSTING'] + '/events/types/all'}>druhy akcí</Link>, které propagace
+      Podívejte se na různé <Link href={process.env['HOSTING'] + '/events/types'}>druhy akcí</Link>, které propagace
       nabízí, nebo na <Link href={process.env['HOSTING'] + '/materials/all'}>propagační materiály</Link>, které sebou
       můžete na akci vzít.
     </Text>
