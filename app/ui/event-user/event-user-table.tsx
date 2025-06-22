@@ -10,7 +10,7 @@ interface EventUserTableProps {
 
 export default async function EventUserTable({ eventUsers }: EventUserTableProps) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto data-display p-4">
       <table className="table table-fixed">
         <thead>
           <tr>
@@ -34,7 +34,9 @@ export default async function EventUserTable({ eventUsers }: EventUserTableProps
                   {eventUser.eventName}
                 </Link>
               </td>
-              <td>{eventUser.substitute ? 'Ano' : 'Ne'}</td>
+              <td>
+                <SubstituteBadge isSubstitute={eventUser.substitute} />
+              </td>
               <td>{!eventUser.approved && <ApproveButton fun={approveSignUpAction} id={eventUser.id!} />}</td>
               <td>
                 {<EventSignUpButton isSignedOnEvent={true} event_id={eventUser.eventId!} user_id={eventUser.userId!} />}
@@ -46,3 +48,6 @@ export default async function EventUserTable({ eventUsers }: EventUserTableProps
     </div>
   );
 }
+
+const SubstituteBadge = ({ isSubstitute }: { isSubstitute: boolean }) =>
+  isSubstitute ? <div className="badge bg-fi-100">Náhradník</div> : <div></div>;
