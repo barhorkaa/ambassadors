@@ -47,7 +47,7 @@ export const otherPages: PageUrl[] = [
   },
   {
     name: 'Materiály',
-    url: '/materials/all',
+    url: '/materials',
   },
 ];
 
