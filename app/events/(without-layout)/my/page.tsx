@@ -1,40 +1,45 @@
-import { SectionInfo } from '@/app/ui/utils/data-display';
+import { HeroCenterLayout } from '@/app/ui/utils/component-layouts';
+import { EventList } from '@/app/ui/utils/content-list';
 import { auth } from '@/auth';
-import { redirect } from 'next/navigation';
+import { getUserSignUps } from '@/database/repository/event-user';
+import { EventModel } from '@/models/event-models';
 
 export default async function Page() {
   const session = await auth();
-  if (!session) {
-    redirect('/login');
-  }
+
+  const userEvents: EventModel[] = await getUserSignUps(session!.user.id, false, true);
+  const userSubstitutes: EventModel[] = await getUserSignUps(session!.user.id, true, true);
 
   return (
     <>
-      <SectionInfo title={''} contents={['V této části aplikace nalezneš seznamy akcí, na které jsi přihlášen/a.']} />
-      <hr />
-      <SectionInfo
-        title={'Jak se přihlásit na akci?'}
-        contents={['Přihlásit na akci se můžeš v sekci Akce, ke které se můžeš dostat přes boční menu vlevo.']}
-      />
-      <hr />
-      <SectionInfo
-        title={'Co to znamená být náhradník?'}
-        contents={[
-          'Náhradníkem se člověk stane, pokud je vyčerpán limit pro přihlašování na akci.',
-          'Jestli jsi přihlášen jako náhradník a někto z přihlášených se odhlásí, automaticky se na jeho ' +
-            'místo posunu první náhradník.',
-        ]}
-      />
-      <hr />
-      <SectionInfo
-        title={'Co mám dělat po přihlášení na akci??'}
-        contents={[
-          'Poté co se přihlásíš na akci musí tvoje přihlášení schválit manažer z oddělení propagace. Zpravidla to bude ' +
-            'většinou do jednoho týdne. Až po potvrzení od manažera se tvoje přihlášení stáva plně platným.',
-          'V aktuálním stavu aplikace tobě ani manažerovi nepříde žádné upozornění, takže je třeba sledovat ' +
-            'stav tvích přihlášení. ',
-        ]}
-      />
+      {userSubstitutes.length === 0 && userEvents.length === 0 ? (
+        <SignUpPrompt />
+      ) : (
+        <>
+          <EventList
+            title={'Akce, kde jsem přihlášen/a'}
+            list={userEvents}
+            emptyMessage={'Zatím nejsi přihlášen/a na žádnou akci.'}
+          />
+          <EventList
+            title={'Akce, kde jsem náhradník/nice'}
+            list={userSubstitutes}
+            emptyMessage={'Nejsi nahraníkem na žádné akci.'}
+          />{' '}
+        </>
+      )}
     </>
+  );
+}
+
+function SignUpPrompt() {
+  return (
+    <HeroCenterLayout
+      title={'Zatím nejsi přihlášen/a na žádnou akci'}
+      url={'/events'}
+      buttonTitle={'Podívat se na akce'}
+    >
+      <p className="py-6">Najdi tu správnou pro tebe a přihlaš se!</p>
+    </HeroCenterLayout>
   );
 }
