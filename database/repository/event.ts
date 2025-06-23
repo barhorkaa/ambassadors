@@ -82,6 +82,36 @@ export async function getAllFilteredActiveEvents(approved: boolean, query: strin
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get filtered events', cause: e });
   }
 }
+
+export async function getAllFilteredActiveEventsCount(approved: boolean, query: string) {
+  console.log('calling counting all rows'.toUpperCase());
+
+  try {
+    const result = await db
+      .selectFrom('event')
+      .where('event.approved', '=', approved)
+      .where('event.deleted_at', 'is', null)
+      .leftJoin('report', 'report.event_id', 'event.id')
+      .where('report.id', 'is', null)
+      .leftJoin('eventType', 'eventType.id', 'event_type_id')
+
+      .where((eb) =>
+        eb.or([
+          eb('event.name', 'ilike', `%${query}%`),
+          eb('eventType.name', 'ilike', `%${query}%`),
+          // eb(("date"), 'like', `%${query}%`),
+        ])
+      )
+      .select('event.id')
+      .execute();
+
+    return Math.ceil(result.length / ITEMS_PER_PAGE);
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get filtered events', cause: e });
+  }
+}
+
 export async function getAllHistoryEvents(approved: boolean) {
   try {
     const result = await db
