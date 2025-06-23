@@ -4,10 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-white dark:bg-base-100 min-h-screen grid grid-rows-[min-content_1fr_min-content] grid-cols-1;
+    @apply  min-h-screen grid grid-rows-[min-content_1fr_min-content] grid-cols-1;
   }
   main {
-    @apply bg-white dark:bg-base-100 mb-9 mx-2.5 md:mx-12 xl:mx-52;
+    @apply  mb-9 mx-2.5 md:mx-12 xl:mx-52;
   }
   section {
     @apply mt-9
@@ -31,15 +31,15 @@
 
 @layer components {
   .card {
-    @apply shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-base-300}
+    @apply shrink-0 w-full max-w-sm shadow-2xl}
   .btn {
-    @apply bg-fi-300 text-black
+    @apply text-black
   }
   .badge {
     @apply text-black
   }
   .hero {
-    @apply bg-white dark:bg-base-100 min-h-max;
+    @apply min-h-max;
   }
   .banner {
     position: relative;
@@ -60,7 +60,7 @@
   }
 
   .data-display {
-    @apply bg-base-100 dark:bg-base-200 shadow-md rounded-none
+    @apply shadow-md rounded-none
   }
   .input-bor {
     @apply input
