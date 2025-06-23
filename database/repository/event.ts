@@ -1,5 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/database/errors/database-error';
+import { ITEMS_PER_PAGE } from '@/database/repository/consts';
 import { EventManipulationModel } from '@/models/event-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
 
@@ -45,6 +46,42 @@ export async function getAllActiveEvents(approved: boolean) {
   }
 }
 
+export async function getAllFilteredActiveEvents(approved: boolean, query: string, currentPage: number) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+
+  try {
+    const result = await db
+      .selectFrom('event')
+      .where('event.approved', '=', approved)
+      .where('event.deleted_at', 'is', null)
+      .leftJoin('report', 'report.event_id', 'event.id')
+      .where('report.id', 'is', null)
+      .leftJoin('eventType', 'eventType.id', 'event_type_id')
+
+      .where((eb) =>
+        eb.or([
+          eb('event.name', 'ilike', `%${query}%`),
+          eb('eventType.name', 'ilike', `%${query}%`),
+          // eb(("date"), 'like', `%${query}%`),
+        ])
+      )
+      .select([
+        'event.name as name',
+        'eventType.name as event_type_name',
+        'event_type_id',
+        'date',
+        'event.id as id',
+        'event.limit as limit',
+      ])
+      .limit(ITEMS_PER_PAGE)
+      .offset(offset)
+      .execute();
+    return adapter(result);
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get filtered events', cause: e });
+  }
+}
 export async function getAllHistoryEvents(approved: boolean) {
   try {
     const result = await db
