@@ -25,7 +25,7 @@
     @apply w-52 md:w-96 h-1 mx-auto my-3 bg-fi-300 border-0 rounded
   }
   textarea {
-    @apply textarea textarea-bordered
+    @apply textarea
   }
 }
 
@@ -55,13 +55,15 @@
   .page {
     @apply mt-9
   }
-  .data-display {
-    @apply bg-base-100 dark:bg-base-200 shadow-md rounded-none card-compact md:card-normal
-  }
   .page-menu {
     @apply menu menu-vertical lg:menu-horizontal bg-fi-100 text-black font-semibold w-full mb-4
   }
+
+  .data-display {
+    @apply bg-base-100 dark:bg-base-200 shadow-md rounded-none
+  }
   .input-bor {
-    @apply input input-bordered
+    @apply input
+    /*The `input-bordered` class does not exist. If `input-bordered` is a custom class, make sure it is defined within a `@layer` directive. (67:5)*/
   }
 }
