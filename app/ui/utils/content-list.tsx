@@ -20,7 +20,7 @@ const ListTitle = ({ title }: { title: string }) => <h2 className="pb-2">{title}
 
 export const EventList = ({ title, list, emptyMessage }: ComponentListProps) => (
   <>
-    <ListTitle title={title} />
+    {/*<ListTitle title={title} />*/}
     {list.length === 0 ? (
       <EmptyMessage message={emptyMessage} />
     ) : (
