@@ -1,6 +1,5 @@
+import { LinkWrappedTableCell } from '@/app/ui/utils/component-table';
 import { EventModel } from '@/models/event-models';
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
 
 interface EventTableProps {
   events: EventModel[];
@@ -9,38 +8,28 @@ interface EventTableProps {
 export default function EventTable({ events }: EventTableProps) {
   return (
     <div className="overflow-x-auto data-display p-4">
-      <div className="table">
-        <div className="table-header-group">
-          <div className="table-row">
-            <div className="table-cell">Název</div>
-            <div className="table-cell">Typ</div>
-            <div className="table-cell">Datum akce</div>
-            <div className="table-cell">Detail</div>
-          </div>
-        </div>
-        <div className="table-row-group">
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Název</th>
+            <th>Typ</th>
+            <th>Datum akce</th>
+          </tr>
+        </thead>
+        <tbody>
           {events.map((event) => (
-            <Link
-              href={`/events/${event.id}`}
-              className="table-row hover:bg-base-300"
-              key={event.id}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <div className="table-cell">{event.name}</div>
-              <div className="table-cell">
+            <tr key={event.id} className="hover:bg-base-300">
+              <LinkWrappedTableCell href={`/events/${event.id}`}>{event.name}</LinkWrappedTableCell>
+              <LinkWrappedTableCell href={`/events/${event.id}`}>
                 <div className="badge bg-fi-100">{event.eventTypeName}</div>
-              </div>
-              <div className="table-cell">
+              </LinkWrappedTableCell>
+              <LinkWrappedTableCell href={`/events/${event.id}`}>
                 {event.date !== null ? event.date.toLocaleDateString('cs-CZ') : 'Nezadáno'}
-              </div>
-              <div className="table-cell">
-                <ArrowTopRightOnSquareIcon className="h-5" />
-              </div>
-            </Link>
+              </LinkWrappedTableCell>
+            </tr>
           ))}
-        </div>
-      </div>
+        </tbody>
+      </table>
     </div>
   );
 }
