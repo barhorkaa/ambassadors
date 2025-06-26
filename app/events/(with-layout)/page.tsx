@@ -20,21 +20,24 @@ export default async function Page(props: {
   const eventsPages = await getAllFilteredActiveEventsCount(true, query);
 
   return (
-    <Suspense key={query + currentPage} fallback={<TableSkeleton />}>
+    <>
       <h2 className="pb-2">Aktivní akce</h2>
       <div className="flex flex-col gap-2">
         <Search placeholder={'Vyhledat akci'} />
-        <Pagination totalPages={eventsPages} />
       </div>
-
-      <EventList
-        title={'Aktivní akce'}
-        list={allFilteredEvents}
-        emptyMessage={
-          'Momentálně nejsou k dispozici žádné akce. Jestli chceš někam jet, vytvoř návrh na novou akci stlačením tlačítka Přidat.'
-        }
-      />
       <Pagination totalPages={eventsPages} />
-    </Suspense>
+      <Suspense key={query + currentPage} fallback={<TableSkeleton />}>
+        <EventList
+          title={'Aktivní akce'}
+          list={allFilteredEvents}
+          emptyMessage={
+            query !== null
+              ? 'Nemáme žádnou akci, ktrá by vyhovovala hledanému pojmu.'
+              : 'Momentálně nejsou k dispozici žádné akce. Jestli chceš někam jet, vytvoř návrh na novou akci stlačením tlačítka Přidat.'
+          }
+        />
+      </Suspense>
+      <Pagination totalPages={eventsPages} />
+    </>
   );
 }
