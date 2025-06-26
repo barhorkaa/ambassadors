@@ -27,13 +27,9 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
         <ChevronLeftIcon className="h-3" />
       </Link>
       {Array.from(Array(totalPages).keys()).map((_, i) => (
-        <>
-          {totalPages <= 6 && (
-            <Link key={i} className={className + (currentPage === i + 1 && 'bg-fi-300')} href={createPageURL(i + 1)}>
-              {i + 1}
-            </Link>
-          )}
-        </>
+        <Link key={i} className={className + (currentPage === i + 1 && 'bg-fi-300')} href={createPageURL(i + 1)}>
+          {i + 1}
+        </Link>
       ))}
       <Link
         className={className + (currentPage === totalPages ? ' btn-disabled' : '')}
@@ -50,5 +46,3 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     </div>
   );
 }
-
-const ShortenedPagination = ({ totalPages }: { totalPages: number }) => <div className="join"></div>;
