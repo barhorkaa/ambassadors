@@ -46,7 +46,13 @@ export async function getAllActiveEvents(approved: boolean) {
   }
 }
 
-export async function getAllFilteredActiveEvents(approved: boolean, query: string, currentPage: number) {
+export async function getAllFilteredActiveEvents(
+  approved: boolean,
+  query: string,
+  currentPage: number,
+  dateFrom: Date,
+  dateTo: Date
+) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
@@ -58,13 +64,8 @@ export async function getAllFilteredActiveEvents(approved: boolean, query: strin
       .where('report.id', 'is', null)
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
 
-      .where((eb) =>
-        eb.or([
-          eb('event.name', 'ilike', `%${query}%`),
-          eb('eventType.name', 'ilike', `%${query}%`),
-          // eb(("date"), 'like', `%${query}%`),
-        ])
-      )
+      .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
+      .where((eb) => eb.or([eb.between('event.date', dateFrom, dateTo), eb('event.date', 'is', null)]))
       .select([
         'event.name as name',
         'eventType.name as event_type_name',
@@ -83,9 +84,7 @@ export async function getAllFilteredActiveEvents(approved: boolean, query: strin
   }
 }
 
-export async function getAllFilteredActiveEventsCount(approved: boolean, query: string) {
-  console.log('calling counting all rows'.toUpperCase());
-
+export async function getAllFilteredActiveEventsCount(approved: boolean, query: string, dateFrom: Date, dateTo: Date) {
   try {
     const result = await db
       .selectFrom('event')
@@ -94,14 +93,8 @@ export async function getAllFilteredActiveEventsCount(approved: boolean, query: 
       .leftJoin('report', 'report.event_id', 'event.id')
       .where('report.id', 'is', null)
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
-
-      .where((eb) =>
-        eb.or([
-          eb('event.name', 'ilike', `%${query}%`),
-          eb('eventType.name', 'ilike', `%${query}%`),
-          // eb(("date"), 'like', `%${query}%`),
-        ])
-      )
+      .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
+      .where((eb) => eb.or([eb.between('event.date', dateFrom, dateTo), eb('event.date', 'is', null)]))
       .select('event.id')
       .execute();
 
