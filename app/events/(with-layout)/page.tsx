@@ -27,7 +27,7 @@ export default async function Page(props: {
   return (
     <>
       <h2 className="pb-2">Aktivní akce</h2>
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-2">
         <Search placeholder={'Vyhledat akci'} />
         <DateSearch />
       </div>
