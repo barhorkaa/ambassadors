@@ -20,10 +20,10 @@ export default function UserTable({ users }: UserTableProps) {
         <tbody>
           {users.map((user) => (
             <tr key={user.id} className="hover:bg-base-300 hover:cursor-pointer">
-              <LinkWrappedTableCell link={`/ambassadors/${user.id}`} content={user.name} />
-              <LinkWrappedTableCell link={`/ambassadors/${user.id}`} content={user.uco} />
-              <LinkWrappedTableCell link={`/ambassadors/${user.id}`} content={user.email} />
-              <LinkWrappedTableCell link={`/ambassadors/${user.id}`} content={user.phone_number} />
+              <LinkWrappedTableCell href={`/ambassadors/${user.id}`}>{user.name}</LinkWrappedTableCell>
+              <LinkWrappedTableCell href={`/ambassadors/${user.id}`}>{user.uco} </LinkWrappedTableCell>
+              <LinkWrappedTableCell href={`/ambassadors/${user.id}`}>{user.email}</LinkWrappedTableCell>
+              <LinkWrappedTableCell href={`/ambassadors/${user.id}`}>{user.phone_number}</LinkWrappedTableCell>
             </tr>
           ))}
         </tbody>
