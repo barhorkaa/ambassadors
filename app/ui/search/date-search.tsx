@@ -36,22 +36,29 @@ export default function DateSearch() {
 
   return (
     <div className="flex flex-row gap-2">
-      <input
-        type="date"
-        className="input"
-        onChange={(e) => {
-          handleDateFrom(e.target.value);
-        }}
-        defaultValue={searchParams.get('dateFrom')?.toString()}
-      />
-      <input
-        type="date"
-        className="input"
-        onChange={(e) => {
-          handleDateTo(e.target.value);
-        }}
-        defaultValue={searchParams.get('dateTo')?.toString()}
-      />
+      <label className="floating-label">
+        <span>Datum od</span>
+        <input
+          type="date"
+          className="input"
+          onChange={(e) => {
+            handleDateFrom(e.target.value);
+          }}
+          defaultValue={searchParams.get('dateFrom')?.toString()}
+        />
+      </label>
+
+      <label className="floating-label">
+        <span>Datum do</span>
+        <input
+          type="date"
+          className="input"
+          onChange={(e) => {
+            handleDateTo(e.target.value);
+          }}
+          defaultValue={searchParams.get('dateTo')?.toString()}
+        />
+      </label>
     </div>
   );
 }
