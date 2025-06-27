@@ -27,3 +27,7 @@ export type EventDetailModel = Omit<EventModel, 'eventTypeName'> & {
   updatedAt: Date;
   deletedAt: Date | null;
 };
+
+export type EventUserStateModel = EventModel & {
+  substitute: boolean;
+};
