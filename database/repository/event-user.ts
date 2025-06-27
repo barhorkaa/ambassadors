@@ -53,6 +53,51 @@ export async function getUserSignUps(
   }
 }
 
+export async function getUserSignUpsCount(
+  user_id: string,
+  substitute: boolean,
+  active: boolean,
+  query: string,
+  dateFrom: Date,
+  dateTo: Date
+) {
+  const isCustomRange = isCustomDateRange(dateFrom, dateTo);
+
+  try {
+    const result = await db
+      .selectFrom('eventUser')
+      .where('user_id', '=', user_id)
+      .innerJoin('event', 'eventUser.event_id', 'event.id')
+      .where('event.deleted_at', 'is', null)
+      .leftJoin('report', 'report.event_id', 'event.id')
+      .where('report.id', active ? 'is' : 'is not', null)
+      .select([
+        'event.id as id',
+        'event.name as name',
+        'event.event_type_id as event_type_id',
+        'event.date as date',
+        'event.limit as limit',
+        'substitute',
+      ])
+      .innerJoin('eventType', 'event.event_type_id', 'eventType.id')
+      .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
+      .where((eb) => {
+        if (isCustomRange) {
+          return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
+        } else {
+          return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
+        }
+      })
+      .select(['eventType.name as event_type_name'])
+      .execute();
+
+    return Math.ceil(result.length / ITEMS_PER_PAGE);
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get user signups', cause: e });
+  }
+}
+
 export async function createSignUp(event_id: string, user_id: string, substitute: boolean) {
   try {
     await db.insertInto('eventUser').values({ user_id: user_id, event_id: event_id, substitute: substitute }).execute();
