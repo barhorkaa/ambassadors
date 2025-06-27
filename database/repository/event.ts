@@ -151,6 +151,33 @@ export async function getAllHistoryEvents(
   }
 }
 
+export async function getAllHistoryEventsCount(approved: boolean, query: string, dateFrom: Date, dateTo: Date) {
+  const isCustomDateRange =
+    dateFrom.getTime() !== new Date('2000-01-01').getTime() || dateTo.getTime() !== new Date('3000-01-01').getTime();
+
+  try {
+    const result = await db
+      .selectFrom('report')
+      .where('report.approved', '=', approved)
+      .leftJoin('event', 'event.id', 'event_id')
+      .leftJoin('eventType', 'eventType.id', 'event_type_id')
+      .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
+      .where((eb) => {
+        if (isCustomDateRange) {
+          return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
+        } else {
+          return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
+        }
+      })
+      .select('event.id')
+      .execute();
+
+    return Math.ceil(result.length / ITEMS_PER_PAGE);
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 export async function getEventById(id: string) {
   try {
     const result = await db.selectFrom('event').where('id', '=', id).selectAll().executeTakeFirstOrThrow();
