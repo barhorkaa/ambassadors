@@ -1,6 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/database/errors/database-error';
-import { adapter } from '@/database/repository/utils/adapter';
+import { adapterState } from '@/database/repository/utils/adapter';
 
 export async function getUserSignUps(user_id: string, substitute: boolean, active: boolean) {
   try {
@@ -23,7 +23,7 @@ export async function getUserSignUps(user_id: string, substitute: boolean, activ
       .select(['eventType.name as event_type_name'])
       .execute();
 
-    return adapter(result);
+    return adapterState(result);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get user signups', cause: e });

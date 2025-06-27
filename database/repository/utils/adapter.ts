@@ -11,7 +11,15 @@ type EventSnakeModel = {
 
 type EventUseeStateSnakeModel = EventSnakeModel & { substitute: boolean };
 
-export function adapter(toAdapt: EventSnakeModel[] | EventUseeStateSnakeModel[]) {
+export function adapter(toAdapt: EventSnakeModel[]) {
+  const camel = objectToCamel(toAdapt);
+
+  return camel.map((event) => {
+    return { ...event, limit: +event.limit };
+  });
+}
+
+export function adapterState(toAdapt: EventUseeStateSnakeModel[]) {
   const camel = objectToCamel(toAdapt);
 
   return camel.map((event) => {
