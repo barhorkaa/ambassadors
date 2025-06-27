@@ -97,13 +97,32 @@ export async function getAllFilteredActiveEventsCount(approved: boolean, query: 
   }
 }
 
-export async function getAllHistoryEvents(approved: boolean) {
+export async function getAllHistoryEvents(
+  approved: boolean,
+  query: string,
+  currentPage: number,
+  dateFrom: Date,
+  dateTo: Date
+) {
+  const isCustomDateRange =
+    dateFrom.getTime() !== new Date('2000-01-01').getTime() || dateTo.getTime() !== new Date('3000-01-01').getTime();
+
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+
   try {
     const result = await db
       .selectFrom('report')
       .where('report.approved', '=', approved)
       .leftJoin('event', 'event.id', 'event_id')
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
+      .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
+      .where((eb) => {
+        if (isCustomDateRange) {
+          return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
+        } else {
+          return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
+        }
+      })
       .select([
         'event.name as name',
         'eventType.name as event_type_name',
@@ -112,7 +131,10 @@ export async function getAllHistoryEvents(approved: boolean) {
         'event.id as id',
         'event.limit as limit',
       ])
+      .limit(ITEMS_PER_PAGE)
+      .offset(offset)
       .execute();
+
     const resultNoNull = result.map((event) => {
       return {
         id: event.id!,
