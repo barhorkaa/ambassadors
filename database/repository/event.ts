@@ -21,31 +21,6 @@ export function adapter(
   });
 }
 
-export async function getAllActiveEvents(approved: boolean) {
-  try {
-    const result = await db
-      .selectFrom('event')
-      .where('event.approved', '=', approved)
-      .where('event.deleted_at', 'is', null)
-      .leftJoin('report', 'report.event_id', 'event.id')
-      .where('report.id', 'is', null)
-      .leftJoin('eventType', 'eventType.id', 'event_type_id')
-      .select([
-        'event.name as name',
-        'eventType.name as event_type_name',
-        'event_type_id',
-        'date',
-        'event.id as id',
-        'event.limit as limit',
-      ])
-      .execute();
-    return adapter(result);
-  } catch (e) {
-    console.error(e);
-    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all events', cause: e });
-  }
-}
-
 export async function getAllFilteredActiveEvents(
   approved: boolean,
   query: string,
