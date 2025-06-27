@@ -2,15 +2,14 @@ import { HeroCenterLayout } from '@/app/ui/utils/component-layouts';
 import { EventList } from '@/app/ui/utils/content-list';
 import { auth } from '@/auth';
 import { getUserSignUps } from '@/database/repository/event-user';
-import { EventModel } from '@/models/event-models';
+import { EventUserStateModel } from '@/models/event-models';
 
 export default async function Page() {
   const session = await auth();
 
-  const userEvents: EventModel[] = await getUserSignUps(session!.user.id, false, true);
-  const userSubstitutes: EventModel[] = await getUserSignUps(session!.user.id, true, true);
+  const userEvents: EventUserStateModel[] = await getUserSignUps(session!.user.id, false, true);
 
-  if (userSubstitutes.length === 0 && userEvents.length === 0) return <SignUpPrompt />;
+  if (userEvents.length === 0) return <SignUpPrompt />;
 
   return (
     <>
@@ -18,11 +17,6 @@ export default async function Page() {
         title={'Akce, kde jsem přihlášen/a'}
         list={userEvents}
         emptyMessage={'Zatím nejsi přihlášen/a na žádnou akci.'}
-      />
-      <EventList
-        title={'Akce, kde jsem náhradník/nice'}
-        list={userSubstitutes}
-        emptyMessage={'Nejsi nahraníkem na žádné akci.'}
       />
     </>
   );
