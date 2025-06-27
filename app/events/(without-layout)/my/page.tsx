@@ -10,24 +10,20 @@ export default async function Page() {
   const userEvents: EventModel[] = await getUserSignUps(session!.user.id, false, true);
   const userSubstitutes: EventModel[] = await getUserSignUps(session!.user.id, true, true);
 
+  if (userSubstitutes.length === 0 && userEvents.length === 0) return <SignUpPrompt />;
+
   return (
     <>
-      {userSubstitutes.length === 0 && userEvents.length === 0 ? (
-        <SignUpPrompt />
-      ) : (
-        <>
-          <EventList
-            title={'Akce, kde jsem přihlášen/a'}
-            list={userEvents}
-            emptyMessage={'Zatím nejsi přihlášen/a na žádnou akci.'}
-          />
-          <EventList
-            title={'Akce, kde jsem náhradník/nice'}
-            list={userSubstitutes}
-            emptyMessage={'Nejsi nahraníkem na žádné akci.'}
-          />{' '}
-        </>
-      )}
+      <EventList
+        title={'Akce, kde jsem přihlášen/a'}
+        list={userEvents}
+        emptyMessage={'Zatím nejsi přihlášen/a na žádnou akci.'}
+      />
+      <EventList
+        title={'Akce, kde jsem náhradník/nice'}
+        list={userSubstitutes}
+        emptyMessage={'Nejsi nahraníkem na žádné akci.'}
+      />
     </>
   );
 }
