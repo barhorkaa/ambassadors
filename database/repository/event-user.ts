@@ -7,7 +7,7 @@ export async function getUserSignUps(user_id: string, substitute: boolean, activ
     const result = await db
       .selectFrom('eventUser')
       .where((eb) => eb.and([eb('substitute', '=', substitute), eb('user_id', '=', user_id)]))
-      .fullJoin('event', 'eventUser.event_id', 'event.id')
+      .innerJoin('event', 'eventUser.event_id', 'event.id')
       .where('event.deleted_at', 'is', null)
       .leftJoin('report', 'report.event_id', 'event.id')
       .where('report.id', active ? 'is' : 'is not', null)
@@ -18,21 +18,11 @@ export async function getUserSignUps(user_id: string, substitute: boolean, activ
         'event.date as date',
         'event.limit as limit',
       ])
-      .fullJoin('eventType', 'event.event_type_id', 'eventType.id')
+      .innerJoin('eventType', 'event.event_type_id', 'eventType.id')
       .select(['eventType.name as event_type_name'])
       .execute();
 
-    const resultNoNull = result.map((event) => {
-      return {
-        id: event.id!,
-        name: event.name!,
-        event_type_id: event.event_type_id!,
-        date: event.date!,
-        limit: event.limit!,
-        event_type_name: event.event_type_name!,
-      };
-    });
-    return adapter(resultNoNull);
+    return adapter(result);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get user signups', cause: e });
