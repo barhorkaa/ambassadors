@@ -32,13 +32,13 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
         </Link>
       ))}
       <Link
-        className={className + (currentPage === totalPages ? ' btn-disabled' : '')}
+        className={className + (currentPage === totalPages || totalPages === 0 ? ' btn-disabled' : '')}
         href={createPageURL(currentPage + 1)}
       >
         <ChevronRightIcon className="h-3" />
       </Link>
       <Link
-        className={className + (currentPage === totalPages ? ' btn-disabled' : '')}
+        className={className + (currentPage === totalPages || totalPages === 0 ? ' btn-disabled' : '')}
         href={createPageURL(totalPages)}
       >
         <ChevronDoubleRightIcon className="h-3" />
