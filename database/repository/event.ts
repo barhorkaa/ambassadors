@@ -55,6 +55,9 @@ export async function getAllFilteredActiveEvents(
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
+  const isCustomDateRange =
+    dateFrom.getTime() !== new Date('2000-01-01').getTime() || dateTo.getTime() !== new Date('3000-01-01').getTime();
+
   try {
     const result = await db
       .selectFrom('event')
@@ -63,9 +66,14 @@ export async function getAllFilteredActiveEvents(
       .leftJoin('report', 'report.event_id', 'event.id')
       .where('report.id', 'is', null)
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
-
       .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
-      .where((eb) => eb.or([eb.between('event.date', dateFrom, dateTo), eb('event.date', 'is', null)]))
+      .where((eb) => {
+        if (isCustomDateRange) {
+          return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
+        } else {
+          return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
+        }
+      })
       .select([
         'event.name as name',
         'eventType.name as event_type_name',
@@ -85,6 +93,9 @@ export async function getAllFilteredActiveEvents(
 }
 
 export async function getAllFilteredActiveEventsCount(approved: boolean, query: string, dateFrom: Date, dateTo: Date) {
+  const isCustomDateRange =
+    dateFrom.getTime() !== new Date('2000-01-01').getTime() || dateTo.getTime() !== new Date('3000-01-01').getTime();
+
   try {
     const result = await db
       .selectFrom('event')
@@ -94,7 +105,13 @@ export async function getAllFilteredActiveEventsCount(approved: boolean, query: 
       .where('report.id', 'is', null)
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
-      .where((eb) => eb.or([eb.between('event.date', dateFrom, dateTo), eb('event.date', 'is', null)]))
+      .where((eb) => {
+        if (isCustomDateRange) {
+          return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
+        } else {
+          return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
+        }
+      })
       .select('event.id')
       .execute();
 
