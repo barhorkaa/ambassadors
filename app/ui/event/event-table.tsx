@@ -1,8 +1,8 @@
 import { LinkWrappedTableCell } from '@/app/ui/utils/component-table';
-import { EventModel } from '@/models/event-models';
+import { EventModel, EventUserStateModel } from '@/models/event-models';
 
 interface EventTableProps {
-  events: EventModel[];
+  events: EventModel[] | EventUserStateModel[];
 }
 
 export default function EventTable({ events }: EventTableProps) {
@@ -26,6 +26,11 @@ export default function EventTable({ events }: EventTableProps) {
               <LinkWrappedTableCell href={`/events/${event.id}`}>
                 {event.date !== null ? event.date.toLocaleDateString('cs-CZ') : 'Nezadáno'}
               </LinkWrappedTableCell>
+              {'substitute' in event && (
+                <LinkWrappedTableCell href={`/events/${event.id}`}>
+                  {event.substitute && <div className="badge bg-fi-300">Náhradník</div>}
+                </LinkWrappedTableCell>
+              )}
             </tr>
           ))}
         </tbody>
