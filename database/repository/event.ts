@@ -2,6 +2,7 @@ import { db } from '@/database/database';
 import { DatabaseError } from '@/database/errors/database-error';
 import { adapter } from '@/database/repository/utils/adapter';
 import { ITEMS_PER_PAGE } from '@/database/repository/utils/consts';
+import { isCustomDateRange } from '@/database/repository/utils/utils';
 import { EventManipulationModel } from '@/models/event-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
 
@@ -13,9 +14,7 @@ export async function getAllFilteredActiveEvents(
   dateTo: Date
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-
-  const isCustomDateRange =
-    dateFrom.getTime() !== new Date('2000-01-01').getTime() || dateTo.getTime() !== new Date('3000-01-01').getTime();
+  const isCustomRange = isCustomDateRange(dateFrom, dateTo);
 
   try {
     const result = await db
@@ -27,7 +26,7 @@ export async function getAllFilteredActiveEvents(
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
       .where((eb) => {
-        if (isCustomDateRange) {
+        if (isCustomRange) {
           return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
         } else {
           return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
@@ -52,8 +51,7 @@ export async function getAllFilteredActiveEvents(
 }
 
 export async function getAllFilteredActiveEventsCount(approved: boolean, query: string, dateFrom: Date, dateTo: Date) {
-  const isCustomDateRange =
-    dateFrom.getTime() !== new Date('2000-01-01').getTime() || dateTo.getTime() !== new Date('3000-01-01').getTime();
+  const isCustomRange = isCustomDateRange(dateFrom, dateTo);
 
   try {
     const result = await db
@@ -65,7 +63,7 @@ export async function getAllFilteredActiveEventsCount(approved: boolean, query: 
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
       .where((eb) => {
-        if (isCustomDateRange) {
+        if (isCustomRange) {
           return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
         } else {
           return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
@@ -88,10 +86,8 @@ export async function getAllHistoryEvents(
   dateFrom: Date,
   dateTo: Date
 ) {
-  const isCustomDateRange =
-    dateFrom.getTime() !== new Date('2000-01-01').getTime() || dateTo.getTime() !== new Date('3000-01-01').getTime();
-
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  const isCustomRange = isCustomDateRange(dateFrom, dateTo);
 
   try {
     const result = await db
@@ -101,7 +97,7 @@ export async function getAllHistoryEvents(
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
       .where((eb) => {
-        if (isCustomDateRange) {
+        if (isCustomRange) {
           return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
         } else {
           return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
@@ -136,8 +132,7 @@ export async function getAllHistoryEvents(
 }
 
 export async function getAllHistoryEventsCount(approved: boolean, query: string, dateFrom: Date, dateTo: Date) {
-  const isCustomDateRange =
-    dateFrom.getTime() !== new Date('2000-01-01').getTime() || dateTo.getTime() !== new Date('3000-01-01').getTime();
+  const isCustomRange = isCustomDateRange(dateFrom, dateTo);
 
   try {
     const result = await db
@@ -147,7 +142,7 @@ export async function getAllHistoryEventsCount(approved: boolean, query: string,
       .leftJoin('eventType', 'eventType.id', 'event_type_id')
       .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
       .where((eb) => {
-        if (isCustomDateRange) {
+        if (isCustomRange) {
           return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
         } else {
           return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
