@@ -1,8 +1,21 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/database/errors/database-error';
 import { adapterState } from '@/database/repository/utils/adapter';
+import { ITEMS_PER_PAGE } from '@/database/repository/utils/consts';
+import { isCustomDateRange } from '@/database/repository/utils/utils';
 
-export async function getUserSignUps(user_id: string, substitute: boolean, active: boolean) {
+export async function getUserSignUps(
+  user_id: string,
+  substitute: boolean,
+  active: boolean,
+  query: string,
+  currentPage: number,
+  dateFrom: Date,
+  dateTo: Date
+) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  const isCustomRange = isCustomDateRange(dateFrom, dateTo);
+
   try {
     const result = await db
       .selectFrom('eventUser')
@@ -20,7 +33,17 @@ export async function getUserSignUps(user_id: string, substitute: boolean, activ
         'substitute',
       ])
       .innerJoin('eventType', 'event.event_type_id', 'eventType.id')
+      .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('eventType.name', 'ilike', `%${query}%`)]))
+      .where((eb) => {
+        if (isCustomRange) {
+          return eb.and([eb('event.date', 'is not', null), eb.between('event.date', dateFrom, dateTo)]);
+        } else {
+          return eb.or([eb('event.date', 'is', null), eb.between('event.date', dateFrom, dateTo)]);
+        }
+      })
       .select(['eventType.name as event_type_name'])
+      .limit(ITEMS_PER_PAGE)
+      .offset(offset)
       .execute();
 
     return adapterState(result);
