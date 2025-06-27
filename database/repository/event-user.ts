@@ -6,7 +6,7 @@ export async function getUserSignUps(user_id: string, substitute: boolean, activ
   try {
     const result = await db
       .selectFrom('eventUser')
-      .where((eb) => eb.and([eb('substitute', '=', substitute), eb('user_id', '=', user_id)]))
+      .where('user_id', '=', user_id)
       .innerJoin('event', 'eventUser.event_id', 'event.id')
       .where('event.deleted_at', 'is', null)
       .leftJoin('report', 'report.event_id', 'event.id')
@@ -17,6 +17,7 @@ export async function getUserSignUps(user_id: string, substitute: boolean, activ
         'event.event_type_id as event_type_id',
         'event.date as date',
         'event.limit as limit',
+        'substitute',
       ])
       .innerJoin('eventType', 'event.event_type_id', 'eventType.id')
       .select(['eventType.name as event_type_name'])
