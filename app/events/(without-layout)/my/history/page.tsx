@@ -5,7 +5,6 @@ import { EventList } from '@/app/ui/utils/content-list';
 import { TableSkeleton } from '@/app/ui/utils/skeletons';
 import { auth } from '@/auth';
 import { getUserSignUps, getUserSignUpsCount } from '@/database/repository/event-user';
-import { EventUserStateModel } from '@/models/event-models';
 import { Suspense } from 'react';
 
 export default async function Page(props: {
@@ -24,15 +23,7 @@ export default async function Page(props: {
   const dateTo = new Date(searchParams?.dateTo || '3000-01-01');
   const currentPage = Number(searchParams?.page) || 1;
 
-  const userEvents: EventUserStateModel[] = await getUserSignUps(
-    session!.user.id,
-    false,
-    false,
-    query,
-    currentPage,
-    dateFrom,
-    dateTo
-  );
+  const userEvents = await getUserSignUps(session!.user.id, false, false, query, currentPage, dateFrom, dateTo);
   const eventsPages = await getUserSignUpsCount(session!.user.id, false, false, query, dateFrom, dateTo);
 
   return (
