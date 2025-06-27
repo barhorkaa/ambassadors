@@ -1,7 +1,7 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/database/errors/database-error';
-import { ITEMS_PER_PAGE } from '@/database/repository/consts';
 import { adapter } from '@/database/repository/utils/adapter';
+import { ITEMS_PER_PAGE } from '@/database/repository/utils/consts';
 import { EventManipulationModel } from '@/models/event-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
 
