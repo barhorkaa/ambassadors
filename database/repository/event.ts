@@ -1,25 +1,9 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/database/errors/database-error';
 import { ITEMS_PER_PAGE } from '@/database/repository/consts';
+import { adapter } from '@/database/repository/utils/adapter';
 import { EventManipulationModel } from '@/models/event-models';
 import { objectToCamel, objectToSnake } from 'ts-case-convert';
-
-export function adapter(
-  toAdapt: {
-    event_type_id: string;
-    date: Date | null;
-    name: string;
-    event_type_name: string | null;
-    id: string;
-    limit: string;
-  }[]
-) {
-  const camel = objectToCamel(toAdapt);
-
-  return camel.map((event) => {
-    return { ...event, limit: +event.limit };
-  });
-}
 
 export async function getAllFilteredActiveEvents(
   approved: boolean,
