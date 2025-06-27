@@ -28,7 +28,11 @@ export default function EventTable({ events }: EventTableProps) {
               </LinkWrappedTableCell>
               {'substitute' in event && (
                 <LinkWrappedTableCell href={`/events/${event.id}`}>
-                  {event.substitute && <div className="badge bg-fi-300">Náhradník</div>}
+                  {event.substitute ? (
+                    <div className="badge bg-base-300">Náhradník</div>
+                  ) : (
+                    <div className="badge bg-fi-300">Účastník</div>
+                  )}
                 </LinkWrappedTableCell>
               )}
             </tr>
