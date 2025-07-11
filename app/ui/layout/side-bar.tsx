@@ -1,7 +1,6 @@
 'use client';
 
-import { signOutAction } from '@/app/lib/actions/authentication';
-import { eventsPages, managerPages, mePages, otherPages, programPages } from '@/app/utils/pages';
+import { eventsPages, managerPages, otherPages, programPages } from '@/app/utils/pages';
 import { UserRoles } from '@/app/utils/user-roles';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -38,14 +37,6 @@ export default function SideBar({ userRole }: SideBarProps) {
       <div className="drawer-side min-h-screen">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content py-8">
-          {mePages.map((page, index) => (
-            <li key={index}>
-              <Link onClick={() => setIsOpen(false)} href={page.url}>
-                {page.name}
-              </Link>
-            </li>
-          ))}
-          <hr className="w-full mx-0" />
           {userRole === UserRoles.manager && (
             <>
               {managerPages.map((page, index) => (
@@ -81,12 +72,6 @@ export default function SideBar({ userRole }: SideBarProps) {
               </Link>
             </li>
           ))}
-          <hr className="w-full mx-0" />
-          <li>
-            <form action={signOutAction}>
-              <button>Odhlásit se</button>
-            </form>
-          </li>
         </ul>
       </div>
     </div>
