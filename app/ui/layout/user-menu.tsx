@@ -15,7 +15,7 @@ const UserMenu = ({ id, name }: { id: string; name: string }) => {
       </div>
       <ul tabIndex={0} className="dropdown-content menu bg-base-100 z-1 w-80 shadow-sm">
         <li>
-          <Link href="/me">
+          <Link href={`/${id}`}>
             <UserIcon className="h-4" /> Můj účet
           </Link>
         </li>
@@ -27,10 +27,10 @@ const UserMenu = ({ id, name }: { id: string; name: string }) => {
           </div>
           <ul>
             <li>
-              <Link href="/events/my">Aktuální akce</Link>
+              <Link href={`/ambassadors/${id}/events`}>Aktuální akce</Link>
             </li>
             <li>
-              <Link href="/events/my/history">Historie akcí</Link>
+              <Link href={`/ambassadors/${id}/events/history`}>Historie akcí</Link>
             </li>
           </ul>
         </li>
