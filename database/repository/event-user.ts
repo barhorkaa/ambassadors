@@ -3,6 +3,7 @@ import { DatabaseError } from '@/database/errors/database-error';
 import { adapterState } from '@/database/repository/utils/adapter';
 import { ITEMS_PER_PAGE } from '@/database/repository/utils/consts';
 import { isCustomDateRange } from '@/database/repository/utils/utils';
+import { objectToCamel } from 'ts-case-convert';
 
 export async function getUserSignUps(
   user_id: string,
@@ -165,12 +166,14 @@ export async function userSignUpForEventStatus(event_id: string, user_id: string
   }
 }
 
-export async function getAllSignUps(approved: boolean) {
+export async function getAllSignUps(approved: boolean, query: string, currentPage: number) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+
   try {
     const result = await db
       .selectFrom('eventUser')
       .where('eventUser.approved', '=', approved)
-      .leftJoin('user', 'user.id', 'user_id')
+      .innerJoin('user', 'user.id', 'user_id')
       .select([
         'user.name as user_name',
         'eventUser.id as id',
@@ -179,22 +182,53 @@ export async function getAllSignUps(approved: boolean) {
         'eventUser.approved as approved',
         'eventUser.substitute as substitute',
       ])
-      .leftJoin('event', 'event.id', 'event_id')
+      .innerJoin('event', 'event.id', 'event_id')
       .where('event.deleted_at', 'is', null)
       .select('event.name as event_name')
+      .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('user.name', 'ilike', `%${query}%`)]))
+      .limit(ITEMS_PER_PAGE)
+      .offset(offset)
       .execute();
 
-    return result.map((event) => {
-      return {
-        id: event.id!,
-        eventName: event.event_name!,
-        eventId: event.event_id!,
-        userName: event.user_name!,
-        userId: event.user_id!,
-        approved: event.approved!,
-        substitute: event.substitute!,
-      };
-    });
+    return objectToCamel(result);
+    // return result.map((event) => {
+    //   return {
+    //     id: event.id!,
+    //     eventName: event.event_name!,
+    //     eventId: event.event_id!,
+    //     userName: event.user_name!,
+    //     userId: event.user_id!,
+    //     approved: event.approved!,
+    //     substitute: event.substitute!,
+    //   };
+    // });
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all signups', cause: e });
+  }
+}
+
+export async function getAllSignUpsPages(approved: boolean, query: string) {
+  try {
+    const result = await db
+      .selectFrom('eventUser')
+      .where('eventUser.approved', '=', approved)
+      .innerJoin('user', 'user.id', 'user_id')
+      .select([
+        'user.name as user_name',
+        'eventUser.id as id',
+        'eventUser.event_id as event_id',
+        'eventUser.user_id as user_id',
+        'eventUser.approved as approved',
+        'eventUser.substitute as substitute',
+      ])
+      .innerJoin('event', 'event.id', 'event_id')
+      .where('event.deleted_at', 'is', null)
+      .select('event.name as event_name')
+      .where((eb) => eb.or([eb('event.name', 'ilike', `%${query}%`), eb('user.name', 'ilike', `%${query}%`)]))
+      .execute();
+
+    return Math.ceil(result.length / ITEMS_PER_PAGE);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all signups', cause: e });
