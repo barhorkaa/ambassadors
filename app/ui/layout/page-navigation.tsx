@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 interface PageNavigationProps {
   pages: PageUrl[];
-  infoPageUrl: string;
+  infoPageUrl?: string;
 }
 
 export default function PageNavigation({ pages, infoPageUrl }: PageNavigationProps) {
@@ -17,11 +17,13 @@ export default function PageNavigation({ pages, infoPageUrl }: PageNavigationPro
           </li>
         ))}
       </div>
-      <li>
-        <Link href={infoPageUrl} className="self-center tooltip tooltip-bottom" data-tip="Informace o sekci">
-          <QuestionMarkCircleIcon className="h-5" />
-        </Link>
-      </li>
+      {infoPageUrl && (
+        <li>
+          <Link href={infoPageUrl} className="self-center tooltip tooltip-bottom" data-tip="Informace o sekci">
+            <QuestionMarkCircleIcon className="h-5" />
+          </Link>
+        </li>
+      )}
     </ul>
   );
 }
