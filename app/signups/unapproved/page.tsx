@@ -22,7 +22,7 @@ export default async function Page(props: {
   return (
     <>
       <h2 className="pb-2">Nepotvrzená přihlášení</h2>
-      <Search placeholder={'Vyhledat akci'} />
+      <Search placeholder={'Vyhledat přihlášení'} />
       <Pagination totalPages={signUpsPages} />
       <Suspense key={query + currentPage} fallback={<TableSkeleton />}>
         <SignUpList
