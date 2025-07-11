@@ -1,4 +1,5 @@
 import SideBar from '@/app/ui/layout/side-bar';
+import UserMenu from '@/app/ui/layout/user-menu';
 import { auth } from '@/auth';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,9 +21,12 @@ export default async function NavBarUser() {
         </Link>
       </div>
       <div className="navbar-end">
-        <Link className="hidden md:flex flex-row gap-4 text-black" href={'/me'}>
-          <h3>{session?.user.name}</h3>
-        </Link>
+        {/*<Link className="hidden md:flex flex-row gap-4 text-black" href={'/me'}>*/}
+        {/*  <h3>{session?.user.name}</h3>*/}
+        {/*</Link>*/}
+        <div className="text-black">
+          <UserMenu id={session?.user.id!} name={session?.user.name!} />
+        </div>
       </div>
     </div>
   );
