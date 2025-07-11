@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 };
 
 const signupsPages: PageUrl[] = [
-  { name: 'Informace', url: '/signups/info' },
   { name: 'Všechna aktuální přihlášení', url: '/signups' },
   { name: 'Nepotvrzená přihlášení', url: '/signups/unapproved' },
 ];
@@ -18,7 +17,7 @@ export default function Layout({ children }: BaseLayoutProps) {
     <section>
       <h1 className="content">Přihlášení na akce</h1>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={signupsPages} />
+      <PageNavigation pages={signupsPages} infoPageUrl="/signups/info" />
       <div className="content">{children}</div>
     </section>
   );

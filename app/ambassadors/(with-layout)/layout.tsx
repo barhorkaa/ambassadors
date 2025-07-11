@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 };
 
 const ambassadorPages: PageUrl[] = [
-  { name: 'Informace', url: '/ambassadors/info' },
   { name: 'Nepotvrzení uživatelé', url: '/ambassadors/unapproved' },
   { name: 'Ambasadoři', url: '/ambassadors' },
   { name: 'Manažeři', url: '/ambassadors/managers' },
@@ -19,7 +18,7 @@ export default function Layout({ children }: BaseLayoutProps) {
     <section>
       <h1 className="content">Uživatelé</h1>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={ambassadorPages} />
+      <PageNavigation pages={ambassadorPages} infoPageUrl="/ambassadors/info" />
       <div className="content">{children}</div>
     </section>
   );

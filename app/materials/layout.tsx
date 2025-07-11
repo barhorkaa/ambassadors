@@ -10,10 +10,7 @@ export const metadata: Metadata = {
   title: 'Materiály | AmbassadorsFIMU',
 };
 
-const materialsPages: PageUrl[] = [
-  { name: 'Informace', url: '/materials/info' },
-  { name: 'Dostupné materiály', url: '/materials' },
-];
+const materialsPages: PageUrl[] = [{ name: 'Dostupné materiály', url: '/materials' }];
 
 export default async function Layout({ children }: BaseLayoutProps) {
   const session = await auth();
@@ -30,7 +27,7 @@ export default async function Layout({ children }: BaseLayoutProps) {
         {isManager && <CreateMaterialModal />}
       </div>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={materialsPages} />
+      <PageNavigation pages={materialsPages} infoPageUrl="/materials/info" />
       <div className="content">{children}</div>
     </section>
   );

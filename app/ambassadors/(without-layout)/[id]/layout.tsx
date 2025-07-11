@@ -73,7 +73,7 @@ export default async function Layout({ children, params }: BaseLayoutProps & Lay
           </div>
         </div>
         <hr className="w-full mb-0" />
-        <PageNavigation pages={userDetailPages} />
+        <PageNavigation pages={userDetailPages} infoPageUrl="" />
       </div>
       {children}
     </section>

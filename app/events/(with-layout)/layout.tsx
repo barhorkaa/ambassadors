@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 };
 
 const eventPages: PageUrl[] = [
-  { name: 'Informace', url: '/events/info' },
   { name: 'Aktivní akce', url: '/events' },
   { name: 'Nepotvrzené akce', url: '/events/unapproved' },
 ];
@@ -26,7 +25,7 @@ export default function Layout({ children }: BaseLayoutProps) {
         </Link>
       </div>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={eventPages} />
+      <PageNavigation pages={eventPages} infoPageUrl="/events/info" />
       <div className="content">{children}</div>
     </section>
   );

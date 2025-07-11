@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 };
 
 const myEventsPages: PageUrl[] = [
-  { name: 'Informace', url: '/events/my/info' },
   { name: 'Aktuální přihlášení', url: '/events/my' },
   { name: 'Historie přihlášení', url: '/events/my/history' },
 ];
@@ -20,7 +19,7 @@ export default function Layout({ children }: BaseLayoutProps) {
         <h1>Moje akce</h1>
       </div>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={myEventsPages} />
+      <PageNavigation pages={myEventsPages} infoPageUrl="/events/my/info" />
       <div className="content">{children}</div>
     </section>
   );
