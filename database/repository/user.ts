@@ -6,6 +6,7 @@ import {
   createNotifications,
   deleteManagerNotifications,
 } from '@/database/repository/notifications';
+import { ITEMS_PER_PAGE } from '@/database/repository/utils/consts';
 import { UserCreateModel, UserEditModel } from '@/models/user-models';
 
 export async function getUserByEmail(email: string) {
@@ -129,9 +130,46 @@ export async function getAllManagers() {
   }
 }
 
-export async function getAllAmbassadors() {
+export async function getAllAmbassadors(query: string, currentPage: number) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+
   try {
-    return db.selectFrom('user').where('role', '=', 'ambassador').selectAll().execute();
+    return db
+      .selectFrom('user')
+      .where('role', '=', 'ambassador')
+      .where((eb) =>
+        eb.or([
+          eb('name', 'ilike', `%${query}%`),
+          eb('email', 'ilike', `%${query}%`),
+          eb((a) => a.cast('uco', 'text'), 'ilike', `%${query}%`),
+        ])
+      )
+      .selectAll()
+      .limit(ITEMS_PER_PAGE)
+      .offset(offset)
+      .execute();
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Could not get all ambassadors', cause: e });
+  }
+}
+
+export async function getAllAmbassadorsCount(query: string) {
+  try {
+    const result = await db
+      .selectFrom('user')
+      .where('role', '=', 'ambassador')
+      .where((eb) =>
+        eb.or([
+          eb('name', 'ilike', `%${query}%`),
+          eb('email', 'ilike', `%${query}%`),
+          eb((a) => a.cast('uco', 'text'), 'ilike', `%${query}%`),
+        ])
+      )
+      .selectAll()
+      .execute();
+
+    return Math.ceil(result.length / ITEMS_PER_PAGE);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Could not get all ambassadors', cause: e });
