@@ -130,11 +130,16 @@ export async function getAllManagers() {
   }
 }
 
-export async function getAllFilteredUsers(role: UserRoles, query: string, currentPage: number) {
+export async function getAllFilteredUsers(
+  role: UserRoles,
+  query: string,
+  currentPage: number,
+  getNotApproved?: boolean
+) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
-    return db
+    const result = db
       .selectFrom('user')
       .where('role', '=', role)
       .where((eb) =>
@@ -146,8 +151,13 @@ export async function getAllFilteredUsers(role: UserRoles, query: string, curren
       )
       .selectAll()
       .limit(ITEMS_PER_PAGE)
-      .offset(offset)
-      .execute();
+      .offset(offset);
+
+    if (getNotApproved) {
+      result.where('approved', '=', false);
+    }
+
+    return await result.execute();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Could not get all ambassadors', cause: e });
