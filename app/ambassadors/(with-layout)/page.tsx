@@ -19,7 +19,7 @@ export default async function Page(props: BasePageSearchProps) {
       totalPages={ambassadorPages}
       query={query}
       currentPage={currentPage}
-      placeHolder="Vyhladat uživatele"
+      placeHolder="Vyhledat uživatele"
       includeDateSearch={false}
     >
       <UserList
