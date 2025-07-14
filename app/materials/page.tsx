@@ -20,7 +20,6 @@ export default async function Page(props: BasePageSearchProps) {
       placeHolder="Vyhledat materiál"
     >
       <MaterialList
-        title={''}
         list={allMaterials}
         emptyMessage={
           query !== null

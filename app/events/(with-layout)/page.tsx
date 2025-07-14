@@ -27,7 +27,6 @@ export default async function Page(props: BasePageSearchProps & DatePageSearchPr
       dateTo={dateTo}
     >
       <EventList
-        title={'Aktivní akce'}
         list={allFilteredEvents}
         emptyMessage={
           query !== null

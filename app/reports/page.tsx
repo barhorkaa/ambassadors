@@ -25,7 +25,6 @@ export default async function Page(props: BasePageSearchProps & DatePageSearchPr
       dateTo={dateTo}
     >
       <EventList
-        title={''}
         list={allFilteredEvents!}
         emptyMessage={
           query !== null

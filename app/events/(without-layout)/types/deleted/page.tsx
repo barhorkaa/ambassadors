@@ -21,7 +21,6 @@ export default async function Page(props: BasePageSearchProps) {
       placeHolder="Vyhledat druh akce"
     >
       <EventTypeList
-        title={''}
         list={deletedEventTypes}
         emptyMessage={
           query !== null

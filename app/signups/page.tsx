@@ -21,7 +21,6 @@ export default async function Page(props: BasePageSearchProps) {
       placeHolder="Vyhledat přihlášení"
     >
       <SignUpList
-        title={''}
         list={allSignUps}
         emptyMessage={
           query !== null

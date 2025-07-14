@@ -38,7 +38,6 @@ export default async function Page(props: BasePageSearchProps & DatePageSearchPr
         dateTo={dateTo}
       >
         <EventList
-          title={'Akce, kde jsem přihlášen/a'}
           list={userEvents}
           emptyMessage={
             searchParams ? 'Žádná tvá akce nevyhovuje hledanému pojmu.' : 'Zatím jsi nebyl/a na žádné akci.'

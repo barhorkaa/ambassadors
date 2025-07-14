@@ -22,7 +22,6 @@ export default async function Page(props: BasePageSearchProps) {
       placeHolder={'Vyhledat uživatele'}
     >
       <UserList
-        title={''}
         list={allManagers}
         emptyMessage={
           query !== null
