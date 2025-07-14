@@ -5,6 +5,7 @@ import { EventList } from '@/app/ui/utils/content-list';
 import { TableSkeleton } from '@/app/ui/utils/skeletons';
 import { auth } from '@/auth';
 import { getUserSignUps, getUserSignUpsCount } from '@/database/repository/event-user';
+import { MAX_DATE, MIN_DATE } from '@/database/repository/utils/consts';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -23,8 +24,8 @@ export default async function Page(
 
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
-  const dateFrom = new Date(searchParams?.dateFrom || '2000-01-01');
-  const dateTo = new Date(searchParams?.dateTo || '3000-01-01');
+  const dateFrom = new Date(searchParams?.dateFrom || MIN_DATE);
+  const dateTo = new Date(searchParams?.dateTo || MAX_DATE);
   const currentPage = Number(searchParams?.page) || 1;
 
   const userEvents = await getUserSignUps(props.params.id, false, false, query, currentPage, dateFrom, dateTo);

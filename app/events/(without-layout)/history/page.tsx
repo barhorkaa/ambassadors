@@ -4,6 +4,7 @@ import Search from '@/app/ui/search/search';
 import { EventList } from '@/app/ui/utils/content-list';
 import { TableSkeleton } from '@/app/ui/utils/skeletons';
 import { getAllHistoryEvents, getAllHistoryEventsCount } from '@/database/repository/event';
+import { MAX_DATE, MIN_DATE } from '@/database/repository/utils/consts';
 import { Suspense } from 'react';
 
 export default async function Page(props: {
@@ -16,8 +17,8 @@ export default async function Page(props: {
 }) {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
-  const dateFrom = new Date(searchParams?.dateFrom || '2000-01-01');
-  const dateTo = new Date(searchParams?.dateTo || '3000-01-01');
+  const dateFrom = new Date(searchParams?.dateFrom || MIN_DATE);
+  const dateTo = new Date(searchParams?.dateTo || MAX_DATE);
   const currentPage = Number(searchParams?.page) || 1;
 
   const allFilteredEvents = await getAllHistoryEvents(true, query, currentPage, dateFrom, dateTo);

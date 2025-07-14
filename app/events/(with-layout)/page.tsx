@@ -5,14 +5,15 @@ import { EventList } from '@/app/ui/utils/content-list';
 import { TableSkeleton } from '@/app/ui/utils/skeletons';
 import { BasePageSearchProps, DatePageSearchProps } from '@/app/utils/interface-props';
 import { getAllFilteredActiveEvents, getAllFilteredActiveEventsCount } from '@/database/repository/event';
+import { MAX_DATE, MIN_DATE } from '@/database/repository/utils/consts';
 import { EventModel } from '@/models/event-models';
 import { Suspense } from 'react';
 
 export default async function Page(props: BasePageSearchProps & DatePageSearchProps) {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
-  const dateFrom = new Date(searchParams?.dateFrom || '2000-01-01');
-  const dateTo = new Date(searchParams?.dateTo || '3000-01-01');
+  const dateFrom = new Date(searchParams?.dateFrom || MIN_DATE);
+  const dateTo = new Date(searchParams?.dateTo || MAX_DATE);
   const currentPage = Number(searchParams?.page) || 1;
 
   const allFilteredEvents: EventModel[] = await getAllFilteredActiveEvents(true, query, currentPage, dateFrom, dateTo);
