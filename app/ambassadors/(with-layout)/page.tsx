@@ -1,15 +1,35 @@
 import { UserList } from '@/app/ui/utils/content-list';
-import { getAllAmbassadors } from '@/database/repository/user';
+import SearchPaginationLayout from '@/app/ui/utils/search-pagination-layout';
+import { BasePageSearchProps } from '@/app/utils/interface-props';
+import { getAllAmbassadors, getAllAmbassadorsCount } from '@/database/repository/user';
 import { UserModel } from '@/models/user-models';
 
-export default async function Page() {
-  const allAmbassadors: UserModel[] = await getAllAmbassadors();
+export default async function Page(props: BasePageSearchProps) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+
+  const allAmbassadors: UserModel[] = await getAllAmbassadors(query, currentPage);
+  const ambassadorPages = await getAllAmbassadorsCount(query);
 
   return (
-    <UserList
-      title={'Ambasadoři'}
-      list={allAmbassadors}
-      emptyMessage={'V aplikaci zatím nejsou registrovaní žádní ambasadoři.'}
-    />
+    <SearchPaginationLayout
+      title="Ambasadoři"
+      totalPages={ambassadorPages}
+      query={query}
+      currentPage={currentPage}
+      placeHolder="Vyhladat uživatele"
+      includeDateSearch={false}
+    >
+      <UserList
+        title={''}
+        list={allAmbassadors}
+        emptyMessage={
+          query !== null
+            ? 'Nemáme žádného uživatele, který by vyhovoval hledanému pojmu.'
+            : 'V aplikaci zatím nejsou registrovaní žádní ambasadoři.'
+        }
+      />
+    </SearchPaginationLayout>
   );
 }
