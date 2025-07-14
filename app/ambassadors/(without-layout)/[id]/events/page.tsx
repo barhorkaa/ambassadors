@@ -4,6 +4,7 @@ import Search from '@/app/ui/search/search';
 import { HeroCenterLayout } from '@/app/ui/utils/component-layouts';
 import { EventList } from '@/app/ui/utils/content-list';
 import { TableSkeleton } from '@/app/ui/utils/skeletons';
+import { BasePageSearchProps, DatePageSearchProps } from '@/app/utils/interface-props';
 import { auth } from '@/auth';
 import { getUserSignUps, getUserSignUpsCount } from '@/database/repository/event-user';
 import { MAX_DATE, MIN_DATE } from '@/database/repository/utils/consts';
@@ -12,16 +13,7 @@ import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
-export default async function Page(
-  props: {
-    searchParams?: Promise<{
-      query?: string;
-      dateFrom?: string;
-      dateTo?: string;
-      page?: string;
-    }>;
-  } & { params: { id: string } }
-) {
+export default async function Page(props: BasePageSearchProps & DatePageSearchProps & { params: { id: string } }) {
   const session = await auth();
 
   const searchParams = await props.searchParams;
