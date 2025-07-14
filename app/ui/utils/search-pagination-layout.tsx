@@ -18,7 +18,7 @@ interface SearchPaginationProps {
 
 const SearchPaginationLayout = (props: SearchPaginationProps) => (
   <>
-    <h2 className="pb-2">{props.title}</h2>
+    {props.title && <h2 className="pb-2">{props.title}</h2>}
     <div className="flex flex-col md:flex-row gap-4 md:gap-2">
       <Search placeholder={props.placeHolder} />
       {props.includeDateSearch && <DateSearch />}
