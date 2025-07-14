@@ -93,16 +93,13 @@ export const MaterialList = ({ list, emptyMessage }: ComponentListProps) =>
     </div>
   );
 
-export const EventTypeList = ({ list, emptyMessage }: ComponentListProps) => (
-  <>
-    {list.length === 0 ? (
-      <EmptyMessage message={emptyMessage} />
-    ) : (
-      <div className="flex flex-col gap-6">
-        {list.map((eventType) => (
-          <EventTypeDetail key={eventType.id} eventType={eventType} />
-        ))}
-      </div>
-    )}
-  </>
-);
+export const EventTypeList = ({ list, emptyMessage }: ComponentListProps) =>
+  list.length === 0 ? (
+    <EmptyMessage message={emptyMessage} />
+  ) : (
+    <div className="flex flex-col gap-6">
+      {list.map((eventType) => (
+        <EventTypeDetail key={eventType.id} eventType={eventType} />
+      ))}
+    </div>
+  );
