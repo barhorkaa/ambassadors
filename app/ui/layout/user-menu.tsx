@@ -21,7 +21,7 @@ const UserMenu = ({ id, name }: { id: string; name: string }) => {
         </li>
         <hr className="w-full mx-0" />
         <li>
-          <div className="py-0 gap-2">
+          <div className="py-0 gap-2 menu-title flex flex-row items-center">
             <CalendarDaysIcon className="h-4" />
             <h2 className="menu-title p-0">Moje přihlášení</h2>
           </div>
