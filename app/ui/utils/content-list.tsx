@@ -9,18 +9,14 @@ import { CheckIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 interface ComponentListProps {
-  title: string;
   list: any[];
   emptyMessage: string;
 }
 
 const EmptyMessage = ({ message }: { message: string }) => <p className="text-lg py-2">{message}</p>;
 
-const ListTitle = ({ title }: { title: string }) => <h2 className="pb-2">{title}</h2>;
-
-export const EventList = ({ title, list, emptyMessage }: ComponentListProps) => (
+export const EventList = ({ list, emptyMessage }: ComponentListProps) => (
   <>
-    {/*<ListTitle title={title} />*/}
     {list.length === 0 ? (
       <EmptyMessage message={emptyMessage} />
     ) : (
@@ -38,9 +34,8 @@ export const EventList = ({ title, list, emptyMessage }: ComponentListProps) => 
   </>
 );
 
-export const UserList = ({ title, list, emptyMessage }: ComponentListProps) => (
+export const UserList = ({ list, emptyMessage }: ComponentListProps) => (
   <>
-    <ListTitle title={title} />
     {list.length === 0 ? (
       <EmptyMessage message={emptyMessage} />
     ) : (
@@ -58,11 +53,8 @@ export const UserList = ({ title, list, emptyMessage }: ComponentListProps) => (
   </>
 );
 
-export const SignUpList = ({ title, list, emptyMessage }: ComponentListProps) => (
-  <>
-    <ListTitle title={title} />
-    {list.length === 0 ? <EmptyMessage message={emptyMessage} /> : <EventUserTable eventUsers={list} />}
-  </>
+export const SignUpList = ({ list, emptyMessage }: ComponentListProps) => (
+  <>{list.length === 0 ? <EmptyMessage message={emptyMessage} /> : <EventUserTable eventUsers={list} />}</>
 );
 
 const EventUserIcon = ({ approved }: { approved: boolean }) =>
@@ -72,7 +64,7 @@ const EventUserIcon = ({ approved }: { approved: boolean }) =>
     <ClockIcon title={'Čeká se na potvrzení'} className="h-6" />
   );
 
-export const EventUserList = ({ title, list, emptyMessage }: ComponentListProps) =>
+export const EventUserList = ({ title, list, emptyMessage }: ComponentListProps & { title: string }) =>
   list.length === 0 ? (
     <EmptyMessage message={emptyMessage} />
   ) : (
@@ -90,9 +82,8 @@ export const EventUserList = ({ title, list, emptyMessage }: ComponentListProps)
     </>
   );
 
-export const MaterialList = ({ title, list, emptyMessage }: ComponentListProps) => (
+export const MaterialList = ({ list, emptyMessage }: ComponentListProps) => (
   <>
-    <ListTitle title={title} />
     {list.length === 0 ? (
       <EmptyMessage message={emptyMessage} />
     ) : (
@@ -105,9 +96,8 @@ export const MaterialList = ({ title, list, emptyMessage }: ComponentListProps) 
   </>
 );
 
-export const EventTypeList = ({ title, list, emptyMessage }: ComponentListProps) => (
+export const EventTypeList = ({ list, emptyMessage }: ComponentListProps) => (
   <>
-    <ListTitle title={title} />
     {list.length === 0 ? (
       <EmptyMessage message={emptyMessage} />
     ) : (
