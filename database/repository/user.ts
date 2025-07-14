@@ -130,13 +130,13 @@ export async function getAllManagers() {
   }
 }
 
-export async function getAllAmbassadors(query: string, currentPage: number) {
+export async function getAllFilteredUsers(role: UserRoles, query: string, currentPage: number) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
     return db
       .selectFrom('user')
-      .where('role', '=', 'ambassador')
+      .where('role', '=', role)
       .where((eb) =>
         eb.or([
           eb('name', 'ilike', `%${query}%`),
@@ -154,11 +154,11 @@ export async function getAllAmbassadors(query: string, currentPage: number) {
   }
 }
 
-export async function getAllAmbassadorsCount(query: string) {
+export async function getAllFilteredUsersCount(role: UserRoles, query: string) {
   try {
     const result = await db
       .selectFrom('user')
-      .where('role', '=', 'ambassador')
+      .where('role', '=', role)
       .where((eb) =>
         eb.or([
           eb('name', 'ilike', `%${query}%`),

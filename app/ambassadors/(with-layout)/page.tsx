@@ -1,7 +1,8 @@
 import { UserList } from '@/app/ui/utils/content-list';
 import SearchPaginationLayout from '@/app/ui/utils/search-pagination-layout';
 import { BasePageSearchProps } from '@/app/utils/interface-props';
-import { getAllAmbassadors, getAllAmbassadorsCount } from '@/database/repository/user';
+import { UserRoles } from '@/app/utils/user-roles';
+import { getAllFilteredUsers, getAllFilteredUsersCount } from '@/database/repository/user';
 import { UserModel } from '@/models/user-models';
 
 export default async function Page(props: BasePageSearchProps) {
@@ -9,8 +10,8 @@ export default async function Page(props: BasePageSearchProps) {
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
 
-  const allAmbassadors: UserModel[] = await getAllAmbassadors(query, currentPage);
-  const ambassadorPages = await getAllAmbassadorsCount(query);
+  const allAmbassadors: UserModel[] = await getAllFilteredUsers(UserRoles.ambassador, query, currentPage);
+  const ambassadorPages = await getAllFilteredUsersCount(UserRoles.ambassador, query);
 
   return (
     <SearchPaginationLayout
