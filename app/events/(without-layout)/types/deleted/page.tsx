@@ -1,15 +1,36 @@
+import Pagination from '@/app/ui/search/pagination';
+import Search from '@/app/ui/search/search';
 import { EventTypeList } from '@/app/ui/utils/content-list';
-import { getAllEventTypes } from '@/database/repository/event-type';
+import { TableSkeleton } from '@/app/ui/utils/skeletons';
+import { BasePageSearchProps } from '@/app/utils/interface-props';
+import { getAllFilteredEventTypes, getAllFilteredEventTypesCount } from '@/database/repository/event-type';
 import { EventTypeDetailModel } from '@/models/event-type-models';
+import { Suspense } from 'react';
 
-export default async function Page() {
-  const deletedEventTypes: EventTypeDetailModel[] = await getAllEventTypes(true);
+export default async function Page(props: BasePageSearchProps) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+
+  const deletedEventTypes: EventTypeDetailModel[] = await getAllFilteredEventTypes(true, query, currentPage);
+  const typesPages = await getAllFilteredEventTypesCount(true, query);
 
   return (
-    <EventTypeList
-      title={'Vymazané druhy akcí'}
-      list={deletedEventTypes}
-      emptyMessage={'Aktuálně jsou všechny typy akcí používány'}
-    />
+    <>
+      <Search placeholder={'Vyhledat druh akce'} />
+      <Pagination totalPages={typesPages} />
+      <Suspense key={query + currentPage} fallback={<TableSkeleton />}>
+        <EventTypeList
+          title={''}
+          list={deletedEventTypes}
+          emptyMessage={
+            query !== null
+              ? 'Nemáme žádnou akci, ktrá by vyhovovala hledanému pojmu.'
+              : 'Aktuálně jsou všechny typy akcí používány.'
+          }
+        />
+      </Suspense>
+      <Pagination totalPages={typesPages} />
+    </>
   );
 }
