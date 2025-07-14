@@ -130,6 +130,20 @@ export async function getAllManagers() {
   }
 }
 
+function getSubQuery(role: UserRoles, query: string) {
+  return db
+    .selectFrom('user')
+    .where('role', '=', role)
+    .where((eb) =>
+      eb.or([
+        eb('name', 'ilike', `%${query}%`),
+        eb('email', 'ilike', `%${query}%`),
+        eb((a) => a.cast('uco', 'text'), 'ilike', `%${query}%`),
+      ])
+    )
+    .selectAll();
+}
+
 export async function getAllFilteredUsers(
   role: UserRoles,
   query: string,
@@ -139,47 +153,28 @@ export async function getAllFilteredUsers(
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
-    const result = db
-      .selectFrom('user')
-      .where('role', '=', role)
-      .where((eb) =>
-        eb.or([
-          eb('name', 'ilike', `%${query}%`),
-          eb('email', 'ilike', `%${query}%`),
-          eb((a) => a.cast('uco', 'text'), 'ilike', `%${query}%`),
-        ])
-      )
-      .selectAll()
-      .limit(ITEMS_PER_PAGE)
-      .offset(offset);
+    let result = getSubQuery(role, query);
 
     if (getNotApproved) {
-      result.where('approved', '=', false);
+      result = result.where('approved', '=', false);
     }
 
-    return await result.execute();
+    return await result.limit(ITEMS_PER_PAGE).offset(offset).execute();
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Could not get all ambassadors', cause: e });
   }
 }
 
-export async function getAllFilteredUsersCount(role: UserRoles, query: string) {
+export async function getAllFilteredUsersCount(role: UserRoles, query: string, getNotApproved?: boolean) {
   try {
-    const result = await db
-      .selectFrom('user')
-      .where('role', '=', role)
-      .where((eb) =>
-        eb.or([
-          eb('name', 'ilike', `%${query}%`),
-          eb('email', 'ilike', `%${query}%`),
-          eb((a) => a.cast('uco', 'text'), 'ilike', `%${query}%`),
-        ])
-      )
-      .selectAll()
-      .execute();
+    let result = getSubQuery(role, query);
 
-    return Math.ceil(result.length / ITEMS_PER_PAGE);
+    if (getNotApproved) {
+      result = result.where('approved', '=', false);
+    }
+
+    return Math.ceil((await result.execute()).length / ITEMS_PER_PAGE);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Could not get all ambassadors', cause: e });
