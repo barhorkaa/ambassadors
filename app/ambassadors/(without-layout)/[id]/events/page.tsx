@@ -1,21 +1,14 @@
-import DateSearch from '@/app/ui/search/date-search';
-import Pagination from '@/app/ui/search/pagination';
-import Search from '@/app/ui/search/search';
 import { HeroCenterLayout } from '@/app/ui/utils/component-layouts';
 import { EventList } from '@/app/ui/utils/content-list';
-import { TableSkeleton } from '@/app/ui/utils/skeletons';
+import SearchPaginationLayout from '@/app/ui/utils/search-pagination-layout';
 import { BasePageSearchProps, DatePageSearchProps } from '@/app/utils/interface-props';
-import { auth } from '@/auth';
 import { getUserSignUps, getUserSignUpsCount } from '@/database/repository/event-user';
 import { MAX_DATE, MIN_DATE } from '@/database/repository/utils/consts';
 import { EventUserStateModel } from '@/models/event-models';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { Suspense } from 'react';
 
 export default async function Page(props: BasePageSearchProps & DatePageSearchProps & { params: { id: string } }) {
-  const session = await auth();
-
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const dateFrom = new Date(searchParams?.dateFrom || MIN_DATE);
@@ -47,12 +40,15 @@ export default async function Page(props: BasePageSearchProps & DatePageSearchPr
           <QuestionMarkCircleIcon className="h-5" />
         </Link>
       </div>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-2">
-        <Search placeholder={'Vyhledat akci'} />
-        <DateSearch />
-      </div>
-      <Pagination totalPages={eventsPages} />
-      <Suspense key={query + currentPage + dateFrom + dateTo} fallback={<TableSkeleton />}>
+      <SearchPaginationLayout
+        totalPages={eventsPages}
+        query={query}
+        currentPage={currentPage}
+        placeHolder="Vyhledat akci"
+        includeDateSearch={true}
+        dateFrom={dateFrom}
+        dateTo={dateTo}
+      >
         <EventList
           title={'Akce, kde jsem přihlášen/a'}
           list={userEvents}
@@ -60,8 +56,7 @@ export default async function Page(props: BasePageSearchProps & DatePageSearchPr
             searchParams ? 'Žádná tvá akce nevyhovuje hledanému pojmu.' : 'Zatím nejsi přihlášen/a na žádnou akci.'
           }
         />
-      </Suspense>
-      <Pagination totalPages={eventsPages} />
+      </SearchPaginationLayout>
     </>
   );
 }

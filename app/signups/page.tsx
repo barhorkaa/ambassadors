@@ -1,11 +1,8 @@
-import Pagination from '@/app/ui/search/pagination';
-import Search from '@/app/ui/search/search';
 import { SignUpList } from '@/app/ui/utils/content-list';
-import { TableSkeleton } from '@/app/ui/utils/skeletons';
+import SearchPaginationLayout from '@/app/ui/utils/search-pagination-layout';
 import { BasePageSearchProps } from '@/app/utils/interface-props';
 import { getAllSignUps, getAllSignUpsPages } from '@/database/repository/event-user';
 import { EventUserBasicModel } from '@/models/event-user-models';
-import { Suspense } from 'react';
 
 export default async function Page(props: BasePageSearchProps) {
   const searchParams = await props.searchParams;
@@ -16,22 +13,23 @@ export default async function Page(props: BasePageSearchProps) {
   const signUpsPages = await getAllSignUpsPages(true, query);
 
   return (
-    <>
-      <h2 className="pb-2">Všechna aktuání přihlášení</h2>
-      <Search placeholder={'Vyhledat přihlášení'} />
-      <Pagination totalPages={signUpsPages} />
-      <Suspense key={query + currentPage} fallback={<TableSkeleton />}>
-        <SignUpList
-          title={''}
-          list={allSignUps}
-          emptyMessage={
-            query !== null
-              ? 'Nemáme žádné príhlšení, která by vyhovovala hledanému pojmu.'
-              : 'V součastné době nejsou v aplikaci žádné akivní přihlášení na akce.'
-          }
-        />
-      </Suspense>
-      <Pagination totalPages={signUpsPages} />
-    </>
+    <SearchPaginationLayout
+      title="Všechna aktuání přihlášení"
+      totalPages={signUpsPages}
+      query={query}
+      currentPage={currentPage}
+      placeHolder="Vyhledat přihlášení"
+      includeDateSearch={false}
+    >
+      <SignUpList
+        title={''}
+        list={allSignUps}
+        emptyMessage={
+          query !== null
+            ? 'Nemáme žádné príhlšení, která by vyhovovala hledanému pojmu.'
+            : 'V součastné době nejsou v aplikaci žádné akivní přihlášení na akce.'
+        }
+      />
+    </SearchPaginationLayout>
   );
 }

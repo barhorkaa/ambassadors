@@ -1,13 +1,9 @@
-import DateSearch from '@/app/ui/search/date-search';
-import Pagination from '@/app/ui/search/pagination';
-import Search from '@/app/ui/search/search';
 import { EventList } from '@/app/ui/utils/content-list';
-import { TableSkeleton } from '@/app/ui/utils/skeletons';
+import SearchPaginationLayout from '@/app/ui/utils/search-pagination-layout';
 import { BasePageSearchProps, DatePageSearchProps } from '@/app/utils/interface-props';
 import { getAllFilteredActiveEvents, getAllFilteredActiveEventsCount } from '@/database/repository/event';
 import { MAX_DATE, MIN_DATE } from '@/database/repository/utils/consts';
 import { EventModel } from '@/models/event-models';
-import { Suspense } from 'react';
 
 export default async function Page(props: BasePageSearchProps & DatePageSearchProps) {
   const searchParams = await props.searchParams;
@@ -20,25 +16,25 @@ export default async function Page(props: BasePageSearchProps & DatePageSearchPr
   const eventsPages = await getAllFilteredActiveEventsCount(true, query, dateFrom, dateTo);
 
   return (
-    <>
-      <h2 className="pb-2">Aktivní akce</h2>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-2">
-        <Search placeholder={'Vyhledat akci'} />
-        <DateSearch />
-      </div>
-      <Pagination totalPages={eventsPages} />
-      <Suspense key={query + currentPage + dateFrom + dateTo} fallback={<TableSkeleton />}>
-        <EventList
-          title={'Aktivní akce'}
-          list={allFilteredEvents}
-          emptyMessage={
-            query !== null
-              ? 'Nemáme žádnou akci, ktrá by vyhovovala hledanému pojmu.'
-              : 'Momentálně nejsou k dispozici žádné akce. Jestli chceš někam jet, vytvoř návrh na novou akci stlačením tlačítka Přidat.'
-          }
-        />
-      </Suspense>
-      <Pagination totalPages={eventsPages} />
-    </>
+    <SearchPaginationLayout
+      title="Aktivní akce"
+      totalPages={eventsPages}
+      query={query}
+      currentPage={currentPage}
+      placeHolder="Vyhledat akci"
+      includeDateSearch={true}
+      dateFrom={dateFrom}
+      dateTo={dateTo}
+    >
+      <EventList
+        title={'Aktivní akce'}
+        list={allFilteredEvents}
+        emptyMessage={
+          query !== null
+            ? 'Nemáme žádnou akci, ktrá by vyhovovala hledanému pojmu.'
+            : 'Momentálně nejsou k dispozici žádné akce. Jestli chceš někam jet, vytvoř návrh na novou akci stlačením tlačítka Přidat.'
+        }
+      />
+    </SearchPaginationLayout>
   );
 }
