@@ -20,7 +20,6 @@ export default async function Page(props: BasePageSearchProps) {
       query={query}
       currentPage={currentPage}
       placeHolder={'Vyhledat uživatele'}
-      includeDateSearch={false}
     >
       <UserList
         title={''}

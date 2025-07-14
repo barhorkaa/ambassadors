@@ -18,7 +18,6 @@ export default async function Page(props: BasePageSearchProps) {
       query={query}
       currentPage={currentPage}
       placeHolder="Vyhledat materiál"
-      includeDateSearch={false}
     >
       <MaterialList
         title={''}

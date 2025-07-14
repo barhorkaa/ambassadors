@@ -19,7 +19,6 @@ export default async function Page(props: BasePageSearchProps) {
       query={query}
       currentPage={currentPage}
       placeHolder="Vyhledat druh akce"
-      includeDateSearch={false}
     >
       <EventTypeList
         title={''}

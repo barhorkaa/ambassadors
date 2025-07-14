@@ -15,7 +15,6 @@ export default async function Page(props: BasePageSearchProps) {
     <SearchPaginationLayout
       totalPages={materialsPages}
       currentPage={currentPage}
-      includeDateSearch={false}
       title="Dostupné materiály"
       query={query}
       placeHolder="Vyhledat materiál"
