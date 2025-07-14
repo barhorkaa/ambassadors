@@ -16,7 +16,7 @@ export default async function Layout({ children }: BaseLayoutProps) {
   const session = await auth();
   const isManager = session?.user.role === UserRoles.manager;
 
-  if (isManager) {
+  if (isManager && !eventTypePages.some((e) => e.name === 'Vymazané druhy akcí')) {
     eventTypePages.push({ name: 'Vymazané druhy akcí', url: '/events/types/deleted' });
   }
 
