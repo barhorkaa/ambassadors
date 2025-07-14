@@ -53,9 +53,8 @@ export const UserList = ({ list, emptyMessage }: ComponentListProps) => (
   </>
 );
 
-export const SignUpList = ({ list, emptyMessage }: ComponentListProps) => (
-  <>{list.length === 0 ? <EmptyMessage message={emptyMessage} /> : <EventUserTable eventUsers={list} />}</>
-);
+export const SignUpList = ({ list, emptyMessage }: ComponentListProps) =>
+  list.length === 0 ? <EmptyMessage message={emptyMessage} /> : <EventUserTable eventUsers={list} />;
 
 const EventUserIcon = ({ approved }: { approved: boolean }) =>
   approved ? (
