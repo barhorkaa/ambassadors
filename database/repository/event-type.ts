@@ -1,5 +1,6 @@
 import { db } from '@/database/database';
 import { DatabaseError } from '@/database/errors/database-error';
+import { LIMITED_ITEMS_PER_PAGE } from '@/database/repository/utils/consts';
 import { EventTypeManipulationModel } from '@/models/event-type-models';
 import { objectToCamel } from 'ts-case-convert';
 
@@ -26,14 +27,48 @@ export async function getAllEventTypesBasics() {
   }
 }
 
-export async function getAllEventTypes(deleted: boolean) {
+export async function getAllFilteredEventTypes(deleted: boolean, query: string, currentPage: number) {
+  const offset = (currentPage - 1) * LIMITED_ITEMS_PER_PAGE;
+
   try {
     const result = await db
       .selectFrom('eventType')
       .where('deleted_at', deleted ? 'is not' : 'is', null)
+      .where((eb) =>
+        eb.or([
+          eb('eventType.name', 'ilike', `%${query}%`),
+          eb('eventType.description', 'ilike', `%${query}%`),
+          eb('eventType.instructions', 'ilike', `%${query}%`),
+        ])
+      )
+      .selectAll()
+      .limit(LIMITED_ITEMS_PER_PAGE)
+      .offset(offset)
+      .execute();
+
+    return objectToCamel(result);
+  } catch (e) {
+    console.error(e);
+    throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all event types', cause: e });
+  }
+}
+
+export async function getAllFilteredEventTypesCount(deleted: boolean, query: string) {
+  try {
+    const result = await db
+      .selectFrom('eventType')
+      .where('deleted_at', deleted ? 'is not' : 'is', null)
+      .where((eb) =>
+        eb.or([
+          eb('eventType.name', 'ilike', `%${query}%`),
+          eb('eventType.description', 'ilike', `%${query}%`),
+          eb('eventType.instructions', 'ilike', `%${query}%`),
+        ])
+      )
       .selectAll()
       .execute();
-    return objectToCamel(result);
+
+    return Math.ceil(result.length / LIMITED_ITEMS_PER_PAGE);
   } catch (e) {
     console.error(e);
     throw new DatabaseError({ name: 'DATABASE_GET_ERROR', message: 'Unable to get all event types', cause: e });
