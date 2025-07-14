@@ -15,24 +15,21 @@ interface ComponentListProps {
 
 const EmptyMessage = ({ message }: { message: string }) => <p className="text-lg py-2">{message}</p>;
 
-export const EventList = ({ list, emptyMessage }: ComponentListProps) => (
-  <>
-    {list.length === 0 ? (
-      <EmptyMessage message={emptyMessage} />
-    ) : (
-      <>
-        <div className="flex md:hidden flex-wrap justify-center gap-4 ">
-          {list.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
-        </div>
-        <div className="py-2 hidden md:block">
-          <EventTable events={list} />
-        </div>
-      </>
-    )}
-  </>
-);
+export const EventList = ({ list, emptyMessage }: ComponentListProps) =>
+  list.length === 0 ? (
+    <EmptyMessage message={emptyMessage} />
+  ) : (
+    <>
+      <div className="flex md:hidden flex-wrap justify-center gap-4 ">
+        {list.map((event) => (
+          <EventCard key={event.id} event={event} />
+        ))}
+      </div>
+      <div className="py-2 hidden md:block">
+        <EventTable events={list} />
+      </div>
+    </>
+  );
 
 export const UserList = ({ list, emptyMessage }: ComponentListProps) =>
   list.length === 0 ? (
