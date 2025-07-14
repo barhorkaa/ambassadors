@@ -34,24 +34,21 @@ export const EventList = ({ list, emptyMessage }: ComponentListProps) => (
   </>
 );
 
-export const UserList = ({ list, emptyMessage }: ComponentListProps) => (
-  <>
-    {list.length === 0 ? (
-      <EmptyMessage message={emptyMessage} />
-    ) : (
-      <>
-        <div className="hidden md:block">
-          <UserTable users={list} />
-        </div>
-        <div className="flex md:hidden flex-wrap justify-center gap-4">
-          {list.map((user) => (
-            <UserCard key={user.id} user={user} />
-          ))}
-        </div>
-      </>
-    )}
-  </>
-);
+export const UserList = ({ list, emptyMessage }: ComponentListProps) =>
+  list.length === 0 ? (
+    <EmptyMessage message={emptyMessage} />
+  ) : (
+    <>
+      <div className="hidden md:block">
+        <UserTable users={list} />
+      </div>
+      <div className="flex md:hidden flex-wrap justify-center gap-4">
+        {list.map((user) => (
+          <UserCard key={user.id} user={user} />
+        ))}
+      </div>
+    </>
+  );
 
 export const SignUpList = ({ list, emptyMessage }: ComponentListProps) =>
   list.length === 0 ? <EmptyMessage message={emptyMessage} /> : <EventUserTable eventUsers={list} />;
