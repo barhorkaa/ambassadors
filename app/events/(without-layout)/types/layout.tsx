@@ -10,10 +10,7 @@ export const metadata: Metadata = {
   title: 'Druhy akcí | AmbassadorsFIMU',
 };
 
-const eventTypePages: PageUrl[] = [
-  { name: 'Informace', url: '/events/types/info' },
-  { name: 'Dostupné druhy akcí', url: '/events/types' },
-];
+const eventTypePages: PageUrl[] = [{ name: 'Dostupné druhy akcí', url: '/events/types' }];
 
 export default async function Layout({ children }: BaseLayoutProps) {
   const session = await auth();
@@ -30,7 +27,7 @@ export default async function Layout({ children }: BaseLayoutProps) {
         {isManager && <CreateEventTypeModal />}
       </div>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={eventTypePages} />
+      <PageNavigation pages={eventTypePages} infoPageUrl="/events/types/info" />
       <div className="content">{children}</div>
     </section>
   );
