@@ -10,7 +10,7 @@ interface SearchPaginationProps {
   currentPage: number;
   title?: string;
   placeHolder: string;
-  includeDateSearch: boolean;
+  includeDateSearch?: boolean;
   dateFrom?: Date;
   dateTo?: Date;
   children?: React.ReactNode;
