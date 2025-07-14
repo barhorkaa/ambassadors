@@ -16,7 +16,7 @@ export default async function Layout({ children }: BaseLayoutProps) {
   const session = await auth();
   const isManager = session?.user.role === UserRoles.manager;
 
-  if (isManager) {
+  if (isManager && !materialsPages.some((e) => e.name === 'Vymazané materiály')) {
     materialsPages.push({ name: 'Vymazané materiály', url: '/materials/deleted' });
   }
 
