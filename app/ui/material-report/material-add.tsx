@@ -37,8 +37,22 @@ export default function MaterialAdd({ materials }: MaterialAddProps) {
         </button>
       </label>
       {inputs.map((input, i) => (
-        <div key={i} className="grid grid-cols-8 items-end gap-2">
-          <div className="col-span-5">
+        <div
+          key={i}
+          className={
+            'grid grid-cols-[auto_3fr_2fr] items-center gap-2 py-1' + (inputs.length === 1 ? ' pl-8' : ' pl-2')
+          }
+        >
+          {inputs.length !== 1 && (
+            <button
+              type="button"
+              className="btn btn-circle btn-outline btn-xs bg-base-100 hover:bg-fi-200"
+              onClick={() => handleRemoveClick(i)}
+            >
+              <MinusIcon className="h-4" />
+            </button>
+          )}
+          <div className="col-start-2">
             <MaterialReportSelect materials={materials} selectedMaterial={undefined} />
           </div>
           <div className="form-control col-span-2">
@@ -55,15 +69,6 @@ export default function MaterialAdd({ materials }: MaterialAddProps) {
               required
             />
           </div>
-          {inputs.length !== 1 && (
-            <button
-              type="button"
-              className="btn btn-circle btn-outline bg-base-100"
-              onClick={() => handleRemoveClick(i)}
-            >
-              <MinusIcon className="h-5" />
-            </button>
-          )}
         </div>
       ))}
     </div>
