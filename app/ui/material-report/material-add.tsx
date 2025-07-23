@@ -55,10 +55,7 @@ export default function MaterialAdd({ materials }: MaterialAddProps) {
           <div className="col-start-2">
             <MaterialReportSelect materials={materials} selectedMaterial={undefined} />
           </div>
-          <div className="form-control col-span-2">
-            <label className="label" htmlFor="numerOfAttendees">
-              <span className="label-text">Počet kusů</span>
-            </label>
+          <div className="form-control col-start-3">
             <input
               id="amount"
               type="number"
