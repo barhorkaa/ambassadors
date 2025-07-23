@@ -61,4 +61,7 @@
   .data-display {
     @apply bg-base-100 dark:bg-base-200 shadow-md rounded-none
   }
+  .label-text {
+    @apply pl-2 pb-1
+  }
 }
