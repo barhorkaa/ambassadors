@@ -18,9 +18,9 @@ export function ToggleButton({ id, name, defaultState, title, detail }: ToggleBu
   }
 
   return (
-    <div className="form-control">
-      <label className="label cursor-pointer">
-        <span className="label-text text-lg font-semibold">{title}</span>
+    <div className="form-control px-2 py-1">
+      <label className="label cursor-pointer flex justify-between">
+        <span className="label-text text-lg font-semibold text-black">{title}</span>
         <input
           id={id}
           name={name}
@@ -30,7 +30,7 @@ export function ToggleButton({ id, name, defaultState, title, detail }: ToggleBu
           defaultChecked={isChecked}
         />
       </label>
-      <div className="text-sm text-base-300 px-2">{detail}</div>
+      <div className="text-sm  px-2">{detail}</div>
     </div>
   );
 }
