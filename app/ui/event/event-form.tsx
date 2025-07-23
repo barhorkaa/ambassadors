@@ -45,14 +45,14 @@ export default function EventForm({ eventTypes, event }: EventFormProps) {
         defaultValue={event?.date ? format(event?.date, 'yyyy-MM-dd') : ''}
         required={false}
       />
-      <div className="form-control">
-        <input id="id" value={event?.id} type="hidden" name="id" />
-      </div>
       <EventTypeSelect
         selectedEvent={event?.eventTypeId}
         eventTypes={eventTypes}
         errorMessage={findErrors('eventTypeId', state.errors)[0]}
       />
+      <div className="form-control">
+        <input id="id" value={event?.id} type="hidden" name="id" />
+      </div>
     </FormLayout>
   );
 }
