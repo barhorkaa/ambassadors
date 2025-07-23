@@ -13,7 +13,7 @@ const UserMenu = ({ id, name }: { id: string; name: string }) => {
           <UserIcon className="h-6" />
         </div>
       </div>
-      <ul tabIndex={0} className="dropdown-content menu bg-base-100 z-1 w-80 shadow-sm">
+      <ul tabIndex={0} className="dropdown-content menu bg-base-100 z-1 w-80 shadow-xs">
         <li>
           <Link href={`/ambassadors/${id}/detail`}>
             <UserIcon className="h-4" /> Můj účet
