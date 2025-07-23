@@ -30,7 +30,7 @@ export default function MaterialAdd({ materials }: MaterialAddProps) {
 
   return (
     <div className="form-control">
-      <label className="label" htmlFor="materials">
+      <label className="label flex flex-row justify-between" htmlFor="materials">
         <span className="label-text">Materiály</span>
         <button type="button" className="btn" onClick={handleAddClick}>
           <PlusIcon className="h-5" />
