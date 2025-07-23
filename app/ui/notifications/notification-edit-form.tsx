@@ -33,7 +33,7 @@ export default function NotificationsEditForm({ notifications, managerNotificati
 
 function ManagerNotificationsSettings({ managerNotifications }: { managerNotifications: ManagerNotifications }) {
   return (
-    <>
+    <div className="[&>*:nth-child(odd)]:bg-fi-100">
       <ToggleButton
         defaultState={managerNotifications.newEventSuggestion}
         title={'Nový návrh akce'}
@@ -63,13 +63,13 @@ function ManagerNotificationsSettings({ managerNotifications }: { managerNotific
         name={'newReport'}
       />
       <hr />
-    </>
+    </div>
   );
 }
 
 function UserNotificationsSettings({ userNotifications }: { userNotifications: UserNotifications }) {
   return (
-    <>
+    <div className="[&>*:nth-child(odd)]:bg-fi-100">
       <ToggleButton
         defaultState={userNotifications.eventChange}
         title={'Změna akce'}
@@ -97,6 +97,6 @@ function UserNotificationsSettings({ userNotifications }: { userNotifications: U
         id={'signupApprove'}
         name={'signupApprove'}
       />
-    </>
+    </div>
   );
 }
