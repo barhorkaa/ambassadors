@@ -19,7 +19,7 @@ export default function UserRoleSelect({ currentRole }: UserRoleSelectProps) {
         <span className="label-text">Role uživatele</span>
       </label>
       <select
-        className="select select-bordered w-full max-w-xs"
+        className="select select-bordered w-full"
         id="role"
         name="role"
         value={userRole}
