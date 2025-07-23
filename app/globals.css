@@ -61,8 +61,4 @@
   .data-display {
     @apply bg-base-100 dark:bg-base-200 shadow-md rounded-none
   }
-  .input-bor {
-    @apply input
-    /*The `input-bordered` class does not exist. If `input-bordered` is a custom class, make sure it is defined within a `@layer` directive. (67:5)*/
-  }
 }
