@@ -22,7 +22,7 @@ export default function EventTypeSelect({ eventTypes, selectedEvent, errorMessag
         <span className="label-text">Typ akce</span>
       </label>
       <select
-        className="select select-bordered w-full max-w-xs"
+        className="select select-bordered w-full"
         id="eventType"
         name="eventTypeId"
         value={eventType}
