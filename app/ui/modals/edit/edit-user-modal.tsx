@@ -24,7 +24,7 @@ export default function EditUserModal({ user, full, canEditPassword }: EditUserM
       {canEditPassword && (
         <>
           <hr className="w-full" />
-          <div className=" form-control">
+          <div className="form-control flex flex-col">
             <label className="label" htmlFor="password">
               <span className="label-text">Heslo</span>
             </label>
