@@ -1,6 +1,17 @@
 @import 'tailwindcss';
 
-@config '../tailwind.config.ts';
+@plugin "daisyui";
+
+@theme {
+  --color-muni: #0000DC;
+  --color-black: #000000;
+  --color-white: #fcfcfc;
+  --color-fi-100: #F3E9A3;
+  --color-fi-200: #F2DE7F;
+  --color-fi-300: #F2D45C;
+
+  /*--background-ima*/
+}
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -21,11 +32,11 @@
 }
 
 @utility card {
-  @apply shrink-0 w-full max-w-sm shadow-2xl;
+  @apply shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-base-300;
 }
 
 @utility btn {
-  @apply text-black;
+  @apply text-black bg-fi-300;
 }
 
 @utility badge {
@@ -33,7 +44,7 @@
 }
 
 @utility hero {
-  @apply min-h-max;
+  @apply bg-white dark:bg-base-100  min-h-max;
 }
 
 @utility banner {
@@ -55,7 +66,7 @@
 }
 
 @utility data-display {
-  @apply shadow-md rounded-none;
+  @apply shadow-md rounded-none bg-base-100 dark:bg-base-200 ;
 }
 
 @utility label-text {
@@ -64,10 +75,10 @@
 
 @layer base {
   body {
-    @apply  min-h-screen grid grid-rows-[min-content_1fr_min-content] grid-cols-1;
+    @apply bg-white dark:bg-base-100 min-h-screen grid grid-rows-[min-content_1fr_min-content] grid-cols-1;
   }
   main {
-    @apply mb-9 mx-2.5 md:mx-12 xl:mx-52;
+    @apply bg-white dark:bg-base-100 mb-9 mx-2.5 md:mx-12 xl:mx-52;
   }
   section {
     @apply mt-9
@@ -82,12 +93,12 @@
     @apply font-semibold text-lg;
   }
   hr {
-    @apply w-52 md:w-96 h-1 mx-auto my-3 border-0 rounded-sm
+    @apply w-52 md:w-96 h-1 mx-auto my-3 border-0 rounded-sm bg-fi-300
   }
   textarea {
-    @apply w-full
+    @apply textarea w-full
   }
   input {
-    @apply w-full
+    @apply input w-full
   }
 }
