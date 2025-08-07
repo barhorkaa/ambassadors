@@ -1,0 +1,18 @@
+import ModalLayout from '@/app/ui/modals/modal-layout';
+import { SectionInfo } from '@/app/ui/utils/data-display';
+
+export default function InfoSignupsModal() {
+  return (
+    <ModalLayout id="signupsModal" title="Inforace o přihlašování na akce" modalType="info">
+      <p className="pb-2">Tato část aplikace slouží na přehled o aktuálních přihláseních na akce.</p>
+      <SectionInfo
+        title={'Nepotvrzená přihlášení na akce'}
+        contents={[
+          'Když se ambasador chce zúčastnit na akci, přihlásí se na ní ze svého účtu. Toto přihlášní je potřebné ' +
+            'potvrdit v sekci Nepotvrzená přihlášení. ',
+          'Potvzením přihlášení vyjadřuje oddělení propagace souhlas s ambasadorovou účastí na akci.',
+        ]}
+      />
+    </ModalLayout>
+  );
+}
