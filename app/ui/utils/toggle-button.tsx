@@ -25,7 +25,7 @@ export function ToggleButton({ id, name, defaultState, title, detail }: ToggleBu
           id={id}
           name={name}
           type="checkbox"
-          className="toggle"
+          className="toggle p-0"
           onClick={changeState}
           defaultChecked={isChecked}
         />
