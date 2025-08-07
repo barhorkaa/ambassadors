@@ -1,4 +1,5 @@
 import PageNavigation from '@/app/ui/layout/page-navigation';
+import InfoEventsModal from '@/app/ui/modals/info/info-events-modal';
 import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { PageUrl } from '@/app/utils/pages';
 import { PlusIcon } from '@heroicons/react/24/outline';
@@ -25,7 +26,7 @@ export default function Layout({ children }: BaseLayoutProps) {
         </Link>
       </div>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={eventPages} infoPageUrl="/events/info" />
+      <PageNavigation pages={eventPages} modal={<InfoEventsModal />} />
       <div className="content">{children}</div>
     </section>
   );
