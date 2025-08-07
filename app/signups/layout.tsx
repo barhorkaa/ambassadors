@@ -1,4 +1,5 @@
 import PageNavigation from '@/app/ui/layout/page-navigation';
+import InfoSignupsModal from '@/app/ui/modals/info/info-signups-modal';
 import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { PageUrl } from '@/app/utils/pages';
 import { Metadata } from 'next';
@@ -17,7 +18,7 @@ export default function Layout({ children }: BaseLayoutProps) {
     <section>
       <h1 className="content">Přihlášení na akce</h1>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={signupsPages} infoPageUrl="/signups/info" />
+      <PageNavigation pages={signupsPages} modal={<InfoSignupsModal />} />
       <div className="content">{children}</div>
     </section>
   );
