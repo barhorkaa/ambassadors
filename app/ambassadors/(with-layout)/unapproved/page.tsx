@@ -1,3 +1,4 @@
+import { InfoPartialUserInfoModal } from '@/app/ui/modals/info/info-users-modal';
 import { UserList } from '@/app/ui/utils/content-list';
 import SearchPaginationLayout from '@/app/ui/utils/search-pagination-layout';
 import { BasePageSearchProps } from '@/app/utils/interface-props';
@@ -14,21 +15,26 @@ export default async function Page(props: BasePageSearchProps) {
   const unapprovedPages = await getAllFilteredUsersCount(UserRoles.ambassador, query, true);
 
   return (
-    <SearchPaginationLayout
-      title="Nepotvrzení uživatelé"
-      totalPages={unapprovedPages}
-      query={query}
-      currentPage={currentPage}
-      placeHolder="Vyhledat uživatele"
-    >
-      <UserList
-        list={allUnapproved}
-        emptyMessage={
-          query !== null
-            ? 'Nemáme žádného uživatele, který by vyhovoval hledanému pojmu.'
-            : 'V součastné době nejsou v aplikaci žádní uživatelé, kteřý by čekali na potvrzení.'
-        }
-      />
-    </SearchPaginationLayout>
+    <>
+      <div className="flex flex-row gap-2 items-center pb-2">
+        <h2>Nepotvrzení uživatelé</h2>
+        <InfoPartialUserInfoModal type="unapproved" />
+      </div>
+      <SearchPaginationLayout
+        totalPages={unapprovedPages}
+        query={query}
+        currentPage={currentPage}
+        placeHolder="Vyhledat uživatele"
+      >
+        <UserList
+          list={allUnapproved}
+          emptyMessage={
+            query !== null
+              ? 'Nemáme žádného uživatele, který by vyhovoval hledanému pojmu.'
+              : 'V součastné době nejsou v aplikaci žádní uživatelé, kteřý by čekali na potvrzení.'
+          }
+        />
+      </SearchPaginationLayout>
+    </>
   );
 }

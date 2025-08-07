@@ -1,3 +1,4 @@
+import { InfoPartialUserInfoModal } from '@/app/ui/modals/info/info-users-modal';
 import { UserList } from '@/app/ui/utils/content-list';
 import SearchPaginationLayout from '@/app/ui/utils/search-pagination-layout';
 import { BasePageSearchProps } from '@/app/utils/interface-props';
@@ -14,21 +15,26 @@ export default async function Page(props: BasePageSearchProps) {
   const managersPages = await getAllFilteredUsersCount(UserRoles.manager, query);
 
   return (
-    <SearchPaginationLayout
-      title="Manažeři"
-      totalPages={managersPages}
-      query={query}
-      currentPage={currentPage}
-      placeHolder={'Vyhledat uživatele'}
-    >
-      <UserList
-        list={allManagers}
-        emptyMessage={
-          query !== null
-            ? 'Nemáme žádného uživatele, který by vyhovoval hledanému pojmu.'
-            : 'Aplikace nýní nemá, žádné manažery.'
-        }
-      />
-    </SearchPaginationLayout>
+    <>
+      <div className="flex flex-row gap-2 items-center pb-2">
+        <h2>Manažeři</h2>
+        <InfoPartialUserInfoModal type="managers" />
+      </div>
+      <SearchPaginationLayout
+        totalPages={managersPages}
+        query={query}
+        currentPage={currentPage}
+        placeHolder={'Vyhledat uživatele'}
+      >
+        <UserList
+          list={allManagers}
+          emptyMessage={
+            query !== null
+              ? 'Nemáme žádného uživatele, který by vyhovoval hledanému pojmu.'
+              : 'Aplikace nýní nemá, žádné manažery.'
+          }
+        />
+      </SearchPaginationLayout>
+    </>
   );
 }
