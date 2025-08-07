@@ -1,5 +1,6 @@
 import PageNavigation from '@/app/ui/layout/page-navigation';
 import CreateEventTypeModal from '@/app/ui/modals/create/create-event-type-modal';
+import InfoEventTypesModal from '@/app/ui/modals/info/info-event-types-modal';
 import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { PageUrl } from '@/app/utils/pages';
 import { UserRoles } from '@/app/utils/user-roles';
@@ -27,7 +28,7 @@ export default async function Layout({ children }: BaseLayoutProps) {
         {isManager && <CreateEventTypeModal />}
       </div>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={eventTypePages} infoPageUrl="/events/types/info" />
+      <PageNavigation pages={eventTypePages} modal={<InfoEventTypesModal />} />
       <div className="content">{children}</div>
     </section>
   );
