@@ -1,5 +1,6 @@
 import PageNavigation from '@/app/ui/layout/page-navigation';
 import CreateMaterialModal from '@/app/ui/modals/create/create-material-modal';
+import InfoMaterialsModal from '@/app/ui/modals/info/info-materials-modal';
 import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { PageUrl } from '@/app/utils/pages';
 import { UserRoles } from '@/app/utils/user-roles';
@@ -27,7 +28,7 @@ export default async function Layout({ children }: BaseLayoutProps) {
         {isManager && <CreateMaterialModal />}
       </div>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={materialsPages} infoPageUrl="/materials/info" />
+      <PageNavigation pages={materialsPages} modal={<InfoMaterialsModal />} />
       <div className="content">{children}</div>
     </section>
   );
