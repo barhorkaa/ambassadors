@@ -1,29 +1,23 @@
 import { PageUrl } from '@/app/utils/pages';
-import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 interface PageNavigationProps {
   pages: PageUrl[];
   infoPageUrl?: string;
+  modal?: React.ReactNode;
 }
 
-export default function PageNavigation({ pages, infoPageUrl }: PageNavigationProps) {
+export default function PageNavigation({ pages, infoPageUrl, modal }: PageNavigationProps) {
   return (
-    <ul className="menu menu-vertical lg:menu-horizontal bg-fi-100 text-black font-semibold w-full mb-4 flex flex-row justify-between">
-      <div className="flex flex-col md:flex-row">
+    <div className="bg-fi-100 text-black mb-4 w-full flex flex-row justify-between pr-4">
+      <ul className="menu menu-vertical lg:menu-horizontal font-semibold flex flex-col md:flex-row">
         {pages.map((page, index) => (
           <li key={index}>
             <Link href={page.url}>{page.name}</Link>
           </li>
         ))}
-      </div>
-      {infoPageUrl && (
-        <li>
-          <Link href={infoPageUrl} className="self-center tooltip tooltip-bottom" data-tip="Informace o sekci">
-            <QuestionMarkCircleIcon className="h-5" />
-          </Link>
-        </li>
-      )}
-    </ul>
+      </ul>
+      <div className="items-top pt-4 md:pt-3">{modal}</div>
+    </div>
   );
 }
