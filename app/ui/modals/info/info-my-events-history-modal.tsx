@@ -3,7 +3,7 @@ import { SectionInfo } from '@/app/ui/utils/data-display';
 
 export default function InfoMyEventsHistoryModal() {
   return (
-    <ModalLayout id="myEventsInfo" title="Informace o mých akcích" modalType="info" customWidth="w-11/12 max-w-5xl">
+    <ModalLayout id="myEventsInfo" title="Informace o mých akcích" modalType="info">
       <SectionInfo title={''} contents={['V této části aplikace nalezneš seznamy akcí, na které jsi přihlášen/a.']} />
       <hr />
       <SectionInfo

@@ -20,14 +20,7 @@ interface ModalLayoutProps {
   customWidth?: string;
 }
 
-export default function ModalLayout({
-  children,
-  id,
-  title,
-  modalType,
-  buttonTitle,
-  customWidth = '',
-}: ModalLayoutProps) {
+export default function ModalLayout({ children, id, title, modalType, buttonTitle }: ModalLayoutProps) {
   return (
     <>
       <button
@@ -41,7 +34,7 @@ export default function ModalLayout({
         <ButtonContent modalType={modalType} buttonTitle={buttonTitle} />
       </button>
       <dialog id={id} className="modal">
-        <div className={'modal-box ' + customWidth}>
+        <div className={'modal-box ' + (modalType === 'info' ? 'w-11/12 max-w-5xl' : '')}>
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-base-100">✕</button>
           </form>
