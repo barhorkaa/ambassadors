@@ -3,11 +3,10 @@ import Link from 'next/link';
 
 interface PageNavigationProps {
   pages: PageUrl[];
-  infoPageUrl?: string;
   modal?: React.ReactNode;
 }
 
-export default function PageNavigation({ pages, infoPageUrl, modal }: PageNavigationProps) {
+export default function PageNavigation({ pages, modal }: PageNavigationProps) {
   return (
     <div className="bg-fi-100 text-black mb-4 w-full flex flex-row justify-between pr-4">
       <ul className="menu menu-vertical lg:menu-horizontal font-semibold flex flex-col md:flex-row">
