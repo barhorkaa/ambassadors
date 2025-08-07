@@ -1,4 +1,5 @@
 import PageNavigation from '@/app/ui/layout/page-navigation';
+import InfoUsersModal from '@/app/ui/modals/info/info-users-modal';
 import { BaseLayoutProps } from '@/app/utils/interface-props';
 import { PageUrl } from '@/app/utils/pages';
 import { Metadata } from 'next';
@@ -18,7 +19,7 @@ export default function Layout({ children }: BaseLayoutProps) {
     <section>
       <h1 className="content">Uživatelé</h1>
       <hr className="w-full mb-0" />
-      <PageNavigation pages={ambassadorPages} infoPageUrl="/ambassadors/info" />
+      <PageNavigation pages={ambassadorPages} modal={<InfoUsersModal />} />
       <div className="content">{children}</div>
     </section>
   );
