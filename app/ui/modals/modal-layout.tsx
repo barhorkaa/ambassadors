@@ -1,8 +1,15 @@
 'use client';
 
-import { ArrowPathIcon, BellIcon, PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowPathIcon,
+  BellIcon,
+  PencilIcon,
+  PlusIcon,
+  QuestionMarkCircleIcon,
+  TrashIcon,
+} from '@heroicons/react/24/outline';
 
-type ModalType = 'create' | 'edit' | 'delete' | 'revive' | 'notifications';
+type ModalType = 'create' | 'edit' | 'delete' | 'revive' | 'notifications' | 'info';
 
 interface ModalLayoutProps {
   children: any;
@@ -10,13 +17,21 @@ interface ModalLayoutProps {
   title: string;
   modalType: ModalType;
   buttonTitle?: string;
+  customWidth?: string;
 }
 
-export default function ModalLayout({ children, id, title, modalType, buttonTitle }: ModalLayoutProps) {
+export default function ModalLayout({
+  children,
+  id,
+  title,
+  modalType,
+  buttonTitle,
+  customWidth = '',
+}: ModalLayoutProps) {
   return (
     <>
       <button
-        className="btn"
+        className={modalType !== 'info' ? 'btn' : 'cursor-pointer'}
         onClick={() => {
           if (document) {
             (document.getElementById(id) as HTMLFormElement).showModal();
@@ -26,7 +41,7 @@ export default function ModalLayout({ children, id, title, modalType, buttonTitl
         <ButtonContent modalType={modalType} buttonTitle={buttonTitle} />
       </button>
       <dialog id={id} className="modal">
-        <div className="modal-box">
+        <div className={'modal-box ' + customWidth}>
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-base-100">✕</button>
           </form>
@@ -78,5 +93,7 @@ function ButtonContent({ modalType, buttonTitle }: { modalType: ModalType; butto
           <p className="hidden md:block">Notifikace</p>
         </>
       );
+    case 'info':
+      return <QuestionMarkCircleIcon className="h-5" />;
   }
 }
