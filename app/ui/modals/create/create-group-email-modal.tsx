@@ -10,6 +10,7 @@ export default function CreateGroupEmailModal({ eventId }: { eventId: string }) 
       title={'Hromadný e-mail pro přihlášené uživatele'}
       modalType={'create'}
       buttonTitle={'Poslat hromadný e-mail'}
+      wider={true}
     >
       <GroupEmailForm eventId={eventId} />
       <p className="text-sm">
