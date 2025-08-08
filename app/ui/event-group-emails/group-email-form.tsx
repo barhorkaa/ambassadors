@@ -23,7 +23,7 @@ export default function GroupEmailForm({ eventId }: { eventId: string }) {
         <label className="label" htmlFor="event_type">
           <span className="label-text">Obsah e-mailu</span>
         </label>
-        <SimpleEditor initialContent="" />
+        <SimpleEditor />
       </div>
       <input id="eventId" defaultValue={eventId} type="hidden" name="eventId" />
     </FormLayout>

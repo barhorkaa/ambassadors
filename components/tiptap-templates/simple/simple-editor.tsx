@@ -77,7 +77,7 @@ const MainToolbarContent = ({ onLinkClick, isMobile }: { onLinkClick: () => void
   );
 };
 
-export function SimpleEditor({ initialContent, name = 'content' }: { initialContent?: string; name?: string }) {
+export function SimpleEditor({ initialContent = '', name = 'content' }: { initialContent?: string; name?: string }) {
   const [content, setContent] = React.useState(initialContent);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
