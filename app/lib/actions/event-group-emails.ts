@@ -12,7 +12,7 @@ export async function creteGroupEmailAction(prevState: any, formData: FormData) 
       eventId: formData.get('eventId') as string,
       title: formData.get('title') as string,
       subject: formData.get('subject') === '' ? null : formData.get('subject'),
-      quill: formData.get('content-quill') as string,
+      quill: formData.get('content') as string,
     };
 
     const emailToArchive = {
