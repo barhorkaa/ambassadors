@@ -1,0 +1,77 @@
+.tiptap.ProseMirror {
+  --tt-checklist-bg-color: var(--tt-gray-light-a-100);
+  --tt-checklist-bg-active-color: var(--tt-gray-light-a-900);
+  --tt-checklist-border-color: var(--tt-gray-light-a-200);
+  --tt-checklist-border-active-color: var(--tt-gray-light-a-900);
+  --tt-checklist-check-icon-color: var(--white);
+  --tt-checklist-text-active: var(--tt-gray-light-a-500);
+
+  .dark & {
+    --tt-checklist-bg-color: var(--tt-gray-dark-a-100);
+    --tt-checklist-bg-active-color: var(--tt-gray-dark-a-900);
+    --tt-checklist-border-color: var(--tt-gray-dark-a-200);
+    --tt-checklist-border-active-color: var(--tt-gray-dark-a-900);
+    --tt-checklist-check-icon-color: var(--black);
+    --tt-checklist-text-active: var(--tt-gray-dark-a-500);
+  }
+}
+
+/* =====================
+     LISTS
+     ===================== */
+.tiptap.ProseMirror {
+  // Common list styles
+  ol,
+  ul {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    ol,
+    ul {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  li {
+    p {
+      margin-top: 0;
+      line-height: 1.6;
+    }
+  }
+
+  // Ordered lists
+  ol {
+    list-style: decimal;
+
+    ol {
+      list-style: lower-alpha;
+
+      ol {
+        list-style: lower-roman;
+      }
+    }
+  }
+
+  // Unordered lists
+  ul:not([data-type="taskList"]) {
+    list-style: disc;
+
+    ul {
+      list-style: circle;
+
+      ul {
+        list-style: square;
+      }
+    }
+  }
+}
