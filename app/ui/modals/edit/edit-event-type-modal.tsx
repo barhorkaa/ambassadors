@@ -10,7 +10,7 @@ interface EditEventTypeModalProps {
 
 export default function EditEventTypeModal({ eventType }: EditEventTypeModalProps) {
   return (
-    <ModalLayout id={'edit' + eventType.id} title={'Upravit informace o typu akce'} modalType={'edit'}>
+    <ModalLayout id={'edit' + eventType.id} title={'Upravit informace o typu akce'} modalType={'edit'} wider={true}>
       <EventTypeForm eventType={eventType} />
     </ModalLayout>
   );
