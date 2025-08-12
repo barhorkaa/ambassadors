@@ -1,3 +1,5 @@
+import RichHtml from '@/app/ui/utils/html-parser';
+
 interface DetailRowProps {
   label: string;
   value: string | number;
@@ -8,6 +10,16 @@ export const DetailRowVertical = ({ label, value }: DetailRowProps) => (
     <div className="grid grid-rows-[min-content_min-content] items-end">
       <p className="font-light text-sm">{label}</p>
       <p className="text-lg">{value}</p>
+    </div>
+    <hr className="w-full h-0.5 my-1 bg-base-300" />
+  </div>
+);
+
+export const DetailRowVerticalParse = ({ label, value }: { label: string; value: string }) => (
+  <div>
+    <div className="grid grid-rows-[min-content_min-content] items-end">
+      <p className="font-light text-xs">{label}</p>
+      <RichHtml html={value} />
     </div>
     <hr className="w-full h-0.5 my-1 bg-base-300" />
   </div>
