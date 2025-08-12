@@ -5,24 +5,26 @@ interface DetailRowProps {
   value: string | number;
 }
 
-export const DetailRowVertical = ({ label, value }: DetailRowProps) => (
+const DetailRowVerticalLayout = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <div>
     <div className="grid grid-rows-[min-content_min-content] items-end">
       <p className="font-light text-sm">{label}</p>
-      <p className="text-lg">{value}</p>
+      {children}
     </div>
     <hr className="w-full h-0.5 my-1 bg-base-300" />
   </div>
 );
 
+export const DetailRowVertical = ({ label, value }: DetailRowProps) => (
+  <DetailRowVerticalLayout label={label}>
+    <p className="text-lg">{value}</p>
+  </DetailRowVerticalLayout>
+);
+
 export const DetailRowVerticalParse = ({ label, value }: { label: string; value: string }) => (
-  <div>
-    <div className="grid grid-rows-[min-content_min-content] items-end">
-      <p className="font-light text-xs">{label}</p>
-      <RichHtml html={value} />
-    </div>
-    <hr className="w-full h-0.5 my-1 bg-base-300" />
-  </div>
+  <DetailRowVerticalLayout label={label}>
+    <RichHtml html={value} />
+  </DetailRowVerticalLayout>
 );
 
 export const DetailRowHorizontal = ({ label, value }: DetailRowProps) => (
