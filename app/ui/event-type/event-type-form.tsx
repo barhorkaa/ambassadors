@@ -3,7 +3,7 @@
 import { createEventTypeAction, editEventTypeAction } from '@/app/lib/actions/event-type';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { FormControlEditor } from '@/app/ui/utils/form-control';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 import { useFormState } from 'react-dom';
 
@@ -29,11 +29,17 @@ export function EventTypeForm({ eventType }: EventTypeFormProps) {
         defaultValue={eventType?.name}
         errorMessage={findErrors('name', state.errors)[0]}
       />
-      <FormControl
-        title={'Popis typu akce'}
-        id={'description'}
-        inputType={'textarea'}
-        defaultValue={eventType?.description}
+      {/*<FormControl*/}
+      {/*  title={'Popis typu akce'}*/}
+      {/*  id={'description'}*/}
+      {/*  inputType={'textarea'}*/}
+      {/*  defaultValue={eventType?.description}*/}
+      {/*  errorMessage={findErrors('description', state.errors)[0]}*/}
+      {/*/>*/}
+      <FormControlEditor
+        title="Popis typu akce"
+        initialContent={eventType?.description}
+        name="description"
         errorMessage={findErrors('description', state.errors)[0]}
       />
       <FormControl
