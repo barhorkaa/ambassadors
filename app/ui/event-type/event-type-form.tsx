@@ -29,13 +29,6 @@ export function EventTypeForm({ eventType }: EventTypeFormProps) {
         defaultValue={eventType?.name}
         errorMessage={findErrors('name', state.errors)[0]}
       />
-      {/*<FormControl*/}
-      {/*  title={'Popis typu akce'}*/}
-      {/*  id={'description'}*/}
-      {/*  inputType={'textarea'}*/}
-      {/*  defaultValue={eventType?.description}*/}
-      {/*  errorMessage={findErrors('description', state.errors)[0]}*/}
-      {/*/>*/}
       <FormControlEditor
         title="Popis typu akce"
         initialContent={eventType?.description}
@@ -48,14 +41,6 @@ export function EventTypeForm({ eventType }: EventTypeFormProps) {
         name="instructions"
         errorMessage={findErrors('instructions', state.errors)[0]}
       />
-
-      {/*<FormControl*/}
-      {/*  title={'Instrukce pro ambasadory'}*/}
-      {/*  id={'instructions'}*/}
-      {/*  inputType={'textarea'}*/}
-      {/*  defaultValue={eventType?.instructions}*/}
-      {/*  errorMessage={findErrors('instructions', state.errors)[0]}*/}
-      {/*/>*/}
       <div className="form-control">
         <input id="id" value={eventType?.id} type="hidden" name="id" />
       </div>
