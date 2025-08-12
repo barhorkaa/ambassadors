@@ -1,7 +1,7 @@
 import DeleteEventTypeModal from '@/app/ui/modals/delete/delete-event-type-modal';
 import EditEventTypeModal from '@/app/ui/modals/edit/edit-event-type-modal';
 import ReviveEventTypeModal from '@/app/ui/modals/revive/revive-event-type-modal';
-import { DetailRowVertical } from '@/app/ui/utils/data-display';
+import { DetailRowVertical, DetailRowVerticalParse } from '@/app/ui/utils/data-display';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { EventTypeDetailModel } from '@/models/event-type-models';
@@ -29,8 +29,8 @@ export default async function EventTypeDetail({ eventType }: EventTypeDetailProp
             </div>
           )}
         </div>
-        <DetailRowVertical label={''} value={eventType.description} />
-        <DetailRowVertical label={'Instrukce pro ambasadory'} value={eventType.instructions} />
+        <DetailRowVerticalParse label="" value={eventType.description} />
+        <DetailRowVerticalParse label="Instrukce pro ambasadory" value={eventType.instructions} />
         {session?.user.role === UserRoles.manager && (
           <div className="flex flex-col md:flex-row md:gap-8">
             <DetailRowVertical label={'Vytvořeno'} value={eventType.createdAt.toLocaleString('cs-CZ')} />
