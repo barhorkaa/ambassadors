@@ -82,7 +82,7 @@ export function SimpleEditor({ initialContent = '', name = 'content' }: { initia
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const isMobile = useIsMobile();
-  const [mobileView, setMobileView] = React.useState<'main' | 'highlighter' | 'link'>('main');
+  const [mobileView, setMobileView] = React.useState<'main' | 'link'>('main');
   const toolbarRef = React.useRef<HTMLDivElement>(null);
 
   const editor = useEditor({
