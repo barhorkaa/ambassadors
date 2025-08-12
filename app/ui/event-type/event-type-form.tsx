@@ -42,13 +42,20 @@ export function EventTypeForm({ eventType }: EventTypeFormProps) {
         name="description"
         errorMessage={findErrors('description', state.errors)[0]}
       />
-      <FormControl
-        title={'Instrukce pro ambasadory'}
-        id={'instructions'}
-        inputType={'textarea'}
-        defaultValue={eventType?.instructions}
+      <FormControlEditor
+        title="Instrukce pro ambasadory"
+        initialContent={eventType?.instructions}
+        name="instructions"
         errorMessage={findErrors('instructions', state.errors)[0]}
       />
+
+      {/*<FormControl*/}
+      {/*  title={'Instrukce pro ambasadory'}*/}
+      {/*  id={'instructions'}*/}
+      {/*  inputType={'textarea'}*/}
+      {/*  defaultValue={eventType?.instructions}*/}
+      {/*  errorMessage={findErrors('instructions', state.errors)[0]}*/}
+      {/*/>*/}
       <div className="form-control">
         <input id="id" value={eventType?.id} type="hidden" name="id" />
       </div>
