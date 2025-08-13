@@ -1,7 +1,7 @@
 import DeleteMaterialModal from '@/app/ui/modals/delete/delete-material-modal';
 import EditMaterialModal from '@/app/ui/modals/edit/edit-material-modal';
 import ReviveMaterialModal from '@/app/ui/modals/revive/revive-material-modal';
-import { DetailRowVertical } from '@/app/ui/utils/data-display';
+import { DetailRowVertical, DetailRowVerticalParse } from '@/app/ui/utils/data-display';
 import { UserRoles } from '@/app/utils/user-roles';
 import { auth } from '@/auth';
 import { MaterialDetailModel } from '@/models/material-models';
@@ -29,7 +29,7 @@ export default async function MaterialDetail({ material }: MaterialDetailProps) 
             </div>
           )}
         </div>
-        <DetailRowVertical label={''} value={material.description!} />
+        <DetailRowVerticalParse label="" value={material.description} />
         {session?.user.role === UserRoles.manager && (
           <div className="flex flex-col md:flex-row md:gap-8">
             <DetailRowVertical label={'Vytvořeno'} value={material.createdAt.toLocaleString('cs-CZ')} />
