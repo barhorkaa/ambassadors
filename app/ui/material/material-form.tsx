@@ -3,7 +3,7 @@
 import { createMaterialAction, editMaterialAction } from '@/app/lib/actions/material';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { FormControlEditor } from '@/app/ui/utils/form-control';
 import { MaterialManipulationModel } from '@/models/material-models';
 import { useFormState } from 'react-dom';
 
@@ -29,11 +29,10 @@ export function MaterialForm({ material }: MaterialFormProps) {
         defaultValue={material?.name}
         errorMessage={findErrors('name', state.errors)[0]}
       />
-      <FormControl
-        title={'Popis materiálu'}
-        id={'description'}
-        defaultValue={material?.description}
-        inputType={'textarea'}
+      <FormControlEditor
+        title="Popis materiálu"
+        name="description"
+        initialContent={material?.description}
         errorMessage={findErrors('description', state.errors)[0]}
       />
       <div className="form-control">
