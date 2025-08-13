@@ -1,3 +1,4 @@
+import RichHtml from '@/app/ui/utils/html-parser';
 import { getEventById } from '@/database/repository/event';
 import { getEventTypeById } from '@/database/repository/event-type';
 import { EventDetailModel } from '@/models/event-models';
@@ -14,7 +15,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <h3 className="text-xl">{eventType.name}</h3>
         <>
           <p className="text-sm font-light">Instrukce</p>
-          <p className="text-lg">{eventType.instructions}</p>
+          <RichHtml html={eventType.instructions} />
         </>
       </div>
     </div>
