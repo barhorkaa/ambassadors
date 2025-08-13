@@ -11,7 +11,7 @@ interface FormLayoutProps {
 }
 
 export const FormLayout = ({ action, state, modalId, children }: FormLayoutProps) => (
-  <form action={action} className="card-body">
+  <form action={action} className="card-body p-2 md:p-6">
     {children}
     <SubmitButton title={'Odeslat'} modalId={modalId} fun={action} />
     {state.generic !== undefined && (

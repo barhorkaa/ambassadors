@@ -46,7 +46,7 @@ export default function ModalLayout({
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-base-100">✕</button>
           </form>
           <h3>{title}</h3>
-          <div className="card-compact md:card-normal">{children}</div>
+          {children}
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
