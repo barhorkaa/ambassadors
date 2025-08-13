@@ -41,7 +41,7 @@ export default function ModalLayout({
         <ButtonContent modalType={modalType} buttonTitle={buttonTitle} />
       </button>
       <dialog id={id} className="modal">
-        <div className={'modal-box ' + (wider ? 'w-11/12 max-w-5xl' : '')}>
+        <div className={'modal-box max-h-[95vh] ' + (wider ? 'w-11/12 max-w-5xl' : '')}>
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-base-100">✕</button>
           </form>
