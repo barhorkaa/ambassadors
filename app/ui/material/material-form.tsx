@@ -8,21 +8,14 @@ import { MaterialManipulationModel } from '@/models/material-models';
 import { useFormState } from 'react-dom';
 
 interface MaterialFormProps {
-  material: MaterialManipulationModel | null;
+  material?: MaterialManipulationModel;
 }
 
 export function MaterialForm({ material }: MaterialFormProps) {
-  const [state, dispatch] = useFormState(
-    material === null ? createMaterialAction : editMaterialAction,
-    formActionInitialState
-  );
+  const [state, dispatch] = useFormState(material ? editMaterialAction : createMaterialAction, formActionInitialState);
 
   return (
-    <FormLayout
-      action={dispatch}
-      state={state}
-      modalId={material === null ? 'create_material_modal' : 'edit' + material.id}
-    >
+    <FormLayout action={dispatch} state={state} modalId={material ? 'edit' + material.id : 'create_material_modal'}>
       <FormControl
         title={'Název materiálu'}
         id={'name'}
