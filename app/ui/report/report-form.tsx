@@ -4,7 +4,7 @@ import { createReportAction } from '@/app/lib/actions/report';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import MaterialAdd from '@/app/ui/material-report/material-add';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { FormControlEditor } from '@/app/ui/utils/form-control';
 import { MaterialMinModel } from '@/models/material-models';
 import { useFormState } from 'react-dom';
 
@@ -26,18 +26,10 @@ export default function ReportForm({ eventId, materials }: ReportFormProps) {
         errorMessage={findErrors('numberOfAttendees', state.errors)[0]}
       />
       <MaterialAdd materials={materials} />
-      <FormControl
-        title={'Co se na akci dělo?'}
-        id={'notes'}
-        inputType={'textarea'}
-        placeholder={'Poznámky k dění na akci'}
-        errorMessage={findErrors('notes', state.errors)[0]}
-      />
-      <FormControl
-        title={'Co do budoucna zlepšit?'}
-        id={'ideas'}
-        inputType={'textarea'}
-        placeholder={'Vaše nápady na zlepšení'}
+      <FormControlEditor title="Co se na akci dělo?" name="notes" errorMessage={findErrors('notes', state.errors)[0]} />
+      <FormControlEditor
+        title="Co do budoucna zlepšit?"
+        name="ideas"
         errorMessage={findErrors('ideas', state.errors)[0]}
       />
       <input id="id" type="hidden" name="eventId" value={eventId} required />
