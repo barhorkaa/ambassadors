@@ -10,7 +10,7 @@ interface EditMaterialModalProps {
 
 export default function EditMaterialModal({ material }: EditMaterialModalProps) {
   return (
-    <ModalLayout id={'edit' + material.id} title={'Upravit informace o materiálu'} modalType={'edit'}>
+    <ModalLayout id={'edit' + material.id} title={'Upravit informace o materiálu'} modalType={'edit'} wider={true}>
       <MaterialForm material={material} />
     </ModalLayout>
   );

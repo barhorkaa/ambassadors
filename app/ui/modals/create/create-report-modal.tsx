@@ -11,7 +11,7 @@ interface CreateReportModalProps {
 
 export default function CreateReportModal({ eventId, materials }: CreateReportModalProps) {
   return (
-    <ModalLayout id={'create_report_modal'} title={'Vytvořit zprávu'} modalType={'create'}>
+    <ModalLayout id={'create_report_modal'} title={'Vytvořit zprávu'} modalType={'create'} wider={true}>
       <ReportForm eventId={eventId} materials={materials} />
     </ModalLayout>
   );
