@@ -9,10 +9,10 @@ export default async function Page({ params }: { params: { id: string } }) {
     return (
       <>
         {eventEmails.map((email, index) => (
-          <>
-            <GroupEmailDetail key={index} email={email} />
+          <div key={index}>
+            <GroupEmailDetail email={email} />
             <hr className="w-full" />
-          </>
+          </div>
         ))}
       </>
     );
