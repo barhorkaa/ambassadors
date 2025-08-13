@@ -5,11 +5,21 @@ import { EventGroupEmailModel } from '@/models/event-group-emails-models';
 export default async function Page({ params }: { params: { id: string } }) {
   const eventEmails: EventGroupEmailModel[] = await getEventGroupEmails(params.id);
 
-  return (
-    <>
-      {eventEmails.map((email, index) => (
-        <GroupEmailDetail key={index} email={email} />
-      ))}
-    </>
-  );
+  if (eventEmails.length > 0)
+    return (
+      <>
+        {eventEmails.map((email, index) => (
+          <>
+            <GroupEmailDetail key={index} email={email} />
+            <hr className="w-full" />
+          </>
+        ))}
+      </>
+    );
+  else
+    return (
+      <div className="data-display p-4">
+        <p>K této akci zatím nejsou žádené dodatečné informace.</p>
+      </div>
+    );
 }
