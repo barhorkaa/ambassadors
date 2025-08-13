@@ -1,4 +1,4 @@
-import { DetailRowVertical } from '@/app/ui/utils/data-display';
+import { DetailRowVertical, DetailRowVerticalParse } from '@/app/ui/utils/data-display';
 import { ReportDetailModel } from '@/models/report-models';
 
 interface ReportDetailProps {
@@ -18,8 +18,8 @@ export default function ReportDetail({ report }: ReportDetailProps) {
         />
       ))}
       <hr className="w-full h-0.5 my-1 bg-base-300" />
-      <DetailRowVertical label={'Co se na akci dělo?'} value={report.notes} />
-      <DetailRowVertical label={'Co do přístě zlepšit?'} value={report.ideas} />
+      <DetailRowVerticalParse label={'Co se na akci dělo?'} value={report.notes} />
+      <DetailRowVerticalParse label={'Co do přístě zlepšit?'} value={report.ideas} />
     </>
   );
 }
