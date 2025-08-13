@@ -19,7 +19,7 @@ export default function MaterialReportSelect({ materials, selectedMaterial }: Ma
     <div className="form-control">
       <div className="form-control col-span-2">
         <select
-          className="select select-bordered w-full max-w-xs"
+          className="select select-bordered w-full"
           id="eventType"
           name="materialId"
           value={material}
