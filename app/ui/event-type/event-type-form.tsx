@@ -8,21 +8,17 @@ import { EventTypeDetailModel } from '@/models/event-type-models';
 import { useFormState } from 'react-dom';
 
 interface EventTypeFormProps {
-  eventType: EventTypeDetailModel | null;
+  eventType?: EventTypeDetailModel;
 }
 
 export function EventTypeForm({ eventType }: EventTypeFormProps) {
   const [state, dispatch] = useFormState(
-    eventType === null ? createEventTypeAction : editEventTypeAction,
+    eventType ? editEventTypeAction : createEventTypeAction,
     formActionInitialState
   );
 
   return (
-    <FormLayout
-      action={dispatch}
-      modalId={eventType === null ? 'create_event_type_modal' : 'edit' + eventType.id}
-      state={state}
-    >
+    <FormLayout action={dispatch} modalId={eventType ? 'edit' + eventType.id : 'create_event_type_modal'} state={state}>
       <FormControl
         title={'Název typu akce'}
         id={'name'}
