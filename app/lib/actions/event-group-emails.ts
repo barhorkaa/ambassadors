@@ -12,16 +12,16 @@ export async function creteGroupEmailAction(prevState: any, formData: FormData) 
       eventId: formData.get('eventId') as string,
       title: formData.get('title') as string,
       subject: formData.get('subject') === '' ? null : formData.get('subject'),
-      quill: formData.get('content') as string,
+      content: formData.get('content') as string,
     };
 
     const emailToArchive = {
       eventId: eventGroupEmailForm.eventId,
-      contents: eventGroupEmailForm.quill,
+      contents: eventGroupEmailForm.content,
     };
 
     const recipients = await getEventGroupEmailRecipients(eventGroupEmailForm.eventId);
-    await emailCustomEmailAction(eventGroupEmailForm.quill, eventGroupEmailForm.title, recipients);
+    await emailCustomEmailAction(eventGroupEmailForm.content, eventGroupEmailForm.title, recipients);
 
     await createEventGroupEmail(emailToArchive);
   } catch (e) {
