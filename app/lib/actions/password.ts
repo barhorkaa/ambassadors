@@ -24,7 +24,7 @@ export async function changePassword(prevState: any, formData: FormData) {
     const passwordsMatch = await bcrypt.compare(parsedData.oldPassword, user.password);
     if (!passwordsMatch) return { success: false, errors: [], generic: 'Původní hesla se nezhodují' };
 
-    const salt = await bcrypt.genSalt(10);
+    const salt = await bcrypt.genSalt(12);
     parsedData.newPassword = await bcrypt.hash(parsedData.newPassword, salt);
 
     await editUserPassword(parsedData.userId, parsedData.newPassword);
