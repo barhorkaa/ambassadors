@@ -21,6 +21,7 @@ interface FormControlEditorProps {
   title: string;
   initialContent?: string;
   name?: string;
+  placeholder?: string;
   errorMessage?: string;
 }
 
@@ -61,8 +62,14 @@ export default function FormControl({
   );
 }
 
-export const FormControlEditor = ({ title, initialContent, name, errorMessage }: FormControlEditorProps) => (
+export const FormControlEditor = ({
+  title,
+  initialContent,
+  name,
+  errorMessage,
+  placeholder,
+}: FormControlEditorProps) => (
   <FormControlLayout title={title} errorMessage={errorMessage}>
-    <SimpleEditor initialContent={initialContent} name={name} />
+    <SimpleEditor initialContent={initialContent} name={name} placeholder={placeholder} />
   </FormControlLayout>
 );
