@@ -26,13 +26,13 @@ export const authConfig = {
     async authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
 
-      const isManager = auth?.user.role === UserRoles.manager;
-      const isApproved = auth?.user.approved;
-      const isMotivated = auth?.user.motivated;
-
       if (!isLoggedIn) {
         return false;
       }
+
+      const isManager = auth?.user.role === UserRoles.manager;
+      const isApproved = auth?.user.approved;
+      const isMotivated = auth?.user.motivated;
 
       if (!isMotivated) {
         return Response.redirect(new URL('/motivation', nextUrl));
