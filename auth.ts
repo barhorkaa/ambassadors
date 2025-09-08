@@ -20,7 +20,7 @@ export const { auth, signIn, signOut } = NextAuth({
           if (!user.email_verified) {
             throw new VerificationError({
               name: 'EMAIL_NOT_VERIFIED',
-              message: 'The em-mail you are trying to use has not yet been verified',
+              message: 'The e-mail you are trying to use has not yet been verified',
               cause: this,
             });
           }
