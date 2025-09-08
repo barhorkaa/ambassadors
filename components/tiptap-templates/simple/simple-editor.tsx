@@ -6,7 +6,7 @@ import * as React from 'react';
 // --- Tiptap Core Extensions ---
 import { TextAlign } from '@tiptap/extension-text-align';
 import { Typography } from '@tiptap/extension-typography';
-import { Selection } from '@tiptap/extensions';
+import { Placeholder, Selection } from '@tiptap/extensions';
 import { StarterKit } from '@tiptap/starter-kit';
 
 // --- UI Primitives ---
@@ -77,7 +77,15 @@ const MainToolbarContent = ({ onLinkClick, isMobile }: { onLinkClick: () => void
   );
 };
 
-export function SimpleEditor({ initialContent = '', name = 'content' }: { initialContent?: string; name?: string }) {
+export function SimpleEditor({
+  name = 'content',
+  initialContent,
+  placeholder,
+}: {
+  name?: string;
+  initialContent?: string;
+  placeholder?: string;
+}) {
   const [content, setContent] = React.useState(initialContent);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -109,6 +117,9 @@ export function SimpleEditor({ initialContent = '', name = 'content' }: { initia
           openOnClick: false,
           enableClickSelection: true,
         },
+      }),
+      Placeholder.configure({
+        placeholder: placeholder,
       }),
       HorizontalRule,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
