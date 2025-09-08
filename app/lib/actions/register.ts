@@ -19,7 +19,7 @@ export async function createUserAction(prevState: any, formData: FormData) {
 
     const parsedData = userCreateSchema.parse(newUserForm);
 
-    const salt = await bcrypt.genSalt(10);
+    const salt = await bcrypt.genSalt(12);
     parsedData.password = await bcrypt.hash(parsedData.password, salt);
 
     const userId = await createUser(parsedData);
