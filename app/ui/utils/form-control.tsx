@@ -25,17 +25,13 @@ interface FormControlEditorProps {
 }
 
 const FormControlLayout = ({ title, errorMessage, children }: FormControlLayoutProps) => (
-  <div className="form-control">
-    <label className="label" htmlFor={title}>
-      <span className="label-text">{title}</span>
+  <fieldset className="fieldset">
+    <label className="label text-sm" htmlFor={title}>
+      {title}
     </label>
     {children}
-    {errorMessage && (
-      <div className="label pb-0">
-        <span className="label-text-alt text-error">{errorMessage}</span>
-      </div>
-    )}
-  </div>
+    {errorMessage && <label className="label pb-0 text-error">{errorMessage}</label>}
+  </fieldset>
 );
 
 export default function FormControl({
