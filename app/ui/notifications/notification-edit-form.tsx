@@ -3,6 +3,7 @@
 import { editNotificationsAction } from '@/app/lib/actions/notifications';
 import { formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
+import { FormControlID } from '@/app/ui/utils/form-control';
 import { ToggleButton } from '@/app/ui/utils/toggle-button';
 import { ManagerNotifications, UserNotifications } from '@/models/notifications-models';
 import { useFormState } from 'react-dom';
@@ -19,7 +20,7 @@ export default function NotificationsEditForm({ notifications, managerNotificati
     <FormLayout action={dispatch} state={state} modalId={'notifications' + notifications.userId}>
       {managerNotifications && <ManagerNotificationsSettings managerNotifications={managerNotifications} />}
       <UserNotificationsSettings userNotifications={notifications} />
-      <input id="userId" type="hidden" name="userId" value={notifications.userId} required />
+      <FormControlID value={notifications.userId} name="userId" id="userId" />
       <input
         id="isManager"
         type="hidden"

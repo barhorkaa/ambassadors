@@ -3,7 +3,7 @@
 import { createMotivationAction } from '@/app/lib/actions/motivation';
 import { formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { FormControlID } from '@/app/ui/utils/form-control';
 import { useFormState } from 'react-dom';
 
 interface MotivationFormProps {
@@ -45,7 +45,7 @@ export default function MotivationForm({ userId }: MotivationFormProps) {
         inputType={'textarea'}
         placeholder={'Na kolik akcí zhruba za rok byste chtěli jít?'}
       />
-      <input id="id" type="hidden" name="userId" value={userId} required />
+      <FormControlID value={userId} name="userId" />
     </FormLayout>
   );
 }

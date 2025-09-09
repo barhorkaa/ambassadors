@@ -3,7 +3,7 @@
 import { createMaterialAction, editMaterialAction } from '@/app/lib/actions/material';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl, { FormControlEditor } from '@/app/ui/utils/form-control';
+import FormControl, { FormControlEditor, FormControlID } from '@/app/ui/utils/form-control';
 import { MaterialManipulationModel } from '@/models/material-models';
 import { useFormState } from 'react-dom';
 
@@ -29,9 +29,7 @@ export function MaterialForm({ material }: MaterialFormProps) {
         errorMessage={findErrors('description', state.errors)[0]}
         required
       />
-      <div className="form-control">
-        <input id="id" value={material?.id} type="hidden" name="id" />
-      </div>
+      <FormControlID value={material?.id} required={false} />
     </FormLayout>
   );
 }

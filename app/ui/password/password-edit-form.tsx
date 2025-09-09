@@ -3,7 +3,7 @@
 import { changePassword, resetPasswordAction } from '@/app/lib/actions/password';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { FormControlID } from '@/app/ui/utils/form-control';
 import { useFormState } from 'react-dom';
 
 interface PasswordEditFormProps {
@@ -30,7 +30,7 @@ export default function PasswordEditForm({ userId, reset }: PasswordEditFormProp
         type={'password'}
         errorMessage={findErrors('newPassword', state.errors)[0]}
       />
-      <input id="id" type="hidden" name="userId" value={userId} required />
+      <FormControlID value={userId} name="userId" />
     </FormLayout>
   );
 }

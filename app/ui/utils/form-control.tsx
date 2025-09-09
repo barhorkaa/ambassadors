@@ -79,3 +79,15 @@ export const FormControlEditor = ({
     />
   </FormControlLayout>
 );
+
+export const FormControlID = ({
+  id = 'id',
+  name = 'id',
+  value,
+  required = true,
+}: {
+  id?: string;
+  name?: string;
+  value: string | undefined;
+  required?: boolean;
+}) => <input id={id} type="hidden" name={name} value={value} required={required} />;

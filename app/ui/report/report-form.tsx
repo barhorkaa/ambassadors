@@ -4,7 +4,7 @@ import { createReportAction } from '@/app/lib/actions/report';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import MaterialAdd from '@/app/ui/material-report/material-add';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl, { FormControlEditor } from '@/app/ui/utils/form-control';
+import FormControl, { FormControlEditor, FormControlID } from '@/app/ui/utils/form-control';
 import { MaterialMinModel } from '@/models/material-models';
 import { useFormState } from 'react-dom';
 
@@ -38,7 +38,7 @@ export default function ReportForm({ eventId, materials }: ReportFormProps) {
         errorMessage={findErrors('ideas', state.errors)[0]}
         required
       />
-      <input id="id" type="hidden" name="eventId" value={eventId} required />
+      <FormControlID value={eventId} name="eventId" />
     </FormLayout>
   );
 }

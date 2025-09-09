@@ -3,7 +3,7 @@
 import { creteGroupEmailAction } from '@/app/lib/actions/event-group-emails';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { FormControlID } from '@/app/ui/utils/form-control';
 import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
 import { useFormState } from 'react-dom';
 
@@ -25,7 +25,7 @@ export default function GroupEmailForm({ eventId }: { eventId: string }) {
         </label>
         <SimpleEditor />
       </div>
-      <input id="eventId" defaultValue={eventId} type="hidden" name="eventId" />
+      <FormControlID value={eventId} id="eventId" name="eventId" />
     </FormLayout>
   );
 }

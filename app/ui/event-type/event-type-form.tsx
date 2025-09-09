@@ -3,7 +3,7 @@
 import { createEventTypeAction, editEventTypeAction } from '@/app/lib/actions/event-type';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl, { FormControlEditor } from '@/app/ui/utils/form-control';
+import FormControl, { FormControlEditor, FormControlID } from '@/app/ui/utils/form-control';
 import { EventTypeDetailModel } from '@/models/event-type-models';
 import { useFormState } from 'react-dom';
 
@@ -39,9 +39,7 @@ export function EventTypeForm({ eventType }: EventTypeFormProps) {
         errorMessage={findErrors('instructions', state.errors)[0]}
         required
       />
-      <div className="form-control">
-        <input id="id" value={eventType?.id} type="hidden" name="id" />
-      </div>
+      <FormControlID value={eventType?.id} required={false} />
     </FormLayout>
   );
 }

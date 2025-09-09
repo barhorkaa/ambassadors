@@ -4,7 +4,7 @@ import { editUserAction, editUserFullAction } from '@/app/lib/actions/user';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import UserRoleSelect from '@/app/ui/user/user-role-select';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { FormControlID } from '@/app/ui/utils/form-control';
 import { UserModel } from '@/models/user-models';
 import { useFormState } from 'react-dom';
 
@@ -51,7 +51,7 @@ export default function UserEditForm({ user, full }: UserEditFormProps) {
           <UserRoleSelect currentRole={user.role} />
         </>
       )}
-      <input id="id" type="hidden" name="id" value={user.id} required />
+      <FormControlID value={user.id} />
     </FormLayout>
   );
 }
