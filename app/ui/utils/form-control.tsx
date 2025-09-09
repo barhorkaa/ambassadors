@@ -23,6 +23,7 @@ interface FormControlEditorProps {
   name?: string;
   placeholder?: string;
   errorMessage?: string;
+  required?: boolean;
 }
 
 const FormControlLayout = ({ title, errorMessage, children }: FormControlLayoutProps) => (
@@ -68,8 +69,9 @@ export const FormControlEditor = ({
   name,
   errorMessage,
   placeholder,
+  required = false,
 }: FormControlEditorProps) => (
   <FormControlLayout title={title} errorMessage={errorMessage}>
-    <SimpleEditor initialContent={initialContent} name={name} placeholder={placeholder} />
+    <SimpleEditor initialContent={initialContent} name={name} placeholder={placeholder} required={required} />
   </FormControlLayout>
 );
