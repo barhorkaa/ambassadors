@@ -4,7 +4,7 @@ import { createEventAction, updateEventAction } from '@/app/lib/actions/event';
 import { findErrors, formActionInitialState } from '@/app/lib/actions/utils';
 import EventTypeSelect from '@/app/ui/event-type/event-type-select';
 import { FormLayout } from '@/app/ui/utils/component-layouts';
-import FormControl from '@/app/ui/utils/form-control';
+import FormControl, { FormControlID } from '@/app/ui/utils/form-control';
 import { EventDetailModel } from '@/models/event-models';
 import { EventTypeMinModel } from '@/models/event-type-models';
 import { format } from 'date-fns';
@@ -50,9 +50,7 @@ export default function EventForm({ eventTypes, event }: EventFormProps) {
         eventTypes={eventTypes}
         errorMessage={findErrors('eventTypeId', state.errors)[0]}
       />
-      <div className="form-control">
-        <input id="id" value={event?.id} type="hidden" name="id" />
-      </div>
+      <FormControlID value={event?.id} required={false} />
     </FormLayout>
   );
 }
