@@ -27,6 +27,7 @@ export function MaterialForm({ material }: MaterialFormProps) {
         id="description"
         initialContent={material?.description}
         errorMessage={findErrors('description', state.errors)[0]}
+        required
       />
       <div className="form-control">
         <input id="id" value={material?.id} type="hidden" name="id" />
