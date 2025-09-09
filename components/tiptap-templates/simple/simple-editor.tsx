@@ -79,12 +79,14 @@ const MainToolbarContent = ({ onLinkClick, isMobile }: { onLinkClick: () => void
 
 export function SimpleEditor({
   name = 'content',
-  initialContent,
+  initialContent = '',
   placeholder,
+  required = false,
 }: {
   name?: string;
   initialContent?: string;
   placeholder?: string;
+  required?: boolean;
 }) {
   const [content, setContent] = React.useState(initialContent);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -96,7 +98,7 @@ export function SimpleEditor({
   const editor = useEditor({
     content: initialContent,
     onUpdate: ({ editor }) => {
-      const html = editor.getHTML();
+      const html = editor.isEmpty ? '' : editor.getHTML();
       setContent(html);
     },
     immediatelyRender: false,
@@ -140,9 +142,8 @@ export function SimpleEditor({
         <Toolbar ref={toolbarRef}>
           <MainToolbarContent onLinkClick={() => setMobileView('link')} isMobile={isMobile} />
         </Toolbar>
-
         <EditorContent editor={editor} role="presentation" className="simple-editor-content" />
-        <input type="hidden" name={name} ref={inputRef} value={content} />
+        <input type="hidden" name={name} ref={inputRef} value={content} required={required} />
       </EditorContext.Provider>
     </div>
   );
