@@ -82,11 +82,13 @@ export function SimpleEditor({
   initialContent = '',
   placeholder,
   required = false,
+  errorMessage,
 }: {
   name?: string;
   initialContent?: string;
   placeholder?: string;
   required?: boolean;
+  errorMessage?: string;
 }) {
   const [content, setContent] = React.useState(initialContent);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -137,7 +139,7 @@ export function SimpleEditor({
   }, [isMobile, mobileView]);
 
   return (
-    <div className="simple-editor-wrapper w-100%">
+    <div className={errorMessage ? 'simple-editor-wrapper-error w-100%' : 'simple-editor-wrapper w-100%'}>
       <EditorContext.Provider value={{ editor }}>
         <Toolbar ref={toolbarRef}>
           <MainToolbarContent onLinkClick={() => setMobileView('link')} isMobile={isMobile} />
