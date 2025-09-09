@@ -24,7 +24,7 @@ export function MaterialForm({ material }: MaterialFormProps) {
       />
       <FormControlEditor
         title="Popis materiálu"
-        name="description"
+        id="description"
         initialContent={material?.description}
         errorMessage={findErrors('description', state.errors)[0]}
       />

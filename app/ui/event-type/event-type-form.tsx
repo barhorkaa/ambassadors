@@ -28,14 +28,14 @@ export function EventTypeForm({ eventType }: EventTypeFormProps) {
       <FormControlEditor
         title="Popis typu akce"
         initialContent={eventType?.description}
-        name="description"
+        id="description"
         errorMessage={findErrors('description', state.errors)[0]}
         required
       />
       <FormControlEditor
         title="Instrukce pro ambasadory"
         initialContent={eventType?.instructions}
-        name="instructions"
+        id="instructions"
         errorMessage={findErrors('instructions', state.errors)[0]}
         required
       />

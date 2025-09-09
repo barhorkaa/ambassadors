@@ -1,29 +1,27 @@
 import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
 
-interface FormControlProps {
-  title: string;
-  id: string;
-  errorMessage?: string;
-  type?: 'text' | 'number' | 'password' | 'date' | 'email';
-  defaultValue?: string | number;
-  inputType?: 'textarea' | 'input';
-  placeholder?: string;
-  required?: boolean;
-}
-
 interface FormControlLayoutProps {
   title: string;
   errorMessage?: string;
   children: React.ReactNode;
 }
 
-interface FormControlEditorProps {
+interface FormControlBaseProps {
   title: string;
-  initialContent?: string;
-  name?: string;
+  id: string;
   placeholder?: string;
   errorMessage?: string;
   required?: boolean;
+}
+
+interface FormControlEditorProps {
+  initialContent?: string;
+}
+
+interface FormControlInputProps {
+  type?: 'text' | 'number' | 'password' | 'date' | 'email';
+  defaultValue?: string | number;
+  inputType?: 'textarea' | 'input';
 }
 
 const FormControlLayout = ({ title, errorMessage, children }: FormControlLayoutProps) => (
@@ -45,7 +43,7 @@ export default function FormControl({
   inputType = 'input',
   placeholder,
   required = true,
-}: FormControlProps) {
+}: FormControlBaseProps & FormControlInputProps) {
   const Tag = inputType;
 
   return (
@@ -66,15 +64,15 @@ export default function FormControl({
 export const FormControlEditor = ({
   title,
   initialContent,
-  name,
+  id,
   errorMessage,
   placeholder,
   required = false,
-}: FormControlEditorProps) => (
+}: FormControlBaseProps & FormControlEditorProps) => (
   <FormControlLayout title={title} errorMessage={errorMessage}>
     <SimpleEditor
       initialContent={initialContent}
-      name={name}
+      name={id}
       placeholder={placeholder}
       required={required}
       errorMessage={errorMessage}

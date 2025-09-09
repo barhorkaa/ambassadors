@@ -26,10 +26,10 @@ export default function ReportForm({ eventId, materials }: ReportFormProps) {
         errorMessage={findErrors('numberOfAttendees', state.errors)[0]}
       />
       <MaterialAdd materials={materials} />
-      <FormControlEditor title="Co se na akci dělo?" name="notes" errorMessage={findErrors('notes', state.errors)[0]} />
+      <FormControlEditor title="Co se na akci dělo?" id="notes" errorMessage={findErrors('notes', state.errors)[0]} />
       <FormControlEditor
         title="Co do budoucna zlepšit?"
-        name="ideas"
+        id="ideas"
         errorMessage={findErrors('ideas', state.errors)[0]}
       />
       <input id="id" type="hidden" name="eventId" value={eventId} required />
