@@ -30,12 +30,14 @@ export function EventTypeForm({ eventType }: EventTypeFormProps) {
         initialContent={eventType?.description}
         name="description"
         errorMessage={findErrors('description', state.errors)[0]}
+        required
       />
       <FormControlEditor
         title="Instrukce pro ambasadory"
         initialContent={eventType?.instructions}
         name="instructions"
         errorMessage={findErrors('instructions', state.errors)[0]}
+        required
       />
       <div className="form-control">
         <input id="id" value={eventType?.id} type="hidden" name="id" />
