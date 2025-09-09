@@ -72,6 +72,12 @@ export const FormControlEditor = ({
   required = false,
 }: FormControlEditorProps) => (
   <FormControlLayout title={title} errorMessage={errorMessage}>
-    <SimpleEditor initialContent={initialContent} name={name} placeholder={placeholder} required={required} />
+    <SimpleEditor
+      initialContent={initialContent}
+      name={name}
+      placeholder={placeholder}
+      required={required}
+      errorMessage={errorMessage}
+    />
   </FormControlLayout>
 );
