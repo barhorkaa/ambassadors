@@ -1,3 +1,4 @@
+import { requiredString } from '@/models/utils';
 import { z } from 'zod';
 
 export const materialAmountSchema = z.object({
@@ -10,8 +11,8 @@ export type MaterialAmountModel = z.infer<typeof materialAmountSchema>;
 export const reportSchema = z.object({
   eventId: z.string(),
   numberOfAttendees: z.string().pipe(z.coerce.number()),
-  notes: z.string(),
-  ideas: z.string(),
+  notes: requiredString,
+  ideas: requiredString,
   materials: materialAmountSchema.array(),
 });
 export type ReportModel = z.infer<typeof reportSchema>;

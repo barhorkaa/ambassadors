@@ -1,9 +1,10 @@
+import { requiredString } from '@/models/utils';
 import { z } from 'zod';
 
 export const materialSchema = z.object({
   id: z.string().optional(),
   name: z.string({ required_error: 'Jméno je povinný údaj.' }),
-  description: z.string({ required_error: 'Popis je povinný údaj.' }),
+  description: requiredString,
 });
 export type MaterialManipulationModel = z.infer<typeof materialSchema>;
 
