@@ -1,10 +1,11 @@
+import { requiredString } from '@/models/utils';
 import { z } from 'zod';
 
 export const eventTypeSchema = z.object({
   id: z.string().optional(),
   name: z.string({ required_error: 'Jméno je povinný údaj.' }),
-  description: z.string({ required_error: 'Popis je povinný údaj.' }),
-  instructions: z.string({ required_error: 'Instrukce jsou povinný údaj.' }),
+  description: requiredString,
+  instructions: requiredString,
 });
 export type EventTypeManipulationModel = z.infer<typeof eventTypeSchema>;
 
