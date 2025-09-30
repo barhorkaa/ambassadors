@@ -2,12 +2,15 @@
 
 import { signIn, signOut } from '@/auth';
 import { AuthError } from 'next-auth';
+import { isRedirectError } from 'next/dist/client/components/redirect';
 
 export async function authenticate(prevState: string | undefined, formData: FormData) {
   try {
     await signIn('credentials', formData, { redirectTo: '/events' });
   } catch (error) {
-    console.log('error is: ', error);
+    if (!isRedirectError(error)) {
+      console.error('SignIn error is: ', error);
+    }
     if (error instanceof AuthError) {
       if (error.cause && error.cause.err && error.cause.err.name === 'EMAIL_NOT_VERIFIED')
         return 'Váš e-mail ještě nebyl potvrzen';
