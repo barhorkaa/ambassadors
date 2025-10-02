@@ -8,12 +8,13 @@ interface FormLayoutProps {
   state: StateModel;
   modalId?: string;
   children: React.ReactNode;
+  buttonTitle?: string;
 }
 
-export const FormLayout = ({ action, state, modalId, children }: FormLayoutProps) => (
+export const FormLayout = ({ action, state, modalId, children, buttonTitle }: FormLayoutProps) => (
   <form action={action} className="card-body p-2 md:p-6">
     {children}
-    <SubmitButton title={'Odeslat'} modalId={modalId} fun={action} />
+    <SubmitButton title={buttonTitle ? buttonTitle : 'Odeslat'} modalId={modalId} fun={action} />
     {state.generic !== undefined && (
       <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
         <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
