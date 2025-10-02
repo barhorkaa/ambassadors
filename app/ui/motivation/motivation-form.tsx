@@ -22,7 +22,7 @@ export default function MotivationForm({ userId }: MotivationFormProps) {
         placeholder={'Chci zvýšit povědomí o fakultě, přividělat si ...'}
       />
       <FormControl
-        title={'Doporučil vám někto přidat se k programu? Pokud ano, kto?'}
+        title={'Doporučil vám někto přidat se k programu? Kto?'}
         id={'who'}
         inputType={'textarea'}
         placeholder={'Ne / Ano + kto'}
